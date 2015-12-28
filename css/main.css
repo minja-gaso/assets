@@ -1,0 +1,100 @@
+body {
+  font-family: 'Source Sans Pro', sans-serif;
+  margin-top: 24px;
+}
+#main {
+  background-color: #0A569B;
+}
+#content {
+  background-color: #ffffff;
+}
+#content h2 {
+  color: #0A569B;
+  margin-top: 0;
+}
+#content .btn > .fa {
+  margin-right: 4px;
+  vertical-align: middle;
+}
+#content .btn.btn-create {
+  padding: 30px 10px;
+  width: 250px;
+}
+#content h2.screen-title {
+  font-size: 24px;
+}
+#content h2.screen-title small {
+  margin-left: 12px;
+}
+#content legend {
+  border: none;
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 0;
+}
+#content .radio {
+  margin-bottom: 0;
+}
+#content .radio.first {
+  margin-top: 0;
+}
+#content table thead th {
+  font-weight: normal;
+}
+#content .pagebreak-row th,
+#content .pagebreak-row td {
+  background-color: #008FBE;
+  border: none;
+  color: #ffffff;
+  font-weight: bold;
+}
+#content .pagebreak-row .fa {
+  color: #ffffff;
+}
+#content .btn-add {
+  background-color: #97CE6F;
+}
+#content .btn.add-answers {
+  margin-top: 12px;
+}
+#content .question-row .fa-plus-circle {
+  color: #97CE6F;
+}
+#content .question-row .fa-disabled {
+  color: #ddd;
+}
+#content .question-row .bg-info {
+  xxxborder: none;
+}
+#content .arrow-up {
+  margin-right: 4px;
+}
+#content .arrow-down {
+  margin-left: 4px;
+}
+#content .arrow-active:hover {
+  color: red;
+}
+#content .arrow-disabled {
+  color: #ededed;
+}
+#content .fa-disabled {
+  color: #cccccc;
+}
+
+/*
+ *  Public form styles
+ */
+#public-form { border: 1px solid #131313; padding: 12px; }
+#public-form h1 { margin-top: 0; }
+#public-form h2.error-heading { font-size: 20px; font-weight: bold; margin: 0; margin-bottom: 8px;}
+#public-form fieldset { border: none; margin: 0; padding: 0; }
+#public-form legend { border: none; margin: 0; padding: 0; }
+#public-form legend,
+#public-form label { font-family: Arial; font-size: 12px; font-weight: bold; }
+#public-form .error-style { color: red; }
+#public-form input[type='radio'],
+#public-form input[type='checkbox'] { margin-right: 4px; }
+#public-form fieldset label { font-weight: normal; margin-bottom: 0; }
+#public-form .fa-asterisk { color: red; font-size: 8px; margin-left: 4px; vertical-align: text-top; }
+#public-form .pager .current-page { letter-spacing: 0.1em; margin: 0 12px; }

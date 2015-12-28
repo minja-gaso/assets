@@ -1,0 +1,36 @@
+<fo:root xmlns:fo="http://www.w3.org/1999/XSL/Format">
+  <fo:layout-master-set>
+    <fo:simple-page-master page-height="297mm" page-width="210mm"
+          margin="5mm 25mm 5mm 25mm" master-name="PageMaster">
+      <fo:region-body margin="20mm 0mm 20mm 0mm"/>
+    </fo:simple-page-master>
+  </fo:layout-master-set>
+  <fo:declarations>
+  <x:xmpmeta xmlns:x="adobe:ns:meta/">
+    <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+      <rdf:Description rdf:about=""
+          xmlns:dc="http://purl.org/dc/elements/1.1/">
+        <!-- Dublin Core properties go here -->
+        <dc:title>Document title</dc:title>
+        <dc:creator>Document author</dc:creator>
+        <dc:description>Document subject</dc:description>
+      </rdf:Description>
+      <rdf:Description rdf:about=""
+          xmlns:xmp="http://ns.adobe.com/xap/1.0/">
+        <!-- XMP properties go here -->
+        <xmp:CreatorTool>Tool used to make the PDF</xmp:CreatorTool>
+      </rdf:Description>
+    </rdf:RDF>
+  </x:xmpmeta>
+</fo:declarations>
+  <fo:page-sequence master-reference="PageMaster">
+    <fo:flow flow-name="xsl-region-body">
+      <fo:block>
+        <fo:block>Hello World!</fo:block>
+        <fo:block>This is the first <xsl:value-of select="'a'" />
+          <fo:inline font-weight="bold">SimpleDoc</fo:inline>
+        </fo:block>
+      </fo:block>
+    </fo:flow>
+  </fo:page-sequence>
+</fo:root>
