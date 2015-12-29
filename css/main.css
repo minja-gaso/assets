@@ -98,3 +98,13 @@ body {
 #public-form fieldset label { font-weight: normal; margin-bottom: 0; }
 #public-form .fa-asterisk { color: red; font-size: 8px; margin-left: 4px; vertical-align: text-top; }
 #public-form .pager .current-page { letter-spacing: 0.1em; margin: 0 12px; }
+
+/*
+ *  Public skin temple
+ */
+#public table { border: 1px solid #1690BB; }
+#public table thead th { background-color: #1690BB; border-bottom: none; color: #ffffff; }
+#public table tbody th { font-weight: normal; }
+#public table tbody th,
+#public table tbody td { border-top: 1px solid #1690BB; border-bottom: none; }
+#public table tbody th.text-notice { font-size: 11px; }
