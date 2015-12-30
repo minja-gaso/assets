@@ -8,6 +8,10 @@
 						<xsl:variable name="primaryTextColor" select="'#FFFFFF'" />
 						<xsl:variable name="secondaryColor" select="'#FFFFFF'" />
 						<xsl:variable name="secondaryTextColor" select="'#383838'" />
+						<h3>
+							<xsl:value-of select="/data/analytics/startDateStr" /> to <xsl:value-of select="/data/analytics/endDateStr" />
+							<small style="margin-left:18px;"><xsl:value-of select="count(/data/submission)" /> submissions</small>
+						</h3>
 						<xsl:for-each select="question">
 							<xsl:variable name="questionId" select="id" />
 								<xsl:choose>
@@ -43,7 +47,7 @@
 															<ul>
 																<xsl:for-each select="/data/submission/answer[questionId = $questionId]">
 																	<xsl:if test="string-length(answerValue) &gt; 0">
-																		<li><xsl:value-of select="answerValue" />...<xsl:value-of select="$questionId" /></li>																	
+																		<li><xsl:value-of select="answerValue" />...<xsl:value-of select="../id" /></li>
 																	</xsl:if>
 																</xsl:for-each>
 															</ul>
