@@ -10,6 +10,7 @@
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,200" rel="stylesheet">
+    <link href="https://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css" rel="stylesheet">
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -51,6 +52,23 @@
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+		<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.js">//</script>
+		<script>
+		$(document).ready(function(){
+			$("#START_DATE").datepicker({
+        dateFormat: "yy-mm-dd",
+        onSelect: function(selected){
+	         $("#END_DATE").datepicker("option","minDate", selected)
+	      }
+      });
+			$("#END_DATE").datepicker({
+        dateFormat: "yy-mm-dd",
+        onSelect: function(selected){
+	         $("#START_DATE").datepicker("option","maxDate", selected)
+	      }
+      });
+		});
+		</script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <!--<script src="/js/bootstrap.min.js"></script>-->
     <script src="/js/form.js?v=1"></script>

@@ -32,6 +32,11 @@
 					<xsl:for-each select="/data/form">
 						<fo:block margin-top="12pt" margin-bottom="12pt">
 							<xsl:value-of select="title" />
+							<xsl:if test="/data/analytics">
+								<fo:inline color="#808080" font-size="10pt" padding-left="12pt" margin-top="10pt" margin-bottom="12pt">
+									<xsl:value-of select="/data/analytics/startDateStr" /> to <xsl:value-of select="/data/analytics/endDateStr" />
+								</fo:inline>
+							</xsl:if>
 						</fo:block>
 						<xsl:variable name="tableBorder" select="'1px solid #1690BB'" />
 						<xsl:variable name="cellMargin" select="'4pt'" />
