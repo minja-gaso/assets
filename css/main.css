@@ -95,6 +95,9 @@ body {
 #content .arrow-down {
   margin-left: 4px;
 }
+#content .datepicker {
+  background: transparent;
+}
 #content .arrow-active:hover {
   color: red;
 }
@@ -129,6 +132,7 @@ body {
 #public-form fieldset label { font-weight: normal; margin-bottom: 0; }
 #public-form .fa-asterisk { color: red; font-size: 8px; margin-left: 4px; vertical-align: text-top; }
 #public-form .pager .current-page { letter-spacing: 0.1em; margin: 0 12px; }
+#public-form .datepicker { background: transparent; }
 
 /*
  *  Public skin temple

@@ -36,7 +36,7 @@ function formListScreen()
  */
 function switchTab(screen)
 {
-  document.portal_form.ACTION.value = 'SAVE_QUESTION';
+  //document.portal_form.ACTION.value = 'SAVE_QUESTION';
   document.portal_form.SCREEN.value = screen;
   submitForm();
 }

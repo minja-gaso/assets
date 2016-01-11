@@ -50,7 +50,7 @@
 							<fo:block page-break-inside="avoid">
 								<xsl:choose>
 									<xsl:when test="type='text' or type='textarea'">
-										<xsl:variable name="totalCount" select="count(/data/submission/answer[questionId = $questionId])" />
+										<xsl:variable name="totalCount" select="count(/data/submission)" />
 										<xsl:variable name="answeredCountStr">
 											<xsl:for-each select="/data/submission/answer[questionId = $questionId]">
 												<xsl:if test="string-length(answerValue) &gt; 0">
