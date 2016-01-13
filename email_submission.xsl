@@ -28,7 +28,7 @@
 										<table class="table table-condensed">
 											<thead>
 												<tr>
-													<th class="col-lg-11"><xsl:value-of select="number" />. <xsl:value-of select="label" /></th>
+													<th class="col-lg-11"><xsl:value-of select="number" />. <xsl:value-of select="concat(label, ' ', $questionId)" /></th>
 													<th class="col-lg-1">Submissions</th>
 												</tr>
 											</thead>
@@ -47,7 +47,7 @@
 															<ul>
 																<xsl:for-each select="/data/submission/answer[questionId = $questionId]">
 																	<xsl:if test="string-length(answerValue) &gt; 0">
-																		<li><xsl:value-of select="answerValue" /></li>
+																		<li><xsl:value-of select="answerValue" />...<xsl:value-of select="../id" /></li>
 																	</xsl:if>
 																</xsl:for-each>
 															</ul>
