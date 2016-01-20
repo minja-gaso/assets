@@ -1,36 +1,62 @@
+/*
+ *  utility classes to override default behaviors
+ */
+.font-normal { font-weight: normal; }
+
+/*
+ *  bootstrap overrides
+ */
+.table-condensed > tbody > tr > td,
+.table-condensed > tbody > tr > th,
+.table-condensed > tfoot > tr > td,
+.table-condensed > tfoot > tr > th,
+.table-condensed > thead > tr > td,
+.table-condensed > thead > tr > th { padding: 3px 5px; }
+
+/*
+ *  styles
+ */
 body {
   font-family: 'Source Sans Pro', sans-serif;
   margin-top: 24px;
 }
-#main {
-  xxxbackground-color: #0A569B;
-}
 #content {
   background-color: #ffffff;
 }
+
+/* inner page navigation */
 #content nav {
   margin-bottom: 12px;
 }
 #content nav ul {
-  background-color: #008fbe;
-  xxxdisplay: inline-block;
+  xxxbackground-color: #008fbe;
 }
 #content nav ul li {
   margin-left: 0;
 }
 #content nav ul a {
   border-radius: 0;
-  color: #fff;
+  xxxcolor: #fff;
 }
 #content nav ul a:hover,
 #content nav ul li.active a {
   background-color: #fff;
-  border-bottom: 2px solid #008fbe;
   color: #008fbe;
 }
 #content nav ul li.active a {
   font-weight: bold;
 }
+
+/* inner page actions */
+#content .action-row {
+  background-color: #F7F7F7;
+  margin-bottom: 12px;
+}
+#content .action-row a:hover {
+  background-color: #E8E8E8;
+}
+
+/* inner page content */
 #content h2 {
   color: #0A569B;
   margin-top: 0;
