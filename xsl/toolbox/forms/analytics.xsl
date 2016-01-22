@@ -10,8 +10,17 @@
 			<xsl:otherwise><xsl:value-of select="/data/form/id" /></xsl:otherwise>
 		</xsl:choose>
 	</xsl:variable>
+	<xsl:variable name="isSelfAssessment">
+		<xsl:choose>
+			<xsl:when test="/data/environment/componentId = 2">true</xsl:when>
+			<xsl:otherwise>false</xsl:otherwise>
+		</xsl:choose>
+	</xsl:variable>
+	<xsl:include href="form_nav.xsl" />
+
 	<xsl:template match="/">
 		<form action="" method="post" name="portal_form">
+			<input type="hidden" name="COMPONENT_ID" value="{/data/environment/componentId}" />
 			<input type="hidden" name="ACTION" />
 			<input type="hidden" name="SCREEN" value="ANALYTICS" />
 			<input type="hidden" name="FORM_ID" value="{/data/form/id}" />
@@ -21,12 +30,15 @@
 			<div class="row">
 				<div class="col-lg-12">
 					<nav>
-						<ul class="nav nav-tabs">
-							<li role="presentation"><a href="javascript:switchTab('GENERAL');">General</a></li>
-							<li role="presentation"><a href="javascript:switchTab('QUESTION_LIST');">Questions</a></li>
-							<li role="presentation"><a href="javascript:switchTab('REPORTS');">Reports</a></li>
-							<li role="presentation" class="active"><a href="#">Analytics</a></li>
-						</ul>
+						<xsl:variable name="QUESTION_ACTION">
+								<xsl:choose>
+									<xsl:when test="/data/environment/componentId = 1">QUESTION_LIST</xsl:when>
+									<xsl:otherwise>QUESTIONS_AND_ANSWERS</xsl:otherwise>
+								</xsl:choose>
+						</xsl:variable>
+						<xsl:call-template name="primary_navigation">
+							<xsl:with-param name="SCREEN" select="'ANALYTICS'" />
+						</xsl:call-template>
 					</nav>
 					<h2>Analytics Information</h2>
 					<div class="row form-inline">
@@ -96,4 +108,6 @@
 			</div>
 		</form>
 	</xsl:template>
+
+
 </xsl:stylesheet>

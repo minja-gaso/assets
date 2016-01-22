@@ -2,6 +2,7 @@
 <xsl:stylesheet version="2.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 	<xsl:template match="/">
 		<form action="" method="post" name="portal_form">
+			<input type="hidden" name="COMPONENT_ID" value="{/data/environment/componentId}" />
 			<input type="hidden" name="ACTION" />
 			<input type="hidden" name="SCREEN" value="CREATE" />
 			<div class="form-group">

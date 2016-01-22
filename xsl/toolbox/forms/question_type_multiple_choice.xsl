@@ -3,6 +3,7 @@
 	<xsl:output encoding="utf-8" method="html" omit-xml-declaration="yes"></xsl:output>
 	<xsl:template match="/">
 		<form action="" method="post" name="portal_form">
+			<input type="hidden" name="COMPONENT_ID" value="{/data/environment/componentId}" />
 			<input type="hidden" name="ACTION" />
 			<input type="hidden" name="SCREEN">
 				<xsl:attribute name="value">

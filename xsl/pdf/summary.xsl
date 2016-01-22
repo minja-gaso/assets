@@ -135,21 +135,42 @@
 													</fo:table-cell>
 												</fo:table-row>
 												<!-- possible answers -->
-												<xsl:for-each select="possibleAnswer">
-													<xsl:variable name="possibleAnswerId" select="id" />
-													<fo:table-row>
-														<fo:table-cell border-bottom="1px solid {$primaryColor}" background-color="{$secondaryColor}" font-size="{$fontSize}" font-weight="bold" text-align="right">
-															<fo:block margin="{$cellMargin}">
-																<xsl:value-of select="label" />
-															</fo:block>
-														</fo:table-cell>
-														<fo:table-cell border-bottom="1px solid {$primaryColor}" border-left="1px solid {$primaryColor}" font-size="{$fontSize}" text-align="center">
-															<fo:block margin="{$cellMargin}">
-																<xsl:value-of select="count(/data/submission/answer[answerValue = $possibleAnswerId])" />
-															</fo:block>
-														</fo:table-cell>
-													</fo:table-row>
-												</xsl:for-each>
+												<xsl:choose>
+													<xsl:when test="/data/form/type = 'survey'">
+														<xsl:for-each select="possibleAnswer">
+															<xsl:variable name="possibleAnswerId" select="id" />
+															<fo:table-row>
+																<fo:table-cell border-bottom="1px solid {$primaryColor}" background-color="{$secondaryColor}" font-size="{$fontSize}" font-weight="bold" text-align="right">
+																	<fo:block margin="{$cellMargin}">
+																		<xsl:value-of select="label" />
+																	</fo:block>
+																</fo:table-cell>
+																<fo:table-cell border-bottom="1px solid {$primaryColor}" border-left="1px solid {$primaryColor}" font-size="{$fontSize}" text-align="center">
+																	<fo:block margin="{$cellMargin}">
+																		<xsl:value-of select="count(/data/submission/answer[answerValue = $possibleAnswerId])" />
+																	</fo:block>
+																</fo:table-cell>
+															</fo:table-row>
+														</xsl:for-each>
+													</xsl:when>
+													<xsl:otherwise>
+														<xsl:for-each select="/data/possibleAnswer">
+															<xsl:variable name="possibleAnswerId" select="id" />
+															<fo:table-row>
+																<fo:table-cell border-bottom="1px solid {$primaryColor}" background-color="{$secondaryColor}" font-size="{$fontSize}" font-weight="bold" text-align="right">
+																	<fo:block margin="{$cellMargin}">
+																		<xsl:value-of select="label" />
+																	</fo:block>
+																</fo:table-cell>
+																<fo:table-cell border-bottom="1px solid {$primaryColor}" border-left="1px solid {$primaryColor}" font-size="{$fontSize}" text-align="center">
+																	<fo:block margin="{$cellMargin}">
+																		<xsl:value-of select="count(/data/submission/answer[answerValue = $possibleAnswerId])" />
+																	</fo:block>
+																</fo:table-cell>
+															</fo:table-row>
+														</xsl:for-each>
+													</xsl:otherwise>
+												</xsl:choose>
 												<!-- notice -->
 												<xsl:if test="type='checkbox'">
 													<fo:table-row>

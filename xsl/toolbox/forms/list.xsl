@@ -2,6 +2,7 @@
 <xsl:stylesheet version="2.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 	<xsl:template match="/">
 		<form action="" method="post" name="portal_form">
+			<input type="hidden" name="COMPONENT_ID" value="{/data/environment/componentId}" />
 			<input type="hidden" name="ACTION" />
 			<input type="hidden" name="SCREEN" value="FORM_LIST" />
 			<input type="hidden" name="FORM_ID" />
@@ -11,6 +12,12 @@
 			</div>
 			<span class="pull-right text-danger user-info">Hello, <xsl:value-of select="concat(/data/user/firstName, ' ', /data/user/lastName)" /></span>
 			<hr />
+			<h2>
+				<xsl:choose>
+					<xsl:when test="/data/environment/componentId = 1">Standard Forms &amp; Surveys</xsl:when>
+					<xsl:otherwise>Self-Assessment Surveys</xsl:otherwise>
+				</xsl:choose>
+			</h2>
 			<xsl:if test="count(/data/message) &gt; 0">
 				<xsl:for-each select="/data/message">
 					<xsl:variable name="type">
@@ -25,7 +32,9 @@
 			<table class="table table-bordered table-condensed table-striped">
 				<thead>
 					<tr>
-						<th class="col-lg-1 text-center">ID</th>
+						<th class="col-lg-1 text-center">
+							<input type="checkbox" onclick="toggleCheckboxes(this, 'FORM_ID_LIST');" />
+						</th>
 						<th>Title</th>
 						<th class="col-lg-1 text-center">View</th>
 						<th class="col-lg-1 text-center">Edit</th>

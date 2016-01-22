@@ -30,7 +30,7 @@
 								<xsl:if test="/data/message/questionId = $questionId">
 									<xsl:attribute name="class">error-style</xsl:attribute>
 								</xsl:if>
-								<xsl:value-of select="concat(number, '. ', label)" /> 
+								<xsl:value-of select="concat(number, '. ', label)" />
 								<xsl:if test="required = 'true'">
 									<span class="fa fa-asterisk"><xsl:text>&#x0A;</xsl:text></span>
 								</xsl:if>
@@ -50,7 +50,7 @@
 										</xsl:attribute>
 									</input>
 								</xsl:when>
-								<xsl:when test="filter = 'date'">							
+								<xsl:when test="filter = 'date'">
 									<div class="input-group">
 										<input type="text" class="form-control datepicker" name="QUESTION_{$questionId}" id="{id}" readonly="readonly" />
 										<span class="input-group-addon" onclick="this.previousSibling.focus();"><span class="fa fa-calendar"><span class="sr-only">start date picker</span></span></span>
@@ -59,9 +59,9 @@
 											$("#<xsl:value-of select="id" />").datepicker();
 										});
 										</script>
-									</div>	
+									</div>
 								</xsl:when>
-								<xsl:when test="filter = 'email'">							
+								<xsl:when test="filter = 'email'">
 									<div class="input-group">
 										<input type="text" class="form-control" name="QUESTION_{$questionId}" id="{id}">
 											<xsl:attribute name="placeholder">
@@ -81,7 +81,7 @@
 											</xsl:if>
 										</input>
 										<span class="input-group-addon" onclick="this.previousSibling.focus();"><span class="fa fa-envelope"><span class="sr-only">enter email</span></span></span>
-									</div>	
+									</div>
 								</xsl:when>
 							</xsl:choose>
 						</xsl:when>
@@ -90,7 +90,7 @@
 								<xsl:if test="/data/message/questionId = $questionId">
 									<xsl:attribute name="class">error-style</xsl:attribute>
 								</xsl:if>
-								<xsl:value-of select="concat(number, '. ', label)" /> 
+								<xsl:value-of select="concat(number, '. ', label)" />
 								<xsl:if test="required = 'true'">
 									<span class="fa fa-asterisk"><xsl:text>&#x0A;</xsl:text></span>
 								</xsl:if>
@@ -100,7 +100,7 @@
 									<xsl:when test="string-length(defaultAnswer) &gt; 0">
 										<xsl:value-of select="defaultAnswer" />
 									</xsl:when>
-									<xsl:otherwise>									
+									<xsl:otherwise>
 										<xsl:text>&#x0A;</xsl:text>
 									</xsl:otherwise>
 								</xsl:choose>
@@ -112,7 +112,7 @@
 									<xsl:if test="/data/message/questionId = $questionId">
 										<xsl:attribute name="class">error-style</xsl:attribute>
 									</xsl:if>
-									<xsl:value-of select="concat(number, '. ', label)" /> 
+									<xsl:value-of select="concat(number, '. ', label)" />
 									<xsl:if test="required = 'true'">
 										<span class="fa fa-asterisk"><xsl:text>&#x0A;</xsl:text></span>
 									</xsl:if>
@@ -121,10 +121,10 @@
 									<xsl:variable name="possibleAnswerId" select="id" />
 									<input type="hidden" name="QUESTION_{$questionId}" id="{$questionId}_hidden" />
 									<div>
-										<label>		
+										<label>
 											<xsl:if test="/data/message/questionId = $questionId">
 												<xsl:attribute name="class">error-style</xsl:attribute>
-											</xsl:if>							
+											</xsl:if>
 											<input name="QUESTION_{$questionId}" id="{$questionId}_{position()}" value="{id}">
 												<xsl:attribute name="type">
 													<xsl:choose>
@@ -148,7 +148,7 @@
 									<xsl:if test="/data/message/questionId = $questionId">
 										<xsl:attribute name="class">error-style</xsl:attribute>
 									</xsl:if>
-									<xsl:value-of select="concat(number, '. ', label)" /> 
+									<xsl:value-of select="concat(number, '. ', label)" />
 									<xsl:if test="required = 'true'">
 										<span class="fa fa-asterisk"><xsl:text>&#x0A;</xsl:text></span>
 									</xsl:if>
@@ -159,7 +159,7 @@
 										<xsl:variable name="possibleAnswerId" select="id" />
 										<xsl:if test="/data/message/questionId = $questionId">
 											<xsl:attribute name="class">error-style</xsl:attribute>
-										</xsl:if>							
+										</xsl:if>
 										<option value="{id}">
 											<xsl:if test="/data/submission/answer/answerValue = $possibleAnswerId">
 												<xsl:attribute name="checked">checked</xsl:attribute>
@@ -167,14 +167,14 @@
 											<xsl:text><xsl:value-of select="label" /></xsl:text>
 										</option>
 									</xsl:for-each>
-								</select>								
+								</select>
 							</fieldset>
 						</xsl:when>
-					</xsl:choose>					
+					</xsl:choose>
 				</div>
 			</xsl:for-each>
 			<nav class="form-group">
-				<ul class="pager">			
+				<ul class="pager">
 					<li>
 						<xsl:if test="/data/form/currentPage = 1">
 							<xsl:attribute name="class">disabled</xsl:attribute>
@@ -215,7 +215,7 @@
 					</li>
 				</ul>
 			</nav>
-			<xsl:if test="/data/form/currentPage = /data/form/lastPage">
+			<xsl:if test="count(/data/form/question) &gt; 0 and /data/form/currentPage = /data/form/lastPage">
 				<div class="form-group text-center">
 					<a class="btn btn-primary" href="javascript:document.portal_form.POST_FORM.value='true';document.portal_form.ACTION.value='SUBMIT_FORM';document.portal_form.submit();">Submit Form</a>
 				</div>

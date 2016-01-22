@@ -10,8 +10,17 @@
 			<xsl:otherwise><xsl:value-of select="/data/form/id" /></xsl:otherwise>
 		</xsl:choose>
 	</xsl:variable>
+	<xsl:variable name="isSelfAssessment">
+		<xsl:choose>
+			<xsl:when test="/data/environment/componentId = 2">true</xsl:when>
+			<xsl:otherwise>false</xsl:otherwise>
+		</xsl:choose>
+	</xsl:variable>
+	<xsl:include href="form_nav.xsl" />
+
 	<xsl:template match="/">
 		<form action="" method="post" name="portal_form">
+			<input type="hidden" name="COMPONENT_ID" value="{/data/environment/componentId}" />
 			<input type="hidden" name="ACTION" />
 			<input type="hidden" name="SCREEN" value="GENERAL" />
 			<input type="hidden" name="FORM_ID" value="{/data/form/id}" />
@@ -19,12 +28,15 @@
 			<div class="row">
 				<div class="col-lg-12 bordered-area">
 					<nav>
-						<ul class="nav nav-tabs">
-							<li role="presentation" class="active"><a href="#">General</a></li>
-							<li role="presentation"><a href="javascript:switchTab('QUESTION_LIST');">Questions</a></li>
-							<li role="presentation"><a href="javascript:switchTab('REPORTS');">Reports</a></li>
-							<li role="presentation"><a href="javascript:switchTab('ANALYTICS');">Analytics</a></li>
-						</ul>
+						<xsl:variable name="QUESTION_ACTION">
+								<xsl:choose>
+									<xsl:when test="/data/environment/componentId = 1">QUESTION_LIST</xsl:when>
+									<xsl:otherwise>QUESTIONS_AND_ANSWERS</xsl:otherwise>
+								</xsl:choose>
+						</xsl:variable>
+						<xsl:call-template name="primary_navigation">
+							<xsl:with-param name="SCREEN" select="'GENERAL'" />
+						</xsl:call-template>
 					</nav>
 					<h2>General Information</h2>
 					<xsl:if test="count(/data/message) &gt; 0">
@@ -61,15 +73,20 @@
 							<a href="{$webformPrettyUrl}" class="input-group-addon" target="_blank"><span class="fa fa-external-link" /></a>
 						</div>
 					</div>
-					<div class="form-group">
-						<label for="FORM_SKIN_URL">Skin URL</label>
-						<p class="help-block">If you wish to have a skin around the survey, enter a URL.</p>
-						<input type="text" class="form-control" name="FORM_SKIN_URL" id="FORM_SKIN_URL" value="{/data/form/skinUrl}" />
+					<div class="row">
+						<div class="form-group col-lg-6">
+							<label for="FORM_SKIN_URL">Skin URL</label>
+							<p class="help-block">If you wish to have a skin around the survey, enter a URL.</p>
+							<input type="text" class="form-control" name="FORM_SKIN_URL" id="FORM_SKIN_URL" value="{/data/form/skinUrl}" />
+						</div>
+						<div class="form-group col-lg-6">
+							<label for="FORM_SKIN_SELECTOR">Skin CSS Selector</label>
+							<p class="help-block">Element ID or class in which to insert content.</p>
+							<input type="text" class="form-control" name="FORM_SKIN_SELECTOR" id="FORM_SKIN_SELECTOR" value="{/data/form/skinSelector}" />
+						</div>
 					</div>
 					<div class="form-group">
-						<label for="FORM_SKIN_SELECTOR">Skin CSS Selector</label>
-						<p class="help-block">If you entered a skin URL, state the CSS selector which is to be replaced.</p>
-						<input type="text" class="form-control" name="FORM_SKIN_SELECTOR" id="FORM_SKIN_SELECTOR" value="{/data/form/skinSelector}" />
+						<p><strong>Total Submissions:</strong>&#160;<span class="count"><xsl:value-of select="/data/form/submissionCount" /></span></p>
 					</div>
 					<div class="btn-toolbar">
 						<a class="btn btn-default" href="javascript:document.portal_form.ACTION.value='SAVE_FORM';document.portal_form.submit();">Save</a>

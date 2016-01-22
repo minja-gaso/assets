@@ -11,10 +11,19 @@
 			<xsl:otherwise><xsl:value-of select="/data/form/id" /></xsl:otherwise>
 		</xsl:choose>
 	</xsl:variable>
+	<xsl:variable name="QUESTION_ACTION">
+			<xsl:choose>
+				<xsl:when test="/data/environment/componentId = 1">QUESTION_LIST</xsl:when>
+				<xsl:otherwise>QUESTIONS_AND_ANSWERS</xsl:otherwise>
+			</xsl:choose>
+	</xsl:variable>
+	<xsl:include href="form_nav.xsl" />
+
 	<xsl:template match="/">
 		<form action="" method="post" name="portal_form">
+			<input type="hidden" name="COMPONENT_ID" value="{/data/environment/componentId}" />
 			<input type="hidden" name="ACTION" />
-			<input type="hidden" name="SCREEN" value="QUESTION_LIST" />
+			<input type="hidden" name="SCREEN" value="{$QUESTION_ACTION}" />
 			<input type="hidden" name="FORM_ID" value="{/data/form/id}" />
 			<input type="hidden" name="QUESTION_ID" />
 			<input type="hidden" name="QUESTION_NUMBER" />
@@ -25,12 +34,9 @@
 			<div class="row">
 				<div class="col-lg-12">
 					<nav>
-						<ul class="nav nav-tabs">
-							<li role="presentation"><a href="javascript:switchTab('GENERAL');">General</a></li>
-							<li role="presentation" class="active"><a href="#">Questions</a></li>
-							<li role="presentation"><a href="javascript:switchTab('REPORTS');">Reports</a></li>
-							<li role="presentation"><a href="javascript:switchTab('ANALYTICS');">Analytics</a></li>
-						</ul>
+						<xsl:call-template name="primary_navigation">
+							<xsl:with-param name="SCREEN" select="'QUESTIONS_AND_ANSWERS'" />
+						</xsl:call-template>
 					</nav>
 					<!--
 					<div class="form-row action-row action-top">
@@ -41,7 +47,18 @@
 						</div>
 					</div>
 					-->
-					<h2>List of Questions</h2>
+					<h2>Self-Assessment Questions</h2>
+					<xsl:if test="count(/data/message) &gt; 0">
+						<xsl:for-each select="/data/message">
+							<xsl:variable name="type">
+								<xsl:choose>
+									<xsl:when test="type='error'">danger</xsl:when>
+									<xsl:when test="type='success'">success</xsl:when>
+								</xsl:choose>
+							</xsl:variable>
+							<div class="alert alert-{$type}"><xsl:value-of select="label" /></div>
+						</xsl:for-each>
+					</xsl:if>
 					<table class="table table-condensed">
 						<thead>
 							<tr>
@@ -52,7 +69,6 @@
 								-->
 								<th class="col-lg-1 text-center">Number</th>
 								<th class="col-lg-7">Label</th>
-								<th class="col-lg-1 text-center">Edit</th>
 								<th class="col-lg-1 text-center">Delete</th>
 								<th class="col-lg-2 text-center">Reorder</th>
 							</tr>
@@ -114,9 +130,8 @@
 										</xsl:attribute>
 										<input type="hidden" name="QUESTION_ID_LIST" value="{id}" />
 										<input type="hidden" name="QUESTION_ORDER_LIST" value="{number}" />
-										<xsl:text><xsl:value-of select="label" /></xsl:text>
+										<input type="text" class="form-control input-sm" name="QUESTION_ENTRY_{id}" id="{id}" value="{label}" />
 									</td>
-									<td class="text-center"><a href="javascript:editQuestion('{id}', {concat($quote, $questionType, $quote)});"><span class="fa fa-pencil fa-lg" /></a></td>
 									<td class="text-center"><a href="javascript:deleteQuestion('{id}');"><span class="fa fa-trash fa-lg" /></a></td>
 									<td class="text-center">
 										<!-- move up -->
@@ -144,7 +159,7 @@
 					</table>
 					<div class="form-row">
 						<div class="btn-toolbar">
-							<a class="btn btn-default" href="javascript:submitForm();">Save</a>
+							<a class="btn btn-default" href="javascript:saveQuestions();">Save</a>
 							<a class="btn btn-default" href="javascript:formListScreen();">Back to Forms</a>
 							<a class="btn btn-default" href="{$webformUrlToUse}" target="_blank">View Form</a>
 						</div>

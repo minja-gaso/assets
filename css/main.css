@@ -20,6 +20,9 @@ body {
   font-family: 'Source Sans Pro', sans-serif;
   margin-top: 24px;
 }
+#sidebar .list-group-item.active a {
+  color: #ffffff;
+}
 #content {
   background-color: #ffffff;
 }
@@ -86,6 +89,10 @@ body {
 }
 #content .radio.first {
   margin-top: 0;
+}
+#content table caption {
+  color: #000000;
+  font-weight: bold;
 }
 #content table thead th {
   font-weight: normal;
