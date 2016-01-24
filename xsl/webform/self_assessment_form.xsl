@@ -4,6 +4,9 @@
 	<xsl:variable name="apos">'</xsl:variable>
 	<xsl:template match="/">
 		<form action="" method="post" name="portal_form" id="public-form">
+	    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
+	    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet"/>
+	    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,200" rel="stylesheet"/>
 			<input type="hidden" name="ACTION" />
 			<input type="hidden" name="FORM_ID" value="{/data/form/id}" />
 			<input type="hidden" name="PREVIOUS_PAGE" value="{/data/form/currentPage}" />

@@ -136,6 +136,33 @@ function deleteAnswer(id)
   document.portal_form.ANSWER_ID.value = id;
   submitForm();
 }
+function createScore()
+{
+  document.portal_form.ACTION.value='CREATE_SCORE';
+  submitForm();
+}
+function editScore(id)
+{
+  document.portal_form.SCREEN.value = 'EDIT_SCORE';
+  document.portal_form.SCORE_ID.value = id;
+  submitForm();
+}
+function saveScore()
+{
+  document.portal_form.ACTION.value = 'SAVE_SCORE';
+  submitForm();
+}
+function deleteScore(id)
+{
+  document.portal_form.ACTION.value = 'DELETE_SCORE';
+  document.portal_form.SCORE_ID.value = id;
+  submitForm();
+}
+function formScores()
+{
+  document.portal_form.SCREEN.value = 'SCORES';
+  submitForm();
+}
 
 /*
  *  Public form functions

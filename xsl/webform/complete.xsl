@@ -20,7 +20,33 @@
 					<p>The form has been completed.  Thanks for taking it!</p>
 				</xsl:when>
 				<xsl:otherwise>
-					<p>You scored a <strong><xsl:value-of select="/data/form/score" /></strong> on the self-assessment.</p>
+					<xsl:variable name="score" select="/data/form/score" />
+					<p>You scored a <strong><xsl:value-of select="$score" /></strong> on the self-assessment.</p>
+					<p id="summary"></p>
+					<script>
+						var summary = document.getElementById('summary');
+						<xsl:for-each select="/data/score">
+							<xsl:variable name="minScore" select="begin" />
+							<xsl:variable name="maxScore" select="end" />
+							<xsl:variable name="case">
+								<xsl:value-of select="$minScore" /> &gt;= <xsl:value-of select="$score" /> &amp;&amp; <xsl:value-of select="$score" /> &lt;= <xsl:value-of select="$maxScore" />
+							</xsl:variable>
+							<xsl:choose>
+								<xsl:when test="position() = 1">
+									if(<xsl:value-of select="$case" />)
+								</xsl:when>
+								<xsl:when test="position() = last()">
+									else
+								</xsl:when>
+								<xsl:otherwise>
+									else if(<xsl:value-of select="$case" />)
+								</xsl:otherwise>
+							</xsl:choose>
+							{
+								summary.innerHTML = '<xsl:value-of select="summary" />';
+							}
+						</xsl:for-each>
+					</script>
 				</xsl:otherwise>
 			</xsl:choose>
 			<footer class="text-center">Provided by <em><a href="#">Interactive Marketing</a></em> at <em><a href="#">Baylor Scott &amp; White</a></em></footer>

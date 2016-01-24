@@ -86,4 +86,9 @@
       </xsl:if>
     </ul>
   </xsl:template>
+  <xsl:template name="score_nav">
+    <ul class="nav nav-tabs">
+      <li role="presentation" class="active"><a href="#">Edit Score</a></li>
+    </ul>
+  </xsl:template>
 </xsl:stylesheet>

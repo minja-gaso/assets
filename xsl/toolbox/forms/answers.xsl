@@ -1,7 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet version="2.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
-	<xsl:variable name="quote"><xsl:text>'</xsl:text></xsl:variable>
-	<xsl:variable name="webformBaseUrl" select="concat(/data/environment/serverName, '/webform/public/')" />
+	<xsl:variable name="quote"><xsl:text>'</xsl:text></xsl:variable>	
+	<xsl:variable name="isSelfAssessment">
+		<xsl:choose>
+			<xsl:when test="/data/environment/componentId = 2">true</xsl:when>
+			<xsl:otherwise>false</xsl:otherwise>
+		</xsl:choose>
+	</xsl:variable>
+	<xsl:variable name="webformBaseUrl">
+		<xsl:choose>
+			<xsl:when test="$isSelfAssessment = 'true'">
+				<xsl:value-of select="concat(/data/environment/serverName, '/webform/self-assessment/')" />
+			</xsl:when>
+			<xsl:otherwise>
+				<xsl:value-of select="concat(/data/environment/serverName, '/webform/public/')" />
+			</xsl:otherwise>
+		</xsl:choose>
+	</xsl:variable>
 	<xsl:variable name="webformById" select="concat($webformBaseUrl, /data/form/id)" />
 	<xsl:variable name="webformPrettyUrl" select="concat($webformBaseUrl, /data/form/prettyUrl)" />
 	<xsl:variable name="webformUrlToUse">

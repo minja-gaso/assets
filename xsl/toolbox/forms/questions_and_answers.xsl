@@ -1,7 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet version="2.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
-	<xsl:variable name="quote"><xsl:text>'</xsl:text></xsl:variable>
-	<xsl:variable name="webformBaseUrl" select="concat(/data/environment/serverName, '/webform/public/')" />
+	<xsl:variable name="quote"><xsl:text>'</xsl:text></xsl:variable>	
+	<xsl:variable name="isSelfAssessment">
+		<xsl:choose>
+			<xsl:when test="/data/environment/componentId = 2">true</xsl:when>
+			<xsl:otherwise>false</xsl:otherwise>
+		</xsl:choose>
+	</xsl:variable>
+	<xsl:variable name="webformBaseUrl">
+		<xsl:choose>
+			<xsl:when test="$isSelfAssessment = 'true'">
+				<xsl:value-of select="concat(/data/environment/serverName, '/webform/self-assessment/')" />
+			</xsl:when>
+			<xsl:otherwise>
+				<xsl:value-of select="concat(/data/environment/serverName, '/webform/public/')" />
+			</xsl:otherwise>
+		</xsl:choose>
+	</xsl:variable>
 	<xsl:variable name="webformById" select="concat($webformBaseUrl, /data/form/id)" />
 	<xsl:variable name="webformPrettyUrl" select="concat($webformBaseUrl, /data/form/prettyUrl)" />
 	<xsl:variable name="webformUrlToUse">
@@ -59,6 +74,11 @@
 							<div class="alert alert-{$type}"><xsl:value-of select="label" /></div>
 						</xsl:for-each>
 					</xsl:if>
+					<xsl:if test="number(/data/form/submissionCount) &gt; 0">
+						<div class="alert alert-warning">
+							You cannot modify the questions once the form has submissions.  (<strong><xsl:value-of select="/data/form/submissionCount" /></strong> submissions to date)
+						</div>
+					</xsl:if>
 					<table class="table table-condensed">
 						<thead>
 							<tr>
@@ -107,9 +127,21 @@
 									</tr>
 								</xsl:if>
 								<tr class="question-row">
-									<th class="text-center"><a href="javascript:insertQuestion('{id}');"><span class="fa fa-plus-circle fa-lg" /></a></th>
+									<th class="text-center">
+										<xsl:choose>
+											<xsl:when test="count(/data/form/submissionCount) &gt; 0">
+												<span class="fa fa-plus-circle fa-lg fa-disabled" />
+											</xsl:when>
+											<xsl:otherwise>
+												<a href="javascript:insertQuestion('{id}');"><span class="fa fa-plus-circle fa-lg" /></a>
+											</xsl:otherwise>
+										</xsl:choose>
+									</th>
 									<td class="text-center">
 										<xsl:choose>
+											<xsl:when test="count(/data/form/submissionCount) &gt; 0">
+												<span class="fa fa-plus-circle fa-lg fa-disabled" />
+											</xsl:when>
 											<xsl:when test="page != following-sibling::*[1]/page or position() = last()">
 												<span class="fa fa-plus-circle fa-lg fa-disabled" />
 											</xsl:when>
@@ -130,12 +162,28 @@
 										</xsl:attribute>
 										<input type="hidden" name="QUESTION_ID_LIST" value="{id}" />
 										<input type="hidden" name="QUESTION_ORDER_LIST" value="{number}" />
-										<input type="text" class="form-control input-sm" name="QUESTION_ENTRY_{id}" id="{id}" value="{label}" />
+										<input type="text" class="form-control input-sm" name="QUESTION_ENTRY_{id}" id="{id}" value="{label}">
+											<xsl:if test="count(/data/form/submissionCount) &gt; 0">
+												<xsl:attribute name="disabled">disabled</xsl:attribute>
+											</xsl:if>
+										</input>
 									</td>
-									<td class="text-center"><a href="javascript:deleteQuestion('{id}');"><span class="fa fa-trash fa-lg" /></a></td>
+									<td class="text-center">
+										<xsl:choose>
+											<xsl:when test="count(/data/form/submissionCount) &gt; 0">
+												<span class="fa fa-plus-circle fa-lg fa-disabled" />
+											</xsl:when>
+											<xsl:otherwise>
+												<a href="javascript:deleteQuestion('{id}');"><span class="fa fa-trash fa-lg" /></a>
+											</xsl:otherwise>
+										</xsl:choose>
+									</td>
 									<td class="text-center">
 										<!-- move up -->
 										<xsl:choose>
+											<xsl:when test="count(/data/form/submissionCount) &gt; 0">
+												<span class="arrow arrow-up arrow-disabled"><span class="fa fa-arrow-up fa-lg" />&#160;</span>
+											</xsl:when>
 											<xsl:when test="position() != 1">
 												<a class="arrow arrow-up arrow-active" href="javascript:swapQuestions('SWAP_UP', {number})"><span class="fa fa-arrow-up fa-lg" /></a>
 											</xsl:when>
@@ -145,6 +193,9 @@
 										</xsl:choose>
 										<!-- move down -->
 										<xsl:choose>
+											<xsl:when test="count(/data/form/submissionCount) &gt; 0">
+												<span class="arrow arrow-down arrow-disabled"><span class="fa fa-arrow-down fa-lg" /></span>
+											</xsl:when>
 											<xsl:when test="position() != last()">
 												<a class="arrow arrow-down arrow-active" href="javascript:swapQuestions('SWAP_DOWN', {number})"><span class="fa fa-arrow-down fa-lg" /></a>
 											</xsl:when>

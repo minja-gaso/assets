@@ -32,13 +32,14 @@
 			<table class="table table-bordered table-condensed table-striped">
 				<thead>
 					<tr>
-						<th class="col-lg-1 text-center">
+						<th class="col-lg-1 col-md-1 text-center">
 							<input type="checkbox" onclick="toggleCheckboxes(this, 'FORM_ID_LIST');" />
 						</th>
-						<th>Title</th>
-						<th class="col-lg-1 text-center">View</th>
-						<th class="col-lg-1 text-center">Edit</th>
-						<th class="col-lg-1 text-center">Delete</th>
+						<th class="col-lg-7 col-md-7">Title</th>
+						<th class="col-lg-1 col-md-1 text-center">Submissions</th>
+						<th class="col-lg-1 col-md-1 text-center">View</th>
+						<th class="col-lg-1 col-md-1 text-center">Edit</th>
+						<th class="col-lg-1 col-md-1 text-center">Delete</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -48,6 +49,7 @@
 								<tr>
 									<th class="text-center"><input type="checkbox" name="FORM_ID_LIST" value="{id}" /></th>
 									<td><xsl:value-of select="title" /></td>
+									<td class="text-center"><xsl:value-of select="submissionCount" /></td>
 									<td class="text-center"><a href="/webform/public/{id}" target="_blank"><span class="fa fa-search" /></a></td>
 									<td class="text-center"><a href="javascript:editForm('{id}');"><span class="fa fa-edit" /></a></td>
 									<td class="text-center"><a href="javascript:deleteForm('{id}');"><span class="fa fa-trash" /></a></td>
