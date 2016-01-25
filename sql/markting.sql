@@ -120,10 +120,11 @@ CREATE TABLE IF NOT EXISTS form_scores
 	score_id bigint NOT NULL DEFAULT id_generator(),
 	score_range_begin integer NOT NULL DEFAULT 0,
 	score_range_end integer NOT NULL DEFAULT 1,
+	score_title character varying NOT NULL DEFAULT '',
 	score_summary character varying NOT NULL DEFAULT '',
 	score_redirect_url character varying NOT NULL DEFAULT '',
 	score_redirect_timer int NOT NULL DEFAULT 5,
-	fk_form_id bigint,
+	fk_form_id bigint NOT NULL,
 	PRIMARY KEY(score_id),
 	FOREIGN KEY(fk_form_id) REFERENCES forms(form_id)
 );
