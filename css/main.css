@@ -155,6 +155,10 @@ body {
 #public-form { border: 1px solid #131313; padding: 12px; }
 #public-form h1 { margin-top: 0; }
 #public-form h2.error-heading { font-size: 20px; font-weight: bold; margin: 0; margin-bottom: 8px;}
+#public-form .form-message,
+#public-form .alert > p,
+#public-form .alert > ul { margin-bottom: 15px; }
+#public-form .alert > *:last-child { margin-bottom: 0; }
 #public-form fieldset { border: none; margin: 0; padding: 0; }
 #public-form legend { border: none; margin: 0; padding: 0; }
 #public-form legend,

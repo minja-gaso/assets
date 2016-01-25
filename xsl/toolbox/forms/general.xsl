@@ -64,6 +64,29 @@
 						<input type="text" class="form-control" name="FORM_TITLE" id="FORM_TITLE" value="{/data/form/title}" />
 					</div>
 					<div class="form-group">
+						<label class="radio-inline">
+						  <input type="radio" name="FORM_STATUS" id="FORM_STATUS_DRAFT" value="draft">
+								<xsl:if test="/data/form/status = 'draft'">
+									<xsl:attribute name="checked">checked</xsl:attribute>
+								</xsl:if>
+							</input> Draft
+						</label>
+							<label class="radio-inline">
+							  <input type="radio" name="FORM_STATUS" id="FORM_STATUS_LIVE" value="live">
+									<xsl:if test="/data/form/status = 'live'">
+										<xsl:attribute name="checked">checked</xsl:attribute>
+									</xsl:if>
+								</input> Live
+							</label>
+						<label class="radio-inline">
+						  <input type="radio" name="FORM_STATUS" id="FORM_STATUS_ENDED" value="ended">
+								<xsl:if test="/data/form/status = 'ended'">
+									<xsl:attribute name="checked">checked</xsl:attribute>
+								</xsl:if>
+							</input> Ended
+						</label>
+					</div>
+					<div class="form-group">
 						<label for="FORM_URL">Standard URL</label>
 						<p class="help-block">If you do not care about SEO, feel free to link to this URL.</p>
 						<div class="input-group">
@@ -94,8 +117,15 @@
 							<input type="text" class="form-control" name="FORM_SKIN_SELECTOR" id="FORM_SKIN_SELECTOR" value="{/data/form/skinSelector}" />
 						</div>
 					</div>
-					<div class="form-group">
-						<p><strong>Total Submissions:</strong>&#160;<span class="count"><xsl:value-of select="/data/form/submissionCount" /></span></p>
+					<div class="row">
+						<div class="form-group col-lg-2">
+							<label for="FORM_TOTAL_SUBMISSIONS">Total Submissions</label>
+							<input type="text" class="form-control" name="FORM_TOTAL_SUBMISSIONS" id="FORM_TOTAL_SUBMISSIONS" value="{/data/form/submissionCount}" disabled="disabled" readonly="readonly" />
+						</div>
+						<div class="form-group col-lg-2">
+							<label for="FORM_MAX_SUBMISSIONS">Max Submissions</label>
+							<input type="text" class="form-control col-lg-6" name="FORM_MAX_SUBMISSIONS" id="FORM_MAX_SUBMISSIONS" value="{/data/form/maxSubmissions}" />
+						</div>
 					</div>
 					<div class="btn-toolbar">
 						<a class="btn btn-default" href="javascript:document.portal_form.ACTION.value='SAVE_FORM';document.portal_form.submit();">Save</a>

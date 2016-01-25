@@ -158,9 +158,25 @@ function deleteScore(id)
   document.portal_form.SCORE_ID.value = id;
   submitForm();
 }
+function editMessage(messageName)
+{
+  document.portal_form.SCREEN.value = 'EDIT_MESSAGE';
+  document.portal_form.MESSAGE_NAME.value = messageName;
+  submitForm();
+}
 function formScores()
 {
   document.portal_form.SCREEN.value = 'SCORES';
+  submitForm();
+}
+function saveMessage()
+{
+  document.portal_form.ACTION.value = 'SAVE_MESSAGE';
+  submitForm();
+}
+function formMessages()
+{
+  document.portal_form.SCREEN.value = 'MESSAGES';
   submitForm();
 }
 

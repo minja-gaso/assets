@@ -1,6 +1,4 @@
-﻿DROP SEQUENCE IF EXISTS global_id_sequence;
-CREATE SEQUENCE global_id_sequence;
-CREATE OR REPLACE FUNCTION id_generator(OUT result bigint) AS $$
+﻿CREATE OR REPLACE FUNCTION id_generator(OUT result bigint) AS $$
 DECLARE
     our_epoch bigint := 1314220021721;
     seq_id bigint;
@@ -40,10 +38,18 @@ CREATE TABLE IF NOT EXISTS forms
 	form_status character varying NOT NULL DEFAULT 'draft',
 	form_title character varying NOT NULL DEFAULT '',
 	form_pretty_url character varying UNIQUE NOT NULL DEFAULT '',
+	form_max_submissions integer NOT NULL DEFAULT 0,
 	form_submission_count integer NOT NULL DEFAULT 0,
 	form_return_url character varying NOT NULL DEFAULT '',
 	form_skin_url character varying NOT NULL DEFAULT '',
 	form_skin_selector character varying NOT NULL DEFAULT '',
+	form_screen_ended character varying NOT NULL DEFAULT 'The form has ended.',
+	form_screen_max_submitted character varying NOT NULL DEFAULT 'The maximum number of submissions has been reached.',
+	form_screen_not_started character varying NOT NULL DEFAULT 'The form has not started yet.',
+	form_screen_one_submission character varying NOT NULL DEFAULT 'You may only submit the form once.',
+	form_screen_public_form_intro character varying NOT NULL DEFAULT '',
+	form_screen_public_form_closing character varying NOT NULL DEFAULT '',	
+	form_screen_thank_you character varying NOT NULL DEFAULT 'Thank you for your submission.',
 	is_form_deleted boolean NOT NULL DEFAULT false,
 	fk_user_id bigint NOT NULL,
 	PRIMARY KEY (form_id),

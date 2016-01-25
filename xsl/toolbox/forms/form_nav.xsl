@@ -83,12 +83,29 @@
             <li role="presentation"><a href="javascript:switchTab('ANALYTICS');">Analytics</a></li>
           </xsl:otherwise>
         </xsl:choose>
+
+        <!--
+          Messages - display messages on various screens for form
+        -->
+        <xsl:choose>
+          <xsl:when test="$SCREEN = 'MESSAGES'">
+            <li role="presentation" class="active"><a href="#">Messages</a></li>
+          </xsl:when>
+          <xsl:otherwise>
+            <li role="presentation"><a href="javascript:switchTab('MESSAGES');">Messages</a></li>
+          </xsl:otherwise>
+        </xsl:choose>
       </xsl:if>
     </ul>
   </xsl:template>
   <xsl:template name="score_nav">
     <ul class="nav nav-tabs">
       <li role="presentation" class="active"><a href="#">Edit Score</a></li>
+    </ul>
+  </xsl:template>
+  <xsl:template name="message_nav">
+    <ul class="nav nav-tabs">
+      <li role="presentation" class="active"><a href="#">Message</a></li>
     </ul>
   </xsl:template>
 </xsl:stylesheet>

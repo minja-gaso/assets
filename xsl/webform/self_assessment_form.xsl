@@ -78,7 +78,7 @@
 									</xsl:otherwise>
 								</xsl:choose>
 							</xsl:attribute>
-							<xsl:text>Previous Page</xsl:text>
+							<xsl:text>Previous <span class="hidden-xs">Page</span></xsl:text>
 						</a>
 					</li>
 					<li class="current-page">Page <xsl:value-of select="/data/form/currentPage" /> of <xsl:value-of select="/data/form/lastPage" /></li>
@@ -98,7 +98,7 @@
 									</xsl:otherwise>
 								</xsl:choose>
 							</xsl:attribute>
-							<xsl:text>Next Page</xsl:text>
+							<xsl:text>Next <span class="hidden-xs">Page</span></xsl:text>
 						</a>
 					</li>
 				</ul>

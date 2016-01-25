@@ -43,12 +43,9 @@
 			<div class="row">
 				<div class="col-lg-12">
 					<nav>
-						<ul class="nav nav-tabs">
-							<li role="presentation"><a href="javascript:switchTab('GENERAL');">General</a></li>
-							<li role="presentation" class="active"><a href="#">Questions</a></li>
-							<li role="presentation"><a href="javascript:switchTab('REPORTS');">Reports</a></li>
-							<li role="presentation"><a href="javascript:switchTab('ANALYTICS');">Analytics</a></li>
-						</ul>
+						<xsl:call-template name="primary_navigation">
+							<xsl:with-param name="SCREEN" select="'QUESTION_LIST'" />
+						</xsl:call-template>
 					</nav>
 					<!--
 					<div class="form-row action-row action-top">
