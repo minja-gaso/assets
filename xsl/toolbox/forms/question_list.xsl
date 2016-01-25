@@ -63,16 +63,13 @@
 					<table class="table table-condensed">
 						<thead>
 							<tr>
-								<th class="col-lg-1 text-center">Question</th>
-								<th class="col-lg-1 text-center">Pagebreak</th>
-								<!--
-								<th class="col-lg-1 text-center">ID</th>
-								-->
-								<th class="col-lg-1 text-center">Number</th>
-								<th class="col-lg-7">Label</th>
-								<th class="col-lg-1 text-center">Edit</th>
-								<th class="col-lg-1 text-center">Delete</th>
-								<th class="col-lg-2 text-center">Reorder</th>
+								<th class="col-lg-1 col-md-1 col-sm-1 col-xs-1 text-center">Question</th>
+								<th class="col-lg-1 col-md-1 col-sm-1 col-xs-1 text-center">Pagebreak</th>
+								<th class="col-lg-1 col-md-1 col-sm-1 col-xs-1 text-center">Number</th>
+								<th class="col-lg-7 col-md-7 col-sm-7 col-xs-7">Label</th>
+								<th class="col-lg-1 col-md-1 col-sm-1 col-xs-1 text-center">Edit</th>
+								<th class="col-lg-1 col-md-1 col-sm-1 col-xs-1 text-center">Delete</th>
+								<th class="col-lg-2 col-md-2 col-sm-2 col-xs-2 text-center">Reorder</th>
 							</tr>
 						</thead>
 						<tbody>

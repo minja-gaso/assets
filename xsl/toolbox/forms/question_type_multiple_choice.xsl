@@ -25,6 +25,7 @@
 			</input>
 			<input type="hidden" name="FORM_ID" value="{/data/form/id}" />
 			<input type="hidden" name="QUESTION_ID" value="{/data/form/question/id}" />
+			<input type="hidden" name="ANSWER_ID" />
 			<!-- survey content -->
 			<div class="row">
 				<div class="col-lg-12">
@@ -132,7 +133,7 @@
 											<xsl:for-each select="possibleAnswer">
 												<tr>
 													<th><xsl:value-of select="label" /></th>
-													<td class="text-center"><a href="javascript:deleteQuestion({id});"><span class="fa fa-trash fa-lg" /></a></td>
+													<td class="text-center"><a href="javascript:deleteAnswer('{id}');"><span class="fa fa-trash fa-lg" /></a></td>
 												</tr>
 											</xsl:for-each>
 										</xsl:when>

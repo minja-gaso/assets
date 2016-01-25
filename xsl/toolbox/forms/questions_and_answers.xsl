@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet version="2.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
-	<xsl:variable name="quote"><xsl:text>'</xsl:text></xsl:variable>	
+	<xsl:variable name="quote"><xsl:text>'</xsl:text></xsl:variable>
 	<xsl:variable name="isSelfAssessment">
 		<xsl:choose>
 			<xsl:when test="/data/environment/componentId = 2">true</xsl:when>
@@ -129,7 +129,7 @@
 								<tr class="question-row">
 									<th class="text-center">
 										<xsl:choose>
-											<xsl:when test="count(/data/form/submissionCount) &gt; 0">
+											<xsl:when test="number(/data/form/submissionCount) &gt; 0">
 												<span class="fa fa-plus-circle fa-lg fa-disabled" />
 											</xsl:when>
 											<xsl:otherwise>
@@ -139,7 +139,7 @@
 									</th>
 									<td class="text-center">
 										<xsl:choose>
-											<xsl:when test="count(/data/form/submissionCount) &gt; 0">
+											<xsl:when test="number(/data/form/submissionCount) &gt; 0">
 												<span class="fa fa-plus-circle fa-lg fa-disabled" />
 											</xsl:when>
 											<xsl:when test="page != following-sibling::*[1]/page or position() = last()">
@@ -163,14 +163,14 @@
 										<input type="hidden" name="QUESTION_ID_LIST" value="{id}" />
 										<input type="hidden" name="QUESTION_ORDER_LIST" value="{number}" />
 										<input type="text" class="form-control input-sm" name="QUESTION_ENTRY_{id}" id="{id}" value="{label}">
-											<xsl:if test="count(/data/form/submissionCount) &gt; 0">
+											<xsl:if test="number(/data/form/submissionCount) &gt; 0">
 												<xsl:attribute name="disabled">disabled</xsl:attribute>
 											</xsl:if>
 										</input>
 									</td>
 									<td class="text-center">
 										<xsl:choose>
-											<xsl:when test="count(/data/form/submissionCount) &gt; 0">
+											<xsl:when test="number(/data/form/submissionCount) &gt; 0">
 												<span class="fa fa-plus-circle fa-lg fa-disabled" />
 											</xsl:when>
 											<xsl:otherwise>
@@ -181,7 +181,7 @@
 									<td class="text-center">
 										<!-- move up -->
 										<xsl:choose>
-											<xsl:when test="count(/data/form/submissionCount) &gt; 0">
+											<xsl:when test="number(/data/form/submissionCount) &gt; 0">
 												<span class="arrow arrow-up arrow-disabled"><span class="fa fa-arrow-up fa-lg" />&#160;</span>
 											</xsl:when>
 											<xsl:when test="position() != 1">
@@ -193,7 +193,7 @@
 										</xsl:choose>
 										<!-- move down -->
 										<xsl:choose>
-											<xsl:when test="count(/data/form/submissionCount) &gt; 0">
+											<xsl:when test="number(/data/form/submissionCount) &gt; 0">
 												<span class="arrow arrow-down arrow-disabled"><span class="fa fa-arrow-down fa-lg" /></span>
 											</xsl:when>
 											<xsl:when test="position() != last()">
