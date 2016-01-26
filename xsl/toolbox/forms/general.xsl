@@ -118,12 +118,30 @@
 						</div>
 					</div>
 					<div class="row">
-						<div class="form-group col-lg-2">
-							<label for="FORM_TOTAL_SUBMISSIONS">Total Submissions</label>
+						<div class="col-lg-3">
+							<label for="FORM_START_DATE">Start Date</label>
+							<input type="text" class="form-control datepicker" name="FORM_START_DATE" id="FORM_START_DATE" />
+						</div>
+						<script>
+							$(document).ready(function(){
+								$("#FORM_START_DATE").datepicker();
+							});
+						</script>
+					</div>
+					<div class="row">
+						<p class="col-lg-12">
+							<strong>Submissions</strong>
+							<small class="help-block">
+								If <strong>Max Submissions (while being set > 0)</strong> is less than or equal to <strong>Total Submissions</strong>, users receive a "max submissions limit reached" message.
+								This message can be customized on the <span class="text-danger">Messages</span> tab.
+							</small>
+						</p>
+						<div class="form-group col-lg-1">
+							<label for="FORM_TOTAL_SUBMISSIONS">Total</label>
 							<input type="text" class="form-control" name="FORM_TOTAL_SUBMISSIONS" id="FORM_TOTAL_SUBMISSIONS" value="{/data/form/submissionCount}" disabled="disabled" readonly="readonly" />
 						</div>
-						<div class="form-group col-lg-2">
-							<label for="FORM_MAX_SUBMISSIONS">Max Submissions</label>
+						<div class="form-group col-lg-1">
+							<label for="FORM_MAX_SUBMISSIONS">Maximum</label>
 							<input type="text" class="form-control col-lg-6" name="FORM_MAX_SUBMISSIONS" id="FORM_MAX_SUBMISSIONS" value="{/data/form/maxSubmissions}" />
 						</div>
 					</div>
