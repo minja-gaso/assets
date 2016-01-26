@@ -118,13 +118,44 @@
 						</div>
 					</div>
 					<div class="row">
-						<div class="col-lg-3">
+						<xsl:variable name="startDate">
+							<xsl:variable name="year" select="substring(/data/form/startDate,1,4)" />
+							<xsl:variable name="month" select="substring(/data/form/startDate,6,2)" />
+							<xsl:variable name="day" select="substring(/data/form/startDate,9,2)" />
+							<xsl:value-of select="concat($month, '/', $day, '/', $year)" />
+						</xsl:variable>
+						<xsl:variable name="endDate">
+							<xsl:variable name="year" select="substring(/data/form/endDate,1,4)" />
+							<xsl:variable name="month" select="substring(/data/form/endDate,6,2)" />
+							<xsl:variable name="day" select="substring(/data/form/endDate,9,2)" />
+							<xsl:value-of select="concat($month, '/', $day, '/', $year)" />
+						</xsl:variable>
+						<div class="col-lg-3 col-md-3 col-sm-6">
 							<label for="FORM_START_DATE">Start Date</label>
-							<input type="text" class="form-control datepicker" name="FORM_START_DATE" id="FORM_START_DATE" />
+							<input type="text" class="form-control datepicker" name="FORM_START_DATE" id="FORM_START_DATE" value="{$startDate}" />
+						</div>
+						<div class="col-lg-3 col-md-3 col-sm-6">
+							<label for="FORM_END_DATE">End Date</label>
+							<input type="text" class="form-control datepicker" name="FORM_END_DATE" id="FORM_END_DATE" value="{$endDate}" />
 						</div>
 						<script>
 							$(document).ready(function(){
-								$("#FORM_START_DATE").datepicker();
+							  $("#FORM_START_DATE").datepicker({
+									changeMonth: true,
+									changeYear: true,
+							    dateFormat: "mm-dd-yy",
+							    onSelect: function(selected){
+							       $("#FORM_END_DATE").datepicker("option","minDate", selected)
+							    }
+							  }).datepicker("setDate", new Date("<xsl:value-of select="$startDate" />"));
+							  $("#FORM_END_DATE").datepicker({
+									changeMonth: true,
+									changeYear: true,
+							    dateFormat: "mm-dd-yy",
+							    onSelect: function(selected){
+							       $("#FORM_START_DATE").datepicker("option","maxDate", selected)
+							    }
+							  }).datepicker("setDate", new Date("<xsl:value-of select="$endDate" />"));
 							});
 						</script>
 					</div>
@@ -136,11 +167,11 @@
 								This message can be customized on the <span class="text-danger">Messages</span> tab.
 							</small>
 						</p>
-						<div class="form-group col-lg-1">
+						<div class="form-group col-lg-1 col-md-1 col-sm-3">
 							<label for="FORM_TOTAL_SUBMISSIONS">Total</label>
 							<input type="text" class="form-control" name="FORM_TOTAL_SUBMISSIONS" id="FORM_TOTAL_SUBMISSIONS" value="{/data/form/submissionCount}" disabled="disabled" readonly="readonly" />
 						</div>
-						<div class="form-group col-lg-1">
+						<div class="form-group col-lg-1 col-md-1 col-sm-3">
 							<label for="FORM_MAX_SUBMISSIONS">Maximum</label>
 							<input type="text" class="form-control col-lg-6" name="FORM_MAX_SUBMISSIONS" id="FORM_MAX_SUBMISSIONS" value="{/data/form/maxSubmissions}" />
 						</div>

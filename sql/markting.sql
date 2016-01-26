@@ -50,6 +50,8 @@ CREATE TABLE IF NOT EXISTS forms
 	form_screen_public_form_intro character varying NOT NULL DEFAULT '',
 	form_screen_public_form_closing character varying NOT NULL DEFAULT '',	
 	form_screen_thank_you character varying NOT NULL DEFAULT 'Thank you for your submission.',
+	form_start_date date NOT NULL DEFAULT current_date,
+	form_end_date date NOT NULL DEFAULT '2099-12-31',
 	is_form_deleted boolean NOT NULL DEFAULT false,
 	fk_user_id bigint NOT NULL,
 	PRIMARY KEY (form_id),

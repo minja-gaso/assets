@@ -11,10 +11,4 @@ $(document).ready(function(){
        $("#START_DATE").datepicker("option","maxDate", selected)
     }
   });
-  $("#FORM_START_DATE").datepicker({
-    dateFormat: "mm-dd-yy"
-  });
-  $("#FORM_END_DATE").datepicker({
-    dateFormat: "mm-dd-yy"
-  });
 });

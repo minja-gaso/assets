@@ -42,11 +42,11 @@
 					</nav>
 					<h2>Analytics Information</h2>
 					<div class="row form-inline">
-						<div class="col-lg-12">
+						<div class="col-lg-12 col-md-12">
 							<div class="form-group first-column">
 								<label for="START_DATE">Start Date</label>
 								<div class="input-group">
-									<input type="text" class="form-control datepicker" name="START_DATE" id="START_DATE" placeholder="YYYY-MM-DD" readonly="readonly" />
+									<input type="text" class="form-control datepicker" name="START_DATE" id="START_DATE" placeholder="YYYY-MM-DD" readonly="readonly" maxlength="4" />
 									<span class="input-group-addon" onclick="this.previousSibling.focus();"><span class="fa fa-calendar"><span class="sr-only">start date picker</span></span></span>
 								</div>
 							</div>
@@ -57,9 +57,14 @@
 									<span class="input-group-addon" onclick="this.previousSibling.focus();"><span class="fa fa-calendar"><span class="sr-only">start date picker</span></span></span>
 								</div>
 							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-lg-12 col-md-12">
 							<div class="form-group nth-column">
-								<a class="btn btn-default" href="javascript:viewAnalytics('html', 'summary');"><span class="fa fa-search" /> HTML Summary</a>
-								<a class="btn btn-default" href="javascript:viewAnalytics('pdf', 'summary');"><span class="fa fa-search" /> PDF Summary</a>
+								<label class="block" style="display:block;">Summary</label>
+								<a class="btn btn-default" href="javascript:viewAnalytics('html', 'summary');"><span class="fa fa-file-code-o" /> HTML</a>
+								<a class="btn btn-default" href="javascript:viewAnalytics('pdf', 'summary');"><span class="fa fa-file-pdf-o" /> PDF</a>
 								<script>
 								function viewAnalytics(paramView, paramType)
 								{
@@ -95,6 +100,7 @@
 								}
 								window.onload = defaultDate;
 								</script>
+								<script src="/js/form-datepicker.js"></script>
 							</div>
 						</div>
 					</div>
