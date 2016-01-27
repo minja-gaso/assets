@@ -28,8 +28,8 @@
 										<table class="table table-condensed">
 											<thead>
 												<tr>
-													<th class="col-lg-11"><xsl:value-of select="number" />. <xsl:value-of select="label" /></th>
-													<th class="col-lg-1">Submissions</th>
+													<th class="col-lg-11 col-md-11 col-sm-11 col-xs-8"><xsl:value-of select="number" />. <xsl:value-of select="label" /></th>
+													<th class="col-lg-1 col-md-1 col-sm-1 col-xs-4 text-center">Submissions</th>
 												</tr>
 											</thead>
 											<tbody>
@@ -69,8 +69,8 @@
 										<xsl:variable name="answeredCount" select="string-length($answeredCountStr)" />
 										<table class="table table-condensed">
 											<thead>
-												<th class="col-lg-11"><xsl:value-of select="number" />. <xsl:value-of select="label" /></th>
-												<th class="col-lg-1">Submissions</th>
+												<th class="col-lg-11 col-md-11 col-sm-11 col-xs-8"><xsl:value-of select="number" />. <xsl:value-of select="label" /></th>
+												<th class="col-lg-1 col-md-1 col-sm-1 col-xs-4 text-center">Submissions</th>
 											</thead>
 											<tbody>
 												<xsl:for-each select="possibleAnswer">

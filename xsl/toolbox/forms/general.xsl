@@ -64,6 +64,12 @@
 						<input type="text" class="form-control" name="FORM_TITLE" id="FORM_TITLE" value="{/data/form/title}" />
 					</div>
 					<div class="form-group">
+						<p><label>Status</label></p>
+						<p class="help-block">
+							You may add, edit and delete questions in <strong>Draft</strong> mode.  Any submissions during this mode are not stored.<br/>
+							Submitted surveys are stored in <strong>Live</strong> mode.  Once this mode is saved, you cannot change the status back to <strong>Draft</strong>.<br/>
+							If the survey mode is set to <strong>Ended</strong>, users see a message notifying them they cannot take the survey.  The message can be edited on the <span class="text-info"><strong>Messages</strong></span> tab.
+						</p>
 						<label class="radio-inline">
 						  <input type="radio" name="FORM_STATUS" id="FORM_STATUS_DRAFT" value="draft">
 								<xsl:if test="/data/form/status = 'draft'">
@@ -106,18 +112,46 @@
 						</div>
 					</div>
 					<div class="row">
-						<div class="form-group col-lg-6">
+						<div class="form-group col-lg-6 col-md-6 col-sm-6">
 							<label for="FORM_SKIN_URL">Skin URL</label>
+							<!--
 							<p class="help-block">If you wish to have a skin around the survey, enter a URL.</p>
-							<input type="text" class="form-control" name="FORM_SKIN_URL" id="FORM_SKIN_URL" value="{/data/form/skinUrl}" />
+							-->
+							<input type="text" class="form-control" name="FORM_SKIN_URL" id="FORM_SKIN_URL">
+								<xsl:choose>
+									<xsl:when test="string-length(/data/form/skinUrl) &gt; 0">
+										<xsl:attribute name="value">
+											<xsl:value-of select="/data/form/skinUrl" />
+										</xsl:attribute>
+									</xsl:when>
+									<xsl:otherwise>
+										<xsl:attribute name="placeholder">
+											<xsl:text>http://www.sw.org/location-search</xsl:text>
+										</xsl:attribute>
+									</xsl:otherwise>
+								</xsl:choose>
+							</input>
 						</div>
-						<div class="form-group col-lg-6">
+						<div class="form-group col-lg-2 col-md-2 col-sm-2">
 							<label for="FORM_SKIN_SELECTOR">Skin CSS Selector</label>
+							<!--
 							<p class="help-block">Element ID or class in which to insert content.</p>
-							<input type="text" class="form-control" name="FORM_SKIN_SELECTOR" id="FORM_SKIN_SELECTOR" value="{/data/form/skinSelector}" />
+							-->
+							<input type="text" class="form-control" name="FORM_SKIN_SELECTOR" id="FORM_SKIN_SELECTOR">
+								<xsl:choose>
+									<xsl:when test="string-length(/data/form/skinSelector) &gt; 0">
+										<xsl:attribute name="value">
+											<xsl:value-of select="/data/form/skinSelector" />
+										</xsl:attribute>
+									</xsl:when>
+									<xsl:otherwise>
+										<xsl:attribute name="placeholder">
+											<xsl:text>#ls-gen8-ls-area-body</xsl:text>
+										</xsl:attribute>
+									</xsl:otherwise>
+								</xsl:choose>
+							</input>
 						</div>
-					</div>
-					<div class="row">
 						<xsl:variable name="startDate">
 							<xsl:variable name="year" select="substring(/data/form/startDate,1,4)" />
 							<xsl:variable name="month" select="substring(/data/form/startDate,6,2)" />
@@ -130,11 +164,11 @@
 							<xsl:variable name="day" select="substring(/data/form/endDate,9,2)" />
 							<xsl:value-of select="concat($month, '/', $day, '/', $year)" />
 						</xsl:variable>
-						<div class="col-lg-3 col-md-3 col-sm-6">
+						<div class="col-lg-2 col-md-2 col-sm-2">
 							<label for="FORM_START_DATE">Start Date</label>
 							<input type="text" class="form-control datepicker" name="FORM_START_DATE" id="FORM_START_DATE" value="{$startDate}" />
 						</div>
-						<div class="col-lg-3 col-md-3 col-sm-6">
+						<div class="col-lg-2 col-md-2 col-sm-2">
 							<label for="FORM_END_DATE">End Date</label>
 							<input type="text" class="form-control datepicker" name="FORM_END_DATE" id="FORM_END_DATE" value="{$endDate}" />
 						</div>

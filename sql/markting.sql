@@ -98,18 +98,6 @@ CREATE TABLE IF NOT EXISTS answers
 		ON DELETE CASCADE
 );
 
-DROP TABLE IF EXISTS answers CASCADE;
-CREATE TABLE IF NOT EXISTS answers
-(
-	answer_id bigint DEFAULT id_generator(),
-	answer_number integer NOT NULL DEFAULT 1,
-	answer_label character varying NOT NULL DEFAULT '',
-	fk_question_id bigint,
-	PRIMARY KEY (answer_id),
-	FOREIGN KEY (fk_question_id) REFERENCES questions (question_id)
-		ON DELETE CASCADE
-);
-
 DROP TABLE IF EXISTS form_answers CASCADE;
 CREATE TABLE IF NOT EXISTS form_answers
 (
@@ -185,4 +173,33 @@ CREATE TABLE IF NOT EXISTS temp_submission_answers
 	FOREIGN KEY (fk_submission_id) REFERENCES temp_submissions (submission_id)
 );
 
-INSERT INTO users(user_email, user_first_name, user_last_name) VALUES ('gaso@illinois.edu', 'Minja', 'Gaso');
+INSERT INTO users(user_id, user_email, user_first_name, user_last_name) VALUES (1, 'gaso@illinois.edu', 'Minja', 'Gaso');
+INSERT INTO forms (form_id, form_title, fk_user_id) VALUES (1, 'Contact Us', 1);
+UPDATE forms SET form_pretty_url = 'contact-us' WHERE form_id = 1;
+
+INSERT INTO questions(question_id, question_number, question_type, question_label, question_filter, is_question_required, fk_form_id)
+VALUES (1, 1, 'text', 'Name', 'none', false, 1);
+
+INSERT INTO questions(question_id, question_number, question_type, question_label, question_filter, is_question_required, fk_form_id)
+VALUES (2, 2, 'text', 'Email', 'email', true, 1);
+
+INSERT INTO questions(question_id, question_number, question_type, question_label, question_filter, is_question_required, fk_form_id)
+VALUES (3, 3, 'pulldown', 'Which tool is this in regards to?', 'none', true, 1);
+INSERT INTO answers(answer_number, answer_label, fk_question_id) VALUES (1, 'Standard survey', 3);
+INSERT INTO answers(answer_number, answer_label, fk_question_id) VALUES (2, 'Self-assessment survey', 3);
+
+INSERT INTO questions(question_id, question_number, question_type, question_label, question_filter, is_question_required, fk_form_id)
+VALUES (4, 4, 'textarea', 'Question or enhancement request', 'none', true, 1);
+
+INSERT INTO questions(question_id, question_number, question_type, question_label, question_filter, is_question_required, fk_form_id)
+VALUES (5, 5, 'radio', 'Which department do you belong to?', 'none', false, 1);
+INSERT INTO answers(answer_number, answer_label, fk_question_id) VALUES (3, 'Clinical', 5);
+INSERT INTO answers(answer_number, answer_label, fk_question_id) VALUES (4, 'Marketing', 5);
+INSERT INTO answers(answer_number, answer_label, fk_question_id) VALUES (5, 'IS', 5);
+
+INSERT INTO questions(question_id, question_number, question_type, question_label, question_filter, is_question_required, fk_form_id)
+VALUES (6, 6, 'radio', 'Do you have a preference to discuss this matter with a specific person(s)?', 'none', false, 1);
+INSERT INTO answers(answer_number, answer_label, fk_question_id) VALUES (6, 'Zachary Beggs', 6);
+INSERT INTO answers(answer_number, answer_label, fk_question_id) VALUES (7, 'Quincy Franklin', 6);
+INSERT INTO answers(answer_number, answer_label, fk_question_id) VALUES (8, 'Emily Brown', 6);
+INSERT INTO answers(answer_number, answer_label, fk_question_id) VALUES (9, 'Karen Ancheta', 6);
