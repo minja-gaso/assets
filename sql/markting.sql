@@ -174,22 +174,35 @@ CREATE TABLE IF NOT EXISTS temp_submission_answers
 );
 
 INSERT INTO users(user_id, user_email, user_first_name, user_last_name) VALUES (1, 'gaso@illinois.edu', 'Minja', 'Gaso');
-INSERT INTO forms (form_id, form_title, fk_user_id) VALUES (1, 'Contact Us', 1);
+INSERT INTO forms (
+form_id, 
+form_title, 
+fk_user_id, 
+form_screen_public_form_intro,
+form_screen_public_form_closing
+) 
+VALUES (
+1, 
+'Contact Us', 
+1,
+'<strong>Our Mission & Vision</strong><br/>Baylor Health Care System, based in Dallas, and Scott & White Healthcare, based in Temple, Texas, have formed a new organization that combines the strengths of their two nationally recognized health systems. For an industry undergoing fundamental changes, Baylor Scott & White Health provides a new vision and more resources, offering patients continued exceptional care.',
+'<strong>Privacy Policy</strong><br/>Baylor Scott & White respects the privacy of its users and is the sole owner of the information collected on this website (http://baylorscottandwhite.com) or through any of its software applications. Any information collected from our users will not be sold, shared, or rented to others in ways different from what is disclosed in this privacy statement.'
+);
 UPDATE forms SET form_pretty_url = 'contact-us' WHERE form_id = 1;
 
 INSERT INTO questions(question_id, question_number, question_type, question_label, question_filter, is_question_required, fk_form_id)
 VALUES (1, 1, 'text', 'Name', 'none', false, 1);
 
-INSERT INTO questions(question_id, question_number, question_type, question_label, question_filter, is_question_required, fk_form_id)
-VALUES (2, 2, 'text', 'Email', 'email', true, 1);
+INSERT INTO questions(question_id, question_number, question_type, question_label, question_filter, is_question_required, question_default_value, fk_form_id)
+VALUES (2, 2, 'text', 'Email', 'email', true, 'minja.gaso@outlook.com', 1);
 
 INSERT INTO questions(question_id, question_number, question_type, question_label, question_filter, is_question_required, fk_form_id)
 VALUES (3, 3, 'pulldown', 'Which tool is this in regards to?', 'none', true, 1);
 INSERT INTO answers(answer_number, answer_label, fk_question_id) VALUES (1, 'Standard survey', 3);
 INSERT INTO answers(answer_number, answer_label, fk_question_id) VALUES (2, 'Self-assessment survey', 3);
 
-INSERT INTO questions(question_id, question_number, question_type, question_label, question_filter, is_question_required, fk_form_id)
-VALUES (4, 4, 'textarea', 'Question or enhancement request', 'none', true, 1);
+INSERT INTO questions(question_id, question_number, question_type, question_label, question_filter, is_question_required, question_default_value, fk_form_id)
+VALUES (4, 4, 'textarea', 'Question or enhancement request', 'none', true, 'I would like to see the option to download PDF reports with answers displayed.', 1);
 
 INSERT INTO questions(question_id, question_number, question_type, question_label, question_filter, is_question_required, fk_form_id)
 VALUES (5, 5, 'radio', 'Which department do you belong to?', 'none', false, 1);
