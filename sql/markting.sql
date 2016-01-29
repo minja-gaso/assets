@@ -74,6 +74,7 @@ CREATE TABLE IF NOT EXISTS questions
 	question_id bigint DEFAULT id_generator(),
 	question_number integer NOT NULL DEFAULT 1,
 	question_type character varying NOT NULL DEFAULT 'text',
+	question_header character varying NOT NULL DEFAULT '',
 	question_label character varying NOT NULL DEFAULT '',
 	question_page integer NOT NULL DEFAULT 1,
 	question_default_value character varying NOT NULL DEFAULT '',

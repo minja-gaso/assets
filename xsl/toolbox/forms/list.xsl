@@ -72,7 +72,7 @@
 								</xsl:variable>
 								<tr>
 									<th class="text-center"><input type="checkbox" name="FORM_ID_LIST" value="{id}" /></th>
-									<td><xsl:value-of select="title" /></td>
+									<td><a href="javascript:editForm('{id}');"><xsl:value-of select="title" /></a></td>
 									<td class="text-center"><xsl:value-of select="submissionCount" /></td>
 									<td class="text-center"><a href="{$webformUrlToUse}" target="_blank"><span class="fa fa-search" /></a></td>
 									<td class="text-center"><a href="javascript:editForm('{id}');"><span class="fa fa-edit" /></a></td>

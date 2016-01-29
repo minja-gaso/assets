@@ -178,6 +178,7 @@ body#toolbox {
 #public-form legend,
 #public-form label { font-family: Arial; font-size: 12px; font-weight: bold; }
 #public-form label { display: block; margin-bottom: 4px; }
+#public-form .question-header { background-color: #fafafa; border: 1px dotted #c8c8c8; border-radius: 8px; color: #575757; line-height: normal; margin-bottom: 8px; padding: 12px; }
 #public-form .form-group { margin-bottom: 15px; }
 #public-form .error-style { color: red; }
 #public-form .form-control { border: 1px solid #ddd; border-radius: 4px; display: block; font-family: inherit; max-width: 100%; padding: 8px; width: 100%; }

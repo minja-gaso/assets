@@ -75,6 +75,9 @@
 			<div class="form-group">
 				<xsl:choose>
 					<xsl:when test="type = 'text'">
+						<xsl:if test="string-length(header) &gt; 0">
+							<div class="question-header"><xsl:value-of select="header" disable-output-escaping="yes" /></div>
+						</xsl:if>
 						<label for="{id}">
 							<xsl:if test="/data/message/questionId = $questionId">
 								<xsl:attribute name="class">error-style</xsl:attribute>
@@ -142,6 +145,9 @@
 						</xsl:choose>
 					</xsl:when>
 					<xsl:when test="type = 'textarea'">
+						<xsl:if test="string-length(header) &gt; 0">
+							<div class="question-header"><xsl:value-of select="header" disable-output-escaping="yes" /></div>
+						</xsl:if>
 						<label for="{id}">
 							<xsl:if test="/data/message/questionId = $questionId">
 								<xsl:attribute name="class">error-style</xsl:attribute>
@@ -158,11 +164,18 @@
 						</label>
 						<textarea class="form-control" name="QUESTION_{$questionId}" id="{id}">
 							<xsl:choose>
-								<xsl:when test="string-length(defaultAnswer) &gt; 0">
-									<xsl:value-of select="defaultAnswer" />
+								<xsl:when test="/data/submission/answer/questionId = $questionId">
+									<xsl:choose>
+										<xsl:when test="string-length(/data/submission/answer[questionId=$questionId]/answerValue) &gt; 0">
+											<xsl:value-of select="/data/submission/answer[questionId=$questionId]/answerValue" />
+										</xsl:when>
+										<xsl:otherwise>
+											<xsl:text>&#x0A;</xsl:text>
+										</xsl:otherwise>
+									</xsl:choose>
 								</xsl:when>
 								<xsl:otherwise>
-									<xsl:text>&#x0A;</xsl:text>
+									<xsl:value-of select="defaultAnswer" />
 								</xsl:otherwise>
 							</xsl:choose>
 						</textarea>
@@ -233,7 +246,7 @@
 									</xsl:if>
 									<option value="{id}">
 										<xsl:if test="/data/submission/answer/answerValue = $possibleAnswerId">
-											<xsl:attribute name="checked">checked</xsl:attribute>
+											<xsl:attribute name="selected">selected</xsl:attribute>
 										</xsl:if>
 										<xsl:text><xsl:value-of select="label" /></xsl:text>
 									</option>
