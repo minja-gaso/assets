@@ -155,6 +155,7 @@ CREATE TABLE IF NOT EXISTS temp_submissions
 	submission_id bigint DEFAULT id_generator(),
 	submission_timestamp timestamp with time zone NOT NULL DEFAULT now(),
 	session_id character varying NOT NULL,
+	ip_address inet,
 	fk_form_id bigint NOT NULL,
 	PRIMARY KEY (submission_id),
 	FOREIGN KEY (fk_form_id) REFERENCES forms (form_id)
