@@ -1,32 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet version="2.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
-	<xsl:variable name="quote"><xsl:text>'</xsl:text></xsl:variable>
-	<xsl:variable name="isSelfAssessment">
-		<xsl:choose>
-			<xsl:when test="/data/environment/componentId = 2">true</xsl:when>
-			<xsl:otherwise>false</xsl:otherwise>
-		</xsl:choose>
-	</xsl:variable>
-	<xsl:variable name="webformBaseUrl">
-		<xsl:choose>
-			<xsl:when test="$isSelfAssessment = 'true'">
-				<xsl:value-of select="concat(/data/environment/serverName, '/webform/self-assessment/')" />
-			</xsl:when>
-			<xsl:otherwise>
-				<xsl:value-of select="concat(/data/environment/serverName, '/webform/public/')" />
-			</xsl:otherwise>
-		</xsl:choose>
-	</xsl:variable>
-	<xsl:variable name="webformById" select="concat($webformBaseUrl, /data/form/id)" />
-	<xsl:variable name="webformPrettyUrl" select="concat($webformBaseUrl, /data/form/prettyUrl)" />
-	<xsl:variable name="webformUrlToUse">
-		<xsl:value-of select="$webformBaseUrl" />
-		<xsl:choose>
-			<xsl:when test="string-length(/data/form/prettyUrl) &gt; 0"><xsl:value-of select="/data/form/prettyUrl" /></xsl:when>
-			<xsl:otherwise><xsl:value-of select="/data/form/id" /></xsl:otherwise>
-		</xsl:choose>
-	</xsl:variable>
-	<xsl:include href="form_nav.xsl" />
+	<xsl:include href="../global_util.xsl" />
+	<xsl:include href="includes/form_variables.xsl" />
+	<xsl:include href="includes/form_nav.xsl" />
 
 	<xsl:template match="/">
 		<form action="" method="post" name="portal_form">
@@ -47,16 +23,8 @@
 							<xsl:with-param name="SCREEN" select="'QUESTION_LIST'" />
 						</xsl:call-template>
 					</nav>
-					<!--
-					<div class="form-row action-row action-top">
-						<div class="btn-group">
-							<a class="btn" href="javascript:submitForm();">Save</a>
-							<a class="btn" href="javascript:formListScreen();">Back to Forms</a>
-							<a class="btn" href="{$webformUrlToUse}" target="_blank">View Form</a>
-						</div>
-					</div>
-					-->
 					<h2>List of Questions</h2>
+					<xsl:call-template name="messages" />
 					<table class="table table-condensed">
 						<thead>
 							<tr>

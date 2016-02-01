@@ -36,11 +36,17 @@
 									</xsl:if>
 									<xsl:value-of select="concat(number, '. ', label)" />
 									<xsl:if test="required = 'true'">
-										<span class="fa fa-asterisk"><xsl:text>&#x0A;</xsl:text></span>
+										<span class="fa fa-asterisk">
+											<xsl:choose>
+												<xsl:when test="string-length(/data/form/skinUrl) &gt; 0"><span class="sr-only asterisk">*</span></xsl:when>
+												<xsl:otherwise><xsl:text>&#x0A;</xsl:text></xsl:otherwise>
+											</xsl:choose>
+										</span>
 									</xsl:if>
 								</legend>
 								<xsl:for-each select="/data/possibleAnswer">
 									<xsl:variable name="possibleAnswerId" select="id" />
+									<xsl:variable name="possibleAnswerValue" select="value" />
 									<input type="hidden" name="QUESTION_{$questionId}" id="{$questionId}_hidden" />
 									<div>
 										<label>
@@ -48,7 +54,7 @@
 												<xsl:attribute name="class">error-style</xsl:attribute>
 											</xsl:if>
 											<input name="QUESTION_{$questionId}" id="{$questionId}_{position()}" value="{value}" type="radio">
-												<xsl:if test="/data/submission/answer/answerValue = $possibleAnswerId">
+												<xsl:if test="/data/submission/answer[position() = $index]/questionId = $questionId and /data/submission/answer[position() = $index]/answerValue = $possibleAnswerValue">
 													<xsl:attribute name="checked">checked</xsl:attribute>
 												</xsl:if>
 											</input>

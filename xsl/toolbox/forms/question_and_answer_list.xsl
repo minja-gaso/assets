@@ -1,44 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet version="2.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
-	<xsl:variable name="quote"><xsl:text>'</xsl:text></xsl:variable>
-	<xsl:variable name="isSelfAssessment">
-		<xsl:choose>
-			<xsl:when test="/data/environment/componentId = 2">true</xsl:when>
-			<xsl:otherwise>false</xsl:otherwise>
-		</xsl:choose>
-	</xsl:variable>
-	<xsl:variable name="webformBaseUrl">
-		<xsl:choose>
-			<xsl:when test="$isSelfAssessment = 'true'">
-				<xsl:value-of select="concat(/data/environment/serverName, '/webform/self-assessment/')" />
-			</xsl:when>
-			<xsl:otherwise>
-				<xsl:value-of select="concat(/data/environment/serverName, '/webform/public/')" />
-			</xsl:otherwise>
-		</xsl:choose>
-	</xsl:variable>
-	<xsl:variable name="webformById" select="concat($webformBaseUrl, /data/form/id)" />
-	<xsl:variable name="webformPrettyUrl" select="concat($webformBaseUrl, /data/form/prettyUrl)" />
-	<xsl:variable name="webformUrlToUse">
-		<xsl:value-of select="$webformBaseUrl" />
-		<xsl:choose>
-			<xsl:when test="string-length(/data/form/prettyUrl) &gt; 0"><xsl:value-of select="/data/form/prettyUrl" /></xsl:when>
-			<xsl:otherwise><xsl:value-of select="/data/form/id" /></xsl:otherwise>
-		</xsl:choose>
-	</xsl:variable>
-	<xsl:variable name="QUESTION_ACTION">
-			<xsl:choose>
-				<xsl:when test="/data/environment/componentId = 1">QUESTION_LIST</xsl:when>
-				<xsl:otherwise>QUESTIONS_AND_ANSWERS</xsl:otherwise>
-			</xsl:choose>
-	</xsl:variable>
-	<xsl:include href="form_nav.xsl" />
+	<xsl:include href="../global_util.xsl" />
+	<xsl:include href="includes/form_variables.xsl" />
+	<xsl:include href="includes/form_nav.xsl" />
 
 	<xsl:template match="/">
 		<form action="" method="post" name="portal_form">
 			<input type="hidden" name="COMPONENT_ID" value="{/data/environment/componentId}" />
 			<input type="hidden" name="ACTION" />
-			<input type="hidden" name="SCREEN" value="{$QUESTION_ACTION}" />
+			<input type="hidden" name="SCREEN" value="{$QUESTION_LIST_ACTION}" />
 			<input type="hidden" name="FORM_ID" value="{/data/form/id}" />
 			<input type="hidden" name="QUESTION_ID" />
 			<input type="hidden" name="QUESTION_NUMBER" />
@@ -63,17 +33,7 @@
 					</div>
 					-->
 					<h2>Self-Assessment Questions</h2>
-					<xsl:if test="count(/data/message) &gt; 0">
-						<xsl:for-each select="/data/message">
-							<xsl:variable name="type">
-								<xsl:choose>
-									<xsl:when test="type='error'">danger</xsl:when>
-									<xsl:when test="type='success'">success</xsl:when>
-								</xsl:choose>
-							</xsl:variable>
-							<div class="alert alert-{$type}"><xsl:value-of select="label" /></div>
-						</xsl:for-each>
-					</xsl:if>
+					<xsl:call-template name="messages" />
 					<xsl:if test="number(/data/form/submissionCount) &gt; 0">
 						<div class="alert alert-warning">
 							You cannot modify the questions once the form has submissions.  (<strong><xsl:value-of select="/data/form/submissionCount" /></strong> submissions to date)

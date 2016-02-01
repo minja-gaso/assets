@@ -2,18 +2,6 @@
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
   <xsl:template name="primary_navigation">
     <xsl:param name="SCREEN" />
-  	<xsl:variable name="isSelfAssessment">
-  		<xsl:choose>
-  			<xsl:when test="/data/environment/componentId = 2">true</xsl:when>
-  			<xsl:otherwise>false</xsl:otherwise>
-  		</xsl:choose>
-  	</xsl:variable>
-    <xsl:variable name="QUESTION_ACTION">
-        <xsl:choose>
-          <xsl:when test="/data/environment/componentId = 1">QUESTION_LIST</xsl:when>
-          <xsl:otherwise>QUESTIONS_AND_ANSWERS</xsl:otherwise>
-        </xsl:choose>
-    </xsl:variable>
     <ul class="nav nav-tabs">
       <!--
         General - fill out basic form/survey information
@@ -31,16 +19,16 @@
         Questions - for standard surveys, fill out questions in their own screen;  for self-assessment, everything is done on this screen.
       -->
       <xsl:choose>
-        <xsl:when test="$SCREEN = $QUESTION_ACTION">
+        <xsl:when test="$SCREEN = $QUESTION_LIST_ACTION">
           <li role="presentation" class="active"><a href="#">Questions</a></li>
         </xsl:when>
         <xsl:otherwise>
-          <li role="presentation"><a href="javascript:switchTab('{$QUESTION_ACTION}');">Questions</a></li>
+          <li role="presentation"><a href="javascript:switchTab('{$QUESTION_LIST_ACTION}');">Questions</a></li>
         </xsl:otherwise>
       </xsl:choose>
 
 
-      <xsl:if test="$isSelfAssessment = 'true'">
+      <xsl:if test="$is_self_assessment = 'true'">
         <xsl:choose>
           <xsl:when test="$SCREEN = 'ANSWERS'">
             <li role="presentation" class="active"><a href="#">Answers</a></li>
@@ -59,7 +47,7 @@
           </xsl:choose>
       </xsl:if>
 
-      <xsl:if test="$isSelfAssessment = 'false'">
+      <xsl:if test="$is_self_assessment = 'false'">
         <!--
           Reports - generate CSV/PDF reports
         -->

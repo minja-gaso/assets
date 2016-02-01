@@ -18,8 +18,14 @@
 	    <link href="/css/main.css" rel="stylesheet"/>
 			<h1 class="form-group"><xsl:value-of select="/data/form/title" /></h1>
 			<xsl:choose>
+				<!-- if form not started -->
+				<xsl:when test="/data/form/started = 'false'">
+					<div class="form-message">
+						<xsl:value-of select="/data/form/messageNotStarted" disable-output-escaping="yes" />
+					</div>
+				</xsl:when>
 				<!-- if form ended -->
-				<xsl:when test="$status = 'ended'">
+				<xsl:when test="$status = 'ended' or /data/form/ended = 'true'">
 					<div class="form-message">
 						<xsl:value-of select="/data/form/messageEnded" disable-output-escaping="yes" />
 					</div>
@@ -198,6 +204,7 @@
 							</legend>
 							<xsl:for-each select="possibleAnswer">
 								<xsl:variable name="possibleAnswerId" select="id" />
+								<xsl:variable name="possibleAnswerValue" select="value" />
 								<input type="hidden" name="QUESTION_{$questionId}" id="{$questionId}_hidden" />
 								<div>
 									<label>

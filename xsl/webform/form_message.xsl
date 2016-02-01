@@ -22,12 +22,28 @@
 					<xsl:when test="/data/form/status = '123'">
 					</xsl:when>
 					<xsl:otherwise>
-						<xsl:value-of select="/data/form/messageThankYou" disable-output-escaping="yes" />
+						<xsl:choose>
+							<xsl:when test="type = 'survey'">
+								<xsl:value-of select="/data/form/messageThankYou" disable-output-escaping="yes" />
+							</xsl:when>
+							<xsl:otherwise>
+								<xsl:call-template name="self_assessment_survey" />
+							</xsl:otherwise>
+						</xsl:choose>
 					</xsl:otherwise>
 				</xsl:choose>
 			</div>
 			<footer class="text-center">Provided by <em><a href="#">Interactive Marketing</a></em> at <em><a href="#">Baylor Scott &amp; White</a></em></footer>
 		</form>
     	<script src="/js/form.js?v=1"></script>
+	</xsl:template>
+	<xsl:template name="self_assessment_survey">
+		<xsl:variable name="score" select="/data/form/score" />
+		<hr/>
+		<h2><xsl:value-of select="/data/score[$score &gt;= begin and $score &lt;= end]/title" /></h2>
+		<p id="summary">
+			<xsl:value-of select="/data/score[$score &gt;= begin and $score &lt;= end]/summary" disable-output-escaping="yes" />
+		</p>
+		<small>Note: You scored a <strong><xsl:value-of select="$score" /></strong> on the self-assessment.</small>
 	</xsl:template>
 </xsl:stylesheet>
