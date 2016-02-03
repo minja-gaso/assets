@@ -41,6 +41,11 @@
 					<xsl:call-template name="messages" />
 					<xsl:for-each select="/data/form/question">
 						<div class="form-group">
+							<label for="QUESTION_HEADER">Heading</label>
+							<input id="QUESTION_HEADER" type="hidden" name="QUESTION_HEADER" value="{/data/form/question/header}"/>
+							<trix-editor input="QUESTION_HEADER"></trix-editor>
+						</div>
+						<div class="form-group">
 							<label for="QUESTION_LABEL">Label</label>
 							<input type="text" class="form-control" name="QUESTION_LABEL" id="QUESTION_LABEL" value="{label}" />
 						</div>

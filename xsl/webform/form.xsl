@@ -187,6 +187,9 @@
 						</textarea>
 					</xsl:when>
 					<xsl:when test="type = 'radio' or type = 'checkbox'">
+						<xsl:if test="string-length(header) &gt; 0">
+							<div class="question-header"><xsl:value-of select="header" disable-output-escaping="yes" /></div>
+						</xsl:if>
 						<fieldset>
 							<legend>
 								<xsl:if test="/data/message/questionId = $questionId">
@@ -229,6 +232,9 @@
 						</fieldset>
 					</xsl:when>
 					<xsl:when test="type = 'pulldown'">
+						<xsl:if test="string-length(header) &gt; 0">
+							<div class="question-header"><xsl:value-of select="header" disable-output-escaping="yes" /></div>
+						</xsl:if>
 						<fieldset>
 							<legend>
 								<xsl:if test="/data/message/questionId = $questionId">
