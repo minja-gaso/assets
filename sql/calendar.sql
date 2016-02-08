@@ -19,6 +19,12 @@ CREATE TABLE IF NOT EXISTS calendar.calendars
 	FOREIGN KEY (fk_user_id) REFERENCES users (user_id)
 );
 
-INSERT INTO calendar.calendars (fk_user_id) VALUES (1);
+CREATE OR REPLACE FUNCTION calendar_insert_pretty_url() RETURNS trigger AS $calendar_insert_pretty_url$
+    BEGIN
+        NEW.calendar_pretty_url := 'calendar-' || NEW.calendar_id;
+        RETURN NEW;
+    END;
+$calendar_insert_pretty_url$ LANGUAGE plpgsql;
 
-SELECT * FROM calendar.calendars;
+CREATE TRIGGER trig_calendar_insert BEFORE INSERT ON calendar.calendars
+    FOR EACH ROW EXECUTE PROCEDURE calendar_insert_pretty_url();
