@@ -25,6 +25,7 @@ body#toolbox {
 #sidebar .list-group-item.active a {
   color: #ffffff;
 }
+#sidebar .highlight { background-color: yellow; }
 #content {
   background-color: #ffffff;
 }

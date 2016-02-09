@@ -28,7 +28,7 @@
 			</div>
 			<div class="pull-right text-danger user-info text-right col-md-3 col-xs-12">Hello, <xsl:value-of select="concat(/data/user/firstName, ' ', /data/user/lastName)" /></div>
 			<hr />
-			<h2>Setup Calendars</h2>
+			<h2>Manage Calendars</h2>
 			<xsl:if test="count(/data/message) &gt; 0">
 				<xsl:for-each select="/data/message">
 					<xsl:variable name="type">

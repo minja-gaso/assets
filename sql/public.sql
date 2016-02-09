@@ -1,4 +1,6 @@
 ﻿CREATE SEQUENCE global_id_sequence;
+
+
 CREATE OR REPLACE FUNCTION id_generator(OUT result bigint) AS $$
 DECLARE
     our_epoch bigint := 1314220021721;
@@ -16,6 +18,8 @@ SELECT FLOOR(EXTRACT(EPOCH FROM clock_timestamp()) * 1000) INTO now_millis;
     result := result | (seq_id);
 END;
 $$ LANGUAGE PLPGSQL;
+
+
 
 DROP TABLE IF EXISTS users CASCADE;
 CREATE TABLE users

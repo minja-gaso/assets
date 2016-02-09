@@ -18,14 +18,33 @@ function calendars()
   document.portal_form.CALENDAR_ID.value = 0;
   submitForm();
 }
-function createFormSubmit()
+function createEvent()
 {
-  document.portal_form.ACTION.value = 'INSERT_FORM';
+  document.portal_form.ACTION.value = 'CREATE_EVENT';
+  document.portal_form.SCREEN.value = 'EVENT';
+  submitForm();
+}
+function editEvent(id)
+{
+  document.portal_form.SCREEN.value = 'EVENT';
+  document.portal_form.EVENT_ID.value = id;
+  submitForm();
+}
+function saveEvent()
+{
+  document.portal_form.ACTION.value = 'SAVE_EVENT';
   submitForm();
 }
 function editCalendar(id)
 {
-  document.portal_form.SCREEN.value = 'GENERAL';
+  if(document.portal_form.COMPONENT_ID.value == 3)
+  {
+    document.portal_form.SCREEN.value = 'GENERAL';
+  }
+  else if(document.portal_form.COMPONENT_ID.value == 4)
+  {
+    document.portal_form.SCREEN.value = 'EVENTS';
+  }
   document.portal_form.CALENDAR_ID.value = id;
   submitForm();
 }
@@ -35,10 +54,10 @@ function deleteCalendar(id)
   document.portal_form.CALENDAR_ID.value = id;
   submitForm();
 }
-function formListScreen()
+function eventListScreen()
 {
-  document.portal_form.SCREEN.value = 'LIST';
-  document.portal_form.CALENDAR_ID.value = 0;
+  document.portal_form.SCREEN.value = 'EVENTS';
+  document.portal_form.EVENT_ID.value = 0;
   submitForm();
 }
 function toggleCheckboxes(self, name)

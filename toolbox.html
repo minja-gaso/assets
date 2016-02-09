@@ -7,11 +7,13 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <title>Interactive Marketing - Toolbox</title>
     <!-- Bootstrap -->
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,200" rel="stylesheet">
-    <link href="https://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/trix/0.9.5/trix.min.css" rel="stylesheet">
+    <link href="/css/resources/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,200" rel="stylesheet">-->
+    <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.10/themes/smoothness/jquery-ui.css" rel="stylesheet">
+
+    <link href="/css/resources/trix.min.css" rel="stylesheet">
+    <link href="/css/resources/jquery-tagit.css" rel="stylesheet">
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -20,10 +22,11 @@
     <![endif]-->
     <link rel="stylesheet" type="text/css" href="/css/main.css?v=1">
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-		<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.js">//</script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/tinymce/4.3.4/tinymce.min.js">//</script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/trix/0.9.5/trix.js">//</script>
+    <script src="/js/resources/jquery.min.js"></script>
+		<script src="/js/resources/jquery-ui.js">//</script>
+    <script src="/js/resources/tinymce.min.js">//</script>
+    <script src="/js/resources/trix.js">//</script>
+    <script src="/js/resources/tag-it.js">//</script>
   </head>
   <body id="toolbox">
     <noscript>
@@ -45,9 +48,25 @@
             <form action="" method="post" name="component_form">
               <input type="hidden" name="COMPONENT_ID" />
               <ul class="list-group">
-                <li class="list-group-item" id="list-group-item-1"><a href="javascript:document.component_form.COMPONENT_ID.value=1;document.component_form.submit();">Form &amp; Survey</a></li>
-                <li class="list-group-item" id="list-group-item-2"><a href="javascript:document.component_form.COMPONENT_ID.value=2;document.component_form.submit();">Self-Assessments</a></li>
-                <li class="list-group-item" id="list-group-item-3"><a href="javascript:document.component_form.COMPONENT_ID.value=3;document.component_form.submit();">Calendars</a></li>
+                <li class="list-group-item">
+                  <span>Form &amp; Survey</span>
+                  <ul class="list-inline">
+                    <li><a href="javascript:document.component_form.COMPONENT_ID.value=1;document.component_form.submit();" id="app-1">Manage Content</a></li>
+                  </ul>
+                </li>
+                <li class="list-group-item">
+                  <span>Self-Assessment Surveys</span>
+                  <ul class="list-inline">
+                    <li><a href="javascript:document.component_form.COMPONENT_ID.value=2;document.component_form.submit();" id="app-2">Self-Assessments</a></li>
+                  </ul>
+                </li>
+                <li class="list-group-item">
+                  <span>Calendars</span>
+                  <ul class="list-inline">
+                    <li><a href="javascript:document.component_form.COMPONENT_ID.value=3;document.component_form.submit();" id="app-3">Setup</a></li>
+                    <li><a href="javascript:document.component_form.COMPONENT_ID.value=4;document.component_form.submit();" id="app-4">Manage Content</a></li>
+                  </ul>
+                </li>
                 <li class="list-group-item disabled">Blog <small class="text-danger">TBD</small></li>
                 <li class="list-group-item disabled">Email <small class="text-danger">TBD</small></li>
               </ul>
@@ -68,7 +87,7 @@
     </div>
 		<script>
     var componentId = document.portal_form.COMPONENT_ID.value;
-    var listItem = document.getElementById('list-group-item-' + componentId).className = 'list-group-item active';
+    var listItem = document.getElementById('app-' + componentId).className = 'highlight'; //'list-group-item active';
 		</script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <!--<script src="/js/bootstrap.min.js"></script>-->
