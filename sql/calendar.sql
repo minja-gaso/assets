@@ -21,8 +21,8 @@ CREATE TABLE IF NOT EXISTS calendar.events
 (
 	event_id bigint DEFAULT id_generator(),
 	event_start_date date NOT NULL DEFAULT current_date,
-	event_end_date date NOT NULL DEFAULT current_date,
 	event_start_time time without time zone NOT NULL DEFAULT '08:00:00',
+	event_end_date date NOT NULL DEFAULT current_date,
 	event_end_time time without time zone NOT NULL DEFAULT '09:00:00',
 	event_title character varying NOT NULL DEFAULT '',
 	is_event_location_owned boolean NOT NULL DEFAULT true,
@@ -49,4 +49,14 @@ CREATE TABLE IF NOT EXISTS calendar.event_tags
 	fk_event_id bigint NOT NULL,
 	PRIMARY KEY (event_tag_id),
 	FOREIGN KEY (fk_event_id) REFERENCES calendar.events (event_id)
+);
+
+DROP TABLE IF EXISTS calendar.categories CASCADE;
+CREATE TABLE IF NOT EXISTS calendar.categories
+(
+	category_id bigint DEFAULT id_generator(),
+	category_name character varying NOT NULL,
+	fk_calendar_id bigint NOT NULL,
+	PRIMARY KEY (event_tag_id),
+	FOREIGN KEY (fk_calendar_id) REFERENCES calendar.calendars (calendar_id)
 );
