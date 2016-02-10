@@ -1,0 +1,7 @@
+.list-group { background-color: #F7F7F7; }
+.list-group > .list-group-item { background-color: #F7F7F7; border: none; }
+xxx.btn-envelope { background-color: #F7F7F7; border: 1px solid rgba(0, 0, 0, 0.2); }
+.day-label { color: #0A569B; margin-bottom: 4px; }
+.location,
+.location-additional { color: #525252; font-size: 11px; margin-bottom: 0; }
+.location-additional { margin-bottom: 4px; }

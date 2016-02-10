@@ -36,6 +36,8 @@ CREATE TABLE IF NOT EXISTS calendar.events
 	event_contact_phone character varying NOT NULL DEFAULT '',
 	event_contact_email character varying NOT NULL DEFAULT '',
 	event_cost character varying NOT NULL DEFAULT '',
+	event_image_file_name character varying NOT NULL DEFAULT '',
+	event_image_file_description character varying NOT NULL DEFAULT '';
 	fk_calendar_id bigint NOT NULL,
 	PRIMARY KEY (event_id),
 	FOREIGN KEY (fk_calendar_id) REFERENCES calendar.calendars (calendar_id)

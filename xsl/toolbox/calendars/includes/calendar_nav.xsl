@@ -14,6 +14,17 @@
           <li role="presentation"><a href="javascript:switchTab('GENERAL');">General</a></li>
         </xsl:otherwise>
       </xsl:choose>
+        <!--
+          Roles - set privileges
+        -->
+        <xsl:choose>
+          <xsl:when test="$SCREEN = 'ROLES'">
+            <li role="presentation" class="active pull-right"><a href="#">Roles</a></li>
+          </xsl:when>
+          <xsl:otherwise>
+            <li role="presentation" class="pull-right"><a href="javascript:switchTab('ROLES');">Roles</a></li>
+          </xsl:otherwise>
+        </xsl:choose>
     </ul>
   </xsl:template>
   <xsl:template name="primary_content_navigation">
