@@ -35,3 +35,4 @@ CREATE TABLE users
 );
 
 INSERT INTO users(user_id, user_email, user_first_name, user_last_name) VALUES (1, 'gaso@illinois.edu', 'Minja', 'Gaso');
+INSERT INTO users(user_id, user_email, user_first_name, user_last_name) VALUES (2, 'zachary.beggs@bswhealth.org', 'Zachary', 'Beggs');

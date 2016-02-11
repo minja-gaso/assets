@@ -37,9 +37,11 @@ CREATE TABLE IF NOT EXISTS calendar.events
 	event_contact_email character varying NOT NULL DEFAULT '',
 	event_cost character varying NOT NULL DEFAULT '',
 	event_image_file_name character varying NOT NULL DEFAULT '',
-	event_image_file_description character varying NOT NULL DEFAULT '';
+	event_image_file_description character varying NOT NULL DEFAULT '',
+	fk_category_id bigint NOT NULL DEFAULT 0,
 	fk_calendar_id bigint NOT NULL,
 	PRIMARY KEY (event_id),
+	FOREIGN KEY (fk_category_id) REFERENCES calendar.categories (category_id),
 	FOREIGN KEY (fk_calendar_id) REFERENCES calendar.calendars (calendar_id)
 );
 
@@ -57,8 +59,23 @@ DROP TABLE IF EXISTS calendar.categories CASCADE;
 CREATE TABLE IF NOT EXISTS calendar.categories
 (
 	category_id bigint DEFAULT id_generator(),
-	category_name character varying NOT NULL,
+	category_label character varying NOT NULL,
 	fk_calendar_id bigint NOT NULL,
-	PRIMARY KEY (event_tag_id),
+	PRIMARY KEY (category_id),
 	FOREIGN KEY (fk_calendar_id) REFERENCES calendar.calendars (calendar_id)
 );
+
+DROP TABLE IF EXISTS calendar.roles CASCADE;
+CREATE TABLE IF NOT EXISTS calendar.roles
+(
+	role_id bigint DEFAULT id_generator(),
+	role_type character varying NOT NULL,
+	role_email character varying NOT NULL,
+	fk_calendar_id bigint NOT NULL,
+	UNIQUE (role_type, role_email, fk_calendar_id),
+	PRIMARY KEY (role_id),
+	FOREIGN KEY (fk_calendar_id) REFERENCES calendar.calendars (calendar_id)
+);
+
+UPDATE calendar.events SET event_image_file_name = '';
+SELECT event_image_file_name FROM calendar.events;

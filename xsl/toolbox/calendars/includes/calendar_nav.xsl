@@ -41,6 +41,17 @@
           <li role="presentation"><a href="javascript:switchTab('EVENTS');">Events</a></li>
         </xsl:otherwise>
       </xsl:choose>
+        <!--
+          Categories - list of all categories
+        -->
+        <xsl:choose>
+          <xsl:when test="$SCREEN = 'CATEGORIES'">
+            <li role="presentation" class="active"><a href="#">Categories</a></li>
+          </xsl:when>
+          <xsl:otherwise>
+            <li role="presentation"><a href="javascript:switchTab('CATEGORIES');">Categories</a></li>
+          </xsl:otherwise>
+        </xsl:choose>
     </ul>
   </xsl:template>
   <xsl:template name="event_content_navigation">
@@ -57,17 +68,28 @@
           <li role="presentation"><a href="javascript:switchTab('EVENT');">Event</a></li>
         </xsl:otherwise>
       </xsl:choose>
-        <!--
-          Recurring - enable or disable recurrence of event
-        -->
-        <xsl:choose>
-          <xsl:when test="$SCREEN = 'EVENT_RECURRENCE'">
-            <li role="presentation" class="active"><a href="#">Recurrence</a></li>
-          </xsl:when>
-          <xsl:otherwise>
-            <li role="presentation"><a href="javascript:switchTab('EVENT_RECURRENCE');">Recurrence</a></li>
-          </xsl:otherwise>
-        </xsl:choose>
+      <!--
+        Image Upload - upload main event image
+      -->
+      <xsl:choose>
+        <xsl:when test="$SCREEN = 'EVENT_IMAGE_UPLOAD'">
+          <li role="presentation" class="active"><a href="#">Upload Image</a></li>
+        </xsl:when>
+        <xsl:otherwise>
+          <li role="presentation"><a href="javascript:switchTab('EVENT_IMAGE_UPLOAD');">Upload Image</a></li>
+        </xsl:otherwise>
+      </xsl:choose>
+      <!--
+        Recurring - enable or disable recurrence of event
+      -->
+      <xsl:choose>
+        <xsl:when test="$SCREEN = 'EVENT_RECURRENCE'">
+          <li role="presentation" class="active"><a href="#">Recurrence</a></li>
+        </xsl:when>
+        <xsl:otherwise>
+          <li role="presentation"><a href="javascript:switchTab('EVENT_RECURRENCE');">Recurrence</a></li>
+        </xsl:otherwise>
+      </xsl:choose>
     </ul>
   </xsl:template>
 </xsl:stylesheet>

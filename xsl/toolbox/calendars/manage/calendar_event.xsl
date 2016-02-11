@@ -255,6 +255,19 @@
 							</xsl:for-each>
 						</ul>
 					</div>
+					<div class="form-group">
+						<label for="EVENT_CATEGORY">Category</label>
+						<select class="form-control" id="EVENT_CATEGORY" name="EVENT_CATEGORY">
+							<xsl:for-each select="/data/calendar/category">
+								<option value="{id}">
+									<xsl:if test="/data/calendar/event/categoryId = id">
+										<xsl:attribute name="selected">selected</xsl:attribute>
+									</xsl:if>
+									<xsl:value-of select="label" />
+								</option>
+							</xsl:for-each>
+						</select>
+					</div>
 					<div class="form-row">
 						<div class="btn-toolbar">
 							<a class="btn btn-default" href="javascript:saveEvent();">Save</a>

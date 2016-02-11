@@ -54,6 +54,28 @@ function deleteCalendar(id)
   document.portal_form.CALENDAR_ID.value = id;
   submitForm();
 }
+function addRole()
+{
+  document.portal_form.ACTION.value = 'ADD_ROLE';
+  submitForm();
+}
+function deleteRole(id)
+{
+  document.portal_form.ACTION.value = 'DELETE_ROLE';
+  document.portal_form.ROLE_ID.value = id;
+  submitForm();
+}
+function addCategory()
+{
+  document.portal_form.ACTION.value = 'ADD_CATEGORY';
+  submitForm();
+}
+function deleteCategory(id)
+{
+  document.portal_form.ACTION.value = 'DELETE_CATEGORY';
+  document.portal_form.CATEGORY_ID.value = id;
+  submitForm();
+}
 function eventListScreen()
 {
   document.portal_form.SCREEN.value = 'EVENTS';

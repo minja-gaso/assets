@@ -153,6 +153,19 @@ body#toolbox {
 }
 
 /*
+ * Calendar event file upload popup
+ */
+.popup_content {
+  height: 400px;
+  width: 75%;
+}
+.popup_content iframe {
+  border: none;
+  height: 100%;
+  width: 100%;
+}
+
+/*
  *  Public form styles
  */
 #public-form { font-family: Arial; font-size: 12px; padding: 12px; }
