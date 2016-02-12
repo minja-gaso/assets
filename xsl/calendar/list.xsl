@@ -126,7 +126,7 @@
 											</xsl:call-template>
 										</div>
 										<div class="col-lg-10 col-md-9 col-sm-9">
-											<a href="/calendar/detail/{/data/calendar/id}?eventID={id}"><xsl:value-of select="title" /></a>
+											<a href="/calendar/detail/{/data/calendar/prettyUrl}?eventID={id}"><xsl:value-of select="title" /></a>
 											<xsl:if test="string-length(location) &gt; 0">
 												<p class="location">
 													<xsl:value-of select="location" disable-output-escaping="yes" />

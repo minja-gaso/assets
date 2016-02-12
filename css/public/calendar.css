@@ -7,3 +7,4 @@ xxx.btn-envelope { background-color: #F7F7F7; border: 1px solid rgba(0, 0, 0, 0.
 .location-additional { margin-bottom: 4px; }
 
 .tags .label { background-color: #1690BB; font-size: 90%; }
+.row.detail-item { margin-bottom: 12px; }

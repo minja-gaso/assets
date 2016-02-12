@@ -1,21 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet version="2.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
-	<xsl:variable name="isSelfAssessment">
-		<xsl:choose>
-			<xsl:when test="/data/environment/componentId = 2">true</xsl:when>
-			<xsl:otherwise>false</xsl:otherwise>
-		</xsl:choose>
-	</xsl:variable>
-	<xsl:variable name="webformBaseUrl">
-		<xsl:choose>
-			<xsl:when test="$isSelfAssessment = 'true'">
-				<xsl:value-of select="concat(/data/environment/serverName, '/webform/self-assessment/')" />
-			</xsl:when>
-			<xsl:otherwise>
-				<xsl:value-of select="concat(/data/environment/serverName, '/webform/public/')" />
-			</xsl:otherwise>
-		</xsl:choose>
-	</xsl:variable>
+	<xsl:import href="includes/calendar_variables.xsl" />
 	<xsl:template match="/">
 		<form action="" method="post" name="portal_form">
 			<input type="hidden" name="COMPONENT_ID" value="{/data/environment/componentId}" />
@@ -56,18 +41,10 @@
 					<xsl:choose>
 						<xsl:when test="count(/data/calendar) &gt; 0">
 							<xsl:for-each select="/data/calendar">
-								<xsl:variable name="webformById" select="concat($webformBaseUrl, id)" />
-								<xsl:variable name="webformPrettyUrl" select="concat($webformBaseUrl, prettyUrl)" />
-								<xsl:variable name="webformUrlToUse">
-									<xsl:choose>
-										<xsl:when test="string-length(prettyUrl) &gt; 0"><xsl:value-of select="$webformPrettyUrl" /></xsl:when>
-										<xsl:otherwise><xsl:value-of select="$webformById" /></xsl:otherwise>
-									</xsl:choose>
-								</xsl:variable>
 								<tr>
 									<th class="text-center"><input type="checkbox" name="CALENDAR_ID_LIST" value="{id}" /></th>
 									<td><a href="javascript:editCalendar('{id}');"><xsl:value-of select="title" /></a></td>
-									<td class="text-center"><a href="{$webformUrlToUse}" target="_blank"><span class="fa fa-search" /></a></td>
+									<td class="text-center"><a href="{$listUrl}" target="_blank"><span class="fa fa-search" /></a></td>
 									<td class="text-center"><a href="javascript:editCalendar('{id}');"><span class="fa fa-edit" /></a></td>
 									<td class="text-center"><a href="javascript:deleteCalendar('{id}');"><span class="fa fa-trash" /></a></td>
 								</tr>

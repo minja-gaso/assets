@@ -60,7 +60,7 @@
 		<ul class="list-group">
 			<xsl:for-each select="/data/calendar/category">
 				<li class="list-group-item">
-					<a href="{id}">
+					<a href="/calendar/search/{/data/calendar/prettyUrl}?type=category&amp;id={id}">
 						<xsl:value-of select="label" />
 					</a>
 				</li>
@@ -104,7 +104,7 @@
 				</li>
 			</ul>
 		-->
-			<ul class="sm-icons list-inline">
+			<ul class="sm-icons list-inline" id="share-icons">
 				<li><strong>Share with:</strong></li>
 				<li>
 					<a target="_blank" href="http://www.facebook.com/bswhealth" title="Click on the icon to go to the Baylor Scott &amp; White Health Facebook page">
@@ -134,16 +134,20 @@
 						<div class="form-group tags">
 							<ul class="list-inline">
 								<li>
-									<span class="label label-primary">
-										<xsl:variable name="categoryId" select="categoryId" />
-										<span class="fa fa-archive" />&#160;<xsl:value-of select="/data/calendar/category[id = $categoryId]/label" />
-									</span>
+									<a href="/calendar/search/{/data/calendar/prettyUrl}?type=category&amp;id={categoryId}">
+										<span class="label label-primary">
+											<xsl:variable name="categoryId" select="categoryId" />
+											<span class="fa fa-archive" />&#160;<xsl:value-of select="/data/calendar/category[id = $categoryId]/label" />
+										</span>
+									</a>
 								</li>
 								<xsl:for-each select="tag">
 									<li>
-										<span class="label label-primary">
-											<span class="fa fa-tag" />&#160;<xsl:value-of select="label" />
-										</span>
+										<a href="/calendar/search/{/data/calendar/prettyUrl}?type=tag&amp;id={id}">
+											<span class="label label-primary">
+												<span class="fa fa-tag" />&#160;<xsl:value-of select="label" />
+											</span>
+										</a>
 									</li>
 								</xsl:for-each>
 							</ul>
@@ -180,16 +184,11 @@
 							</div>
 							<div class="col-lg-10 col-md-9 col-sm-9">
 								<xsl:value-of select="location" />
-							</div>
-						</div>
-					</xsl:if>
-					<xsl:if test="string-length(locationAdditional) &gt; 0">
-						<div class="row detail-item">
-							<div class="col-lg-2 col-md-3 col-sm-3">
-								<strong>Add'l Location Information</strong>
-							</div>
-							<div class="col-lg-10 col-md-9 col-sm-9">
-								<xsl:value-of select="locationAdditional" />
+								<xsl:if test="string-length(locationAdditional) &gt; 0">
+									<div class="location-additional">
+										<xsl:value-of select="locationAdditional" />
+									</div>
+								</xsl:if>
 							</div>
 						</div>
 					</xsl:if>
