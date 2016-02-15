@@ -23,7 +23,7 @@
 			<input type="hidden" name="SCREEN" value="FORM_LIST" />
 			<input type="hidden" name="CALENDAR_ID" />
 			<div class="btn-group">
-				<a class="btn btn-default" href="javascript:createCalendar();"><span class="fa fa-plus"><span class="hide">Plus</span></span> Create New Calendar</a>
+				<a class="btn btn-default" href="javascript:createCalendar();submitForm();"><span class="fa fa-plus"><span class="hide">Plus</span></span> Create New Calendar</a>
 				<a class="btn btn-default"><span class="fa fa-trash"><span class="hide">Delete Calendar(s)</span></span> Delete Calendar(s)</a>
 			</div>
 			<div class="pull-right text-danger user-info text-right col-md-3 col-xs-12">Hello, <xsl:value-of select="concat(/data/user/firstName, ' ', /data/user/lastName)" /></div>
@@ -66,10 +66,10 @@
 								</xsl:variable>
 								<tr>
 									<th class="text-center"><input type="checkbox" name="CALENDAR_ID_LIST" value="{id}" /></th>
-									<td><a href="javascript:editCalendar('{id}');"><xsl:value-of select="title" /></a></td>
+									<td><a href="javascript:editCalendar('{id}');submitForm();"><xsl:value-of select="title" /></a></td>
 									<td class="text-center"><a href="{$webformUrlToUse}" target="_blank"><span class="fa fa-search" /></a></td>
-									<td class="text-center"><a href="javascript:editCalendar('{id}');"><span class="fa fa-edit" /></a></td>
-									<td class="text-center"><a href="javascript:deleteCalendar('{id}');"><span class="fa fa-trash" /></a></td>
+									<td class="text-center"><a href="javascript:editCalendar('{id}');submitForm();"><span class="fa fa-edit" /></a></td>
+									<td class="text-center"><a href="javascript:deleteCalendar('{id}');submitForm();"><span class="fa fa-trash" /></a></td>
 								</tr>
 							</xsl:for-each>
 						</xsl:when>

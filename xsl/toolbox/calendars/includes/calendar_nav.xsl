@@ -11,7 +11,7 @@
           <li role="presentation" class="active"><a href="#">General</a></li>
         </xsl:when>
         <xsl:otherwise>
-          <li role="presentation"><a href="javascript:switchTab('GENERAL');">General</a></li>
+          <li role="presentation"><a href="javascript:switchTab('GENERAL');submitForm();">General</a></li>
         </xsl:otherwise>
       </xsl:choose>
         <!--
@@ -22,7 +22,7 @@
             <li role="presentation" class="active pull-right"><a href="#">Roles</a></li>
           </xsl:when>
           <xsl:otherwise>
-            <li role="presentation" class="pull-right"><a href="javascript:switchTab('ROLES');">Roles</a></li>
+            <li role="presentation" class="pull-right"><a href="javascript:switchTab('ROLES');submitForm();">Roles</a></li>
           </xsl:otherwise>
         </xsl:choose>
     </ul>
@@ -38,7 +38,7 @@
           <li role="presentation" class="active"><a href="#">Events</a></li>
         </xsl:when>
         <xsl:otherwise>
-          <li role="presentation"><a href="javascript:switchTab('EVENTS');">Events</a></li>
+          <li role="presentation"><a href="javascript:switchTab('EVENTS');submitForm();">Events</a></li>
         </xsl:otherwise>
       </xsl:choose>
         <!--
@@ -49,7 +49,7 @@
             <li role="presentation" class="active"><a href="#">Categories</a></li>
           </xsl:when>
           <xsl:otherwise>
-            <li role="presentation"><a href="javascript:switchTab('CATEGORIES');">Categories</a></li>
+            <li role="presentation"><a href="javascript:switchTab('CATEGORIES');submitForm();">Categories</a></li>
           </xsl:otherwise>
         </xsl:choose>
     </ul>
@@ -65,7 +65,7 @@
           <li role="presentation" class="active"><a href="#">Event</a></li>
         </xsl:when>
         <xsl:otherwise>
-          <li role="presentation"><a href="javascript:switchTab('EVENT');">Event</a></li>
+          <li role="presentation"><a href="javascript:saveEvent();switchTab('EVENT');submitForm();">Event</a></li>
         </xsl:otherwise>
       </xsl:choose>
       <!--
@@ -76,20 +76,22 @@
           <li role="presentation" class="active"><a href="#">Upload Image</a></li>
         </xsl:when>
         <xsl:otherwise>
-          <li role="presentation"><a href="javascript:switchTab('EVENT_IMAGE_UPLOAD');">Upload Image</a></li>
+          <li role="presentation"><a href="javascript:saveEvent();switchTab('EVENT_IMAGE_UPLOAD');submitForm();">Upload Image</a></li>
         </xsl:otherwise>
       </xsl:choose>
       <!--
         Recurring - enable or disable recurrence of event
       -->
-      <xsl:choose>
-        <xsl:when test="$SCREEN = 'EVENT_RECURRENCE'">
-          <li role="presentation" class="active"><a href="#">Recurrence</a></li>
-        </xsl:when>
-        <xsl:otherwise>
-          <li role="presentation"><a href="javascript:switchTab('EVENT_RECURRENCE');">Recurrence</a></li>
-        </xsl:otherwise>
-      </xsl:choose>
+      <xsl:if test="/data/calendar/event/parentId = 0">
+        <xsl:choose>
+          <xsl:when test="$SCREEN = 'EVENT_RECURRENCE'">
+            <li role="presentation" class="active"><a href="#">Recurrence</a></li>
+          </xsl:when>
+          <xsl:otherwise>
+            <li role="presentation"><a href="javascript:saveEvent();switchTab('EVENT_RECURRENCE');submitForm();">Recurrence</a></li>
+          </xsl:otherwise>
+        </xsl:choose>
+      </xsl:if>
     </ul>
   </xsl:template>
 </xsl:stylesheet>

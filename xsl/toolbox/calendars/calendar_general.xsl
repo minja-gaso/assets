@@ -86,7 +86,7 @@
 						</div>
 					</div>
 					<div class="btn-toolbar">
-						<a class="btn btn-default" href="javascript:saveCalendar();">Save</a>
+						<a class="btn btn-default" href="javascript:saveCalendar();submitForm();">Save</a>
 						<a class="btn btn-default" href="javascript:calendars();">Back to Calendars</a>
 						<a class="btn btn-default" href="{$listUrl}" target="_blank">View Calendar</a>
 					</div>

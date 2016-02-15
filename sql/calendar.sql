@@ -71,16 +71,20 @@ CREATE TABLE IF NOT EXISTS calendar.events
 	event_image_file_name character varying NOT NULL DEFAULT '',
 	event_image_file_description character varying NOT NULL DEFAULT '',
 	is_event_recurring boolean NOT NULL DEFAULT false,
+	is_event_recurring_monthly boolean NOT NULL DEFAULT false,
+	event_recurring_type character varying NOT NULL DEFAULT 'date',
 	event_recurring_limit int NOT NULL DEFAULT 10,
 	event_recurring_interval int NOT NULL DEFAULT 1,
-	is_event_recurring_sunday boolean NOT NULL DEFAULT false,
+	event_recurring_by character varying NOT NULL DEFAULT 'week',
 	is_event_recurring_monday boolean NOT NULL DEFAULT false,
 	is_event_recurring_tuesday boolean NOT NULL DEFAULT false,
 	is_event_recurring_wednesday boolean NOT NULL DEFAULT false,
 	is_event_recurring_thursday boolean NOT NULL DEFAULT false,
 	is_event_recurring_friday boolean NOT NULL DEFAULT false,
 	is_event_recurring_saturday boolean NOT NULL DEFAULT false,
+	is_event_recurring_sunday boolean NOT NULL DEFAULT false,
 	is_event_recurring_day_exact boolean NOT NULL DEFAULT false,
+	event_parent_id bigint NOT NULL DEFAULT 0,
 	fk_category_id bigint NOT NULL DEFAULT 0,
 	fk_calendar_id bigint NOT NULL,
 	PRIMARY KEY (event_id),
@@ -97,8 +101,3 @@ CREATE TABLE IF NOT EXISTS calendar.event_tags
 	PRIMARY KEY (event_tag_id),
 	FOREIGN KEY (fk_event_id) REFERENCES calendar.events (event_id)
 );
-
---UPDATE calendar.events 
---SET event_image_file_name = '';
-
---SELECT event_image_file_name, event_image_file_description FROM calendar.events;

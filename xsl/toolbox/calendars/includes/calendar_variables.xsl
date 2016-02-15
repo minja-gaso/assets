@@ -19,9 +19,9 @@
 	<xsl:variable name="startDate">
 		<xsl:value-of select="concat($startMonth, '/', $startDay, '/', $startYear)" />
 	</xsl:variable>
-		<xsl:variable name="endYear" select="substring(/data/calendar/event/endDate,1,4)" />
-		<xsl:variable name="endMonth" select="substring(/data/calendar/event/endDate,6,2)" />
-		<xsl:variable name="endDay" select="substring(/data/calendar/event/endDate,9,2)" />
+	<xsl:variable name="endYear" select="substring(/data/calendar/event/endDate,1,4)" />
+	<xsl:variable name="endMonth" select="substring(/data/calendar/event/endDate,6,2)" />
+	<xsl:variable name="endDay" select="substring(/data/calendar/event/endDate,9,2)" />
 	<xsl:variable name="endDate">
 		<xsl:value-of select="concat($endMonth, '/', $endDay, '/', $endYear)" />
 	</xsl:variable>

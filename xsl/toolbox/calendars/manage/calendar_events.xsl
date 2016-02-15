@@ -22,20 +22,55 @@
 					<h2>Events for <em><xsl:value-of select="/data/calendar/title" /></em></h2>
 					<xsl:call-template name="messages" />
     			<div class="btn-group pull-right">
-    				<a class="btn btn-default" href="javascript:createEvent();"><span class="fa fa-calendar"><span class="hide">Add Event</span></span> Add Event</a>
+    				<a class="btn btn-default" href="javascript:createEvent();submitForm();"><span class="fa fa-calendar"><span class="hide">Add Event</span></span> Add Event</a>
     			</div>
 					<table class="table table-condensed">
 						<thead>
 							<tr>
-								<th class="col-lg-11">Title</th>
-								<th class="col-lg-1 text-center">Delete</th>
+								<th class="col-lg-2 col-md-1 col-sm-2 text-center">Start Date</th>
+								<th class="col-lg-2 col-md-1 col-sm-2 text-center">End Date</th>
+								<th class="col-lg-7 col-md-9 col-sm-6">Title</th>
+								<th class="col-lg-1 col-md-1 col-sm-2 text-center">Delete</th>
 							</tr>
 						</thead>
 						<tbody>
 							<xsl:for-each select="/data/calendar/event">
 								<tr class="event-row">
+									<xsl:if test="parentId &gt; 0">
+										<xsl:attribute name="class">
+											<xsl:text>event-row bg-info</xsl:text>
+										</xsl:attribute>
+									</xsl:if>
+									<td class="text-center">
+										<xsl:variable name="startDate">
+											<xsl:variable name="year" select="substring(startDate, 1, 4)" />
+											<xsl:variable name="month" select="substring(startDate, 6, 2)" />
+											<xsl:variable name="day" select="substring(startDate, 9, 2)" />
+											<xsl:value-of select="concat($month, '/', $day, '/', $year)" />
+										</xsl:variable>
+										<xsl:value-of select="$startDate" />
+									</td>
+									<td class="text-center">
+										<xsl:variable name="endDate">
+											<xsl:variable name="year" select="substring(endDate, 1, 4)" />
+											<xsl:variable name="month" select="substring(endDate, 6, 2)" />
+											<xsl:variable name="day" select="substring(endDate, 9, 2)" />
+											<xsl:value-of select="concat($month, '/', $day, '/', $year)" />
+										</xsl:variable>
+										<xsl:value-of select="$endDate" />
+									</td>
 									<td>
-										<a href="javascript:editEvent('{id}');">
+										<a href="javascript:editEvent('{id}');submitForm();">
+											<xsl:attribute name="href">
+												<xsl:choose>
+													<xsl:when test="parentId &gt; 0">
+														<xsl:value-of select="concat('javascript:editNotify(', $quote, parentId, $quote, ',', $quote, id, $quote, ')')" />
+													</xsl:when>
+													<xsl:otherwise>
+															<xsl:value-of select="concat('javascript:editEvent(', $quote, id, $quote, ');submitForm();')" />
+													</xsl:otherwise>
+												</xsl:choose>
+											</xsl:attribute>
                       <xsl:choose>
                         <xsl:when test="string-length(title) &gt; 0">
                           <span>
@@ -54,7 +89,7 @@
 												<span class="fa fa-plus-circle fa-lg fa-disabled" />
 											</xsl:when>
 											<xsl:otherwise>
-												<a href="javascript:deleteQuestion('{id}');"><span class="fa fa-trash fa-lg" /></a>
+												<a href="javascript:deleteQuestion('{id}');submitForm();"><span class="fa fa-trash fa-lg" /></a>
 											</xsl:otherwise>
 										</xsl:choose>
 									</td>
@@ -62,6 +97,37 @@
 							</xsl:for-each>
 						</tbody>
 					</table>
+					<div class="sr-only" id="dialog" title="Basic dialog">
+						<p>Which would you like to edit?</p>
+						<div class="form-row">
+							<a class="label label-info" onclick="originalEvent()">Original Event</a>
+							<span class="help-block">Modify this one if you wish for the change(s) to be applied to all recurring events.</span>
+						</div>
+						<div class="form-row">
+							<a class="label label-info" onclick="thisEvent();">This Event</a>
+							<span class="help-block">Modify this one if you wish to make a change to only this event.</span>
+						</div>
+						<script>
+							function editNotify(parentId, id)
+							{
+								$(function() {
+									$("#dialog").dialog().data('parentId', parentId).data('thisId', id);
+								});
+							}
+							function originalEvent()
+							{
+								var id = '' + $("#dialog").data('parentId');
+								editEvent(id);
+								submitForm();
+							}
+							function thisEvent()
+							{
+								var id = '' + $("#dialog").data('thisId');
+								editEvent(id);
+								submitForm();
+							}
+						</script>
+					</div>
 					<div class="form-row">
 						<div class="btn-toolbar">
 							<a class="btn btn-default" href="javascript:saveQuestions();">Save</a>

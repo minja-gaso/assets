@@ -255,8 +255,8 @@
 					</xsl:if>
 					<div class="form-row">
 						<div class="btn-toolbar">
-							<a class="btn btn-default" href="javascript:saveEvent();">Save</a>
-							<a class="btn btn-default" href="javascript:eventListScreen();">Back to Events</a>
+							<a class="btn btn-default" href="javascript:saveEvent();submitForm();">Save</a>
+							<a class="btn btn-default" href="javascript:eventListScreen();submitForm();">Back to Events</a>
 							<a class="btn btn-default" href="{$viewUrl}" target="_blank">View Calendar</a>
 						</div>
 					</div>
