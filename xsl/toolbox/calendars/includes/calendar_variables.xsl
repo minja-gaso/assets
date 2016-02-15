@@ -13,4 +13,18 @@
     </xsl:choose>
   </xsl:variable>
 	<xsl:variable name="listUrl" select="concat($listBaseUrl, /data/calendar/prettyUrl)" />
+	<xsl:variable name="startYear" select="substring(/data/calendar/event/startDate,1,4)" />
+	<xsl:variable name="startMonth" select="substring(/data/calendar/event/startDate,6,2)" />
+	<xsl:variable name="startDay" select="substring(/data/calendar/event/startDate,9,2)" />
+	<xsl:variable name="startDate">
+		<xsl:value-of select="concat($startMonth, '/', $startDay, '/', $startYear)" />
+	</xsl:variable>
+		<xsl:variable name="endYear" select="substring(/data/calendar/event/endDate,1,4)" />
+		<xsl:variable name="endMonth" select="substring(/data/calendar/event/endDate,6,2)" />
+		<xsl:variable name="endDay" select="substring(/data/calendar/event/endDate,9,2)" />
+	<xsl:variable name="endDate">
+		<xsl:value-of select="concat($endMonth, '/', $endDay, '/', $endYear)" />
+	</xsl:variable>
+	<xsl:variable name="startTime" select="substring(/data/calendar/event/startTime, 1, 8)" />
+	<xsl:variable name="endTime" select="substring(/data/calendar/event/endTime, 1, 8)" />
 </xsl:stylesheet>

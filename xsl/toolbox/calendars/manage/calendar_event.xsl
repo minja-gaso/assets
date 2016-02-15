@@ -4,24 +4,7 @@
 	<xsl:include href="../includes/calendar_variables.xsl" />
 	<xsl:include href="../includes/calendar_nav.xsl" />
 
-
-
-
 	<xsl:template match="/">
-		<xsl:variable name="startDate">
-			<xsl:variable name="year" select="substring(/data/calendar/event/startDate,1,4)" />
-			<xsl:variable name="month" select="substring(/data/calendar/event/startDate,6,2)" />
-			<xsl:variable name="day" select="substring(/data/calendar/event/startDate,9,2)" />
-			<xsl:value-of select="concat($month, '/', $day, '/', $year)" />
-		</xsl:variable>
-		<xsl:variable name="endDate">
-			<xsl:variable name="year" select="substring(/data/calendar/event/endDate,1,4)" />
-			<xsl:variable name="month" select="substring(/data/calendar/event/endDate,6,2)" />
-			<xsl:variable name="day" select="substring(/data/calendar/event/endDate,9,2)" />
-			<xsl:value-of select="concat($month, '/', $day, '/', $year)" />
-		</xsl:variable>
-		<xsl:variable name="startTime" select="substring(/data/calendar/event/startTime, 1, 8)" />
-		<xsl:variable name="endTime" select="substring(/data/calendar/event/endTime, 1, 8)" />
 		<form action="" method="post" name="portal_form">
 			<input type="hidden" name="COMPONENT_ID" value="{/data/environment/componentId}" />
 			<input type="hidden" name="ACTION" />
@@ -43,21 +26,21 @@
 						<input type="text" class="form-control" name="EVENT_TITLE" id="EVENT_TITLE" value="{/data/calendar/event/title}" />
 					</div>
 					<div class="row">
-						<div class="form-group col-lg-2 col-md-2 col-sm-2">
+						<div class="form-group col-lg-2 col-md-3 col-sm-3">
 							<label for="EVENT_START_DATE">Start Date</label>
 							<input type="text" class="form-control datepicker" name="EVENT_START_DATE" id="EVENT_START_DATE" value="{$startDate}" />
 						</div>
-						<div class="form-group col-lg-2 col-md-2 col-sm-2">
+						<div class="form-group col-lg-2 col-md-3 col-sm-3">
 							<label for="EVENT_START_TIME">Start Time</label>
 							<select class="form-control" name="EVENT_START_TIME" id="EVENT_START_TIME">
 								<option />
 							</select>
 						</div>
-						<div class="form-group col-lg-2 col-md-2 col-sm-2">
+						<div class="form-group col-lg-2 col-md-3 col-sm-3">
 							<label for="EVENT_END_DATE">End Date</label>
 							<input type="text" class="form-control datepicker" name="EVENT_END_DATE" id="EVENT_END_DATE" value="{$endDate}" />
 						</div>
-						<div class="form-group col-lg-2 col-md-2 col-sm-2">
+						<div class="form-group col-lg-2 col-md-3 col-sm-3">
 							<label for="EVENT_END_TIME">End Time</label>
 							<select class="form-control" name="EVENT_END_TIME" id="EVENT_END_TIME">
 								<option />
@@ -255,19 +238,21 @@
 							</xsl:for-each>
 						</ul>
 					</div>
-					<div class="form-group">
-						<label for="EVENT_CATEGORY">Category</label>
-						<select class="form-control" id="EVENT_CATEGORY" name="EVENT_CATEGORY">
-							<xsl:for-each select="/data/calendar/category">
-								<option value="{id}">
-									<xsl:if test="/data/calendar/event/categoryId = id">
-										<xsl:attribute name="selected">selected</xsl:attribute>
-									</xsl:if>
-									<xsl:value-of select="label" />
-								</option>
-							</xsl:for-each>
-						</select>
-					</div>
+					<xsl:if test="count(/data/calendar/category) &gt; 0">
+						<div class="form-group">
+							<label for="EVENT_CATEGORY">Category</label>
+							<select class="form-control" id="EVENT_CATEGORY" name="EVENT_CATEGORY">
+								<xsl:for-each select="/data/calendar/category">
+									<option value="{id}">
+										<xsl:if test="/data/calendar/event/categoryId = id">
+											<xsl:attribute name="selected">selected</xsl:attribute>
+										</xsl:if>
+										<xsl:value-of select="label" />
+									</option>
+								</xsl:for-each>
+							</select>
+						</div>
+					</xsl:if>
 					<div class="form-row">
 						<div class="btn-toolbar">
 							<a class="btn btn-default" href="javascript:saveEvent();">Save</a>

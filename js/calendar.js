@@ -54,6 +54,11 @@ function deleteCalendar(id)
   document.portal_form.CALENDAR_ID.value = id;
   submitForm();
 }
+function deleteEventImage()
+{
+  document.portal_form.ACTION.value = 'DELETE_EVENT_IMAGE';
+  submitForm();
+}
 function addRole()
 {
   document.portal_form.ACTION.value = 'ADD_ROLE';

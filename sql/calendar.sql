@@ -26,45 +26,6 @@ $calendar_insert_pretty_url$ LANGUAGE plpgsql;
 CREATE TRIGGER trig_calendar_insert BEFORE INSERT ON calendar.calendars
     FOR EACH ROW EXECUTE PROCEDURE calendar_insert_pretty_url();
 
-DROP TABLE IF EXISTS calendar.events CASCADE;
-CREATE TABLE IF NOT EXISTS calendar.events
-(
-	event_id bigint DEFAULT id_generator(),
-	event_start_date date NOT NULL DEFAULT current_date,
-	event_start_time time without time zone NOT NULL DEFAULT '08:00:00',
-	event_end_date date NOT NULL DEFAULT current_date,
-	event_end_time time without time zone NOT NULL DEFAULT '09:00:00',
-	event_title character varying NOT NULL DEFAULT '',
-	is_event_location_owned boolean NOT NULL DEFAULT true,
-	event_location character varying NOT NULL DEFAULT '',
-	event_location_additional_information character varying NOT NULL DEFAULT '',
-	event_description character varying NOT NULL DEFAULT '',
-	event_speaker character varying NOT NULL DEFAULT '',
-	event_registration_label character varying NOT NULL DEFAULT '',
-	event_registration_url character varying NOT NULL DEFAULT '',
-	event_contact_name character varying NOT NULL DEFAULT '',
-	event_contact_phone character varying NOT NULL DEFAULT '',
-	event_contact_email character varying NOT NULL DEFAULT '',
-	event_cost character varying NOT NULL DEFAULT '',
-	event_image_file_name character varying NOT NULL DEFAULT '',
-	event_image_file_description character varying NOT NULL DEFAULT '',
-	fk_category_id bigint NOT NULL DEFAULT 0,
-	fk_calendar_id bigint NOT NULL,
-	PRIMARY KEY (event_id),
-	FOREIGN KEY (fk_category_id) REFERENCES calendar.categories (category_id),
-	FOREIGN KEY (fk_calendar_id) REFERENCES calendar.calendars (calendar_id)
-);
-
-DROP TABLE IF EXISTS calendar.event_tags CASCADE;
-CREATE TABLE IF NOT EXISTS calendar.event_tags
-(
-	event_tag_id bigint DEFAULT id_generator(),
-	event_tag_name character varying NOT NULL,
-	fk_event_id bigint NOT NULL,
-	PRIMARY KEY (event_tag_id),
-	FOREIGN KEY (fk_event_id) REFERENCES calendar.events (event_id)
-);
-
 DROP TABLE IF EXISTS calendar.categories CASCADE;
 CREATE TABLE IF NOT EXISTS calendar.categories
 (
@@ -87,5 +48,57 @@ CREATE TABLE IF NOT EXISTS calendar.roles
 	FOREIGN KEY (fk_calendar_id) REFERENCES calendar.calendars (calendar_id)
 );
 
-UPDATE calendar.events SET event_image_file_name = '';
-SELECT event_image_file_name FROM calendar.events;
+DROP TABLE IF EXISTS calendar.events CASCADE;
+CREATE TABLE IF NOT EXISTS calendar.events
+(
+	event_id bigint DEFAULT id_generator(),
+	event_start_date date NOT NULL DEFAULT current_date,
+	event_start_time time without time zone NOT NULL DEFAULT '08:00:00',
+	event_end_date date NOT NULL DEFAULT current_date,
+	event_end_time time without time zone NOT NULL DEFAULT '09:00:00',
+	event_title character varying NOT NULL DEFAULT '',
+	is_event_location_owned boolean NOT NULL DEFAULT true,
+	event_location character varying NOT NULL DEFAULT '',
+	event_location_additional_information character varying NOT NULL DEFAULT '',
+	event_description character varying NOT NULL DEFAULT '',
+	event_speaker character varying NOT NULL DEFAULT '',
+	event_registration_label character varying NOT NULL DEFAULT '',
+	event_registration_url character varying NOT NULL DEFAULT '',
+	event_contact_name character varying NOT NULL DEFAULT '',
+	event_contact_phone character varying NOT NULL DEFAULT '',
+	event_contact_email character varying NOT NULL DEFAULT '',
+	event_cost character varying NOT NULL DEFAULT '',
+	event_image_file_name character varying NOT NULL DEFAULT '',
+	event_image_file_description character varying NOT NULL DEFAULT '',
+	is_event_recurring boolean NOT NULL DEFAULT false,
+	event_recurring_limit int NOT NULL DEFAULT 10,
+	event_recurring_interval int NOT NULL DEFAULT 1,
+	is_event_recurring_sunday boolean NOT NULL DEFAULT false,
+	is_event_recurring_monday boolean NOT NULL DEFAULT false,
+	is_event_recurring_tuesday boolean NOT NULL DEFAULT false,
+	is_event_recurring_wednesday boolean NOT NULL DEFAULT false,
+	is_event_recurring_thursday boolean NOT NULL DEFAULT false,
+	is_event_recurring_friday boolean NOT NULL DEFAULT false,
+	is_event_recurring_saturday boolean NOT NULL DEFAULT false,
+	is_event_recurring_day_exact boolean NOT NULL DEFAULT false,
+	fk_category_id bigint NOT NULL DEFAULT 0,
+	fk_calendar_id bigint NOT NULL,
+	PRIMARY KEY (event_id),
+	--FOREIGN KEY (fk_category_id) REFERENCES calendar.categories (category_id),
+	FOREIGN KEY (fk_calendar_id) REFERENCES calendar.calendars (calendar_id)
+);
+
+DROP TABLE IF EXISTS calendar.event_tags CASCADE;
+CREATE TABLE IF NOT EXISTS calendar.event_tags
+(
+	event_tag_id bigint DEFAULT id_generator(),
+	event_tag_name character varying NOT NULL,
+	fk_event_id bigint NOT NULL,
+	PRIMARY KEY (event_tag_id),
+	FOREIGN KEY (fk_event_id) REFERENCES calendar.events (event_id)
+);
+
+--UPDATE calendar.events 
+--SET event_image_file_name = '';
+
+--SELECT event_image_file_name, event_image_file_description FROM calendar.events;

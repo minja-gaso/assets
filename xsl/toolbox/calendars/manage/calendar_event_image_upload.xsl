@@ -20,12 +20,17 @@
 							<xsl:with-param name="SCREEN" select="'EVENT_IMAGE_UPLOAD'" />
 						</xsl:call-template>
 					</nav>
-					<h2>Add an Event Image 2</h2>
+					<h2>Add an Event Image</h2>
 					<xsl:call-template name="messages" />
 					<xsl:choose>
 						<xsl:when test="string-length(/data/calendar/event/fileName) &gt; 0">
 							<div class="form-group">
-								<label for="EVENT_HEADER">Uploaded Image</label>
+								<label for="EVENT_HEADER">
+									Uploaded Image
+									<xsl:if test="string-length(/data/calendar/event/fileName) &gt; 0">
+										<a class="label label-primary" onclick="javascript:deleteEventImage();">Delete Image</a>
+									</xsl:if>
+								</label>
 								<div>
 									<img src="/uploads/calendar/{/data/calendar/id}/{/data/calendar/event/id}/{/data/calendar/event/fileName}"
 										class="img-thumbnail img-responsive"

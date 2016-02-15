@@ -4,24 +4,7 @@
 	<xsl:include href="../includes/calendar_variables.xsl" />
 	<xsl:include href="../includes/calendar_nav.xsl" />
 
-
-
-
 	<xsl:template match="/">
-		<xsl:variable name="startDate">
-			<xsl:variable name="year" select="substring(/data/calendar/event/startDate,1,4)" />
-			<xsl:variable name="month" select="substring(/data/calendar/event/startDate,6,2)" />
-			<xsl:variable name="day" select="substring(/data/calendar/event/startDate,9,2)" />
-			<xsl:value-of select="concat($month, '/', $day, '/', $year)" />
-		</xsl:variable>
-		<xsl:variable name="endDate">
-			<xsl:variable name="year" select="substring(/data/calendar/event/endDate,1,4)" />
-			<xsl:variable name="month" select="substring(/data/calendar/event/endDate,6,2)" />
-			<xsl:variable name="day" select="substring(/data/calendar/event/endDate,9,2)" />
-			<xsl:value-of select="concat($month, '/', $day, '/', $year)" />
-		</xsl:variable>
-		<xsl:variable name="startTime" select="substring(/data/calendar/event/startTime, 1, 8)" />
-		<xsl:variable name="endTime" select="substring(/data/calendar/event/endTime, 1, 8)" />
 		<form action="" method="post" name="portal_form">
 			<input type="hidden" name="COMPONENT_ID" value="{/data/environment/componentId}" />
 			<input type="hidden" name="ACTION" />
@@ -38,6 +21,24 @@
 					</nav>
 					<h2>Event Recurrence</h2>
 					<xsl:call-template name="messages" />
+					<div class="row">
+						<div class="form-group col-lg-2 col-md-3 col-sm-3">
+							<label for="EVENT_START_DATE">Start Date</label>
+							<input type="text" class="form-control datepicker" name="EVENT_START_DATE" id="EVENT_START_DATE" value="{$startDate}" />
+						</div>
+						<div class="form-group col-lg-4 col-md-6 col-sm-6">
+							<label class="EVENT_RECUR_TYPE">Recur by</label>
+							<div class="form-inline">
+								<label>
+									<input type="radio" name="EVENT_RECUR_TYPE" id="EVENT_RECUR_BY_END_DATE" /> End Date
+								</label>
+								<br/>
+								<label>
+									<input type="radio" name="EVENT_RECUR_TYPE" id="EVENT_RECUR_BY_INTERVAL" /> Interval
+								</label>
+							</div>
+						</div>
+					</div>
 					<div class="form-group">
 						<label for="EVENT_TITLE">Title</label>
 						<input type="text" class="form-control" name="EVENT_TITLE" id="EVENT_TITLE" value="{/data/calendar/event/title}" />
