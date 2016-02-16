@@ -73,9 +73,10 @@ CREATE TABLE IF NOT EXISTS calendar.events
 	is_event_recurring boolean NOT NULL DEFAULT false,
 	is_event_recurring_monthly boolean NOT NULL DEFAULT false,
 	event_recurring_type character varying NOT NULL DEFAULT 'date',
+	-- can be date or interval
 	event_recurring_limit int NOT NULL DEFAULT 10,
 	event_recurring_interval int NOT NULL DEFAULT 1,
-	event_recurring_by character varying NOT NULL DEFAULT 'week',
+	event_recurring_interval_type character varying NOT NULL DEFAULT 'week',
 	is_event_recurring_monday boolean NOT NULL DEFAULT false,
 	is_event_recurring_tuesday boolean NOT NULL DEFAULT false,
 	is_event_recurring_wednesday boolean NOT NULL DEFAULT false,
