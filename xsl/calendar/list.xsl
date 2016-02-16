@@ -2,6 +2,24 @@
 <xsl:stylesheet version="2.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 	<xsl:output method="html" />
 	<xsl:variable name="apos">'</xsl:variable>
+
+	<!-- global variables for mini calendar -->
+	<xsl:variable name="start" select="/data/calendar/currentView/startDay"/>
+	<xsl:variable name="count" select="/data/calendar/currentView/totalDays"/>
+	<xsl:variable name="total" select="$start + $count - 1"/>
+	<xsl:variable name="overflow" select="$total mod 7"/>
+	<xsl:variable name="nelements">
+    <xsl:choose>
+        <xsl:when test="$overflow > 0"><xsl:value-of select="$total + 7 - $overflow"/></xsl:when>
+        <xsl:otherwise><xsl:value-of select="$total"/></xsl:otherwise>
+    </xsl:choose>
+	</xsl:variable>
+	<!-- global variables for mini calendar -->
+
+	<xsl:import href="includes/calendar_global.xsl" />
+	<xsl:import href="includes/calendar_date_time.xsl" />
+	<xsl:import href="includes/calendar_mini.xsl" />
+
 	<xsl:template match="/">
 		<form action="" method="post" name="portal_form" id="public-form">
 			<input type="hidden" name="ACTION" />
@@ -25,74 +43,6 @@
 			<footer class="text-center">Provided by <em><a href="#">Interactive Marketing</a></em> at <em><a href="#">Baylor Scott &amp; White</a></em></footer>
 		</form>
 	</xsl:template>
-	<xsl:template name="format_time">
-		<xsl:param name="startTime" />
-		<xsl:param name="endTime" />
-
-		<xsl:variable name="startHourStr" select="substring(startTime, 1, 2)" />
-		<xsl:variable name="startHour">
-			<xsl:choose>
-				<xsl:when test="number($startHourStr) = 0">12</xsl:when>
-				<xsl:when test="number($startHourStr) &gt; 12">
-					<xsl:value-of select="number($startHourStr) - 12" />
-				</xsl:when>
-				<xsl:otherwise>
-					<xsl:value-of select="number($startHourStr)" />
-				</xsl:otherwise>
-			</xsl:choose>
-		</xsl:variable>
-		<xsl:variable name="startMinuteStr" select="substring(startTime, 4, 2)" />
-		<xsl:variable name="startMinute" select="number($startMinuteStr)" />
-		<xsl:variable name="startMeridiam">
-			<xsl:choose>
-				<xsl:when test="number($startHourStr) &gt; 11">p.m.</xsl:when>
-				<xsl:otherwise>a.m.</xsl:otherwise>
-			</xsl:choose>
-		</xsl:variable>
-
-		<xsl:variable name="endHourStr" select="substring(endTime, 1, 2)" />
-		<xsl:variable name="endHour">
-			<xsl:choose>
-				<xsl:when test="number($endHourStr) = 0">12</xsl:when>
-				<xsl:when test="number($endHourStr) &gt; 12">
-					<xsl:value-of select="number($endHourStr) - 12" />
-				</xsl:when>
-				<xsl:otherwise>
-					<xsl:value-of select="number($endHourStr)" />
-				</xsl:otherwise>
-			</xsl:choose>
-		</xsl:variable>
-		<xsl:variable name="endMinuteStr" select="substring(endTime, 4, 2)" />
-		<xsl:variable name="endMinute" select="number($endMinuteStr)" />
-		<xsl:variable name="endMeridiam">
-			<xsl:choose>
-				<xsl:when test="number($endHourStr) &gt; 11">p.m.</xsl:when>
-				<xsl:otherwise>a.m.</xsl:otherwise>
-			</xsl:choose>
-		</xsl:variable>
-
-		<xsl:variable name="startTimeLabel">
-			<xsl:value-of select="$startHour" />
-			<xsl:if test="$startMinute &gt; 0">
-				<xsl:text>:</xsl:text>
-				<xsl:value-of select="$startMinute" />
-			</xsl:if>
-			<xsl:if test="$startMeridiam != $endMeridiam">
-				<xsl:value-of select="concat(' ', $startMeridiam)" />
-			</xsl:if>
-		</xsl:variable>
-
-		<xsl:variable name="endTimeLabel">
-			<xsl:value-of select="$endHour" />
-			<xsl:if test="$endMinute &gt; 0">
-				<xsl:text>:</xsl:text>
-				<xsl:value-of select="$endMinute" />
-			</xsl:if>
-			<xsl:value-of select="concat(' ', $endMeridiam)" />
-		</xsl:variable>
-
-		<xsl:value-of select="$startTimeLabel" /> - <xsl:value-of select="$endTimeLabel" />
-	</xsl:template>
 
 	<xsl:template name="public_calendar">
 		<xsl:if test="string-length(/data/form/messagePublicFormIntro) &gt; 0">
@@ -100,6 +50,38 @@
 				<xsl:value-of select="/data/form/messagePublicFormIntro" disable-output-escaping="yes" />
 			</div>
 		</xsl:if>
+		<xsl:call-template name="display_mini_calendar" />
+    <ol class="breadcrumb">
+      <li class="active">Home</li>
+    </ol>
+		<div class="row">
+			<div class="col-lg-3 col-md-3 col-sm-3">
+				<xsl:call-template name="sidebar" />
+			</div>
+			<div class="col-lg-9 col-md-9 col-sm-9">
+				<xsl:call-template name="main" />
+			</div>
+		</div>
+		<xsl:if test="string-length(/data/form/messagePublicFormClosing) &gt; 0">
+			<div class="form-message form-closing">
+				<xsl:value-of select="/data/form/messagePublicFormClosing" disable-output-escaping="yes" />
+			</div>
+		</xsl:if>
+	</xsl:template>
+
+	<xsl:template name="main">
+		<ul class="list-inline">
+			<li>
+				<a class="btn btn-social-icon btn-rss" href="/calendar/rss/{/data/calendar/prettyUrl}">
+					<span class="fa fa-rss"></span>
+				</a>
+			</li>
+			<li>
+				<a class="btn btn-social-icon btn-flickr">
+					<span class="fa fa-envelope"></span>
+				</a>
+			</li>
+		</ul>
 		<xsl:choose>
 			<xsl:when test="count(/data/calendar/event) &gt; 0">
 				<ul class="list-group">
@@ -115,11 +97,18 @@
 												<xsl:call-template name="format_date">
 													<xsl:with-param name="paramDate" select="startDate" />
 												</xsl:call-template>
+												<xsl:if test="startDate != endDate">
+													&#160;-&#160;
+													<xsl:call-template name="format_date">
+														<xsl:with-param name="paramDate" select="endDate" />
+													</xsl:call-template>
+												</xsl:if>
 											</strong>
 										</div>
 									</xsl:if>
-									<div class="row">
+									<div class="entry row">
 										<div class="col-lg-2 col-md-3 col-sm-3">
+											<span class="fa fa-clock-o" />&#160;
 											<xsl:call-template name="format_time">
 												<xsl:with-param name="startTime" select="startTime" />
 												<xsl:with-param name="endTime" select="endTime" />
@@ -128,14 +117,17 @@
 										<div class="col-lg-10 col-md-9 col-sm-9">
 											<a href="/calendar/detail/{/data/calendar/prettyUrl}?eventID={id}"><xsl:value-of select="title" /></a>
 											<xsl:if test="string-length(location) &gt; 0">
-												<p class="location">
-													<xsl:value-of select="location" disable-output-escaping="yes" />
-												</p>
-											</xsl:if>
-											<xsl:if test="string-length(locationAdditional) &gt; 0">
-												<p class="location-additional">
-													<xsl:value-of select="locationAdditional" disable-output-escaping="yes" />
-												</p>
+												<div>
+													<span class="fa fa-map-marker pull-left" />
+													<p class="location">
+														<xsl:value-of select="location" disable-output-escaping="yes" />
+														<xsl:if test="string-length(locationAdditional) &gt; 0">
+															<span class="location-additional">
+																<xsl:value-of select="locationAdditional" disable-output-escaping="yes" />
+															</span>
+														</xsl:if>
+													</p>
+												</div>
 											</xsl:if>
 										</div>
 									</div>
@@ -149,46 +141,5 @@
 				<p>There are currently no avilable events.</p>
 			</xsl:otherwise>
 		</xsl:choose>
-		<xsl:if test="string-length(/data/form/messagePublicFormClosing) &gt; 0">
-			<div class="form-message form-closing">
-				<xsl:value-of select="/data/form/messagePublicFormClosing" disable-output-escaping="yes" />
-			</div>
-		</xsl:if>
-	</xsl:template>
-	<xsl:template name="format_date">
-		<xsl:param name="paramDate" />
-
-		<xsl:variable name="year" select="substring($paramDate, 1, 4)" />
-		<xsl:variable name="month" select="substring($paramDate, 6, 2)" />
-		<xsl:variable name="monthStr">
-			<xsl:choose>
-				<xsl:when test="$month = '01'">January</xsl:when>
-				<xsl:when test="$month = '02'">February</xsl:when>
-				<xsl:when test="$month = '03'">March</xsl:when>
-				<xsl:when test="$month = '04'">April</xsl:when>
-				<xsl:when test="$month = '05'">May</xsl:when>
-				<xsl:when test="$month = '06'">June</xsl:when>
-				<xsl:when test="$month = '07'">July</xsl:when>
-				<xsl:when test="$month = '08'">August</xsl:when>
-				<xsl:when test="$month = '09'">September</xsl:when>
-				<xsl:when test="$month = '10'">October</xsl:when>
-				<xsl:when test="$month = '11'">November</xsl:when>
-				<xsl:when test="$month = '12'">December</xsl:when>
-			</xsl:choose>
-		</xsl:variable>
-		<xsl:variable name="day" select="substring($paramDate, 9, 2)" />
-		<xsl:variable name="dayStr">
-			<xsl:choose>
-				<xsl:when test="substring($day, 1, 1) = '0'">
-					<xsl:value-of select="substring($day, 2, 1)" />
-				</xsl:when>
-				<xsl:otherwise>
-					<xsl:value-of select="$day" />
-				</xsl:otherwise>
-			</xsl:choose>
-		</xsl:variable>
-		<xsl:variable name="formatted_date" select="concat($monthStr, ' ', $dayStr, ', ', $year)" />
-
-		<xsl:value-of select="$formatted_date" />
 	</xsl:template>
 </xsl:stylesheet>

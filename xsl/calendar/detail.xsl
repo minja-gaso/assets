@@ -3,7 +3,9 @@
 	<xsl:output method="html" />
 	<xsl:variable name="apos">'</xsl:variable>
 
-	<xsl:include href="includes/calendar_date_time.xsl" />
+	<xsl:import href="includes/calendar_global.xsl" />
+	<xsl:import href="includes/calendar_date_time.xsl" />
+
 	<xsl:template match="/">
 		<form action="" method="post" name="portal_form" id="public-form">
 			<input type="hidden" name="ACTION" />
@@ -38,7 +40,6 @@
       <li><a href="/calendar/list/{/data/calendar/id}">Home</a></li>
       <li class="active"><xsl:value-of select="/data/calendar/event/title" /></li>
     </ol>
-
 		<div class="row">
 			<div class="col-lg-3 col-md-3 col-sm-3">
 				<xsl:call-template name="sidebar" />
@@ -55,22 +56,9 @@
 		</xsl:if>
 	</xsl:template>
 
-	<xsl:template name="sidebar">
-		<h3>Categories</h3>
-		<ul class="list-group">
-			<xsl:for-each select="/data/calendar/category">
-				<li class="list-group-item">
-					<a href="/calendar/search/{/data/calendar/prettyUrl}?type=category&amp;id={id}">
-						<xsl:value-of select="label" />
-					</a>
-				</li>
-			</xsl:for-each>
-		</ul>
-	</xsl:template>
-
 	<xsl:template name="main">
-		<xsl:for-each select="/data/calendar/event">
-			<!--
+		<xsl:for-each select="/data/calendar/event[position() = 1]">
+			<xsl:variable name="eventId" select="id" />
 			<ul class="list-inline">
 				<li>
 					<a class="btn btn-social-icon btn-twitter">
@@ -103,7 +91,7 @@
 					</a>
 				</li>
 			</ul>
-		-->
+			<!--
 			<ul class="sm-icons list-inline" id="share-icons">
 				<li><strong>Share with:</strong></li>
 				<li>
@@ -127,6 +115,7 @@
 					</a>
 				</li>
 			</ul>
+		-->
 			<ul class="list-group">
 				<li class="list-group-item event">
 					<h2><xsl:value-of select="title" /></h2>
@@ -154,7 +143,22 @@
 						</div>
 					</xsl:if>
 					<xsl:if test="string-length(fileName) &gt; 0">
-						<img src="/uploads/calendar/{/data/calendar/id}/{id}/{fileName}" class="img-thumbnail img-responsive" alt="Responsive image" />
+						<xsl:variable name="fileDirectoryPath">
+							<xsl:choose>
+								<xsl:when test="parentId &gt; 0">
+									<xsl:value-of select="parentId" />
+								</xsl:when>
+								<xsl:otherwise>
+									<xsl:value-of select="id" />
+								</xsl:otherwise>
+							</xsl:choose>
+						</xsl:variable>
+						<div class="thumbnail">
+							<img src="/uploads/calendar/{/data/calendar/id}/{$fileDirectoryPath}/{fileName}" class="img-responsive" alt="Responsive image" onload="this.parentNode.style.width=this.offsetWidth + 'px'" />
+					    <div class="caption">
+					      <xsl:text><xsl:value-of select="fileDescription" /></xsl:text>
+					    </div>
+					  </div>
 					</xsl:if>
 					<div class="row detail-item">
 						<div class="col-lg-2 col-md-3 col-sm-3">
@@ -229,6 +233,45 @@
 							</div>
 							<div class="col-lg-10 col-md-9 col-sm-9">
 								<xsl:value-of select="cost" />
+							</div>
+						</div>
+					</xsl:if>
+					<xsl:if test="count(/data/calendar/event[id=$eventId]) &gt; 0 and parentId = 0">
+						<div class="row detail-item">
+							<div class="col-lg-2 col-md-3 col-sm-3">
+								<strong>Recurring on</strong>
+							</div>
+							<div class="col-lg-10 col-md-9 col-sm-9">
+								<ul class="list-unstyled">
+									<xsl:for-each select="/data/calendar/event[parentId=$eventId]">
+										<li>
+											<a href="/calendar/detail/{/data/calendar/prettyUrl}?eventID={id}">
+												<xsl:call-template name="format_date">
+													<xsl:with-param name="paramDate" select="startDate" />
+												</xsl:call-template>
+											</a>
+											<p>
+												<xsl:call-template name="format_time">
+													<xsl:with-param name="paramDate" select="startTime" />
+												</xsl:call-template>
+											</p>
+										</li>
+									</xsl:for-each>
+								</ul>
+							</div>
+						</div>
+					</xsl:if>
+					<xsl:if test="number(parentId) &gt; 0">
+						<div class="row detail-item text-info">
+							<div class="col-lg-2 col-md-3 col-sm-3">
+								<strong>Original Date</strong>
+							</div>
+							<div class="col-lg-10 col-md-9 col-sm-9">
+								<a href="/calendar/detail/{/data/calendar/prettyUrl}?eventID={parentId}">
+									<xsl:call-template name="format_date">
+										<xsl:with-param name="paramDate" select="/data/calendar/event[parentId = 0]/startDate" />
+									</xsl:call-template>
+								</a>
 							</div>
 						</div>
 					</xsl:if>

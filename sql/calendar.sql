@@ -30,7 +30,7 @@ DROP TABLE IF EXISTS calendar.categories CASCADE;
 CREATE TABLE IF NOT EXISTS calendar.categories
 (
 	category_id bigint DEFAULT id_generator(),
-	category_label character varying NOT NULL,
+	category_label character varying NOT NULL DEFAULT '',
 	fk_calendar_id bigint NOT NULL,
 	PRIMARY KEY (category_id),
 	FOREIGN KEY (fk_calendar_id) REFERENCES calendar.calendars (calendar_id)
@@ -52,6 +52,7 @@ DROP TABLE IF EXISTS calendar.events CASCADE;
 CREATE TABLE IF NOT EXISTS calendar.events
 (
 	event_id bigint DEFAULT id_generator(),
+	is_event_published boolean NOT NULL DEFAULT false,
 	event_start_date date NOT NULL DEFAULT current_date,
 	event_start_time time without time zone NOT NULL DEFAULT '08:00:00',
 	event_end_date date NOT NULL DEFAULT current_date,
@@ -71,6 +72,7 @@ CREATE TABLE IF NOT EXISTS calendar.events
 	event_image_file_name character varying NOT NULL DEFAULT '',
 	event_image_file_description character varying NOT NULL DEFAULT '',
 	is_event_recurring boolean NOT NULL DEFAULT false,
+	is_event_recurring_visible_on_list_screen boolean NOT NULL DEFAULT true,
 	is_event_recurring_monthly boolean NOT NULL DEFAULT false,
 	event_recurring_type character varying NOT NULL DEFAULT 'date',
 	-- can be date or interval
@@ -92,6 +94,8 @@ CREATE TABLE IF NOT EXISTS calendar.events
 	--FOREIGN KEY (fk_category_id) REFERENCES calendar.categories (category_id),
 	FOREIGN KEY (fk_calendar_id) REFERENCES calendar.calendars (calendar_id)
 );
+
+SELECT * FROM calendar.events;
 
 DROP TABLE IF EXISTS calendar.event_tags CASCADE;
 CREATE TABLE IF NOT EXISTS calendar.event_tags

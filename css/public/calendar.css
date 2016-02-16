@@ -4,7 +4,19 @@ xxx.btn-envelope { background-color: #F7F7F7; border: 1px solid rgba(0, 0, 0, 0.
 .day-label { color: #0A569B; margin-bottom: 4px; }
 .location,
 .location-additional { color: #525252; font-size: 11px; margin-bottom: 0; }
-.location-additional { margin-bottom: 4px; }
+.entry .location-additional { font-style: italic; margin-left: 24px; margin-bottom: 4px; }
 
 .tags .label { background-color: #1690BB; font-size: 90%; }
 .row.detail-item { margin-bottom: 12px; }
+
+/*
+ *  Social media icons
+ */
+.btn.btn-social-icon { background-color: #359EC4; color: #ffffff;
+}
+
+/*
+ *  Mini calendar
+ */
+#mini-cal { display:none; width: 280px; }
+#mini-cal th, #mini-cal td { text-align: center; }

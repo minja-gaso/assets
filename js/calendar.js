@@ -25,6 +25,11 @@ function saveEvent()
 {
   document.portal_form.ACTION.value = 'SAVE_EVENT';
 }
+function deleteEvent(id)
+{
+  document.portal_form.ACTION.value = 'DELETE_EVENT';
+  document.portal_form.EVENT_ID.value = id;
+}
 function editCalendar(id)
 {
   if(document.portal_form.COMPONENT_ID.value == 3)

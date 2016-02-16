@@ -29,6 +29,9 @@ body#toolbox {
 #content {
   background-color: #ffffff;
 }
+ul.alert, ol.alert {
+  list-style-position: inside;
+}
 
 /* inner page navigation */
 #content nav {

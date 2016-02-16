@@ -29,6 +29,7 @@
 							<tr>
 								<th class="col-lg-2 col-md-1 col-sm-2 text-center">Start Date</th>
 								<th class="col-lg-2 col-md-1 col-sm-2 text-center">End Date</th>
+								<th class="col-lg-1 col-md-1 col-sm-2 text-center">Published</th>
 								<th class="col-lg-7 col-md-9 col-sm-6">Title</th>
 								<th class="col-lg-1 col-md-1 col-sm-2 text-center">Delete</th>
 							</tr>
@@ -59,6 +60,16 @@
 										</xsl:variable>
 										<xsl:value-of select="$endDate" />
 									</td>
+									<td class="text-center">
+										<span>
+											<xsl:attribute name="class">
+												<xsl:choose>
+													<xsl:when test="published = 'true'">fa fa-check</xsl:when>
+													<xsl:otherwise>fa fa-close</xsl:otherwise>
+												</xsl:choose>
+											</xsl:attribute>
+										</span>
+									</td>
 									<td>
 										<a href="javascript:editEvent('{id}');submitForm();">
 											<xsl:attribute name="href">
@@ -84,20 +95,56 @@
                     </a>
 									</td>
 									<td class="text-center">
-										<xsl:choose>
-											<xsl:when test="number(/data/form/submissionCount) &gt; 0">
-												<span class="fa fa-plus-circle fa-lg fa-disabled" />
-											</xsl:when>
-											<xsl:otherwise>
-												<a href="javascript:deleteQuestion('{id}');submitForm();"><span class="fa fa-trash fa-lg" /></a>
-											</xsl:otherwise>
-										</xsl:choose>
+										<a>
+											<xsl:attribute name="href">
+												<xsl:choose>
+													<xsl:when test="parentId &gt; 0">
+														<xsl:value-of select="concat('javascript:deleteNotify(', $quote, parentId, $quote, ',', $quote, id, $quote, ')')" />
+													</xsl:when>
+													<xsl:otherwise>
+															<xsl:value-of select="concat('javascript:deleteEvent(', $quote, id, $quote, ');submitForm();')" />
+													</xsl:otherwise>
+												</xsl:choose>
+											</xsl:attribute>
+                      <span class="fa fa-trash fa-lg" />
+										</a>
 									</td>
 								</tr>
 							</xsl:for-each>
 						</tbody>
 					</table>
-					<div class="sr-only" id="dialog" title="Basic dialog">
+					<div class="sr-only" id="delete-dialog" title="Delete event(s)">
+						<p>Which would you like to delete?</p>
+						<div class="form-row">
+							<a class="label label-info" onclick="originalEventDelete()">Original Event</a>
+							<span class="help-block">Delete this event if you wish for the action to be applied to all recurring events.</span>
+						</div>
+						<div class="form-row">
+							<a class="label label-info" onclick="thisEventDelete();">This Event</a>
+							<span class="help-block">Delete this event if you wish to remove only this event.</span>
+						</div>
+						<script>
+							function deleteNotify(parentId, id)
+							{
+								$(function() {
+									$("#delete-dialog").dialog().data('parentId', parentId).data('thisId', id);
+								});
+							}
+							function originalEventDelete()
+							{
+								var id = '' + $("#delete-dialog").data('parentId');
+								deleteEvent(id);
+								submitForm();
+							}
+							function thisEventDelete()
+							{
+								var id = '' + $("#delete-dialog").data('thisId');
+								deleteEvent(id);
+								submitForm();
+							}
+						</script>
+					</div>
+					<div class="sr-only" id="edit-dialog" title="Edit event(s)">
 						<p>Which would you like to edit?</p>
 						<div class="form-row">
 							<a class="label label-info" onclick="originalEvent()">Original Event</a>
@@ -111,18 +158,18 @@
 							function editNotify(parentId, id)
 							{
 								$(function() {
-									$("#dialog").dialog().data('parentId', parentId).data('thisId', id);
+									$("#edit-dialog").dialog().data('parentId', parentId).data('thisId', id);
 								});
 							}
 							function originalEvent()
 							{
-								var id = '' + $("#dialog").data('parentId');
+								var id = '' + $("#edit-dialog").data('parentId');
 								editEvent(id);
 								submitForm();
 							}
 							function thisEvent()
 							{
-								var id = '' + $("#dialog").data('thisId');
+								var id = '' + $("#edit-dialog").data('thisId');
 								editEvent(id);
 								submitForm();
 							}

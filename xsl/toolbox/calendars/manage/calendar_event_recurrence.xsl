@@ -23,14 +23,24 @@
 					<xsl:call-template name="messages" />
 					<div class="form-group" id="event-recur">
 						<label for="EVENT_RECUR">Should this event repeat?</label>
+						<xsl:variable name="recurring">
+							<xsl:choose>
+								<xsl:when test="count(/data/calendar/event) &gt; 1">
+									<xsl:value-of select="/data/calendar/event/eventRecurrence[recurring='true']/recurring" />
+								</xsl:when>
+								<xsl:otherwise>
+									<xsl:value-of select="/data/calendar/event/eventRecurrence[position()=1]/recurring" />
+								</xsl:otherwise>
+							</xsl:choose>
+						</xsl:variable>
 						<div class="form-inline">
-							<input type="hidden" name="EVENT_RECUR" id="EVENT_RECUR" value="{/data/calendar/event/eventRecurrence/recurring}" />
+							<input type="hidden" name="EVENT_RECUR" id="EVENT_RECUR" value="{$recurring}" />
 							<label>
 								<a href="javascript:document.getElementById('EVENT_RECUR').value='true';saveEvent();submitForm();">
 									<span>
 										<xsl:attribute name="class">
 											<xsl:choose>
-												<xsl:when test="/data/calendar/event/eventRecurrence/recurring = 'true'">fa fa-check-circle-o</xsl:when>
+												<xsl:when test="$recurring = 'true'">fa fa-check-circle-o</xsl:when>
 												<xsl:otherwise>fa fa-circle-o</xsl:otherwise>
 											</xsl:choose>
 										</xsl:attribute>
@@ -43,7 +53,7 @@
 									<span>
 										<xsl:attribute name="class">
 											<xsl:choose>
-												<xsl:when test="/data/calendar/event/eventRecurrence/recurring = 'false'">fa fa-check-circle-o</xsl:when>
+												<xsl:when test="$recurring = 'false'">fa fa-check-circle-o</xsl:when>
 												<xsl:otherwise>fa fa-circle-o</xsl:otherwise>
 											</xsl:choose>
 										</xsl:attribute>
@@ -54,6 +64,38 @@
 						</div>
 					</div>
 					<xsl:if test="/data/calendar/event/eventRecurrence/recurring = 'true'">
+					<div class="form-group" id="event-recur-visible">
+						<label for="EVENT_RECUR">Should the recurring events be visible on the calendar list (home) screen?</label>
+						<div class="form-inline">
+							<input type="hidden" name="EVENT_RECUR_VISIBLE" id="EVENT_RECUR_VISIBLE" value="{/data/calendar/event/eventRecurrence/visibleOnListScreen}" />
+							<label>
+								<a href="javascript:document.getElementById('EVENT_RECUR_VISIBLE').value='true';saveEvent();submitForm();">
+									<span>
+										<xsl:attribute name="class">
+											<xsl:choose>
+												<xsl:when test="/data/calendar/event/eventRecurrence/visibleOnListScreen = 'true'">fa fa-check-circle-o</xsl:when>
+												<xsl:otherwise>fa fa-circle-o</xsl:otherwise>
+											</xsl:choose>
+										</xsl:attribute>
+									</span>
+								</a>
+								&#160;<xsl:text>Yes</xsl:text>
+							</label>
+							<label>
+								<a href="javascript:document.getElementById('EVENT_RECUR_VISIBLE').value='false';saveEvent();submitForm();">
+									<span>
+										<xsl:attribute name="class">
+											<xsl:choose>
+												<xsl:when test="/data/calendar/event/eventRecurrence/visibleOnListScreen = 'false'">fa fa-check-circle-o</xsl:when>
+												<xsl:otherwise>fa fa-circle-o</xsl:otherwise>
+											</xsl:choose>
+										</xsl:attribute>
+									</span>
+								</a>
+								&#160;<xsl:text>No</xsl:text>
+							</label>
+						</div>
+					</div>
 					<div class="form-group" id="event-recur-monthly">
 						<label for="EVENT_RECUR_MONTHLY">Repeat</label>
 						<div class="form-inline">

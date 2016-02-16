@@ -21,6 +21,23 @@
 					</nav>
 					<h2>Edit Event</h2>
 					<xsl:call-template name="messages" />
+					<div class="form-inline">
+						<div><strong>Published</strong></div>
+						<label>
+							<input type="radio" name="EVENT_PUBLISHED" id="EVENT_PUBLISHED_TRUE" value="true">
+								<xsl:if test="/data/calendar/event/published = 'true'">
+									<xsl:attribute name="checked">checked</xsl:attribute>
+								</xsl:if>
+							</input>&#160;<xsl:text>Yes</xsl:text>
+						</label>
+						<label>
+							<input type="radio" name="EVENT_PUBLISHED" id="EVENT_PUBLISHED_FALSE" value="false">
+								<xsl:if test="/data/calendar/event/published = 'false'">
+									<xsl:attribute name="checked">checked</xsl:attribute>
+								</xsl:if>
+							</input>&#160;<xsl:text>No</xsl:text>
+						</label>
+					</div>
 					<div class="form-group">
 						<label for="EVENT_TITLE">Title</label>
 						<input type="text" class="form-control" name="EVENT_TITLE" id="EVENT_TITLE" value="{/data/calendar/event/title}" />
@@ -163,23 +180,29 @@
 								<xsl:when test="/data/calendar/event/locationOwned = 'true'">
 									<select class="form-control" name="EVENT_LOCATION" id="EVENT_LOCATION" >
 										<option onselect="document.getElementById('EVENT_LOCATION_TEXT').disabled = false;" />
-										<option value="A">
-											<xsl:if test="/data/calendar/event/location = 'A'">
+										<option value="Scott &amp; White Memorial Hospital - Temple">
+											<xsl:if test="/data/calendar/event/location = 'Scott &amp; White Memorial Hospital - Temple'">
 												<xsl:attribute name="selected">selected</xsl:attribute>
 											</xsl:if>
-											<xsl:text>A</xsl:text>
+											<xsl:text>Scott &amp; White Memorial Hospital - Temple</xsl:text>
 										</option>
-										<option value="B">
-											<xsl:if test="/data/calendar/event/location = 'B'">
+										<option value="Scott &amp; White Clinic - Temple">
+											<xsl:if test="/data/calendar/event/location = 'Scott &amp; White Clinic - Temple'">
 												<xsl:attribute name="selected">selected</xsl:attribute>
 											</xsl:if>
-											<xsl:text>B</xsl:text>
+											<xsl:text>Scott &amp; White Clinic - Temple</xsl:text>
 										</option>
-										<option value="C">
-											<xsl:if test="/data/calendar/event/location = 'C'">
+										<option value="Scott &amp; White Clinic - Leander">
+											<xsl:if test="/data/calendar/event/location = 'Scott &amp; White Clinic - Leander'">
 												<xsl:attribute name="selected">selected</xsl:attribute>
 											</xsl:if>
-											<xsl:text>C</xsl:text>
+											<xsl:text>Scott &amp; White Clinic - Leander</xsl:text>
+										</option>
+										<option value="Baylor Scott &amp; White Clinic - Cedar Park">
+											<xsl:if test="/data/calendar/event/location = 'Baylor Scott &amp; White Clinic - Cedar Park'">
+												<xsl:attribute name="selected">selected</xsl:attribute>
+											</xsl:if>
+											<xsl:text>Baylor Scott &amp; White Clinic - Cedar Park</xsl:text>
 										</option>
 									</select>
 								</xsl:when>
