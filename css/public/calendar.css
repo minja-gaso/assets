@@ -3,11 +3,15 @@ xxx.list-group > .list-group-item { background-color: #F7F7F7; border: none; }
 xxx.btn-envelope { background-color: #F7F7F7; border: 1px solid rgba(0, 0, 0, 0.2); }
 .day-label { color: #0A569B; margin-bottom: 4px; }
 .location,
-.location-additional { color: #525252; font-size: 11px; margin-bottom: 0; }
+.location-additional { margin-bottom: 0; }
 .entry .location-additional { font-style: italic; margin-left: 24px; margin-bottom: 4px; }
 
 .tags .label { background-color: #1690BB; font-size: 90%; }
 .row.detail-item { margin-bottom: 12px; }
+.list-recurring li { border-top: 1px solid #ccc; margin-top: 8px; padding-top: 8px; }
+.list-recurring li:first-child { border-top: 0; margin-top: 0; padding-top: 0; }
+.list-recurring li .recurring-row { margin-bottom: 0;}
+.list-recurring li .recurring-agenda { display: none; margin-top: 8px; }
 
 /*
  *  Social media icons

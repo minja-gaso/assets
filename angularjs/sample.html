@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en" ng-app="phonecatApp">
+<head>
+  <meta charset="utf-8">
+  <title>EmberJS Demo</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.1/handlebars.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/ember.js/1.10.0/ember.min.js"></script>
+  <script src="http://builds.emberjs.com/tags/v1.10.0-beta.3/ember-template-compiler.js"></script>
+  <script src="http://builds.emberjs.com/release/ember.debug.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/ember-data.js/2.3.3/ember-data.min.js"></script>
+</head>
+<body>
+  <!-- Your JavaScript -->
+  <script type="text/x-handlebars">
+     <!-- this is default application template -->
+      <h1>{{App.name}}</h1>
+      {{outlet}}
+  </script>
+
+  <script type="text/javascript">
+     //App is the object of the Ember.Application
+     //create() is the constructor of the Ember.Application
+     App = Ember.Application.create();
+
+     //App.name is the variable that holds the string values
+     App.name= "Hello... Welcome to TutorialsPoint";
+
+     App.ApplicationRoute = Ember.Route.extend({
+      model: function() {
+        return Ember.$.getJSON('http://localhost:8080/calendar/api/events/all.json?calendarID=1186398785656325178');
+      }
+
+      console.log(model());
+    });
+  </script>
+  <h3>Last 3 Pull Requests to Ember.js</h3>
+<ul>
+{{#each data.calendar.event as |pr|}}
+  <li>
+    <div class="issue-number">#{{pr.id}}</div>
+    <div class="issue-title">
+      <a href={{pr.html_url}}>{{pr.startDate}}</a>
+    </div>
+    <div class="author-name">
+      Opened by <a href={{pr.head.user.html_url}}><strong>@{{pr.head.user.login}}</strong></a>
+    </div>
+  </li>
+{{/each}}
+</ul>
+</body>
+</html>

@@ -8,7 +8,7 @@
 		<form action="" method="post" name="portal_form">
 			<input type="hidden" name="COMPONENT_ID" value="{/data/environment/componentId}" />
 			<input type="hidden" name="ACTION" />
-			<input type="hidden" name="SCREEN" value="EVENTS" />
+			<input type="hidden" name="SCREEN" value="EVENT" />
 			<input type="hidden" name="CALENDAR_ID" value="{/data/calendar/id}" />
 			<input type="hidden" name="EVENT_ID" value="{/data/calendar/event/id}" />
 			<!-- survey content -->
@@ -39,9 +39,15 @@
 						</label>
 					</div>
 					<div class="form-group">
-						<label for="EVENT_TITLE">Title</label>
+						<label for="EVENT_TITLE">Title <span class="required">*</span></label>
 						<input type="text" class="form-control" name="EVENT_TITLE" id="EVENT_TITLE" value="{/data/calendar/event/title}" />
 					</div>
+					<xsl:if test="/data/calendar/event/eventRecurrence/recurring = 'true' or /data/calendar/event/parentId > 0">
+						<div class="form-group">
+							<label for="EVENT_TITLE_RECURRING_LABEL">Recurring Label</label>
+							<input type="text" class="form-control" name="EVENT_TITLE_RECURRING_LABEL" id="EVENT_TITLE_RECURRING_LABEL" value="{/data/calendar/event/titleRecurringLabel}" />
+						</div>
+					</xsl:if>
 					<div class="row">
 						<div class="form-group col-lg-2 col-md-3 col-sm-3">
 							<label for="EVENT_START_DATE">Start Date</label>
@@ -141,8 +147,8 @@
 						<div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
 							<div><strong>Is location a Baylor Scott &amp; White owned property?</strong></div>
 							<input type="hidden" name="IS_EVENT_LOCATION_OWNED" value="{/data/calendar/event/locationOwned}" />
-							<label class="radio-inline">
-									<a href="javascript:document.portal_form.IS_EVENT_LOCATION_OWNED.value='true';saveEvent();">
+							<label class="radio-inline first">
+									<a href="javascript:document.portal_form.IS_EVENT_LOCATION_OWNED.value='true';saveEvent();submitForm();">
 										<span class="fa fa-check-square-o">
 											<xsl:attribute name="class">
 												<xsl:choose>
@@ -158,7 +164,7 @@
 									</a> Yes
 							</label>
 							<label class="radio-inline">
-								<a href="javascript:document.portal_form.IS_EVENT_LOCATION_OWNED.value='false';saveEvent();">
+								<a href="javascript:document.portal_form.IS_EVENT_LOCATION_OWNED.value='false';saveEvent();submitForm();">
 									<span class="fa fa-check-square-o">
 										<xsl:attribute name="class">
 											<xsl:choose>
@@ -175,7 +181,13 @@
 							</label>
 						</div>
 						<div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
-							<label for="EVENT_LOCATION">Location</label>
+							<label for="EVENT_LOCATION">Location <span class="required">*</span></label>
+							<p class="help-block">
+								<xsl:choose>
+									<xsl:when test="/data/calendar/event/locationOwned = 'true'">Select a location for the event.</xsl:when>
+									<xsl:otherwise>Enter a location for the event.</xsl:otherwise>
+								</xsl:choose>
+							</p>
 							<xsl:choose>
 								<xsl:when test="/data/calendar/event/locationOwned = 'true'">
 									<select class="form-control" name="EVENT_LOCATION" id="EVENT_LOCATION" >
@@ -185,6 +197,12 @@
 												<xsl:attribute name="selected">selected</xsl:attribute>
 											</xsl:if>
 											<xsl:text>Scott &amp; White Memorial Hospital - Temple</xsl:text>
+										</option>
+										<option value="Scott &amp; White Memorial Hospital - Killeen">
+											<xsl:if test="/data/calendar/event/location = 'Scott &amp; White Memorial Hospital - Killeen'">
+												<xsl:attribute name="selected">selected</xsl:attribute>
+											</xsl:if>
+											<xsl:text>Scott &amp; White Memorial Hospital - Killeen</xsl:text>
 										</option>
 										<option value="Scott &amp; White Clinic - Temple">
 											<xsl:if test="/data/calendar/event/location = 'Scott &amp; White Clinic - Temple'">
@@ -204,6 +222,12 @@
 											</xsl:if>
 											<xsl:text>Baylor Scott &amp; White Clinic - Cedar Park</xsl:text>
 										</option>
+										<option value="Scott &amp; White College Station Hospital">
+											<xsl:if test="/data/calendar/event/location = 'Scott &amp; White College Station Hospital'">
+												<xsl:attribute name="selected">selected</xsl:attribute>
+											</xsl:if>
+											<xsl:text>Scott &amp; White College Station Hospital</xsl:text>
+										</option>
 									</select>
 								</xsl:when>
 								<xsl:otherwise>
@@ -217,10 +241,18 @@
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="EVENT_DESCRIPTION">Description</label>
+						<label for="EVENT_DESCRIPTION">Description <span class="required">*</span></label>
+						<p class="help-block">Provide a summary for the event.</p>
 						<input type="hidden" name="EVENT_DESCRIPTION" id="EVENT_DESCRIPTION" value="{/data/calendar/event/description}" />
 						<trix-editor input="EVENT_DESCRIPTION"></trix-editor>
 					</div>
+					<xsl:if test="/data/calendar/event/eventRecurrence/recurring = 'true' or /data/calendar/event/parentId > 0">
+						<div class="form-group">
+							<label for="EVENT_AGENDA">Recurring Event Agenda</label>
+							<input type="hidden" name="EVENT_AGENDA" id="EVENT_AGENDA" value="{/data/calendar/event/agenda}" />
+							<trix-editor input="EVENT_AGENDA"></trix-editor>
+						</div>
+					</xsl:if>
 					<div class="row">
 						<div class="form-group col-xs-4">
 							<label for="EVENT_SPEAKER">Speaker</label>
@@ -281,6 +313,7 @@
 							<a class="btn btn-default" href="javascript:saveEvent();submitForm();">Save</a>
 							<a class="btn btn-default" href="javascript:eventListScreen();submitForm();">Back to Events</a>
 							<a class="btn btn-default" href="{$viewUrl}" target="_blank">View Calendar</a>
+							<a class="btn btn-default" href="{$detailViewUrl}" target="_blank">View Event</a>
 						</div>
 					</div>
 				</div>

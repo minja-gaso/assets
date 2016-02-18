@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet version="2.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
-	<xsl:include href="../global_util.xsl" />
-	<xsl:include href="includes/calendar_variables.xsl" />
-	<xsl:include href="includes/calendar_nav.xsl" />
+	<xsl:include href="../../global_util.xsl" />
+	<xsl:include href="../includes/calendar_variables.xsl" />
+	<xsl:include href="../includes/calendar_nav.xsl" />
 
 	<xsl:template match="/">
 		<form action="" method="post" name="portal_form">
@@ -38,7 +38,7 @@
             <div class="form-group col-lg-2">
               <label for="CALENDAR_ROLE_ADD">Add Role</label>
               <div>
-								<button class="btn btn-primary" name="CALENDAR_ROLE_ADD" id="CALENDAR_ROLE_ADD" onclick="javascript:addRole();">Add Role</button>
+								<button class="btn btn-primary" name="CALENDAR_ROLE_ADD" id="CALENDAR_ROLE_ADD" onclick="javascript:addRole();submitForm();">Add Role</button>
 							</div>
             </div>
           </div>
@@ -55,7 +55,7 @@
 									<xsl:for-each select="/data/calendar/role[type='email']">
 										<tr>
 											<th><xsl:value-of select="email" /></th>
-											<th class="text-center"><a href="javascript:deleteRole('{id}');"><span class="fa fa-trash" /></a></th>
+											<th class="text-center"><a href="javascript:deleteRole('{id}');submitForm();"><span class="fa fa-trash" /></a></th>
 										</tr>
 									</xsl:for-each>
 								</tbody>
@@ -72,7 +72,7 @@
 									<xsl:for-each select="/data/calendar/role[type='manager']">
 										<tr>
 											<th><xsl:value-of select="email" /></th>
-											<th class="text-center"><a href="javascript:deleteRole('{id}');"><span class="fa fa-trash" /></a></th>
+											<th class="text-center"><a href="javascript:deleteRole('{id}');submitForm();"><span class="fa fa-trash" /></a></th>
 										</tr>
 									</xsl:for-each>
 								</tbody>
@@ -89,7 +89,7 @@
 									<xsl:for-each select="/data/calendar/role[type='admin']">
 										<tr>
 											<th><xsl:value-of select="email" /></th>
-											<th class="text-center"><a href="javascript:deleteRole('{id}');"><span class="fa fa-trash" /></a></th>
+											<th class="text-center"><a href="javascript:deleteRole('{id}');submitForm();"><span class="fa fa-trash" /></a></th>
 										</tr>
 									</xsl:for-each>
 								</tbody>
@@ -97,8 +97,8 @@
 						</div>
 					</div>
 					<div class="btn-toolbar">
-						<a class="btn btn-default" href="javascript:saveCalendar();">Save</a>
-						<a class="btn btn-default" href="javascript:calendars();">Back to Calendars</a>
+						<a class="btn btn-default" href="javascript:saveCalendar();submitForm();">Save</a>
+						<a class="btn btn-default" href="javascript:calendars();submitForm();">Back to Calendars</a>
 						<a class="btn btn-default" href="{$viewUrl}" target="_blank">View Form</a>
 					</div>
 				</div>

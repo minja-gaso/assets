@@ -4,6 +4,25 @@
     <xsl:if test="count(/data/message) &gt; 0">
       <xsl:key name="message-type" match="message" use="type" />
       <!--
+        Info messages
+      -->
+      <xsl:choose>
+        <xsl:when test="count(key('message-type', 'info')) &gt; 1">
+          <ul class="alert alert-info">
+            <xsl:for-each select="key('message-type', 'info')">
+              <li><xsl:value-of select="label" /></li>
+            </xsl:for-each>
+          </ul>
+        </xsl:when>
+        <xsl:when test="count(key('message-type', 'info')) = 1">
+          <div class="alert alert-info">
+            <xsl:for-each select="key('message-type', 'info')">
+              <xsl:value-of select="label" />
+            </xsl:for-each>
+          </div>
+        </xsl:when>
+      </xsl:choose>
+      <!--
         Error messages
       -->
       <xsl:choose>

@@ -36,7 +36,7 @@
 							<p class="help-block">Provide a short, detailed description of the image to help improve accessibility for the visually impaired and disabled.</p>
 							<input type="text" class="form-control" name="EVENT_IMAGE_DESCRIPTION" id="EVENT_IMAGE_DESCRIPTION" />
 						</div>
-						<button class="btn btn-primary" onclick="window.parent.document.getElementById('my_popup_close').click();window.parent.document.getElementById('uploaded').click();">Upload</button>
+						<button class="btn btn-primary" onclick="uploadClick();">Upload</button>
 					</fieldset>
         </form>
         <script>
@@ -63,6 +63,12 @@
           {
             document.getElementById('EVENT_IMAGE_NAME').value = element.value;
           }
+
+					function uploadClick()
+					{
+						window.parent.document.getElementById('my_popup_close').click();
+						window.parent.document.getElementById('uploaded').click();
+					}
         </script>
       </body>
     </html>

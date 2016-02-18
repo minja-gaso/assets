@@ -24,24 +24,45 @@
     			<div class="btn-group pull-right">
     				<a class="btn btn-default" href="javascript:createEvent();submitForm();"><span class="fa fa-calendar"><span class="hide">Add Event</span></span> Add Event</a>
     			</div>
+					<script>
+						$(document).ready(function(){
+							$('.clickable').click(function(){
+								var id = $(this).attr('id');
+								var target = $('.collapsed-' + id);
+								var toggle = $('.toggle-' + id);
+
+								$(target).each(function(){
+									$(this).toggle();
+								});
+
+								$(toggle).toggleClass('fa-minus');
+							});
+						});
+					</script>
 					<table class="table table-condensed">
 						<thead>
 							<tr>
-								<th class="col-lg-2 col-md-1 col-sm-2 text-center">Start Date</th>
-								<th class="col-lg-2 col-md-1 col-sm-2 text-center">End Date</th>
+								<th class="col-lg-1 col-md-1 col-sm-1 text-center">&#160;</th>
+								<th class="col-lg-1 col-md-1 col-sm-2 text-center">Start Date</th>
+								<th class="col-lg-1 col-md-1 col-sm-2 text-center">End Date</th>
 								<th class="col-lg-1 col-md-1 col-sm-2 text-center">Published</th>
-								<th class="col-lg-7 col-md-9 col-sm-6">Title</th>
+								<th class="col-lg-7 col-md-7 col-sm-6">Title</th>
 								<th class="col-lg-1 col-md-1 col-sm-2 text-center">Delete</th>
+								<th class="col-lg-1 col-md-1 col-sm-2 text-center">View</th>
 							</tr>
 						</thead>
 						<tbody>
-							<xsl:for-each select="/data/calendar/event">
-								<tr class="event-row">
-									<xsl:if test="parentId &gt; 0">
-										<xsl:attribute name="class">
-											<xsl:text>event-row bg-info</xsl:text>
-										</xsl:attribute>
-									</xsl:if>
+							<xsl:for-each select="/data/calendar/event[parentId=0]">
+								<xsl:variable name="id" select="id" />
+								<tr class="event-row clickable" id="{$id}" data-target="collapsed-{$id}">
+									<th class="text-center">
+										<xsl:choose>
+											<xsl:when test="count(/data/calendar/event[parentId=$id]) &gt; 0">
+												<span class="toggle-{$id} fa fa-plus" />
+											</xsl:when>
+											<xsl:otherwise>&#160;</xsl:otherwise>
+										</xsl:choose>
+									</th>
 									<td class="text-center">
 										<xsl:variable name="startDate">
 											<xsl:variable name="year" select="substring(startDate, 1, 4)" />
@@ -109,7 +130,84 @@
                       <span class="fa fa-trash fa-lg" />
 										</a>
 									</td>
+									<td class="text-center">
+										<a href="{concat($detailBaseUrl, '?eventID=', id)}" target="_blank">
+                      <span class="fa fa-search fa-lg" />
+										</a>
+									</td>
 								</tr>
+								<xsl:for-each select="/data/calendar/event[parentId=$id]">
+									<tr class="event-row collapsed-{parentId} bg-info" data-toggle="collapse" style="display:none;">
+										<th>&#160;</th>
+										<td class="text-center">
+											<xsl:variable name="startDate">
+												<xsl:variable name="year" select="substring(startDate, 1, 4)" />
+												<xsl:variable name="month" select="substring(startDate, 6, 2)" />
+												<xsl:variable name="day" select="substring(startDate, 9, 2)" />
+												<xsl:value-of select="concat($month, '/', $day, '/', $year)" />
+											</xsl:variable>
+											<xsl:value-of select="$startDate" />
+										</td>
+										<td class="text-center">
+											<xsl:variable name="endDate">
+												<xsl:variable name="year" select="substring(endDate, 1, 4)" />
+												<xsl:variable name="month" select="substring(endDate, 6, 2)" />
+												<xsl:variable name="day" select="substring(endDate, 9, 2)" />
+												<xsl:value-of select="concat($month, '/', $day, '/', $year)" />
+											</xsl:variable>
+											<xsl:value-of select="$endDate" />
+										</td>
+										<td class="text-center">
+											<span>
+												<xsl:attribute name="class">
+													<xsl:choose>
+														<xsl:when test="published = 'true'">fa fa-check</xsl:when>
+														<xsl:otherwise>fa fa-close</xsl:otherwise>
+													</xsl:choose>
+												</xsl:attribute>
+											</span>
+										</td>
+										<td>
+											<a href="javascript:editEvent('{id}');submitForm();">
+												<xsl:attribute name="href">
+													<xsl:choose>
+														<xsl:when test="parentId &gt; 0">
+															<xsl:value-of select="concat('javascript:editNotify(', $quote, parentId, $quote, ',', $quote, id, $quote, ')')" />
+														</xsl:when>
+														<xsl:otherwise>
+																<xsl:value-of select="concat('javascript:editEvent(', $quote, id, $quote, ');submitForm();')" />
+														</xsl:otherwise>
+													</xsl:choose>
+												</xsl:attribute>
+												<xsl:choose>
+													<xsl:when test="string-length(title) &gt; 0">
+														<span>
+															<xsl:text><xsl:value-of select="title" /></xsl:text>
+														</span>
+													</xsl:when>
+													<xsl:otherwise>
+														<span class="bg-danger text-danger">Untitled Event</span>
+													</xsl:otherwise>
+												</xsl:choose>
+											</a>
+										</td>
+										<td class="text-center">
+											<a>
+												<xsl:attribute name="href">
+													<xsl:choose>
+														<xsl:when test="parentId &gt; 0">
+															<xsl:value-of select="concat('javascript:deleteNotify(', $quote, parentId, $quote, ',', $quote, id, $quote, ')')" />
+														</xsl:when>
+														<xsl:otherwise>
+																<xsl:value-of select="concat('javascript:deleteEvent(', $quote, id, $quote, ');submitForm();')" />
+														</xsl:otherwise>
+													</xsl:choose>
+												</xsl:attribute>
+												<span class="fa fa-trash fa-lg" />
+											</a>
+										</td>
+									</tr>
+								</xsl:for-each>
 							</xsl:for-each>
 						</tbody>
 					</table>

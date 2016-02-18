@@ -58,10 +58,12 @@ CREATE TABLE IF NOT EXISTS calendar.events
 	event_end_date date NOT NULL DEFAULT current_date,
 	event_end_time time without time zone NOT NULL DEFAULT '09:00:00',
 	event_title character varying NOT NULL DEFAULT '',
+	event_title_recurring_label character varying NOT NULL DEFAULT '',
 	is_event_location_owned boolean NOT NULL DEFAULT true,
 	event_location character varying NOT NULL DEFAULT '',
 	event_location_additional_information character varying NOT NULL DEFAULT '',
 	event_description character varying NOT NULL DEFAULT '',
+	event_agenda character varying NOT NULL DEFAULT '',
 	event_speaker character varying NOT NULL DEFAULT '',
 	event_registration_label character varying NOT NULL DEFAULT '',
 	event_registration_url character varying NOT NULL DEFAULT '',
@@ -94,8 +96,6 @@ CREATE TABLE IF NOT EXISTS calendar.events
 	--FOREIGN KEY (fk_category_id) REFERENCES calendar.categories (category_id),
 	FOREIGN KEY (fk_calendar_id) REFERENCES calendar.calendars (calendar_id)
 );
-
-SELECT * FROM calendar.events;
 
 DROP TABLE IF EXISTS calendar.event_tags CASCADE;
 CREATE TABLE IF NOT EXISTS calendar.event_tags

@@ -51,6 +51,14 @@
 			</div>
 		</xsl:if>
 		<xsl:call-template name="display_mini_calendar" />
+		<div class="row">
+			<div class="col-lg-3 pull-right input-group">
+				<input type="text" class="form-control" name="keyword" />
+				<a class="input-group-addon">
+					<span class="fa fa-search" />
+				</a>
+			</div>
+		</div>
     <ol class="breadcrumb">
       <li class="active">Home</li>
     </ol>

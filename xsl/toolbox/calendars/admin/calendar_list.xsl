@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet version="2.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
-	<xsl:import href="includes/calendar_variables.xsl" />
+	<xsl:include href="../../global_util.xsl" />
+	<xsl:include href="../includes/calendar_variables.xsl" />
+	<xsl:include href="../includes/calendar_nav.xsl" />
 	<xsl:template match="/">
 		<form action="" method="post" name="portal_form">
 			<input type="hidden" name="COMPONENT_ID" value="{/data/environment/componentId}" />

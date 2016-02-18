@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet version="2.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
-	<xsl:include href="../global_util.xsl" />
-	<xsl:include href="includes/calendar_variables.xsl" />
-	<xsl:include href="includes/calendar_nav.xsl" />
+	<xsl:include href="../../global_util.xsl" />
+	<xsl:include href="../includes/calendar_variables.xsl" />
+	<xsl:include href="../includes/calendar_nav.xsl" />
 
 	<xsl:template match="/">
 		<form action="" method="post" name="portal_form">
@@ -87,7 +87,7 @@
 					</div>
 					<div class="btn-toolbar">
 						<a class="btn btn-default" href="javascript:saveCalendar();submitForm();">Save</a>
-						<a class="btn btn-default" href="javascript:calendars();">Back to Calendars</a>
+						<a class="btn btn-default" href="javascript:calendars();submitForm();">Back to Calendars</a>
 						<a class="btn btn-default" href="{$listUrl}" target="_blank">View Calendar</a>
 					</div>
 				</div>

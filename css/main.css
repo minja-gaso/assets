@@ -22,85 +22,89 @@ body {
 body#toolbox {
   margin-top: 24px;
 }
-#sidebar .list-group-item.active a {
+body#toolbox #sidebar .list-group-item.active a {
   color: #ffffff;
 }
-#sidebar .highlight { background-color: yellow; }
-#content {
+body#toolbox #sidebar .highlight {
+  background-color: yellow;
+}
+body#toolbox #content {
   background-color: #ffffff;
 }
-ul.alert, ol.alert {
+body#toolbox #content ul.alert,
+body#toolbox #content ol.alert {
   list-style-position: inside;
 }
+.required { color: red; font-size: 120%; vertical-align: middle; }
+.radio-inline.first { padding-left: 0; }
 
 /* inner page navigation */
-#content nav {
+body#toolbox #content nav {
   margin-bottom: 12px;
 }
-#content nav ul {
+body#toolbox #content nav ul {
   xxxbackground-color: #008fbe;
 }
-#content nav ul li {
+body#toolbox #content nav ul li {
   margin-left: 0;
 }
-#content nav ul a {
+body#toolbox #content nav ul a {
   border-radius: 0;
-  xxxcolor: #fff;
 }
-#content nav ul a:hover,
-#content nav ul li.active a {
+body#toolbox #content nav ul a:hover,
+body#toolbox #content nav ul li.active a {
   background-color: #fff;
   color: #008fbe;
 }
-#content nav ul li.active a {
+body#toolbox #content nav ul li.active a {
   font-weight: bold;
 }
 
 /* inner page actions */
-#content .action-row {
+body#toolbox #content .action-row {
   background-color: #F7F7F7;
   margin-bottom: 12px;
 }
-#content .action-row a:hover {
+body#toolbox #content .action-row a:hover {
   background-color: #E8E8E8;
 }
 
 /* inner page content */
-#content h2 {
+body#toolbox #content h2 {
   color: #0A569B;
   margin-top: 0;
 }
-#content .btn > .fa {
+body#toolbox #content .btn > .fa {
   margin-right: 4px;
   vertical-align: middle;
 }
-#content .btn.btn-create {
+body#toolbox #content .btn.btn-create {
   padding: 30px 10px;
   width: 250px;
 }
-#content h2.screen-title {
+body#toolbox #content h2.screen-title {
   font-size: 24px;
 }
-#content h2.screen-title small {
+body#toolbox #content h2.screen-title small {
   margin-left: 12px;
 }
-#content legend {
+body#toolbox #content legend {
   border: none;
   font-size: 14px;
   font-weight: bold;
   margin-bottom: 0;
 }
-#content .radio {
+body#toolbox #content .radio {
   margin-bottom: 0;
 }
-#content .radio.first {
+body#toolbox #content .radio.first {
   margin-top: 0;
 }
-#content table caption {
+body#toolbox #content table caption {
   color: #000000;
   font-weight: bold;
 }
-#content table thead th {
+body#toolbox #content table thead th {
   font-weight: normal;
 }
 #content .pagebreak-row th,

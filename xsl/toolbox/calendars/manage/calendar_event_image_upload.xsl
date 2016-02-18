@@ -22,13 +22,14 @@
 					</nav>
 					<h2>Add an Event Image</h2>
 					<xsl:call-template name="messages" />
+					<xsl:variable name="parentId" select="/data/event/calendar/parentId" />
 					<xsl:choose>
 						<xsl:when test="string-length(/data/calendar/event/fileName) &gt; 0">
 							<div class="form-group">
 								<label for="EVENT_HEADER">
 									Uploaded Image
 									<xsl:if test="string-length(/data/calendar/event/fileName) &gt; 0">
-										<a class="label label-primary" onclick="javascript:deleteEventImage();">Delete Image</a>
+										<a class="label label-primary" onclick="javascript:deleteEventImage();submitForm();">Delete Image</a>
 									</xsl:if>
 								</label>
 								<div>
@@ -58,8 +59,8 @@
 					</xsl:choose>
 					<div class="form-row">
 						<div class="btn-toolbar">
-							<a class="btn btn-default" href="javascript:saveEvent();">Save</a>
-							<a class="btn btn-default" href="javascript:eventListScreen();">Back to Events</a>
+							<a class="btn btn-default" href="javascript:saveEvent();submitForm();">Save</a>
+							<a class="btn btn-default" href="javascript:eventListScreen();submitForm();">Back to Events</a>
 							<a class="btn btn-default" href="{$viewUrl}" target="_blank">View Calendar</a>
 						</div>
 					</div>
