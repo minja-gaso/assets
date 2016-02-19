@@ -5,7 +5,7 @@
     <ul class="list-group">
       <xsl:for-each select="/data/calendar/category">
         <li class="list-group-item">
-          <a href="/calendar/search/{/data/calendar/prettyUrl}?type=category&amp;id={id}">
+          <a href="/calendar/search/{/data/calendar/prettyUrl}?searchType=category&amp;categoryId={id}">
             <xsl:value-of select="label" />
           </a>
         </li>

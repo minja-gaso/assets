@@ -275,9 +275,9 @@
 					</div>
 					<div class="form-row">
 						<div class="btn-toolbar">
-							<a class="btn btn-default" href="javascript:saveQuestions();">Save</a>
-							<a class="btn btn-default" href="javascript:formListScreen();">Back to Forms</a>
-							<a class="btn btn-default" href="{$viewUrl}" target="_blank">View Form</a>
+							<a class="btn btn-default disabled" href="javascript:submitForm();">Save</a>
+							<a class="btn btn-default" href="javascript:calendars();submitForm();">Back to Calendars</a>
+							<a class="btn btn-default" href="{$viewUrl}" target="_blank">View Calendar</a>
 						</div>
 					</div>
 				</div>
