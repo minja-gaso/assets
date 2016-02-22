@@ -14,12 +14,12 @@
 			<input type="hidden" name="EVENT_ID" value="{/data/calendar/event/id}" />
 			<!-- survey content -->
 			<div class="row">
-				<div class="col-lg-12">
-					<nav>
-						<xsl:call-template name="event_content_navigation">
-							<xsl:with-param name="SCREEN" select="'EVENT_IMAGE_UPLOAD'" />
-						</xsl:call-template>
-					</nav>
+				<nav>
+					<xsl:call-template name="event_content_navigation">
+						<xsl:with-param name="SCREEN" select="'EVENT_IMAGE_UPLOAD'" />
+					</xsl:call-template>
+				</nav>
+				<div class="col-lg-12 bordered-area">
 					<h2>Add an Event Image</h2>
 					<xsl:call-template name="messages" />
 					<xsl:variable name="parentId" select="/data/event/calendar/parentId" />
@@ -58,9 +58,9 @@
 						</xsl:otherwise>
 					</xsl:choose>
 					<div class="form-row">
-						<div class="btn-toolbar">
-							<a class="btn btn-default" href="javascript:saveEvent();submitForm();">Save</a>
-							<a class="btn btn-default" href="javascript:eventListScreen();submitForm();">Back to Events</a>
+						<div class="btn-toolbar btn-actions">
+							<button class="btn btn-default" disabled="disabled">Save</button>
+							<button class="btn btn-default" onclick="eventListScreen();submitForm();">Back to Events</button>
 							<a class="btn btn-default" href="{$viewUrl}" target="_blank">View Calendar</a>
 						</div>
 					</div>

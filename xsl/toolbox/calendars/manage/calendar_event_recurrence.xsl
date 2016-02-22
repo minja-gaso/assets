@@ -13,12 +13,12 @@
 			<input type="hidden" name="EVENT_ID" value="{/data/calendar/event/id}" />
 			<!-- survey content -->
 			<div class="row">
-				<div class="col-lg-12">
-					<nav>
-						<xsl:call-template name="event_content_navigation">
-							<xsl:with-param name="SCREEN" select="'EVENT_RECURRENCE'" />
-						</xsl:call-template>
-					</nav>
+				<nav>
+					<xsl:call-template name="event_content_navigation">
+						<xsl:with-param name="SCREEN" select="'EVENT_RECURRENCE'" />
+					</xsl:call-template>
+				</nav>
+				<div class="col-lg-12 bordered-area">
 					<h2>Event Recurrence</h2>
 					<xsl:call-template name="messages" />
 					<div class="form-group" id="event-recur">

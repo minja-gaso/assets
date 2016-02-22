@@ -13,12 +13,12 @@
 			<input type="hidden" name="CATEGORY_ID" />
 			<!-- survey content -->
 			<div class="row">
-				<div class="col-lg-12">
-					<nav>
-						<xsl:call-template name="primary_content_navigation">
-							<xsl:with-param name="SCREEN" select="'CATEGORIES'" />
-						</xsl:call-template>
-					</nav>
+				<nav>
+					<xsl:call-template name="primary_content_navigation">
+						<xsl:with-param name="SCREEN" select="'CATEGORIES'" />
+					</xsl:call-template>
+				</nav>
+				<div class="col-lg-12 bordered-area">
 					<h2>Categories</h2>
 					<xsl:call-template name="messages" />
 					<div class="form-group">
@@ -41,14 +41,14 @@
 								<xsl:for-each select="/data/calendar/category">
 									<tr>
 										<th><xsl:value-of select="label" /></th>
-										<th class="text-center"><a href="javascript:deleteCategory('{id}');"><span class="fa fa-trash" /></a></th>
+										<th class="text-center"><a href="javascript:deleteCategory('{id}');submitForm();"><span class="fa fa-trash" /></a></th>
 									</tr>
 								</xsl:for-each>
 							</tbody>
 						</table>
 					</div>
 					<div class="form-row">
-						<div class="btn-group btn-actions">
+						<div class="btn-toolbar btn-actions">
 							<a class="btn btn-default disabled" href="javascript:saveEvent();">Save</a>
 							<a class="btn btn-default" href="javascript:eventListScreen();">Back to Events</a>
 							<a class="btn btn-default" href="{$viewUrl}" target="_blank">View Calendar</a>

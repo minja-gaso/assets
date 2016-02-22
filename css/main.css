@@ -13,7 +13,8 @@
 .table-condensed > thead > tr > td,
 .table-condensed > thead > tr > th { padding: 3px 5px; }
 
-.btn-actions .btn {
+.btn-actions .btn,
+.btn {
   background-color: #58748B;
   border: none;
   border-radius: 0;
@@ -22,9 +23,35 @@
 .btn-actions .btn:hover {
   background-color: #7990A2;
 }
-
+.help-block {
+  display: none;
+}
 .fa-check { color: green; }
 .fa-close { color: red; }
+body#toolbox #content .nav.nav-tabs > li > a {
+    background-color: #58748b;
+    border: 1px solid #58748b;
+    color: #fff;
+}
+body#toolbox #content .nav.nav-tabs > li.active {
+  margin-top: 1px;
+}
+body#toolbox #content .nav.nav-tabs > li.active > a {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-bottom: 0 none;
+    color: #008fbe;
+}
+body#toolbox #content .nav.nav-tabs > li.help > a {
+    background-color: #cb3334;
+    border-color: #cb3334;
+    font-weight: bold;
+}
+body#toolbox #content .nav.nav-tabs > li.faq > a {
+    background-color: #005FAD;
+    border-color: #005FAD;
+    font-weight: bold;
+}
 
 /*
  *  styles
@@ -187,9 +214,9 @@ nav#wizard .stepNumber {
     width: 40px;
     z-index: 2;
 }
-nav#wizard a.done .stepDesc,
-nav#wizard a.selected .stepDesc {
-    color: #2b3d53;
+nav#wizard a.done:hover .stepNumber {
+  background-color: #ffffff;
+  color: #007aff;
 }
 nav#wizard .stepDesc {
     color: #8e8e93;
@@ -198,13 +225,27 @@ nav#wizard .stepDesc {
     margin-top: 4px;
     max-width: 100%;
     table-layout: fixed;
+    text-decoration: underline;
     text-align: center;
     word-wrap: break-word;
     z-index: 104;
 }
-nav#wizard a.done:hover .stepNumber {
-  background-color: #ffffff;
-  color: #007aff;
+nav#wizard li > a:hover::before,
+nav#wizard a:hover .stepNumber,
+nav#wizard a:hover .stepDesc {
+  border-color: #FF69B4;
+  color: #FF69B4;
+}
+nav#wizard li > a.selected:hover::before,
+nav#wizard a.selected:hover .stepNumber,
+nav#wizard a.selected:hover .stepDesc {
+  border-color: #007aff;
+  color: #2b3d53;
+}
+nav#wizard a.done .stepDesc,
+nav#wizard a.selected .stepDesc {
+    color: #2b3d53;
+    text-decoration: none;
 }
 
 /* inner page actions */
@@ -313,27 +354,65 @@ body#toolbox #content table thead th {
 #content .form-inline .nth-column {
   margin-right: 8px;
 }
+body#toolbox #content div.help-block {
+  background-color: #f7f7f8;
+  margin-bottom: 36px;
+  padding: 12px;
+}
+body#toolbox #content div.help-block dl:last-child {
+  margin-bottom: 0;
+}
+.panel, .panel-heading {
+  border-radius: 0;
+}
+.panel-default, .panel-default .panel-heading {
+  border-color: #359ec4;
+}
+.panel-default .panel-heading {
+  background-color: #359ec4;
+  color: #fff;
+  font-weight: bold;
+}
 
 /*
  *  Toolbox form styles
  */
-.form-group label {
+.form-group label,
+.form-group strong.label {
   color: #0c3d75;
+  display: inline-block;
+  font-size: 100%;
+  font-weight: 700;
+  margin-bottom: 5px;
+  max-width: 100%;
+  padding: 0;
 }
 .form-group .help-block {
   color: #424242;
   font-size: 85%;
 }
-.form-group .form-control {
-  border: 2px solid #b2b2b2;
+.form-group .form-control,
+.form-group trix-editor,
+.form-group ul.tagit {
+  background-color: #f9f9f9;
+  border: 2px solid #359ec4;
   border-radius: 0;
   box-shadow: 0;
   color: #424242;
   height: 46px;
   padding: 12px;
 }
+.form-group trix-editor {
+  height: 100%;
+}
+.form-group ul.tagit {
+  padding: 8px;
+}
+.form-group ul.tagit li {
+  padding: 0 18px 0 8px;
+}
 .input-group-url .input-group-addon {
-  border: 2px solid #b2b2b2;
+  border: 2px solid #359ec4;
   border-right: none;
   border-radius: 0;
 }
@@ -342,7 +421,7 @@ body#toolbox #content table thead th {
 }
 .input-group-url .input-group-addon:last-child {
   background-color: #ffffff;
-  border: 2px solid #b2b2b2;
+  border: 2px solid #359ec4;
   border-left: none;
   color: #333333;
 }

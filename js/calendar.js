@@ -88,3 +88,7 @@ function toggleCheckboxes(self, name)
     element.checked = isChecked;
   }
 }
+
+$(".help").click(function(){
+  $(".help-block").toggle();
+})

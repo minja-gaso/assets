@@ -217,6 +217,36 @@
 							</div>
 						</div>
 					</xsl:if>
+					<xsl:if test="string-length(contactName) &gt; 0">
+						<div class="row detail-item">
+							<div class="col-lg-2 col-md-3 col-sm-3">
+								<strong>Contact Name</strong>
+							</div>
+							<div class="col-lg-10 col-md-9 col-sm-9">
+								<xsl:value-of select="contactName" />
+							</div>
+						</div>
+					</xsl:if>
+					<xsl:if test="string-length(contactPhone) &gt; 0">
+						<div class="row detail-item">
+							<div class="col-lg-2 col-md-3 col-sm-3">
+								<strong>Contact Phone</strong>
+							</div>
+							<div class="col-lg-10 col-md-9 col-sm-9">
+								<a href="tel:{contactPhone}"><xsl:value-of select="contactPhone" /></a>
+							</div>
+						</div>
+					</xsl:if>
+					<xsl:if test="string-length(contactEmail) &gt; 0">
+						<div class="row detail-item">
+							<div class="col-lg-2 col-md-3 col-sm-3">
+								<strong>Contact Email</strong>
+							</div>
+							<div class="col-lg-10 col-md-9 col-sm-9">
+								<a href="mailto:{contactEmail}"><xsl:value-of select="contactEmail" /></a>
+							</div>
+						</div>
+					</xsl:if>
 					<xsl:if test="string-length(speaker) &gt; 0">
 						<div class="row detail-item">
 							<div class="col-lg-2 col-md-3 col-sm-3">

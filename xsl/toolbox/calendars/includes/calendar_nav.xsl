@@ -14,17 +14,22 @@
           <li role="presentation"><a href="javascript:switchTab('GENERAL');submitForm();">General</a></li>
         </xsl:otherwise>
       </xsl:choose>
-        <!--
-          Roles - set privileges
-        -->
-        <xsl:choose>
-          <xsl:when test="$SCREEN = 'ROLES'">
-            <li role="presentation" class="active pull-right"><a href="#">Roles</a></li>
-          </xsl:when>
-          <xsl:otherwise>
-            <li role="presentation" class="pull-right"><a href="javascript:switchTab('ROLES');submitForm();">Roles</a></li>
-          </xsl:otherwise>
-        </xsl:choose>
+      <!--
+        Roles - set privileges
+      -->
+      <xsl:choose>
+        <xsl:when test="$SCREEN = 'ROLES'">
+          <li role="presentation" class="active"><a href="#">Roles</a></li>
+        </xsl:when>
+        <xsl:otherwise>
+          <li role="presentation" class=""><a href="javascript:switchTab('ROLES');submitForm();">Roles</a></li>
+        </xsl:otherwise>
+      </xsl:choose>
+      <!--
+        FAQ & Help
+      -->
+      <li role="presentation" class="help pull-right"><a href="javascript:void(0);"><span class="fa fa-question-circle fa-lg">&#160;</span>&#160;Help</a></li>
+      <li role="presentation" class="faq pull-right"><a href="/faq/calendar.html" target="_blank"><span class="fa fa-exclamation-circle fa-lg">&#160;</span>&#160;FAQ</a></li>
     </ul>
   </xsl:template>
   <xsl:template name="primary_content_navigation">

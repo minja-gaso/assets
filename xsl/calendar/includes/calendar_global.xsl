@@ -12,4 +12,9 @@
       </xsl:for-each>
     </ul>
   </xsl:template>
+  <xsl:template name="external_files">
+    <!-- Bootstrap -->
+    <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" />
+  </xsl:template>
 </xsl:stylesheet>

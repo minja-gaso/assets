@@ -20,6 +20,32 @@
 				</nav>
 				<div class="col-lg-12 bordered-area">
 					<h2>Events for <em><xsl:value-of select="/data/calendar/title" /></em></h2>
+					<nav id="wizard">
+						<h3>Quick Jumps</h3>
+						<ul>
+							<li>
+								<a class="selected done" href="javascript:document.portal_form.COMPONENT_ID.value='3';switchTab('GENERAL');" title="current page">
+									<span class="stepNumber">1</span>
+									<span class="stepDesc text-small">Provide basic info</span>
+								</a>
+							</li>
+							<li>
+								<a class="selected done" href="javascript:document.portal_form.COMPONENT_ID.value='3';switchTab('ROLES');submitForm();">
+									<span class="stepNumber">2</span>
+									<span class="stepDesc text-small">Assign access for other users</span>
+								</a>
+							</li>
+							<li>
+								<a class="selected" href="javascript:void(0);">
+									<span class="stepNumber">3</span>
+									<span class="stepDesc text-small">Start adding events</span>
+								</a>
+							</li>
+						</ul>
+					</nav>
+					<xsl:if test="count(/data/calendar/category) = 0">
+						<div class="alert alert-info"><span class="fa fa-info-circle fa-lg">&#160;</span> Consider adding categories to better identify the type of event.</div>
+					</xsl:if>
 					<xsl:call-template name="messages" />
     			<div class="form-group btn-group pull-right">
     				<a class="btn btn-primary btn-lg" href="javascript:createEvent();submitForm();"><span class="fa fa-calendar fa-lg"><span class="hide">Add New Event</span></span> Add New Event</a>
@@ -278,7 +304,7 @@
 							}
 						</script>
 					</div>
-					<div class="btn-group btn-actions">
+					<div class="btn-toolbar btn-actions">
 						<a class="btn btn-default disabled" href="javascript:submitForm();">Save</a>
 						<a class="btn btn-default" href="javascript:calendars();submitForm();">Back to Calendars</a>
 						<a class="btn btn-default" href="{$viewUrl}" target="_blank">View Calendar</a>

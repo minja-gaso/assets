@@ -9,7 +9,7 @@
 			<input type="hidden" name="ACTION" />
 			<input type="hidden" name="SCREEN" value="FORM_LIST" />
 			<input type="hidden" name="CALENDAR_ID" />
-			<div class="btn-group">
+			<div class="btn-toolbar">
 				<a class="btn btn-default" href="javascript:createCalendar();submitForm();"><span class="fa fa-plus"><span class="hide">Plus</span></span> Create New Calendar</a>
 				<a class="btn btn-default"><span class="fa fa-trash"><span class="hide">Delete Calendar(s)</span></span> Delete Calendar(s)</a>
 			</div>

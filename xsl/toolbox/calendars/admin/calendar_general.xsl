@@ -24,25 +24,24 @@
 						<ul>
 							<li>
 								<a class="selected" href="javascript:void(0);" title="current page">
-									<div class="stepNumber">1</div>
+									<span class="stepNumber">1</span>
 									<span class="stepDesc text-small">Provide basic info</span>
 								</a>
 							</li>
 							<li>
 								<a href="javascript:switchTab('ROLES');submitForm();">
-									<div class="stepNumber">2</div>
+									<span class="stepNumber">2</span>
 									<span class="stepDesc text-small">Assign access for other users</span>
 								</a>
 							</li>
 							<li>
 								<a href="javascript:document.portal_form.COMPONENT_ID.value=4;editCalendar('{/data/calendar/id}');submitForm();">
-									<div class="stepNumber">3</div>
+									<span class="stepNumber">3</span>
 									<span class="stepDesc text-small">Start adding events</span>
 								</a>
 							</li>
 						</ul>
 					</nav>
-
 					<xsl:call-template name="messages" />
 					<div class="row" id="title">
 						<div class="form-group col-xs-12">
@@ -54,12 +53,7 @@
 						<div class="form-group col-xs-12">
 							<label for="CALENDAR_URL">Standard URL</label>
 							<p class="help-block">If you do not care about SEO, feel free to link to this URL.</p>
-							<div class="input-group input-group-url">
-								<span class="input-group-addon"><xsl:value-of select="$baseUrl" /></span>
-								<input type="text" class="form-control" name="CALENDAR_URL" id="CALENDAR_URL" value="{/data/calendar/id}" />
-								<input type="hidden" name="HIDDEN_CALENDAR_URL" id="HIDDEN_CALENDAR_URL" value="{$url}" />
-								<a href="{concat($baseUrl, /data/calendar/id)}" class="input-group-addon" target="_blank"><span class="fa fa-external-link" /></a>
-							</div>
+							<input type="text" class="form-control" value="{$url}" disabled="disabled" readonly="readonly" />
 						</div>
 					</div>
 					<div class="row" id="pretty-url">
@@ -115,7 +109,7 @@
 							</input>
 						</div>
 					</div>
-					<div class="btn-group btn-actions">
+					<div class="btn-toolbar btn-actions">
 						<a class="btn btn-default" href="javascript:saveCalendar();submitForm();">Save</a>
 						<a class="btn btn-default" href="javascript:calendars();submitForm();">Back to Calendars</a>
 						<a class="btn btn-default" href="{$listUrl}" target="_blank">View Calendar</a>

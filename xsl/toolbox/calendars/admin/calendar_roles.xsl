@@ -44,6 +44,20 @@
 						</ul>
 					</nav>
 					<xsl:call-template name="messages" />
+					<div class="help-block">
+						<dl>
+							<dt>Email Recipient</dt>
+							<dd>Will receive emails when non-admin creates a new event.  They will be able to determine whether to publish the event or place under further review.</dd>
+						</dl>
+						<dl>
+							<dt>Content Manager</dt>
+							<dd>Granted the ability to create, edit and delete events for the calendar.</dd>
+						</dl>
+						<dl>
+							<dt>Administrator</dt>
+							<dd>All the abilities of a <em>Content Manager</em> and access to <strong>Setup</strong>.</dd>
+						</dl>
+					</div>
 					<div class="row">
             <div class="form-group col-lg-5">
               <label for="CALENDAR_ROLE_EMAIL">Email Address</label>
@@ -59,9 +73,9 @@
               </select>
             </div>
             <div class="form-group col-lg-2">
-              <label for="CALENDAR_ROLE_ADD">Add Role</label>
+              <label for="CALENDAR_ROLE_ADD">Create Role</label>
               <div>
-								<button class="btn btn-primary" name="CALENDAR_ROLE_ADD" id="CALENDAR_ROLE_ADD" onclick="javascript:addRole();submitForm();">Add Role</button>
+								<button class="btn btn-primary btn-lg" name="CALENDAR_ROLE_ADD" id="CALENDAR_ROLE_ADD" onclick="javascript:addRole();submitForm();">Add User</button>
 							</div>
             </div>
           </div>
@@ -119,7 +133,7 @@
 							</table>
 						</div>
 					</div>
-					<div class="btn-group btn-actions">
+					<div class="btn-toolbar btn-actions">
 						<a class="btn btn-default" href="javascript:saveCalendar();submitForm();">Save</a>
 						<a class="btn btn-default" href="javascript:calendars();submitForm();">Back to Calendars</a>
 						<a class="btn btn-default" href="{$viewUrl}" target="_blank">View Form</a>
