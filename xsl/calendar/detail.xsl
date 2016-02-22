@@ -247,7 +247,7 @@
 							</div>
 						</div>
 					</xsl:if>
-					<xsl:if test="count(/data/calendar/event[id=$eventId]) &gt; 0 and parentId = 0">
+					<xsl:if test="count(/data/calendar/event[parentId=$eventId]) &gt; 0 and parentId = 0">
 						<div class="row detail-item">
 							<div class="col-lg-2 col-md-3 col-sm-3">
 								<strong>Recurring on</strong>

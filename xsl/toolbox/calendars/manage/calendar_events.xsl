@@ -13,16 +13,16 @@
 			<input type="hidden" name="EVENT_ID" />
 			<!-- survey content -->
 			<div class="row">
-				<div class="col-lg-12">
-					<nav>
-						<xsl:call-template name="primary_content_navigation">
-							<xsl:with-param name="SCREEN" select="'EVENTS'" />
-						</xsl:call-template>
-					</nav>
+				<nav>
+					<xsl:call-template name="primary_content_navigation">
+						<xsl:with-param name="SCREEN" select="'EVENTS'" />
+					</xsl:call-template>
+				</nav>
+				<div class="col-lg-12 bordered-area">
 					<h2>Events for <em><xsl:value-of select="/data/calendar/title" /></em></h2>
 					<xsl:call-template name="messages" />
-    			<div class="btn-group pull-right">
-    				<a class="btn btn-default" href="javascript:createEvent();submitForm();"><span class="fa fa-calendar"><span class="hide">Add Event</span></span> Add Event</a>
+    			<div class="form-group btn-group pull-right">
+    				<a class="btn btn-primary btn-lg" href="javascript:createEvent();submitForm();"><span class="fa fa-calendar fa-lg"><span class="hide">Add New Event</span></span> Add New Event</a>
     			</div>
 					<script>
 						$(document).ready(function(){
@@ -43,10 +43,10 @@
 						<thead>
 							<tr>
 								<th class="col-lg-1 col-md-1 col-sm-1 text-center">&#160;</th>
-								<th class="col-lg-1 col-md-1 col-sm-2 text-center">Start Date</th>
-								<th class="col-lg-1 col-md-1 col-sm-2 text-center">End Date</th>
+								<th class="col-lg-1 col-md-2 col-sm-2 text-center">Start Date</th>
+								<!--<th class="col-lg-1 col-md-1 col-sm-2 text-center">End Date</th>-->
 								<th class="col-lg-1 col-md-1 col-sm-2 text-center">Published</th>
-								<th class="col-lg-7 col-md-7 col-sm-6">Title</th>
+								<th class="col-lg-6 col-md-6 col-sm-6">Title</th>
 								<th class="col-lg-1 col-md-1 col-sm-2 text-center">Delete</th>
 								<th class="col-lg-1 col-md-1 col-sm-2 text-center">View</th>
 							</tr>
@@ -72,6 +72,7 @@
 										</xsl:variable>
 										<xsl:value-of select="$startDate" />
 									</td>
+									<!--
 									<td class="text-center">
 										<xsl:variable name="endDate">
 											<xsl:variable name="year" select="substring(endDate, 1, 4)" />
@@ -81,6 +82,7 @@
 										</xsl:variable>
 										<xsl:value-of select="$endDate" />
 									</td>
+								-->
 									<td class="text-center">
 										<span>
 											<xsl:attribute name="class">
@@ -148,6 +150,7 @@
 											</xsl:variable>
 											<xsl:value-of select="$startDate" />
 										</td>
+										<!--
 										<td class="text-center">
 											<xsl:variable name="endDate">
 												<xsl:variable name="year" select="substring(endDate, 1, 4)" />
@@ -157,6 +160,7 @@
 											</xsl:variable>
 											<xsl:value-of select="$endDate" />
 										</td>
+									-->
 										<td class="text-center">
 											<span>
 												<xsl:attribute name="class">
@@ -206,6 +210,7 @@
 												<span class="fa fa-trash fa-lg" />
 											</a>
 										</td>
+										<td>&#160;</td>
 									</tr>
 								</xsl:for-each>
 							</xsl:for-each>
@@ -273,12 +278,10 @@
 							}
 						</script>
 					</div>
-					<div class="form-row">
-						<div class="btn-toolbar">
-							<a class="btn btn-default disabled" href="javascript:submitForm();">Save</a>
-							<a class="btn btn-default" href="javascript:calendars();submitForm();">Back to Calendars</a>
-							<a class="btn btn-default" href="{$viewUrl}" target="_blank">View Calendar</a>
-						</div>
+					<div class="btn-group btn-actions">
+						<a class="btn btn-default disabled" href="javascript:submitForm();">Save</a>
+						<a class="btn btn-default" href="javascript:calendars();submitForm();">Back to Calendars</a>
+						<a class="btn btn-default" href="{$viewUrl}" target="_blank">View Calendar</a>
 					</div>
 				</div>
 			</div>

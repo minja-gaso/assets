@@ -48,7 +48,16 @@
 									<td><a href="javascript:editCalendar('{id}');submitForm();"><xsl:value-of select="title" /></a></td>
 									<td class="text-center"><a href="{$listUrl}" target="_blank"><span class="fa fa-search" /></a></td>
 									<td class="text-center"><a href="javascript:editCalendar('{id}');submitForm();"><span class="fa fa-edit" /></a></td>
-									<td class="text-center"><a href="javascript:deleteCalendar('{id}');submitForm();"><span class="fa fa-trash" /></a></td>
+									<td class="text-center">
+										<xsl:choose>
+											<xsl:when test="/data/user/emailAddress = 'minja.gaso@bswhealth.org'">
+												<a href="javascript:deleteCalendar('{id}');submitForm();"><span class="fa fa-trash" /></a>
+											</xsl:when>
+											<xsl:otherwise>
+												<span class="fa fa-trash fa-disabled" />
+											</xsl:otherwise>
+										</xsl:choose>
+									</td>
 								</tr>
 							</xsl:for-each>
 						</xsl:when>

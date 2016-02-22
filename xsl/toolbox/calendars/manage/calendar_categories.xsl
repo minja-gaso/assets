@@ -26,7 +26,7 @@
 						<div class="input-group">
 							<input type="text" class="form-control" name="CALENDAR_ADD_CATEGORY" id="CALENDAR_ADD_CATEGORY" />
 							<span class="input-group-btn">
-								<button class="btn btn-primary" onclick="javascript:addCategory();">Add Category</button>
+								<button class="btn btn-primary btn-lg" onclick="javascript:addCategory();">Add Category</button>
 							</span>
 						</div>
 					</div>
@@ -48,8 +48,8 @@
 						</table>
 					</div>
 					<div class="form-row">
-						<div class="btn-toolbar">
-							<a class="btn btn-default" href="javascript:saveEvent();">Save</a>
+						<div class="btn-group btn-actions">
+							<a class="btn btn-default disabled" href="javascript:saveEvent();">Save</a>
 							<a class="btn btn-default" href="javascript:eventListScreen();">Back to Events</a>
 							<a class="btn btn-default" href="{$viewUrl}" target="_blank">View Calendar</a>
 						</div>

@@ -13,13 +13,36 @@
 			<input type="hidden" name="ROLE_ID" />
 			<!-- survey content -->
 			<div class="row">
+				<nav>
+					<xsl:call-template name="primary_navigation">
+						<xsl:with-param name="SCREEN" select="'ROLES'" />
+					</xsl:call-template>
+				</nav>
 				<div class="col-lg-12 bordered-area">
-					<nav>
-						<xsl:call-template name="primary_navigation">
-							<xsl:with-param name="SCREEN" select="'ROLES'" />
-						</xsl:call-template>
-					</nav>
 					<h2>Roles &amp; Privileges</h2>
+					<nav id="wizard">
+						<h3>Quick Jumps</h3>
+						<ul>
+							<li>
+								<a class="selected done" href="javascript:switchTab('GENERAL');submitForm();" title="go to general page">
+									<div class="stepNumber">1</div>
+									<span class="stepDesc text-small">Provide basic info</span>
+								</a>
+							</li>
+							<li>
+								<a class="selected" href="javascript:void(0);" title="current page">
+									<div class="stepNumber">2</div>
+									<span class="stepDesc text-small">Assign access for other users</span>
+								</a>
+							</li>
+							<li>
+								<a href="javascript:document.portal_form.COMPONENT_ID.value=4;editCalendar('{/data/calendar/id}');submitForm();">
+									<div class="stepNumber">3</div>
+									<span class="stepDesc text-small">Start adding events</span>
+								</a>
+							</li>
+						</ul>
+					</nav>
 					<xsl:call-template name="messages" />
 					<div class="row">
             <div class="form-group col-lg-5">
@@ -48,8 +71,8 @@
 							<label for="CALENDAR_ROLE_EMAIL_RECIPIENTS">Current Email Recipients</label>
 							<table class="table">
 								<thead>
-									<th class="col-lg-11">Email</th>
-									<th class="col-lg-1 text-center">Delete</th>
+									<th class="col-xs-11">Email</th>
+									<th class="col-xs-1 text-center">Delete</th>
 								</thead>
 								<tbody>
 									<xsl:for-each select="/data/calendar/role[type='email']">
@@ -65,8 +88,8 @@
 							<label for="CALENDAR_ROLE_MANAGERS">Current Content Managers</label>
 							<table class="table">
 								<thead>
-									<th class="col-lg-11">Email</th>
-									<th class="col-lg-1 text-center">Delete</th>
+									<th class="col-xs-11">Email</th>
+									<th class="col-xs-1 text-center">Delete</th>
 								</thead>
 								<tbody>
 									<xsl:for-each select="/data/calendar/role[type='manager']">
@@ -82,8 +105,8 @@
 							<label for="CALENDAR_ROLE_ADMINS">Current Administrators</label>
 							<table class="table">
 								<thead>
-									<th class="col-lg-11">Email</th>
-									<th class="col-lg-1 text-center">Delete</th>
+									<th class="col-xs-11">Email</th>
+									<th class="col-xs-1 text-center">Delete</th>
 								</thead>
 								<tbody>
 									<xsl:for-each select="/data/calendar/role[type='admin']">
@@ -96,7 +119,7 @@
 							</table>
 						</div>
 					</div>
-					<div class="btn-toolbar">
+					<div class="btn-group btn-actions">
 						<a class="btn btn-default" href="javascript:saveCalendar();submitForm();">Save</a>
 						<a class="btn btn-default" href="javascript:calendars();submitForm();">Back to Calendars</a>
 						<a class="btn btn-default" href="{$viewUrl}" target="_blank">View Form</a>

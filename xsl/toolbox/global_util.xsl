@@ -17,7 +17,7 @@
         <xsl:when test="count(key('message-type', 'info')) = 1">
           <div class="alert alert-info">
             <xsl:for-each select="key('message-type', 'info')">
-              <xsl:value-of select="label" />
+              <span class="fa fa-info-circle fa-lg">&#160;</span>&#160;<xsl:value-of select="label" />
             </xsl:for-each>
           </div>
         </xsl:when>
@@ -36,7 +36,7 @@
         <xsl:when test="count(key('message-type', 'error')) = 1">
           <div class="alert alert-danger">
             <xsl:for-each select="key('message-type', 'error')">
-              <xsl:value-of select="label" />
+              <span class="fa fa-exclamation-circle fa-lg">&#160;</span>&#160;<xsl:value-of select="label" />
             </xsl:for-each>
           </div>
         </xsl:when>
@@ -56,7 +56,7 @@
         <xsl:when test="count(key('message-type', 'success')) = 1">
           <div class="alert alert-success">
             <xsl:for-each select="key('message-type', 'success')">
-              <xsl:value-of select="label" />
+              <span class="fa fa-check-circle fa-lg">&#160;</span>&#160;<xsl:value-of select="label" />
             </xsl:for-each>
           </div>
         </xsl:when>
