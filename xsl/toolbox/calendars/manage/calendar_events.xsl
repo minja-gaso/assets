@@ -24,7 +24,7 @@
 						<h3>Quick Jumps</h3>
 						<ul>
 							<li>
-								<a class="selected done" href="javascript:document.portal_form.COMPONENT_ID.value='3';switchTab('GENERAL');" title="current page">
+								<a class="selected done" href="javascript:document.portal_form.COMPONENT_ID.value='3';switchTab('GENERAL');submitForm();" title="current page">
 									<span class="stepNumber">1</span>
 									<span class="stepDesc text-small">Provide basic info</span>
 								</a>

@@ -25,7 +25,8 @@
 			<input type="hidden" name="ACTION" />
 			<input type="hidden" name="CALENDAR_ID" value="{/data/calendar/id}" />
 			<input type="hidden" name="POST_FORM" value="false" />
-	    <link href="/css/main.css" rel="stylesheet"/>
+			<link rel="stylesheet" href="/css/resources/skeleton.css" type="text/css" />
+	    <link href="/css/calendar.css" rel="stylesheet"/>
 			<h1 class="form-group"><xsl:value-of select="/data/calendar/title" /></h1>
 			<xsl:comment><xsl:value-of select="system-property('xsl:version')"/></xsl:comment>
 			<xsl:choose>
@@ -37,7 +38,9 @@
 				</xsl:when>
 				<!-- if none of cases above are met, display the form -->
 				<xsl:otherwise>
-					<xsl:call-template name="public_calendar" />
+					<div class="container">
+						<xsl:call-template name="public_calendar" />
+					</div>
 				</xsl:otherwise>
 			</xsl:choose>
 			<footer class="text-center">Provided by <em><a href="#">Interactive Marketing</a></em> at <em><a href="#">Baylor Scott &amp; White</a></em></footer>
@@ -63,10 +66,10 @@
       <li class="active">Home</li>
     </ol>
 		<div class="row">
-			<div class="col-lg-3 col-md-3 col-sm-3">
+			<div class="three columns" id="sidebar">
 				<xsl:call-template name="sidebar" />
 			</div>
-			<div class="col-lg-9 col-md-9 col-sm-9">
+			<div class="nine columns" id="main">
 				<xsl:call-template name="main" />
 			</div>
 		</div>
@@ -78,18 +81,6 @@
 	</xsl:template>
 
 	<xsl:template name="main">
-		<ul class="list-inline">
-			<li>
-				<a class="btn btn-social-icon btn-rss" href="/calendar/rss/{/data/calendar/prettyUrl}">
-					<span class="fa fa-rss"></span>
-				</a>
-			</li>
-			<li>
-				<a class="btn btn-social-icon btn-flickr">
-					<span class="fa fa-envelope"></span>
-				</a>
-			</li>
-		</ul>
 		<xsl:choose>
 			<xsl:when test="count(/data/calendar/event) &gt; 0">
 				<ul class="list-group">

@@ -19,8 +19,42 @@ xxx.btn-envelope { background-color: #F7F7F7; border: 1px solid rgba(0, 0, 0, 0.
 .btn.btn-social-icon { background-color: #359EC4; color: #ffffff;
 }
 
+#public-calendar { font-family: arial; font-size: 13px; }
+#public-calendar #sidebar {}
+
 /*
  *  Mini calendar
  */
-#mini-cal { display:none; width: 280px; }
-#mini-cal th, #mini-cal td { text-align: center; }
+#mini-cal { border: none; border-spacing: 0; font-size: 12px; width: 280px; }
+#mini-cal th, #mini-cal td { background-color: #f2f2f2; border: none; padding: 4px; text-align: center; }
+
+/*
+ *  Event detail
+ */
+#event-item .calendar-navigate {
+  font-size: 1.8em;
+}
+#event-item .calendar-navigate a:hover {
+  text-decoration: none;
+}
+#event-item .event {
+  max-width: 100%;
+  min-width: 100%;
+}
+#event-item #event-description {
+  margin-top: 12px;
+}
+.event-block {
+  background-color: #f2f2f2;
+  padding: 24px;
+}
+.event-block h3 {
+  margin: 0;
+  margin-bottom: 12px;
+}
+.event-block ul li {
+  margin-top: 8px;
+}
+.event-block ul li:first-child {
+  margin-top: 0;
+}

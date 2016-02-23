@@ -43,15 +43,19 @@
 				<xsl:value-of select="/data/form/messagePublicFormIntro" disable-output-escaping="yes" />
 			</div>
 		</xsl:if>
+		<!--
     <ol class="breadcrumb">
       <li><a href="/calendar/list/{/data/calendar/id}">Home</a></li>
       <li class="active"><xsl:value-of select="/data/calendar/event/title" /></li>
     </ol>
+		-->
 		<div class="row">
+			<!--
 			<div class="col-lg-3 col-md-3 col-sm-3">
 				<xsl:call-template name="sidebar" />
 			</div>
-			<div class="col-lg-9 col-md-9 col-sm-9">
+			-->
+			<div class="col-lg-12 col-md-12 col-sm-12">
 				<xsl:call-template name="main" />
 			</div>
 		</div>
@@ -100,57 +104,24 @@
 					</a>
 				</li>
 			</ul>
-			<!--
-			<ul class="sm-icons list-inline" id="share-icons">
-				<li><strong>Share with:</strong></li>
-				<li>
-					<a target="_blank" href="http://www.facebook.com/bswhealth" title="Click on the icon to go to the Baylor Scott &amp; White Health Facebook page">
-						<img alt="" src="http://sw.org/resources/images/icon/social/icon_facebook.jpg"/>
-					</a>
-				</li>
-				<li>
-					<a target="_blank" href="https://twitter.com/bswhealth" title="Click on the icon to go to the Baylor Scott &amp; White Health - Central Texas Twitter page">
-						<img alt="" src="http://sw.org/resources/images/icon/social/icon_twitter.jpg"/>
-					</a>
-				</li>
-				<li>
-					<a target="_blank" href="https://plus.google.com/104130803433548643332/videos" title="Click on the icon to go to the Scott &amp; White Healthcare Google+ page">
-						<img alt="" src="http://sw.org/resources/images/icon/social/icon_google.jpg"/>
-					</a>
-				</li>
-				<li>
-					<a target="_blank" href="https://www.pinterest.com/bswhealth/" title="Click on the icon to go to the Baylor Scott &amp; White Health Pintrest page">
-						<img alt="" src="http://sw.org/resources/images/icon/social/icon_pinterest.jpg"/>
-					</a>
-				</li>
-			</ul>
-		-->
-			<ul class="list-group">
+			<ul class="list-group" id="event-item">
 				<li class="list-group-item event">
+					<div class="calendar-navigate">
+						<a href="/calendar/list/{/data/calendar/id}">
+							<span class="fa fa-arrow-circle-o-left" /> All Events
+						</a>
+					</div>
 					<h2><xsl:value-of select="title" /></h2>
-					<xsl:if test="count(tag) &gt; 0">
-						<div class="form-group tags">
-							<ul class="list-inline">
-								<li>
-									<a href="/calendar/search/{/data/calendar/prettyUrl}?type=category&amp;id={categoryId}">
-										<span class="label label-primary">
-											<xsl:variable name="categoryId" select="categoryId" />
-											<span class="fa fa-archive" />&#160;<xsl:value-of select="/data/calendar/category[id = $categoryId]/label" />
-										</span>
-									</a>
-								</li>
-								<xsl:for-each select="tag">
-									<li>
-										<a href="/calendar/search/{/data/calendar/prettyUrl}?type=tag&amp;id={id}">
-											<span class="label label-primary">
-												<span class="fa fa-tag" />&#160;<xsl:value-of select="label" />
-											</span>
-										</a>
-									</li>
-								</xsl:for-each>
-							</ul>
-						</div>
-					</xsl:if>
+					<p>
+						<xsl:call-template name="format_date">
+							<xsl:with-param name="paramDate" select="startDate" />
+						</xsl:call-template>
+						<xsl:text>&#160;@&#160;</xsl:text>
+						<xsl:call-template name="format_time">
+							<xsl:with-param name="startTime" select="startTime" />
+							<xsl:with-param name="endTime" select="endTime" />
+						</xsl:call-template>
+					</p>
 					<xsl:if test="string-length(fileName) &gt; 0">
 						<xsl:variable name="fileDirectoryPath">
 							<xsl:choose>
@@ -162,13 +133,127 @@
 								</xsl:otherwise>
 							</xsl:choose>
 						</xsl:variable>
+						<img src="/uploads/calendar/{/data/calendar/id}/{$fileDirectoryPath}/{fileName}" class="img-responsive" alt="Responsive image" onload="this.parentNode.style.width=this.offsetWidth + 'px'" />
+						<!--
 						<div class="thumbnail">
 							<img src="/uploads/calendar/{/data/calendar/id}/{$fileDirectoryPath}/{fileName}" class="img-responsive" alt="Responsive image" onload="this.parentNode.style.width=this.offsetWidth + 'px'" />
 					    <div class="caption">
 					      <xsl:text><xsl:value-of select="fileDescription" /></xsl:text>
 					    </div>
 					  </div>
+						-->
 					</xsl:if>
+					<div class="row detail-item" id="event-description">
+						<div class="col-xs-12">
+							<xsl:value-of select="description" disable-output-escaping="yes" />
+						</div>
+					</div>
+					<div class="row detail-item event-block" id="event-information">
+						<div class="col-sm-4 col-xs-12">
+							<h3>Details</h3>
+							<ul class="list-unstyled">
+								<li>
+									<strong>Date</strong>
+									<div>
+										<xsl:call-template name="format_date">
+											<xsl:with-param name="paramDate" select="startDate" />
+										</xsl:call-template>
+									</div>
+								</li>
+								<li>
+									<strong>Time</strong>
+									<div>
+										<xsl:call-template name="format_time">
+											<xsl:with-param name="startTime" select="startTime" />
+											<xsl:with-param name="endTime" select="endTime" />
+										</xsl:call-template>
+									</div>
+								</li>
+								<xsl:if test="categoryId &gt; 0">
+									<li>
+										<strong>Event Category</strong>
+										<div>
+											<a href="/calendar/search/{/data/calendar/prettyUrl}?type=category&amp;id={categoryId}">
+												<xsl:variable name="categoryId" select="categoryId" />
+												<xsl:value-of select="/data/calendar/category[id = $categoryId]/label" />
+											</a>
+										</div>
+									</li>
+								</xsl:if>
+								<xsl:if test="count(tag) &gt; 0">
+									<li>
+										<strong>Event Tags</strong>
+										<div>
+											<xsl:for-each select="tag">
+												<a href="/calendar/search/{/data/calendar/prettyUrl}?type=tag&amp;id={id}">
+													<xsl:value-of select="label" />
+												</a>
+												<xsl:if test="position() != last()">,&#160;</xsl:if>
+											</xsl:for-each>
+										</div>
+									</li>
+								</xsl:if>
+							</ul>
+						</div>
+						<div class="col-sm-4 col-xs-12">
+							<h3>Organizer</h3>
+							<ul class="list-unstyled">
+								<xsl:if test="string-length(contactName) &gt; 0">
+									<li>
+										<strong>Contact Name</strong>
+										<div>
+											<xsl:value-of select="contactName" />
+										</div>
+									</li>
+								</xsl:if>
+								<xsl:if test="string-length(contactPhone) &gt; 0">
+									<li>
+										<strong>Contact Phone</strong>
+										<div>
+											<a href="tel:{contactPhone}"><xsl:value-of select="contactPhone" /></a>
+										</div>
+									</li>
+								</xsl:if>
+								<xsl:if test="string-length(contactEmail) &gt; 0">
+									<li>
+										<strong>Contact Email</strong>
+										<div>
+											<a href="mailto:{contactEmail}"><xsl:value-of select="contactEmail" /></a>
+										</div>
+									</li>
+								</xsl:if>
+							</ul>
+						</div>
+						<div class="col-sm-4 col-xs-12">
+							<h3>Other</h3>
+							<ul class="list-unstyled">
+								<xsl:if test="string-length(speaker) &gt; 0">
+									<li>
+										<strong>Speaker(s)</strong>
+										<div>
+											<xsl:value-of select="speaker" />
+										</div>
+									</li>
+								</xsl:if>
+								<xsl:if test="string-length(registrationUrl) &gt; 0">
+									<li>
+										<strong>Registration</strong>
+										<div>
+											<a href="{registrationUrl}"><xsl:value-of select="registrationLabel" /></a>
+										</div>
+									</li>
+								</xsl:if>
+								<xsl:if test="string-length(cost) &gt; 0">
+									<li>
+										<strong>Cost</strong>
+										<div>
+											<xsl:value-of select="cost" />
+										</div>
+									</li>
+								</xsl:if>
+							</ul>
+						</div>
+					</div>
 					<xsl:if test="/data/calendar/event[0]/eventRecurrence/recurring = 'false'">
 						<div class="row detail-item">
 							<div class="col-lg-2 col-md-3 col-sm-3">
@@ -192,91 +277,54 @@
 							</div>
 						</div>
 					</xsl:if>
-					<xsl:if test="string-length(location) &gt; 0">
-						<div class="row detail-item">
-							<div class="col-lg-2 col-md-3 col-sm-3">
-								<strong>Location</strong>
-							</div>
-							<div class="col-lg-10 col-md-9 col-sm-9">
-								<xsl:value-of select="location" />
-								<xsl:if test="string-length(locationAdditional) &gt; 0">
-									<div class="location-additional">
-										<xsl:value-of select="locationAdditional" />
-									</div>
-								</xsl:if>
-							</div>
+
+					<div class="row event-detail event-block" id="venue">
+						<style type="text/css">
+				      html, body { height: 100%; margin: 0; padding: 0; }
+							#venue { height: 400px;}
+				      #map { height: 100%; max-width: 600px; }
+							.event-location { float: left; width: 250px; }
+				    </style>
+						<div class="col-sm-4">
+							<h3>Venue</h3>
+							<p><xsl:value-of select="location" /></p>
+							<p><xsl:value-of select="locationAdditional" /></p>
+							<h4>Contact Us</h4>
+							<p>Phone: 254-724-2111</p>
+							<p>Toll Free: 800-792-3710</p>
+							<p><span class="fa fa-map-marker" />&#160;<a href="https://www.google.com/maps/place/31.0776722,-97.36398550000001">Google Maps</a></p>
 						</div>
-					</xsl:if>
-					<xsl:if test="string-length(description) &gt; 0">
-						<div class="row detail-item">
-							<div class="col-lg-2 col-md-3 col-sm-3">
-								<strong>Description</strong>
-							</div>
-							<div class="col-lg-10 col-md-9 col-sm-9">
-								<xsl:value-of select="description" disable-output-escaping="yes" />
-							</div>
-						</div>
-					</xsl:if>
-					<xsl:if test="string-length(contactName) &gt; 0">
-						<div class="row detail-item">
-							<div class="col-lg-2 col-md-3 col-sm-3">
-								<strong>Contact Name</strong>
-							</div>
-							<div class="col-lg-10 col-md-9 col-sm-9">
-								<xsl:value-of select="contactName" />
-							</div>
-						</div>
-					</xsl:if>
-					<xsl:if test="string-length(contactPhone) &gt; 0">
-						<div class="row detail-item">
-							<div class="col-lg-2 col-md-3 col-sm-3">
-								<strong>Contact Phone</strong>
-							</div>
-							<div class="col-lg-10 col-md-9 col-sm-9">
-								<a href="tel:{contactPhone}"><xsl:value-of select="contactPhone" /></a>
-							</div>
-						</div>
-					</xsl:if>
-					<xsl:if test="string-length(contactEmail) &gt; 0">
-						<div class="row detail-item">
-							<div class="col-lg-2 col-md-3 col-sm-3">
-								<strong>Contact Email</strong>
-							</div>
-							<div class="col-lg-10 col-md-9 col-sm-9">
-								<a href="mailto:{contactEmail}"><xsl:value-of select="contactEmail" /></a>
-							</div>
-						</div>
-					</xsl:if>
-					<xsl:if test="string-length(speaker) &gt; 0">
-						<div class="row detail-item">
-							<div class="col-lg-2 col-md-3 col-sm-3">
-								<strong>Speaker</strong>
-							</div>
-							<div class="col-lg-10 col-md-9 col-sm-9">
-								<xsl:value-of select="speaker" />
-							</div>
-						</div>
-					</xsl:if>
-					<xsl:if test="string-length(registrationUrl) &gt; 0">
-						<div class="row detail-item">
-							<div class="col-lg-2 col-md-3 col-sm-3">
-								<strong>Registration</strong>
-							</div>
-							<div class="col-lg-10 col-md-9 col-sm-9">
-								<a href="{registrationUrl}"><xsl:value-of select="registrationLabel" /></a>
-							</div>
-						</div>
-					</xsl:if>
-					<xsl:if test="string-length(cost) &gt; 0">
-						<div class="row detail-item">
-							<div class="col-lg-2 col-md-3 col-sm-3">
-								<strong>Cost</strong>
-							</div>
-							<div class="col-lg-10 col-md-9 col-sm-9">
-								<xsl:value-of select="cost" />
-							</div>
-						</div>
-					</xsl:if>
+						<div id="map" style="width:100%; height:100%; border: 12px solid #fff;"></div>
+						<script type="text/javascript">
+							function initMap() {
+							  var map = new google.maps.Map(document.getElementById('map'), {
+							    center: {lat: 31.0776722, lng: -97.36398550000001},
+							    zoom: 14
+							  });
+  							var geocoder = new google.maps.Geocoder();
+
+								window.onload = function(){
+									geocodeAddress(geocoder, map);
+								}
+							}
+							function geocodeAddress(geocoder, resultsMap) {
+							  var address = '<xsl:value-of select="locationAdditional" />, TX';
+							  geocoder.geocode({'address': address}, function(results, status) {
+							    if (status === google.maps.GeocoderStatus.OK) {
+							      resultsMap.setCenter(results[0].geometry.location);
+							      var marker = new google.maps.Marker({
+							        map: resultsMap,
+							        position: results[0].geometry.location
+							      });
+							    } else {
+							      alert('Geocode was not successful for the following reason: ' + status);
+							    }
+							  });
+							}
+						</script>
+						<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCMyFwsdDQByebGig-c4DZMXJHe3UYhZU4&amp;callback=initMap" async="async" defer="defer">//</script>
+					</div>
+
 					<xsl:if test="count(/data/calendar/event[parentId=$eventId]) &gt; 0 and parentId = 0">
 						<div class="row detail-item">
 							<div class="col-lg-2 col-md-3 col-sm-3">
