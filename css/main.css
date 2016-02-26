@@ -1,7 +1,8 @@
 /*
  *  utility classes to override default behaviors
  */
-.font-normal { font-weight: normal; }
+body#toolbox .font-normal { font-weight: normal; }
+body#toolbox .no-margin { margin: 0; }
 
 /*
  *  bootstrap overrides
@@ -51,6 +52,13 @@ body#toolbox #content .nav.nav-tabs > li.faq > a {
     background-color: #005FAD;
     border-color: #005FAD;
     font-weight: bold;
+}
+/*
+ *  responsive tabs
+ */
+@media only screen and (max-width : 480px) {
+  body#toolbox #content nav { overflow: auto; }
+  body#toolbox #content nav > .nav-tabs { min-width: 480px; }
 }
 
 /*
@@ -377,8 +385,8 @@ body#toolbox #content div.help-block dl:last-child {
 /*
  *  Toolbox form styles
  */
-.form-group label,
-.form-group strong.label {
+body#toolbox .form-group label,
+body#toolbox .form-group strong.label {
   color: #0c3d75;
   display: inline-block;
   font-size: 100%;
@@ -387,13 +395,13 @@ body#toolbox #content div.help-block dl:last-child {
   max-width: 100%;
   padding: 0;
 }
-.form-group .help-block {
+body#toolbox .form-group .help-block {
   color: #424242;
   font-size: 85%;
 }
-.form-group .form-control,
-.form-group trix-editor,
-.form-group ul.tagit {
+body#toolbox .form-group .form-control,
+body#toolbox .form-group trix-editor,
+body#toolbox .form-group ul.tagit {
   background-color: #f9f9f9;
   border: 2px solid #359ec4;
   border-radius: 0;
@@ -402,30 +410,37 @@ body#toolbox #content div.help-block dl:last-child {
   height: 46px;
   padding: 12px;
 }
-.form-group trix-editor {
+body#toolbox .form-group textarea.form-control {
+  height: auto;
+}
+body#toolbox .form-group .form-control.form-control-xs {
+  height: auto;
+  padding: 0 4px;
+}
+body#toolbox .form-group trix-editor {
   height: 100%;
 }
-.form-group ul.tagit {
+body#toolbox .form-group ul.tagit {
   padding: 8px;
 }
-.form-group ul.tagit li {
+body#toolbox .form-group ul.tagit li {
   padding: 0 18px 0 8px;
 }
-.input-group-url .input-group-addon {
+body#toolbox .input-group-url .input-group-addon {
   border: 2px solid #359ec4;
   border-right: none;
   border-radius: 0;
 }
-.input-group-url .form-control {
+body#toolbox .input-group-url .form-control {
   border-left: none;
 }
-.input-group-url .input-group-addon:last-child {
+body#toolbox .input-group-url .input-group-addon:last-child {
   background-color: #ffffff;
   border: 2px solid #359ec4;
   border-left: none;
   color: #333333;
 }
-.input-group-url .input-group-addon:hover {
+body#toolbox .input-group-url .input-group-addon:hover {
   background-color: #efefef;
 }
 
@@ -445,6 +460,10 @@ body#toolbox #content div.help-block dl:last-child {
 /*
  *  Public form styles
  */
+#public-form,
+#public-form > * {
+  box-sizing: border-box;
+}
 #public-form { font-family: Arial; font-size: 12px; padding: 12px; }
 #public-form h1 { margin-top: 0; }
 #public-form .sr-only { left: -3000px; position: absolute; }
@@ -467,12 +486,12 @@ body#toolbox #content div.help-block dl:last-child {
 #public-form fieldset { border: none; margin: 0; padding: 0; }
 #public-form legend { border: none; margin: 0; padding: 0; }
 #public-form legend,
-#public-form label { font-family: Arial; font-size: 12px; font-weight: bold; }
+#public-form label { font-family: Arial; font-size: 12px; font-weight: bold; margin-bottom: 5px; }
 #public-form label { display: block; margin-bottom: 4px; }
-#public-form .question-header { background-color: #fafafa; border: 1px dotted #c8c8c8; border-radius: 8px; color: #575757; line-height: normal; margin-bottom: 8px; padding: 12px; }
+#public-form .question-header { background-color: #fafafa; border: 1px dotted #c8c8c8; border-radius: 8px; color: #575757; line-height: normal; margin-bottom: 15px; padding: 12px; }
 #public-form .form-group { margin-bottom: 15px; }
 #public-form .error-style { color: red; }
-#public-form .form-control { border: 1px solid #ddd; border-radius: 4px; display: block; font-family: inherit; max-width: 100%; padding: 8px; width: 100%; }
+#public-form .form-control { border: 1px solid #ddd; border-radius: 4px; box-sizing: border-box; display: block; font-family: inherit; max-width: 100%; padding: 8px; width: 100%; }
 #public-form input[type='radio'],
 #public-form input[type='checkbox'] { margin-right: 4px; vertical-align: inherit; }
 #public-form fieldset label { font-weight: normal; margin-bottom: 0; }

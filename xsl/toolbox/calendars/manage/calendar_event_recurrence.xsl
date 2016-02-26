@@ -153,14 +153,14 @@
 									<xsl:if test="/data/calendar/event/eventRecurrence/type = 'interval'">
 										<xsl:attribute name="checked">checked</xsl:attribute>
 									</xsl:if>
-								</input>  Interval of <input type="text" class="form-control" name="EVENT_RECUR_LIMIT" id="EVENT_RECUR_LIMIT" value="{/data/calendar/event/eventRecurrence/limit}" size="2" maxlength="2" /> occurrences.
+								</input>  Interval of <input type="text" class="form-control form-control-xs" name="EVENT_RECUR_LIMIT" id="EVENT_RECUR_LIMIT" value="{/data/calendar/event/eventRecurrence/limit}" size="2" maxlength="2" /> occurrences.
 							</label>
 						</div>
 					</div>
 					<div class="form-group form-inline" id="event-repeat-interval">
 						<label for="EVENT_RECUR_INTERVAL">
 							<xsl:text>Repeat every</xsl:text>&#160;
-							<input type="text" class="form-control" name="EVENT_RECUR_INTERVAL" id="EVENT_RECUR_INTERVAL" value="{/data/calendar/event/eventRecurrence/interval}" maxlength="2" size="2" />
+							<input type="text" class="form-control form-control-xs" name="EVENT_RECUR_INTERVAL" id="EVENT_RECUR_INTERVAL" value="{/data/calendar/event/eventRecurrence/interval}" maxlength="2" size="2" />
 							<xsl:text>
 								<xsl:choose>
 									<xsl:when test="/data/calendar/event/eventRecurrence/recurringMonthly = 'true'">month</xsl:when>

@@ -15,6 +15,17 @@
         </xsl:otherwise>
       </xsl:choose>
       <!--
+        CSS - Override styles
+      -->
+      <xsl:choose>
+        <xsl:when test="$SCREEN = 'CSS'">
+          <li role="presentation" class="active"><a href="#">Override Styles</a></li>
+        </xsl:when>
+        <xsl:otherwise>
+          <li role="presentation"><a href="javascript:switchTab('CSS');submitForm();">Override Styles</a></li>
+        </xsl:otherwise>
+      </xsl:choose>
+      <!--
         Roles - set privileges
       -->
       <xsl:choose>

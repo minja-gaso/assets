@@ -31,12 +31,12 @@
 			<input type="hidden" name="ANSWER_ID" />
 			<!-- survey content -->
 			<div class="row">
-				<div class="col-lg-12">
-					<nav>
-						<ul class="nav nav-tabs">
-							<xsl:call-template name="multiple_choice_nav" />
-						</ul>
-					</nav>
+				<nav>
+					<ul class="nav nav-tabs">
+						<xsl:call-template name="multiple_choice_nav" />
+					</ul>
+				</nav>
+				<div class="col-lg-12 bordered-area">
 					<h2>Edit Question <small class="hidden"><xsl:value-of select="/data/form/question/type" /></small></h2>
 					<xsl:call-template name="messages" />
 					<xsl:for-each select="/data/form/question">
@@ -57,55 +57,55 @@
 						-->
 						<div class="form-group">
 							<label for="QUESTION_REQUIRED">Required</label>
-							<div class="radio first">
-								<label>
+							<div>
+								<label class="font-normal no-margin">
 									<input type="radio" name="QUESTION_REQUIRED" id="QUESTION_REQUIRED_TRUE" value="true">
 										<xsl:if test="required = 'true'">
 											<xsl:attribute name="checked">checked</xsl:attribute>
 										</xsl:if>
-									</input>
+									</input>&#160;
 									<xsl:text>Yes</xsl:text>
 								</label>
 							</div>
-							<div class="radio">
-								<label>
+							<div>
+								<label class="font-normal no-margin">
 									<input type="radio" name="QUESTION_REQUIRED" id="QUESTION_REQUIRED_FALSE" value="false">
 										<xsl:if test="required = 'false'">
 											<xsl:attribute name="checked">checked</xsl:attribute>
 										</xsl:if>
-									</input>
+									</input>&#160;
 									<xsl:text>No</xsl:text>
 								</label>
 							</div>
 						</div>
 						<div class="form-group">
 							<div class="row">
-								<div class="col-lg-8">
+								<div class="col-sm-8">
 									<label>Add Answer(s)</label>
 									<textarea class="form-control" name="ANSWER_ADD" id="ANSWER_ADD" rows="3"></textarea>
 								</div>
-								<div class="col-lg-4">
+								<div class="col-sm-4">
 									<fieldset>
 										<legend>Delimiter</legend>
-										<div class="radio first">
-											<label>
+										<div>
+											<label class="font-normal no-margin">
 												<input type="radio" name="ANSWER_ADD_FILTER" value="carriage" checked="checked" />
 												Carriage Return
 											</label>
 										</div>
-										<div class="radio">
-											<label>
+										<div>
+											<label class="font-normal no-margin">
 												<input type="radio" name="ANSWER_ADD_FILTER" value="comma" />
 												Comma Separated
 											</label>
 										</div>
-										<div class="radio">
-											<label>
+										<div>
+											<label class="font-normal no-margin">
 												<input type="radio" name="ANSWER_ADD_FILTER" value="tab" />
 												Tab Delimited
 											</label>
 										</div>
-										<a class="btn btn-default add-answers" href="javascript:addAnswers();">Add Answers</a>
+										<a class="btn btn-default add-answers" href="javascript:addAnswers();submitForm();">Add Answers</a>
 									</fieldset>
 								</div>
 							</div>
@@ -114,8 +114,8 @@
 							<table class="table table-condensed table-striped">
 								<thead>
 									<tr>
-										<th class="col-lg-11">Label</th>
-										<th class="col-lg-1 text-center">Delete</th>
+										<th class="col-sm-11">Label</th>
+										<th class="col-sm-1 text-center">Delete</th>
 									</tr>
 								</thead>
 								<tbody>
@@ -138,8 +138,8 @@
 							</table>
 						</div>
 						<div class="btn-toolbar">
-							<a class="btn btn-success" href="javascript:saveQuestion();">Save</a>
-							<a class="btn btn-danger" href="javascript:switchTab('QUESTION_LIST');">Back to Questions</a>
+							<a class="btn btn-success" href="javascript:saveQuestion();submitForm();">Save</a>
+							<a class="btn btn-danger" href="javascript:switchTab('QUESTION_LIST');submitForm();">Back to Questions</a>
 						</div>
 					</xsl:for-each>
 				</div>

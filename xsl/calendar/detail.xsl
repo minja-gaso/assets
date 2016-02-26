@@ -7,32 +7,34 @@
 	<xsl:import href="includes/calendar_date_time.xsl" />
 
 	<xsl:template match="/">
-		<form action="" method="post" name="portal_form" id="public-form">
-			<input type="hidden" name="ACTION" />
-			<input type="hidden" name="CALENDAR_ID" value="{/data/calendar/id}" />
-			<input type="hidden" name="POST_FORM" value="false" />
-	    <link href="/css/main.css" rel="stylesheet"/>
-			<h1 class="form-group"><xsl:value-of select="/data/calendar/title" /></h1>
-			<xsl:choose>
-				<!-- if form not started -->
-				<xsl:when test="/data/form/started = 'false'">
-					<div class="form-message">
-						<xsl:value-of select="/data/form/messageNotStarted" disable-output-escaping="yes" />
-					</div>
-				</xsl:when>
-				<!-- if none of cases above are met, display the form -->
-				<xsl:otherwise>
-					<xsl:call-template name="public_calendar" />
-					<script>
-						$(document).ready(function(){
-							$(".list-recurring .recurring-title").click(function(){
-								$(this).parent().find(".recurring-agenda").toggle();
+		<form action="" method="get" name="portal_form" id="calendar">
+			<div id="calendar-main">
+				<input type="hidden" name="searchType" value="keyword" />
+				<xsl:if test="/data/calendar/skinUrl">
+					<link href="/css/resources/bootstrap/styles/bootstrap.min.css" rel="stylesheet"/>
+			    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"/>
+				</xsl:if>
+		    <link href="/css/public/calendar.css" rel="stylesheet"/>
+				<xsl:choose>
+					<!-- if form not started -->
+					<xsl:when test="/data/form/started = 'false'">
+						<div class="form-message">
+							<xsl:value-of select="/data/form/messageNotStarted" disable-output-escaping="yes" />
+						</div>
+					</xsl:when>
+					<!-- if none of cases above are met, display the form -->
+					<xsl:otherwise>
+						<xsl:call-template name="public_calendar" />
+						<script>
+							$(document).ready(function(){
+								$(".list-recurring .recurring-title").click(function(){
+									$(this).parent().find(".recurring-agenda").toggle();
+								});
 							});
-						});
-					</script>
-				</xsl:otherwise>
-			</xsl:choose>
-			<footer class="text-center">Provided by <em><a href="#">Interactive Marketing</a></em> at <em><a href="#">Baylor Scott &amp; White</a></em></footer>
+						</script>
+					</xsl:otherwise>
+				</xsl:choose>
+			</div>
 		</form>
 	</xsl:template>
 
@@ -56,7 +58,9 @@
 			</div>
 			-->
 			<div class="col-lg-12 col-md-12 col-sm-12">
+				<h1 class="form-group"><xsl:value-of select="/data/calendar/title" /></h1>
 				<xsl:call-template name="main" />
+				<footer class="text-center">Provided by <em><a href="#">Interactive Marketing</a></em> at <em><a href="#">Baylor Scott &amp; White</a></em></footer>
 			</div>
 		</div>
 
@@ -185,7 +189,7 @@
 										<strong>Event Tags</strong>
 										<div>
 											<xsl:for-each select="tag">
-												<a href="/calendar/search/{/data/calendar/prettyUrl}?type=tag&amp;id={id}">
+												<a href="/calendar/search/{/data/calendar/prettyUrl}?searchType=tag&amp;tagId={id}">
 													<xsl:value-of select="label" />
 												</a>
 												<xsl:if test="position() != last()">,&#160;</xsl:if>
@@ -195,64 +199,68 @@
 								</xsl:if>
 							</ul>
 						</div>
-						<div class="col-sm-4 col-xs-12">
-							<h3>Organizer</h3>
-							<ul class="list-unstyled">
-								<xsl:if test="string-length(contactName) &gt; 0">
-									<li>
-										<strong>Contact Name</strong>
-										<div>
-											<xsl:value-of select="contactName" />
-										</div>
-									</li>
-								</xsl:if>
-								<xsl:if test="string-length(contactPhone) &gt; 0">
-									<li>
-										<strong>Contact Phone</strong>
-										<div>
-											<a href="tel:{contactPhone}"><xsl:value-of select="contactPhone" /></a>
-										</div>
-									</li>
-								</xsl:if>
-								<xsl:if test="string-length(contactEmail) &gt; 0">
-									<li>
-										<strong>Contact Email</strong>
-										<div>
-											<a href="mailto:{contactEmail}"><xsl:value-of select="contactEmail" /></a>
-										</div>
-									</li>
-								</xsl:if>
-							</ul>
-						</div>
-						<div class="col-sm-4 col-xs-12">
-							<h3>Other</h3>
-							<ul class="list-unstyled">
-								<xsl:if test="string-length(speaker) &gt; 0">
-									<li>
-										<strong>Speaker(s)</strong>
-										<div>
-											<xsl:value-of select="speaker" />
-										</div>
-									</li>
-								</xsl:if>
-								<xsl:if test="string-length(registrationUrl) &gt; 0">
-									<li>
-										<strong>Registration</strong>
-										<div>
-											<a href="{registrationUrl}"><xsl:value-of select="registrationLabel" /></a>
-										</div>
-									</li>
-								</xsl:if>
-								<xsl:if test="string-length(cost) &gt; 0">
-									<li>
-										<strong>Cost</strong>
-										<div>
-											<xsl:value-of select="cost" />
-										</div>
-									</li>
-								</xsl:if>
-							</ul>
-						</div>
+						<xsl:if test="string-length(contactName) &gt; 0 or string-length(contactPhone) &gt; 0 or string-length(contactEmail) &gt; 0">
+							<div class="col-sm-4 col-xs-12">
+								<h3>Organizer</h3>
+								<ul class="list-unstyled">
+									<xsl:if test="string-length(contactName) &gt; 0">
+										<li>
+											<strong>Contact Name</strong>
+											<div>
+												<xsl:value-of select="contactName" />
+											</div>
+										</li>
+									</xsl:if>
+									<xsl:if test="string-length(contactPhone) &gt; 0">
+										<li>
+											<strong>Contact Phone</strong>
+											<div>
+												<a href="tel:{contactPhone}"><xsl:value-of select="contactPhone" /></a>
+											</div>
+										</li>
+									</xsl:if>
+									<xsl:if test="string-length(contactEmail) &gt; 0">
+										<li>
+											<strong>Contact Email</strong>
+											<div>
+												<a href="mailto:{contactEmail}"><xsl:value-of select="contactEmail" /></a>
+											</div>
+										</li>
+									</xsl:if>
+								</ul>
+							</div>
+						</xsl:if>
+						<xsl:if test="string-length(speaker) &gt; 0 or string-length(registrationUrl) &gt; 0 or string-length(cost) &gt; 0">
+							<div class="col-sm-4 col-xs-12">
+								<h3>Other</h3>
+								<ul class="list-unstyled">
+									<xsl:if test="string-length(speaker) &gt; 0">
+										<li>
+											<strong>Speaker(s)</strong>
+											<div>
+												<xsl:value-of select="speaker" />
+											</div>
+										</li>
+									</xsl:if>
+									<xsl:if test="string-length(registrationUrl) &gt; 0">
+										<li>
+											<strong>Registration</strong>
+											<div>
+												<a href="{registrationUrl}"><xsl:value-of select="registrationLabel" /></a>
+											</div>
+										</li>
+									</xsl:if>
+									<xsl:if test="string-length(cost) &gt; 0">
+										<li>
+											<strong>Cost</strong>
+											<div>
+												<xsl:value-of select="cost" />
+											</div>
+										</li>
+									</xsl:if>
+								</ul>
+							</div>
+						</xsl:if>
 					</div>
 					<xsl:if test="/data/calendar/event[0]/eventRecurrence/recurring = 'false'">
 						<div class="row detail-item">
@@ -279,23 +287,33 @@
 					</xsl:if>
 
 					<div class="row event-detail event-block" id="venue">
+						<xsl:variable name="locationAddress">
+							<xsl:choose>
+								<xsl:when test="location = 'Scott &amp; White Memorial Hospital - Temple'">2401 S. 31st Street, Temple, TX 76508</xsl:when>
+							</xsl:choose>
+						</xsl:variable>
 						<style type="text/css">
 				      html, body { height: 100%; margin: 0; padding: 0; }
-							#venue { height: 400px;}
-				      #map { height: 100%; max-width: 600px; }
-							.event-location { float: left; width: 250px; }
+				      #map { border: 12px solid #ffffff; height: 100%; max-height: 400px; max-width: 600px; min-height: 250px; padding-left: 0; xxxwidth: 100%; }
 				    </style>
-						<div class="col-sm-4">
+						<div class="col-sm-4" id="location-info">
 							<h3>Venue</h3>
 							<p><xsl:value-of select="location" /></p>
-							<p><xsl:value-of select="locationAdditional" /></p>
+							<p><xsl:value-of select="locationAdditional" disable-output-escaping="yes" /></p>
+							<!--
 							<h4>Contact Us</h4>
 							<p>Phone: 254-724-2111</p>
 							<p>Toll Free: 800-792-3710</p>
-							<p><span class="fa fa-map-marker" />&#160;<a href="https://www.google.com/maps/place/31.0776722,-97.36398550000001">Google Maps</a></p>
+							-->
+							<p><span class="fa fa-map-marker" />&#160;<a href="https://www.google.com/maps/place/{$locationAddress}">Google Maps</a></p>
 						</div>
-						<div id="map" style="width:100%; height:100%; border: 12px solid #fff;"></div>
+						<div class="col-sm-8" id="map"></div>
 						<script type="text/javascript">
+							<xsl:variable name="locationAddress">
+								<xsl:choose>
+									<xsl:when test="location = 'Scott &amp; White Memorial Hospital - Temple'">2401 S. 31st Street, Temple, TX 76508</xsl:when>
+								</xsl:choose>
+							</xsl:variable>
 							function initMap() {
 							  var map = new google.maps.Map(document.getElementById('map'), {
 							    center: {lat: 31.0776722, lng: -97.36398550000001},
@@ -308,7 +326,7 @@
 								}
 							}
 							function geocodeAddress(geocoder, resultsMap) {
-							  var address = '<xsl:value-of select="locationAdditional" />, TX';
+							  var address = '<xsl:value-of select="$locationAddress" />';
 							  geocoder.geocode({'address': address}, function(results, status) {
 							    if (status === google.maps.GeocoderStatus.OK) {
 							      resultsMap.setCenter(results[0].geometry.location);
@@ -317,7 +335,7 @@
 							        position: results[0].geometry.location
 							      });
 							    } else {
-							      alert('Geocode was not successful for the following reason: ' + status);
+							      console.log('Geocode was not successful for the following reason: ' + status);
 							    }
 							  });
 							}

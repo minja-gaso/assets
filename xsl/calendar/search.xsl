@@ -17,6 +17,7 @@
 	<!-- global variables for mini calendar -->
 
 	<xsl:variable name="categoryId" select="/data/calendar/search/categoryId" />
+	<xsl:variable name="tagId" select="/data/calendar/search/tagId" />
 
 	<xsl:import href="includes/calendar_global.xsl" />
 	<xsl:import href="includes/calendar_date_time.xsl" />
@@ -24,22 +25,26 @@
 
 	<xsl:template match="/">
 		<form action="" method="get" name="portal_form" id="public-form">
-			<input type="hidden" name="searchType" value="keyword" />
-	    <link href="/css/main.css" rel="stylesheet"/>
-			<h1 class="form-group"><xsl:value-of select="/data/calendar/title" /></h1>
-			<xsl:choose>
-				<!-- if form not started -->
-				<xsl:when test="/data/form/started = 'false'">
-					<div class="form-message">
-						<xsl:value-of select="/data/form/messageNotStarted" disable-output-escaping="yes" />
-					</div>
-				</xsl:when>
-				<!-- if none of cases above are met, display the form -->
-				<xsl:otherwise>
-					<xsl:call-template name="public_calendar" />
-				</xsl:otherwise>
-			</xsl:choose>
-			<footer class="text-center">Provided by <em><a href="#">Interactive Marketing</a></em> at <em><a href="#">Baylor Scott &amp; White</a></em></footer>
+			<div id="calendar-main">
+				<input type="hidden" name="searchType" value="keyword" />
+				<xsl:if test="/data/calendar/skinUrl">
+					<link href="/css/resources/bootstrap/styles/bootstrap.min.css" rel="stylesheet"/>
+			    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"/>
+				</xsl:if>
+		    <link href="/css/public/calendar.css" rel="stylesheet"/>
+				<xsl:choose>
+					<!-- if form not started -->
+					<xsl:when test="/data/form/started = 'false'">
+						<div class="form-message">
+							<xsl:value-of select="/data/form/messageNotStarted" disable-output-escaping="yes" />
+						</div>
+					</xsl:when>
+					<!-- if none of cases above are met, display the form -->
+					<xsl:otherwise>
+						<xsl:call-template name="public_calendar" />
+					</xsl:otherwise>
+				</xsl:choose>
+			</div>
 		</form>
 	</xsl:template>
 
@@ -49,39 +54,15 @@
 				<xsl:value-of select="/data/form/messagePublicFormIntro" disable-output-escaping="yes" />
 			</div>
 		</xsl:if>
-		<xsl:call-template name="display_mini_calendar" />
-		<div id="search">
-			<div class="col-lg-4 col-sm-6 col-xs-12 input-group">
-				<xsl:variable name="attributeName">
-					<xsl:choose>
-						<xsl:when test="string-length(/data/calendar/search/query) &gt; 0">value</xsl:when>
-						<xsl:otherwise>placeholder</xsl:otherwise>
-					</xsl:choose>
-				</xsl:variable>
-				<xsl:variable name="attributeValue">
-					<xsl:choose>
-						<xsl:when test="string-length(/data/calendar/search/query) &gt; 0">
-							<xsl:value-of select="/data/calendar/search/query" />
-						</xsl:when>
-						<xsl:otherwise>
-							<xsl:value-of select="'Search'" />
-						</xsl:otherwise>
-					</xsl:choose>
-				</xsl:variable>
-				<input type="text" class="form-control" name="searchKeyword">
-					<xsl:attribute name="{$attributeName}"><xsl:value-of select="$attributeValue" /></xsl:attribute>
-				</input>
-				<a class="input-group-addon" onclick="javascript:document.portal_form.searchType.value='keyword';document.portal_form.submit();">
-					<span class="fa fa-search" />&#160;Search
-				</a>
-			</div>
-		</div>
     <ol class="breadcrumb">
       <li><a href="/calendar/list/{/data/calendar/id}">Home</a></li>
       <li class="active">
 				<xsl:choose>
 					<xsl:when test="/data/calendar/search/categoryId > 0">
 						Category: <xsl:value-of select="/data/calendar/category[id=$categoryId]/label" />
+					</xsl:when>
+					<xsl:when test="/data/calendar/search/tagId > 0">
+						Tag: <xsl:value-of select="/data/calendar/event/tag[id=$tagId]/label" />
 					</xsl:when>
 					<xsl:otherwise>
 						Search: <xsl:value-of select="/data/calendar/search/query" />
@@ -90,11 +71,14 @@
 			</li>
     </ol>
 		<div class="row">
+			<!--
 			<div class="col-lg-3 col-md-3 col-sm-3">
 				<xsl:call-template name="sidebar" />
-			</div>
-			<div class="col-lg-9 col-md-9 col-sm-9">
+			</div>-->
+			<div class="col-lg-12 col-md-12 col-sm-12">
+				<h1 class="form-group"><xsl:value-of select="/data/calendar/title" /></h1>
 				<xsl:call-template name="main" />
+				<footer class="text-center">Provided by <em><a href="#">Interactive Marketing</a></em> at <em><a href="#">Baylor Scott &amp; White</a></em></footer>
 			</div>
 		</div>
 		<xsl:if test="string-length(/data/form/messagePublicFormClosing) &gt; 0">
@@ -105,18 +89,39 @@
 	</xsl:template>
 
 	<xsl:template name="main">
-		<ul class="list-inline">
-			<li>
-				<a class="btn btn-social-icon btn-rss" href="/calendar/rss/{/data/calendar/prettyUrl}">
-					<span class="fa fa-rss"></span>
-				</a>
-			</li>
-			<li>
-				<a class="btn btn-social-icon btn-flickr">
-					<span class="fa fa-envelope"></span>
-				</a>
-			</li>
-		</ul>
+		<xsl:call-template name="top_nav" />
+		<div class="col-xs-6 center-block" id="advanced-search">
+			<fieldset id="advanced-search-container">
+				<legend>Advanced Search</legend>
+				<div class="form-group">
+					<label class="sr-only" for="ADVANCED_SEARCH_KEYWORD">Keyword(s)</label>
+					<input type="text" class="form-control" name="ADVANCED_SEARCH_KEYWORD" id="ADVANCED_SEARCH_KEYWORD" placeholder="Enter keyword(s)" />
+				</div>
+				<div class="row">
+					<div class="form-group col-sm-6">
+						<label class="sr-only" for="ADVANCED_SEARCH_START_DATE">From</label>
+						<input type="text" class="form-control" name="ADVANCED_SEARCH_START_DATE" id="ADVANCED_SEARCH_START_DATE" />
+					</div>
+					<div class="form-group col-sm-6">
+						<label class="sr-only" for="ADVANCED_SEARCH_END_DATE">To</label>
+						<input type="text" class="form-control" name="ADVANCED_SEARCH_END_DATE" id="ADVANCED_SEARCH_END_DATE" />
+					</div>
+				</div>
+				<xsl:if test="count(/data/calendar/category) &gt; 0">
+					<div class="form-group">
+						<label>Category</label>
+						<select class="form-control" name="ADVANCED_SEARCH_CATEGORY" id="ADVANCED_SEARCH_CATEGORY">
+							<xsl:for-each select="/data/calendar/category">
+								<option><xsl:value-of select="position()" /></option>
+							</xsl:for-each>
+						</select>
+					</div>
+				</xsl:if>
+				<div class="text-center">
+					<button class="btn btn-primary">Submit</button>
+				</div>
+			</fieldset>
+		</div>
 		<xsl:choose>
 			<xsl:when test="count(/data/calendar/event) &gt; 0">
 				<ul class="list-group">
@@ -128,7 +133,7 @@
 									<xsl:if test="position() = 1">
 										<div class="day-label">
 											<strong>
-												<span class="glyphicon glyphicon-calendar" />&#160;
+												<span class="fa fa-calendar" />&#160;
 												<xsl:call-template name="format_date">
 													<xsl:with-param name="paramDate" select="startDate" />
 												</xsl:call-template>
@@ -156,12 +161,12 @@
 													<span class="fa fa-map-marker pull-left" />
 													<p class="location">
 														<xsl:value-of select="location" disable-output-escaping="yes" />
-														<xsl:if test="string-length(locationAdditional) &gt; 0">
-															<span class="location-additional">
-																<xsl:value-of select="locationAdditional" disable-output-escaping="yes" />
-															</span>
-														</xsl:if>
 													</p>
+													<xsl:if test="string-length(locationAdditional) &gt; 0">
+														<div class="location-additional">
+															<xsl:value-of select="locationAdditional" disable-output-escaping="yes" />
+														</div>
+													</xsl:if>
 												</div>
 											</xsl:if>
 										</div>
@@ -173,7 +178,7 @@
 				</ul>
 			</xsl:when>
 			<xsl:otherwise>
-				<p>There are currently no avilable events.</p>
+				<p>There are currently no available events.</p>
 			</xsl:otherwise>
 		</xsl:choose>
 	</xsl:template>

@@ -8,6 +8,7 @@ CREATE TABLE IF NOT EXISTS calendar.calendars
 	calendar_pretty_url character varying UNIQUE NOT NULL DEFAULT '',
 	calendar_skin_url character varying NOT NULL DEFAULT '',
 	calendar_skin_selector character varying NOT NULL DEFAULT '',
+	calendar_css character varying NOT NULL DEFAULT '',
 	calendar_screen_public_calendar_intro character varying NOT NULL DEFAULT '',
 	calendar_screen_public_calendar_closing character varying NOT NULL DEFAULT '',
 	is_calendar_deleted boolean NOT NULL DEFAULT false,
@@ -103,6 +104,10 @@ CREATE TABLE IF NOT EXISTS calendar.event_tags
 	event_tag_id bigint DEFAULT id_generator(),
 	event_tag_name character varying NOT NULL,
 	fk_event_id bigint NOT NULL,
+	fk_calendar_id bigint NOT NULL,
 	PRIMARY KEY (event_tag_id),
-	FOREIGN KEY (fk_event_id) REFERENCES calendar.events (event_id)
+	FOREIGN KEY (fk_event_id) REFERENCES calendar.events (event_id),
+	FOREIGN KEY (fk_calendar_id) REFERENCES calendar.calendars (calendar_id)
 );
+
+SELECT * FROM calendar.event_tags WHERE event_tag_id = 1192155431590429941;

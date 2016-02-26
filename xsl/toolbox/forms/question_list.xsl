@@ -17,12 +17,12 @@
 			<input type="hidden" name="MOVE_QUESTION_NUMBER_UP" />
 			<!-- survey content -->
 			<div class="row">
-				<div class="col-lg-12">
-					<nav>
-						<xsl:call-template name="primary_navigation">
-							<xsl:with-param name="SCREEN" select="'QUESTION_LIST'" />
-						</xsl:call-template>
-					</nav>
+				<nav>
+					<xsl:call-template name="primary_navigation">
+						<xsl:with-param name="SCREEN" select="'QUESTION_LIST'" />
+					</xsl:call-template>
+				</nav>
+				<div class="col-lg-12 bordered-area">
 					<h2>List of Questions</h2>
 					<xsl:call-template name="messages" />
 					<table class="table table-condensed">
@@ -42,7 +42,7 @@
 								<th class="text-center">
 									<xsl:choose>
 										<xsl:when test="count(/data/form/question) = 0">
-											<a href="javascript:createQuestion();"><span class="fa fa-plus-circle fa-lg" /></a>
+											<a href="javascript:createQuestion();submitForm();"><span class="fa fa-plus-circle fa-lg" /></a>
 										</xsl:when>
 										<xsl:otherwise>&#160;</xsl:otherwise>
 									</xsl:choose>
@@ -66,19 +66,19 @@
 										<th colspan="3">&#160;</th>
 										<td class="text-center">Page <xsl:value-of select="page" /></td>
 										<td>&#160;</td>
-										<td class="text-center"><a href="javascript:deletePageBreak({page});"><span class="fa fa-trash fa-lg" /></a></td>
+										<td class="text-center"><a href="javascript:deletePageBreak({page});submitForm();"><span class="fa fa-trash fa-lg" /></a></td>
 										<td>&#160;</td>
 									</tr>
 								</xsl:if>
 								<tr class="question-row">
-									<th class="text-center"><a href="javascript:insertQuestion('{id}');"><span class="fa fa-plus-circle fa-lg" /></a></th>
+									<th class="text-center"><a href="javascript:insertQuestion('{id}');submitForm();"><span class="fa fa-plus-circle fa-lg" /></a></th>
 									<td class="text-center">
 										<xsl:choose>
 											<xsl:when test="page != following-sibling::*[1]/page or position() = last()">
 												<span class="fa fa-plus-circle fa-lg fa-disabled" />
 											</xsl:when>
 											<xsl:otherwise>
-												<a href="javascript:insertPageBreak({number});"><span class="fa fa-plus-circle fa-lg" /></a>
+												<a href="javascript:insertPageBreak({number});submitForm();"><span class="fa fa-plus-circle fa-lg" /></a>
 											</xsl:otherwise>
 										</xsl:choose>
 									</td>
@@ -96,13 +96,13 @@
 										<input type="hidden" name="QUESTION_ORDER_LIST" value="{number}" />
 										<xsl:text><xsl:value-of select="label" /></xsl:text>
 									</td>
-									<td class="text-center"><a href="javascript:editQuestion('{id}', {concat($quote, $questionType, $quote)});"><span class="fa fa-pencil fa-lg" /></a></td>
-									<td class="text-center"><a href="javascript:deleteQuestion('{id}');"><span class="fa fa-trash fa-lg" /></a></td>
+									<td class="text-center"><a href="javascript:editQuestion('{id}', {concat($quote, $questionType, $quote)});submitForm();"><span class="fa fa-pencil fa-lg" /></a></td>
+									<td class="text-center"><a href="javascript:deleteQuestion('{id}');submitForm();"><span class="fa fa-trash fa-lg" /></a></td>
 									<td class="text-center">
 										<!-- move up -->
 										<xsl:choose>
 											<xsl:when test="position() != 1">
-												<a class="arrow arrow-up arrow-active" href="javascript:swapQuestions('SWAP_UP', {number})"><span class="fa fa-arrow-up fa-lg" /></a>
+												<a class="arrow arrow-up arrow-active" href="javascript:swapQuestions('SWAP_UP', {number});submitForm();"><span class="fa fa-arrow-up fa-lg" /></a>
 											</xsl:when>
 											<xsl:otherwise>
 												<span class="arrow arrow-up arrow-disabled"><span class="fa fa-arrow-up fa-lg" />&#160;</span>
@@ -111,7 +111,7 @@
 										<!-- move down -->
 										<xsl:choose>
 											<xsl:when test="position() != last()">
-												<a class="arrow arrow-down arrow-active" href="javascript:swapQuestions('SWAP_DOWN', {number})"><span class="fa fa-arrow-down fa-lg" /></a>
+												<a class="arrow arrow-down arrow-active" href="javascript:swapQuestions('SWAP_DOWN', {number});submitForm();"><span class="fa fa-arrow-down fa-lg" /></a>
 											</xsl:when>
 											<xsl:otherwise>
 												<span class="arrow arrow-down arrow-disabled"><span class="fa fa-arrow-down fa-lg" /></span>
@@ -125,7 +125,7 @@
 					<div class="form-row">
 						<div class="btn-toolbar">
 							<a class="btn btn-default" href="javascript:submitForm();">Save</a>
-							<a class="btn btn-default" href="javascript:formListScreen();">Back to Forms</a>
+							<a class="btn btn-default" href="javascript:formListScreen();submitForm();">Back to Forms</a>
 							<a class="btn btn-default" href="{$webformUrlToUse}" target="_blank">View Form</a>
 						</div>
 					</div>

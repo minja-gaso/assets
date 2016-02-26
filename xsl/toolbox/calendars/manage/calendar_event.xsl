@@ -257,7 +257,8 @@
 							<div class="form-group">
 								<label for="EVENT_LOCATION_ADDITIONAL">Additional Location Information</label>
 								<p class="help-block">Unit, floor, room, etc.</p>
-								<input type="text" class="form-control" name="EVENT_LOCATION_ADDITIONAL" id="EVENT_LOCATION_ADDITIONAL" value="{/data/calendar/event/locationAdditional}" />
+								<input type="hidden" name="EVENT_LOCATION_ADDITIONAL" id="EVENT_LOCATION_ADDITIONAL" value="{/data/calendar/event/locationAdditional}" />
+								<trix-editor input="EVENT_LOCATION_ADDITIONAL"></trix-editor>
 							</div>
 						</div>
 					</div>

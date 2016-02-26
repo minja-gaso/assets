@@ -15,29 +15,29 @@
 			<xsl:variable name="webformBaseUrl" select="concat(/data/environment/serverName, 'webforms/self-assessment/')" />
 			<xsl:variable name="webformUrl" select="concat($webformBaseUrl, /data/form/prettyUrl)" />
 			<div class="row">
-				<div class="col-lg-12">
-					<nav>
-						<xsl:call-template name="message_nav" />
-					</nav>
+				<nav>
+					<xsl:call-template name="message_nav" />
+				</nav>
+				<div class="col-lg-12 bordered-area">
 					<h2>Self-Assessment Scores</h2>
 					<xsl:call-template name="messages" />
 					<div class="form-row">
 						<div class="row">
 							<xsl:choose>
 								<xsl:when test="/data/environment/screenName = 'MESSAGE_PUBLIC'">
-									<div class="col-md-12">
+									<div class="form-group col-xs-12">
 										<label for="MESSAGE_INTRO">Intro</label>
 										<input id="MESSAGE_INTRO" type="hidden" name="MESSAGE_INTRO" value="{/data/form/messagePublicFormIntro}"/>
 										<trix-editor input="MESSAGE_INTRO"></trix-editor>
 									</div>
-									<div class="col-md-12">
+									<div class="form-group col-xs-12">
 										<label for="MESSAGE_CLOSING">Closing</label>
 										<input id="MESSAGE_CLOSING" type="hidden" name="MESSAGE_CLOSING" value="{/data/form/messagePublicFormClosing}"/>
 										<trix-editor input="MESSAGE_CLOSING"></trix-editor>
 									</div>
 								</xsl:when>
 								<xsl:otherwise>
-									<div class="col-md-12">
+									<div class="form-group col-xs-12">
 										<label for="MESSAGE_BODY">Body</label>
 										<input id="MESSAGE_BODY" type="hidden" name="MESSAGE_BODY">
 											<xsl:attribute name="value">
@@ -66,10 +66,9 @@
 							</xsl:choose>
 						</div>
 					</div>
-					<hr />
 					<div class="btn-toolbar">
-						<a class="btn btn-default" href="javascript:saveMessage();">Save</a>
-						<a class="btn btn-default" href="javascript:formMessages();">Back to Messages</a>
+						<a class="btn btn-default" href="javascript:saveMessage();submitForm();">Save</a>
+						<a class="btn btn-default" href="javascript:formMessages();submitForm();">Back to Messages</a>
 						<a class="btn btn-default" href="{$webformUrlToUse}" target="_blank">View Form</a>
 					</div>
 				</div>

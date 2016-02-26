@@ -127,6 +127,7 @@ CREATE TABLE IF NOT EXISTS form.temp_submissions
 	submission_id bigint DEFAULT id_generator(),
 	submission_timestamp timestamp with time zone NOT NULL DEFAULT now(),
 	session_id character varying NOT NULL,
+	ip_address inet NOT NULL,
 	fk_form_id bigint NOT NULL,
 	PRIMARY KEY (submission_id),
 	FOREIGN KEY (fk_form_id) REFERENCES form.forms (form_id)
@@ -146,6 +147,10 @@ CREATE TABLE IF NOT EXISTS form.temp_submission_answers
 		ON DELETE CASCADE,
 	FOREIGN KEY (fk_submission_id) REFERENCES form.temp_submissions (submission_id)
 );
+
+
+
+
 INSERT INTO form.forms (
 form_id,
 form_title,

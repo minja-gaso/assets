@@ -11,10 +11,11 @@
 			<h1 class="form-group"><xsl:value-of select="/data/form/title" /></h1>
 			<div class="form-message">
 				<xsl:choose>
-					<!--
+
 					<xsl:when test="/data/form/status = 'draft'">
 						<xsl:value-of select="/data/form/messageNotStarted" disable-output-escaping="yes" />
 					</xsl:when>
+					<!--
 					<xsl:when test="/data/form/status = 'ended'">
 						<xsl:value-of select="/data/form/messageEnded" disable-output-escaping="yes" />
 					</xsl:when>
@@ -23,7 +24,7 @@
 					</xsl:when>
 					<xsl:otherwise>
 						<xsl:choose>
-							<xsl:when test="type = 'survey'">
+							<xsl:when test="/data/form/type = 'survey'">
 								<xsl:value-of select="/data/form/messageThankYou" disable-output-escaping="yes" />
 							</xsl:when>
 							<xsl:otherwise>

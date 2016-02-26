@@ -11,7 +11,7 @@
           <li role="presentation" class="active"><a href="#">General</a></li>
         </xsl:when>
         <xsl:otherwise>
-          <li role="presentation"><a href="javascript:switchTab('GENERAL');">General</a></li>
+          <li role="presentation"><a href="javascript:switchTab('GENERAL');submitForm();">General</a></li>
         </xsl:otherwise>
       </xsl:choose>
 
@@ -23,7 +23,7 @@
           <li role="presentation" class="active"><a href="#">Questions</a></li>
         </xsl:when>
         <xsl:otherwise>
-          <li role="presentation"><a href="javascript:switchTab('{$QUESTION_LIST_ACTION}');">Questions</a></li>
+          <li role="presentation"><a href="javascript:switchTab('{$QUESTION_LIST_ACTION}');submitForm();">Questions</a></li>
         </xsl:otherwise>
       </xsl:choose>
 
@@ -34,7 +34,7 @@
             <li role="presentation" class="active"><a href="#">Answers</a></li>
           </xsl:when>
           <xsl:otherwise>
-            <li role="presentation"><a href="javascript:switchTab('ANSWERS');">Answers</a></li>
+            <li role="presentation"><a href="javascript:switchTab('ANSWERS');submitForm();">Answers</a></li>
           </xsl:otherwise>
         </xsl:choose>
           <xsl:choose>
@@ -42,7 +42,7 @@
               <li role="presentation" class="active"><a href="#">Scores</a></li>
             </xsl:when>
             <xsl:otherwise>
-              <li role="presentation"><a href="javascript:switchTab('SCORES');">Scores</a></li>
+              <li role="presentation"><a href="javascript:switchTab('SCORES');submitForm();">Scores</a></li>
             </xsl:otherwise>
           </xsl:choose>
       </xsl:if>
@@ -56,7 +56,7 @@
             <li role="presentation" class="active"><a href="#">Reports</a></li>
           </xsl:when>
           <xsl:otherwise>
-            <li role="presentation"><a href="javascript:switchTab('REPORTS');">Reports</a></li>
+            <li role="presentation"><a href="javascript:switchTab('REPORTS');submitForm();">Reports</a></li>
           </xsl:otherwise>
         </xsl:choose>
 
@@ -68,7 +68,7 @@
             <li role="presentation" class="active"><a href="#">Analytics</a></li>
           </xsl:when>
           <xsl:otherwise>
-            <li role="presentation"><a href="javascript:switchTab('ANALYTICS');">Analytics</a></li>
+            <li role="presentation"><a href="javascript:switchTab('ANALYTICS');submitForm();">Analytics</a></li>
           </xsl:otherwise>
         </xsl:choose>
 
@@ -80,7 +80,7 @@
             <li role="presentation" class="active"><a href="#">Messages</a></li>
           </xsl:when>
           <xsl:otherwise>
-            <li role="presentation"><a href="javascript:switchTab('MESSAGES');">Messages</a></li>
+            <li role="presentation"><a href="javascript:switchTab('MESSAGES');submitForm();">Messages</a></li>
           </xsl:otherwise>
         </xsl:choose>
       </xsl:if>

@@ -27,12 +27,12 @@
 			<input type="hidden" name="QUESTION_ID" value="{/data/form/question/id}" />
 			<!-- survey content -->
 			<div class="row">
-				<div class="col-lg-12">
-					<nav>
-						<ul class="nav nav-tabs">
-							<xsl:call-template name="standard_nav" />
-						</ul>
-					</nav>
+				<nav>
+					<ul class="nav nav-tabs">
+						<xsl:call-template name="standard_nav" />
+					</ul>
+				</nav>
+				<div class="col-lg-12 bordered-area">
 					<h2>Edit Question <small class="hidden"><xsl:value-of select="/data/form/question/type" /></small></h2>
 					<xsl:call-template name="messages" />
 					<xsl:for-each select="/data/form/question">
@@ -67,23 +67,23 @@
 						</div>
 						<div class="form-group">
 							<label for="QUESTION_REQUIRED">Required</label>
-							<div class="radio first">
-								<label>
+							<div>
+								<label class="font-normal no-margin">
 									<input type="radio" name="QUESTION_REQUIRED" id="QUESTION_REQUIRED_TRUE" value="true">
 										<xsl:if test="required = 'true'">
 											<xsl:attribute name="checked">checked</xsl:attribute>
 										</xsl:if>
-									</input>
+									</input>&#160;
 									<xsl:text>Yes</xsl:text>
 								</label>
 							</div>
-							<div class="radio">
-								<label>
+							<div>
+								<label class="font-normal no-margin">
 									<input type="radio" name="QUESTION_REQUIRED" id="QUESTION_REQUIRED_FALSE" value="false">
 										<xsl:if test="required = 'false'">
 											<xsl:attribute name="checked">checked</xsl:attribute>
 										</xsl:if>
-									</input>
+									</input>&#160;
 									<xsl:text>No</xsl:text>
 								</label>
 							</div>
@@ -91,51 +91,51 @@
 						<xsl:if test="type = 'text'">
 							<div class="form-group">
 								<label for="QUESTION_FILTER">Filter</label>
-								<div class="radio first">
-									<label>
+								<div>
+									<label class="font-normal no-margin">
 										<input type="radio" name="QUESTION_FILTER" id="QUESTION_FILTER_NONE" value="none">
 											<xsl:if test="filter = 'none'">
 												<xsl:attribute name="checked">checked</xsl:attribute>
 											</xsl:if>
-										</input>
+										</input>&#160;
 										<xsl:text>None</xsl:text>
 									</label>
 								</div>
-								<div class="radio">
-									<label>
+								<div>
+									<label class="font-normal no-margin">
 										<input type="radio" name="QUESTION_FILTER" id="QUESTION_FILTER_DATE" value="date">
 											<xsl:if test="filter = 'date'">
 												<xsl:attribute name="checked">checked</xsl:attribute>
 											</xsl:if>
-										</input>
+										</input>&#160;
 										<xsl:text>Date</xsl:text>
 									</label>
 								</div>
-								<div class="radio">
-									<label>
+								<div>
+									<label class="font-normal no-margin">
 										<input type="radio" name="QUESTION_FILTER" id="QUESTION_FILTER_EMAIL" value="email" xxdisabled="disabled">
 											<xsl:if test="filter = 'email'">
 												<xsl:attribute name="checked">checked</xsl:attribute>
 											</xsl:if>
-										</input>
+										</input>&#160;
 										<xsl:text>Email</xsl:text>
 									</label>
 								</div>
-								<div class="radio">
-									<label>
+								<div>
+									<label class="font-normal no-margin">
 										<input type="radio" name="QUESTION_FILTER" id="QUESTION_FILTER_PHONE" value="phone" disabled="disabled">
 											<xsl:if test="filter = 'phone'">
 												<xsl:attribute name="checked">checked</xsl:attribute>
 											</xsl:if>
-										</input>
+										</input>&#160;
 										<xsl:text>Phone Number</xsl:text>
 									</label>
 								</div>
 							</div>
 						</xsl:if>
 						<div class="btn-toolbar">
-							<a class="btn btn-success" href="javascript:saveQuestion();">Save</a>
-							<a class="btn btn-danger" href="javascript:switchTab('QUESTION_LIST');">Back to Questions</a>
+							<a class="btn btn-success" href="javascript:saveQuestion();submitForm();">Save</a>
+							<a class="btn btn-danger" href="javascript:switchTab('QUESTION_LIST');submitForm();">Back to Questions</a>
 						</div>
 					</xsl:for-each>
 				</div>
