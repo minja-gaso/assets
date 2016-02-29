@@ -1,9 +1,11 @@
 ﻿DROP SCHEMA IF EXISTS skin CASCADE;
 CREATE SCHEMA IF NOT EXISTS skin;
 
-CREATE TABLE skin.skins
+DROP TABLE IF EXISTS skin.skins;
+CREATE TABLE IF NOT EXISTS skin.skins
 (
 	skin_id bigint DEFAULT id_generator(),
+	skin_creation_timestamp timestamp DEFAULT now(),
 	skin_title character varying NOT NULL DEFAULT '',
 	is_skin_editable boolean NOT NULL DEFAULT false,
 	skin_url character varying NOT NULL DEFAULT '',
