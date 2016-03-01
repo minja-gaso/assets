@@ -7,10 +7,10 @@
 	<xsl:import href="includes/calendar_date_time.xsl" />
 
 	<xsl:template match="/">
-		<form action="" method="get" name="portal_form" id="calendar">
-			<div id="calendar-main">
+		<form action="" method="get" name="portal_form" id="bswh-marketing">
+			<div id="bswh">
 				<input type="hidden" name="searchType" value="keyword" />
-				<xsl:if test="/data/calendar/skinUrl">
+				<xsl:if test="/data/calendar/fkSkinId > 0 and 1=1">
 					<link href="/css/resources/bootstrap/styles/bootstrap.min.css" rel="stylesheet"/>
 			    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"/>
 				</xsl:if>
@@ -137,7 +137,7 @@
 								</xsl:otherwise>
 							</xsl:choose>
 						</xsl:variable>
-						<img src="/uploads/calendar/{/data/calendar/id}/{$fileDirectoryPath}/{fileName}" class="img-responsive" alt="Responsive image" onload="this.parentNode.style.width=this.offsetWidth + 'px'" />
+						<img src="/uploads/calendar/{/data/calendar/id}/{$fileDirectoryPath}/{fileName}" class="img-responsive" alt="Responsive image" xxxonload="this.parentNode.style.width=this.offsetWidth + 'px'" />
 						<!--
 						<div class="thumbnail">
 							<img src="/uploads/calendar/{/data/calendar/id}/{$fileDirectoryPath}/{fileName}" class="img-responsive" alt="Responsive image" onload="this.parentNode.style.width=this.offsetWidth + 'px'" />

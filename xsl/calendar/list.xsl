@@ -21,8 +21,8 @@
 	<xsl:import href="includes/calendar_mini.xsl" />
 
 	<xsl:template match="/">
-		<form action="" method="get" name="portal_form" id="calendar">
-			<div id="calendar-main">
+		<form action="" method="get" name="portal_form" id="bswh-marketing">
+			<div id="bswh">
 				<script>
 					var forms = document.getElementsByTagName('form');
 					if(forms.length == 1)
@@ -32,7 +32,7 @@
 					}
 				</script>
 				<input type="hidden" name="searchType" value="keyword" />
-				<xsl:if test="/data/calendar/skinUrl">
+				<xsl:if test="/data/calendar/fkSkinId > 0 and 1=1">
 					<link href="/css/resources/bootstrap/styles/bootstrap.min.css" rel="stylesheet"/>
 			    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"/>
 				</xsl:if>
@@ -122,14 +122,14 @@
 										</div>
 									</xsl:if>
 									<div class="entry row">
-										<div class="col-lg-3 col-md-3 col-sm-3 entry-time">
+										<div class="col-xs-3 entry-time">
 											<span class="fa fa-clock-o" />&#160;
 											<xsl:call-template name="format_time">
 												<xsl:with-param name="startTime" select="startTime" />
 												<xsl:with-param name="endTime" select="endTime" />
 											</xsl:call-template>
 										</div>
-										<div class="col-lg-9 col-md-9 col-sm-9 entry-basic">
+										<div class="col-xs-9 entry-basic">
 											<a href="/calendar/detail/{/data/calendar/prettyUrl}?eventID={id}"><xsl:value-of select="title" /></a>
 											<xsl:if test="string-length(location) &gt; 0">
 												<div>

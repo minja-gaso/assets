@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" />
   </xsl:template>
   <xsl:template name="top_nav">
-    <ul class="list-inline">
+    <ul class="list-inline" id="cal-toolbar">
       <li>
         <a class="btn btn-social-icon btn-rss" href="/calendar/rss/{/data/calendar/prettyUrl}">
           <span class="fa fa-rss"></span>
@@ -53,7 +53,8 @@
               <xsl:attribute name="{$attributeName}"><xsl:value-of select="$attributeValue" /></xsl:attribute>
             </input>
             <a class="input-group-addon" onclick="javascript:document.portal_form.searchType.value='keyword';document.portal_form.action='/calendar/search/{/data/calendar/prettyUrl}';document.portal_form.submit();">
-              <span class="fa fa-search" />&#160;Search
+              <span class="fa fa-search" />
+              <span class="offscreen">Search</span>
             </a>
           </div>
           <script type="text/javascript">

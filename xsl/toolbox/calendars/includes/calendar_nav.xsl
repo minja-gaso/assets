@@ -15,6 +15,17 @@
         </xsl:otherwise>
       </xsl:choose>
       <!--
+        Skin - Select a skin
+      -->
+      <xsl:choose>
+        <xsl:when test="$SCREEN = 'SKIN'">
+          <li role="presentation" class="active"><a href="#">Appearance</a></li>
+        </xsl:when>
+        <xsl:otherwise>
+          <li role="presentation"><a href="javascript:switchTab('SKIN');submitForm();">Appearance</a></li>
+        </xsl:otherwise>
+      </xsl:choose>
+      <!--
         CSS - Override styles
       -->
       <xsl:choose>
