@@ -6,13 +6,14 @@ CREATE TABLE IF NOT EXISTS calendar.calendars
 	calendar_type character varying NOT NULL DEFAULT 'event',
 	calendar_title character varying NOT NULL DEFAULT '',
 	calendar_pretty_url character varying UNIQUE NOT NULL DEFAULT '',
-	calendar_skin_url character varying NOT NULL DEFAULT '',
-	calendar_skin_selector character varying NOT NULL DEFAULT '',
+	--calendar_skin_url character varying NOT NULL DEFAULT '',
+	--calendar_skin_selector character varying NOT NULL DEFAULT '',
 	calendar_css character varying NOT NULL DEFAULT '',
 	calendar_screen_public_calendar_intro character varying NOT NULL DEFAULT '',
 	calendar_screen_public_calendar_closing character varying NOT NULL DEFAULT '',
 	is_calendar_deleted boolean NOT NULL DEFAULT false,
 	fk_user_id bigint NOT NULL,
+	fk_skin_id bigint,
 	PRIMARY KEY (calendar_id),
 	FOREIGN KEY (fk_user_id) REFERENCES public.users (user_id)
 );

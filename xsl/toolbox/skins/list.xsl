@@ -4,6 +4,8 @@
 	<xsl:include href="includes/variables.xsl" />
 	<xsl:include href="includes/nav.xsl" />
 	<xsl:template match="/">
+		<textarea class="form-control" rows="12"><xsl:copy-of select="*" /></textarea>
+		<br/><br/><br/>
 		<form action="" method="post" name="portal_form">
 			<input type="hidden" name="COMPONENT_ID" value="{/data/environment/componentId}" />
 			<input type="hidden" name="ACTION" />
