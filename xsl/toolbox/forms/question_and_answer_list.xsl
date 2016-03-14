@@ -17,12 +17,12 @@
 			<input type="hidden" name="MOVE_QUESTION_NUMBER_UP" />
 			<!-- survey content -->
 			<div class="row">
-				<div class="col-lg-12">
-					<nav>
-						<xsl:call-template name="primary_navigation">
-							<xsl:with-param name="SCREEN" select="'QUESTIONS_AND_ANSWERS'" />
-						</xsl:call-template>
-					</nav>
+				<nav>
+					<xsl:call-template name="primary_navigation">
+						<xsl:with-param name="SCREEN" select="'QUESTIONS_AND_ANSWERS'" />
+					</xsl:call-template>
+				</nav>
+				<div class="col-lg-12 bordered-area">
 					<!--
 					<div class="form-row action-row action-top">
 						<div class="btn-group">

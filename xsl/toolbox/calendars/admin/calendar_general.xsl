@@ -68,45 +68,19 @@
 						</div>
 					</div>
 					<div class="row" id="skin">
-						<div class="form-group col-lg-6 col-md-6 col-sm-6">
-							<label for="CALENDAR_SKIN_URL">Skin URL</label>
-							<!--
-							<p class="help-block">If you wish to have a skin around the survey, enter a URL.</p>
-							-->
-							<input type="text" class="form-control" name="CALENDAR_SKIN_URL" id="CALENDAR_SKIN_URL">
-								<xsl:choose>
-									<xsl:when test="string-length(/data/calendar/skinUrl) &gt; 0">
-										<xsl:attribute name="value">
-											<xsl:value-of select="/data/calendar/skinUrl" />
-										</xsl:attribute>
-									</xsl:when>
-									<xsl:otherwise>
-										<xsl:attribute name="placeholder">
-											<xsl:text>http://www.sw.org/location-search</xsl:text>
-										</xsl:attribute>
-									</xsl:otherwise>
-								</xsl:choose>
-							</input>
-						</div>
-						<div class="form-group col-lg-6 col-md-6 col-sm-6">
-							<label for="CALENDAR_SKIN_SELECTOR">Skin CSS Selector</label>
-							<!--
-							<p class="help-block">Element ID or class in which to insert content.</p>
-							-->
-							<input type="text" class="form-control" name="CALENDAR_SKIN_SELECTOR" id="CALENDAR_SKIN_SELECTOR">
-								<xsl:choose>
-									<xsl:when test="string-length(/data/calendar/skinSelector) &gt; 0">
-										<xsl:attribute name="value">
-											<xsl:value-of select="/data/calendar/skinSelector" />
-										</xsl:attribute>
-									</xsl:when>
-									<xsl:otherwise>
-										<xsl:attribute name="placeholder">
-											<xsl:text>#ls-gen8-ls-area-body</xsl:text>
-										</xsl:attribute>
-									</xsl:otherwise>
-								</xsl:choose>
-							</input>
+						<div class="form-group col-xs-12">
+							<label for="CALENDAR_SKIN_ID">Choose Skin</label>
+							<select class="form-control" id="CALENDAR_SKIN_ID" name="CALENDAR_SKIN_ID">
+								<option value="0" />
+								<xsl:for-each select="/data/skin">
+									<option value="{id}">
+										<xsl:if test="/data/calendar/fkSkinId = id">
+											<xsl:attribute name="selected">selected</xsl:attribute>
+										</xsl:if>
+										<xsl:text><xsl:value-of select="title" /></xsl:text>
+									</option>
+								</xsl:for-each>
+							</select>
 						</div>
 					</div>
 					<div class="btn-toolbar btn-actions">

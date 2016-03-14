@@ -37,7 +37,6 @@
 			    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"/>
 				</xsl:if>
 		    <link href="/css/public/calendar.css" rel="stylesheet"/>
-				<xsl:comment><xsl:value-of select="system-property('xsl:version')"/></xsl:comment>
 				<xsl:choose>
 					<!-- if form not started -->
 					<xsl:when test="/data/form/started = 'false'">

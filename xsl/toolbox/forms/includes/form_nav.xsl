@@ -83,6 +83,18 @@
             <li role="presentation"><a href="javascript:switchTab('MESSAGES');submitForm();">Messages</a></li>
           </xsl:otherwise>
         </xsl:choose>
+
+        <!--
+          Roles - assign privileges to users
+        -->
+        <xsl:choose>
+          <xsl:when test="$SCREEN = 'ROLES'">
+            <li role="presentation" class="active"><a href="#">Roles</a></li>
+          </xsl:when>
+          <xsl:otherwise>
+            <li role="presentation"><a href="javascript:switchTab('ROLES');submitForm();">Roles</a></li>
+          </xsl:otherwise>
+        </xsl:choose>
       </xsl:if>
     </ul>
   </xsl:template>

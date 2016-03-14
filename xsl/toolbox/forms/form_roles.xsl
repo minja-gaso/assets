@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet version="2.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 	<xsl:include href="../global_util.xsl" />
-	<xsl:include href="includes/variables.xsl" />
-	<xsl:include href="includes/nav.xsl" />
+	<xsl:include href="includes/form_variables.xsl" />
+	<xsl:include href="includes/form_nav.xsl" />
 
 	<xsl:template match="/">
 		<form action="" method="post" name="portal_form">
 			<input type="hidden" name="COMPONENT_ID" value="{/data/environment/componentId}" />
 			<input type="hidden" name="ACTION" />
 			<input type="hidden" name="SCREEN" value="ROLES" />
-			<input type="hidden" name="SKIN_ID" value="{/data/skin/id}" />
+			<input type="hidden" name="FORM_ID" value="{/data/form/id}" />
 			<input type="hidden" name="ROLE_ID" />
 			<!-- survey content -->
 			<div class="row">
@@ -36,9 +36,9 @@
 								</a>
 							</li>
 							<li>
-								<a href="javascript:switchTab('HTML');submitForm();">
-									<span class="stepNumber">3</span>
-									<span class="stepDesc text-small">Modify skin and app HTML</span>
+								<a href="javascript:document.portal_form.COMPONENT_ID.value=4;editForm('{/data/form/id}');submitForm();">
+									<div class="stepNumber">3</div>
+									<span class="stepDesc text-small">Start adding events</span>
 								</a>
 							</li>
 						</ul>
@@ -60,12 +60,12 @@
 					</div>
 					<div class="row">
             <div class="form-group col-lg-5">
-              <label for="SKIN_ROLE_EMAIL">Email Address</label>
-              <input type="text" class="form-control" name="SKIN_ROLE_EMAIL" id="SKIN_ROLE_EMAIL" />
+              <label for="FORM_ROLE_EMAIL">Email Address</label>
+              <input type="text" class="form-control" name="FORM_ROLE_EMAIL" id="FORM_ROLE_EMAIL" />
             </div>
             <div class="form-group col-lg-5">
-              <label for="SKIN_ROLE_TYPE">Type of Role</label>
-              <select class="form-control" name="SKIN_ROLE_TYPE" id="SKIN_ROLE_TYPE">
+              <label for="FORM_ROLE_TYPE">Type of Role</label>
+              <select class="form-control" name="FORM_ROLE_TYPE" id="FORM_ROLE_TYPE">
                 <option />
                 <option value="email">Email Recipient</option>
                 <option value="manager">Content Manager</option>
@@ -73,23 +73,23 @@
               </select>
             </div>
             <div class="form-group col-lg-2">
-              <label for="SKIN_ROLE_ADD">Create Role</label>
+              <label for="FORM_ROLE_ADD">Create Role</label>
               <div>
-								<button class="btn btn-primary btn-lg" name="SKIN_ROLE_ADD" id="SKIN_ROLE_ADD" onclick="javascript:addRole();submitForm();">Add User</button>
+								<button class="btn btn-primary btn-lg" name="FORM_ROLE_ADD" id="FORM_ROLE_ADD" onclick="javascript:addRole();submitForm();">Add User</button>
 							</div>
             </div>
           </div>
 					<hr  />
 					<div class="row">
 						<div class="form-group col-lg-4">
-							<label for="SKIN_ROLE_EMAIL_RECIPIENTS">Current Email Recipients</label>
+							<label for="FORM_ROLE_EMAIL_RECIPIENTS">Current Email Recipients</label>
 							<table class="table">
 								<thead>
 									<th class="col-xs-11">Email</th>
 									<th class="col-xs-1 text-center">Delete</th>
 								</thead>
 								<tbody>
-									<xsl:for-each select="/data/skin/role[type='email']">
+									<xsl:for-each select="/data/form/role[type='email']">
 										<tr>
 											<th><xsl:value-of select="email" /></th>
 											<th class="text-center"><a href="javascript:deleteRole('{id}');submitForm();"><span class="fa fa-trash" /></a></th>
@@ -99,14 +99,14 @@
 							</table>
 						</div>
 						<div class="form-group col-lg-4">
-							<label for="SKIN_ROLE_MANAGERS">Current Content Managers</label>
+							<label for="FORM_ROLE_MANAGERS">Current Content Managers</label>
 							<table class="table">
 								<thead>
 									<th class="col-xs-11">Email</th>
 									<th class="col-xs-1 text-center">Delete</th>
 								</thead>
 								<tbody>
-									<xsl:for-each select="/data/skin/role[type='manager']">
+									<xsl:for-each select="/data/form/role[type='manager']">
 										<tr>
 											<th><xsl:value-of select="email" /></th>
 											<th class="text-center"><a href="javascript:deleteRole('{id}');submitForm();"><span class="fa fa-trash" /></a></th>
@@ -116,14 +116,14 @@
 							</table>
 						</div>
 						<div class="form-group col-lg-4">
-							<label for="SKIN_ROLE_ADMINS">Current Administrators</label>
+							<label for="FORM_ROLE_ADMINS">Current Administrators</label>
 							<table class="table">
 								<thead>
 									<th class="col-xs-11">Email</th>
 									<th class="col-xs-1 text-center">Delete</th>
 								</thead>
 								<tbody>
-									<xsl:for-each select="/data/skin/role[type='admin']">
+									<xsl:for-each select="/data/form/role[type='admin']">
 										<tr>
 											<th><xsl:value-of select="email" /></th>
 											<th class="text-center"><a href="javascript:deleteRole('{id}');submitForm();"><span class="fa fa-trash" /></a></th>
@@ -134,9 +134,9 @@
 						</div>
 					</div>
 					<div class="btn-toolbar btn-actions">
-						<a class="btn btn-default" href="javascript:saveSkin();submitForm();">Save</a>
-						<a class="btn btn-default" href="javascript:skins();submitForm();">Back to Skins</a>
-						<a class="btn btn-default" href="{$viewUrl}" target="_blank">View Form</a>
+						<a class="btn btn-default" href="javascript:saveForm();submitForm();">Save</a>
+						<a class="btn btn-default" href="javascript:forms();submitForm();">Back to Forms</a>
+						<a class="btn btn-default" href="{$webformUrlToUse}" target="_blank">View Form</a>
 					</div>
 				</div>
 			</div>

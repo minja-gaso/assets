@@ -21,28 +21,18 @@
 				<div class="col-lg-12 bordered-area">
 					<h2>Custom Styling</h2>
 					<xsl:call-template name="messages" />
-					<table class="table table-bordered table-condensed">
-						<thead>
-							<tr>
-								<th>Application</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<th>
-									<a href="javascript:document.portal_form.SCREEN.value='APP_CSS';document.portal_form.SKIN_APP_NAME.value='CALENDAR';document.portal_form.submit();">Calendar</a>
-								</th>
-							</tr>
-							<tr>
-								<th>
-									<a href="javascript:document.portal_form.SCREEN.value='APP_CSS';document.portal_form.SKIN_APP_NAME.value='FORMS';document.portal_form.submit();">Forms</a>
-								</th>
-							</tr>
-						</tbody>
-					</table>
+					<div class="row" id="apps">
+						<div class="form-group col-xs-12">
+							<label>Application CSS</label>
+							<ul class="list-group">
+								<li class="list-group-item"><a href="javascript:document.portal_form.SCREEN.value='APP_CSS';document.portal_form.SKIN_APP_NAME.value='CALENDAR';document.portal_form.submit();">Calendar</a></li>
+								<li class="list-group-item"><a href="javascript:document.portal_form.SCREEN.value='APP_CSS';document.portal_form.SKIN_APP_NAME.value='FORMS';document.portal_form.submit();">Forms</a></li>
+							</ul>
+						</div>
+					</div>
 					<div class="row" id="title">
 						<div class="form-group col-xs-12">
-							<label for="SKIN_CSS" class="show">CSS <a class="label label-primary pull-right" onclick="resetCss();saveSkin();submitForm();">Reset CSS</a></label>
+							<label for="SKIN_CSS" class="show">Skin CSS <a class="label label-primary pull-right" onclick="resetCss();saveSkin();submitForm();">Reset CSS</a></label>
 							<textarea class="form-control" name="SKIN_CSS" id="SKIN_CSS" rows="20">
 								<xsl:choose>
 									<xsl:when test="string-length(/data/skin/skinCssOverrides) &gt; 0">

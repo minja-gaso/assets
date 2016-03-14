@@ -4,8 +4,6 @@
 	<xsl:include href="includes/variables.xsl" />
 	<xsl:include href="includes/nav.xsl" />
 	<xsl:template match="/">
-		<textarea class="form-control" rows="12"><xsl:copy-of select="*" /></textarea>
-		<br/><br/><br/>
 		<form action="" method="post" name="portal_form">
 			<input type="hidden" name="COMPONENT_ID" value="{/data/environment/componentId}" />
 			<input type="hidden" name="ACTION" />
@@ -45,10 +43,11 @@
 					<xsl:choose>
 						<xsl:when test="count(/data/skin) &gt; 0">
 							<xsl:for-each select="/data/skin">
+								<xsl:variable name="url" select="concat(/data/environment/serverName, '/toolbox/skinPreview/', id)" />
 								<tr>
 									<th class="text-center"><input type="checkbox" name="SKIN_ID_LIST" value="{id}" /></th>
 									<td><a href="javascript:editSkin('{id}');submitForm();"><xsl:value-of select="title" /></a></td>
-									<td class="text-center"><a href="{$viewUrl}" target="_blank"><span class="fa fa-search" /></a></td>
+									<td class="text-center"><a href="{$url}" target="_blank"><span class="fa fa-search" /></a></td>
 									<td class="text-center"><a href="javascript:editSkin('{id}');submitForm();"><span class="fa fa-edit" /></a></td>
 									<td class="text-center">
 										<xsl:choose>

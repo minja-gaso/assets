@@ -35,9 +35,9 @@
 								</a>
 							</li>
 							<li>
-								<a href="javascript:document.portal_form.COMPONENT_ID.value=4;editCalendar('{/data/skin/id}');submitForm();">
+								<a href="javascript:switchTab('HTML');submitForm();">
 									<span class="stepNumber">3</span>
-									<span class="stepDesc text-small">Start adding events</span>
+									<span class="stepDesc text-small">Modify skin and app HTML</span>
 								</a>
 							</li>
 						</ul>

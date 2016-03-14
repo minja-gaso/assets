@@ -15,18 +15,12 @@
 			<xsl:variable name="webformBaseUrl" select="concat(/data/environment/serverName, 'webforms/self-assessment/')" />
 			<xsl:variable name="webformUrl" select="concat($webformBaseUrl, /data/form/prettyUrl)" />
 			<div class="row">
-				<div class="col-lg-12">
-					<nav>
-						<xsl:variable name="QUESTION_ACTION">
-								<xsl:choose>
-									<xsl:when test="/data/environment/componentId = 1">QUESTION_LIST</xsl:when>
-									<xsl:otherwise>QUESTIONS_AND_ANSWERS</xsl:otherwise>
-								</xsl:choose>
-						</xsl:variable>
-						<xsl:call-template name="primary_navigation">
-							<xsl:with-param name="SCREEN" select="'SCORES'" />
-						</xsl:call-template>
-					</nav>
+				<nav>
+					<xsl:call-template name="primary_navigation">
+						<xsl:with-param name="SCREEN" select="'SCORES'" />
+					</xsl:call-template>
+				</nav>
+				<div class="col-lg-12 bordered-area">
 					<h2>Self-Assessment Scores</h2>
 					<xsl:call-template name="messages" />
 					<a class="btn btn-primary pull-right" href="javascript:createScore();">New Score Range</a>

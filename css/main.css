@@ -14,6 +14,10 @@ body#toolbox .no-margin { margin: 0; }
 .table-condensed > thead > tr > td,
 .table-condensed > thead > tr > th { padding: 3px 5px; }
 
+body#toolbox { background-color: #F7F7F7; }
+body#toolbox #container > header,
+body#toolbox #container > hr:nth-child(2) { display: none; }
+
 .btn-actions .btn,
 .btn {
   background-color: #58748B;
@@ -477,7 +481,7 @@ body#toolbox .input-group-url .input-group-addon:hover {
 #public-form .alert-danger > * { color: #a94442; }
 #public-form .alert-warning { background-color: #fcf8e3; border-color: #faebcc; color: #8a6d3b; }
 #public-form .alert-warning > * { color: #8a6d3b; }
-#public-form h2.error-heading { font-size: 20px; font-weight: bold; margin: 0; margin-bottom: 8px;}
+#public-form h2.error-heading { border: none; font-size: 13px; font-weight: bold; margin: 0; margin-bottom: 8px;}
 #public-form .form-message,
 #public-form .alert > * { font-family: Arial; font-size: 12px; margin-bottom: 15px; }
 #public-form .alert > *:last-child { margin-bottom: 0; }
@@ -499,8 +503,15 @@ body#toolbox .input-group-url .input-group-addon:hover {
 #public-form .datepicker { background: transparent; }
 
 /* paging and submission */
+#public-form .pager { text-align: center; }
+#public-form .pager li { display: inline; }
 #public-form .pager .current-page { letter-spacing: 0.1em; margin: 0 12px; }
-
+#public-form .pager .disabled > a,
+#public-form .pager .disabled > a:focus,
+#public-form .pager .disabled > a:hover,
+#public-form .pager .disabled > span { background-color: #fff; color: #777; cursor: not-allowed; }
+#public-form .pager li > a,
+#public-form .pager li > span { background-color: #fff; border: 1px solid #ddd; border-radius: 15px; display: inline-block; padding: 5px 14px; width: auto;}
 /* custom skins */
 #public-form.custom-skin .fa-asterisk { vertical-align: inherit; }
 #public-form.custom-skin  .asterisk { font-size: 18px; left: 0; position: relative; vertical-align: inherit; }

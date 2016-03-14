@@ -6,53 +6,55 @@
 	<xsl:variable name="maxSubmissions" select="number(/data/form/maxSubmissions)" />
 	<xsl:variable name="submissionCount" select="number(/data/form/submissionCount)" />
 	<xsl:template match="/">
-		<form action="" method="post" name="portal_form" id="public-form">
+		<form action="" method="post" name="portal_form">
 			<xsl:if test="string-length(/data/form/skinUrl) &gt; 0">
 				<xsl:attribute name="class">custom-skin</xsl:attribute>
 			</xsl:if>
-			<input type="hidden" name="ACTION" />
-			<input type="hidden" name="FORM_ID" value="{/data/form/id}" />
-			<input type="hidden" name="PREVIOUS_PAGE" value="{/data/form/currentPage}" />
-			<input type="hidden" name="CURRENT_PAGE" value="{/data/form/currentPage}" />
-			<input type="hidden" name="POST_FORM" value="false" />
-	    <link href="/css/main.css" rel="stylesheet"/>
-			<h1 class="form-group"><xsl:value-of select="/data/form/title" /></h1>
-			<xsl:choose>
-				<!-- if form not started -->
-				<xsl:when test="/data/form/started = 'false'">
-					<div class="form-message">
-						<xsl:value-of select="/data/form/messageNotStarted" disable-output-escaping="yes" />
-					</div>
-				</xsl:when>
-				<!-- if form ended -->
-				<xsl:when test="$status = 'ended' or /data/form/ended = 'true'">
-					<div class="form-message">
-						<xsl:value-of select="/data/form/messageEnded" disable-output-escaping="yes" />
-					</div>
-				</xsl:when>
-				<!-- if max submissions is set to greater than 0 and total submissions is equal to or greater than max submissions -->
-				<xsl:when test="$maxSubmissions &gt; 0 and $submissionCount &gt;= $maxSubmissions">
-					<div class="form-message">
-						<xsl:value-of select="/data/form/messageMaxSubmitted" disable-output-escaping="yes" />
-					</div>
-				</xsl:when>
-				<!-- if none of cases above are met, display the form -->
-				<xsl:otherwise>
-					<xsl:if test="/data/form/status = 'draft'">
-						<div class="alert alert-warning">
-							<p>This survey is in <strong>draft</strong> mode.  Until it is in <strong>live</strong> mode the submissions will not be saved.</p>
-							<dl>
-								<dt>Benefits of <strong>draft</strong> mode include:</dt>
-								<dd>Ensuring the look &amp; feel of the survey meet the administrators' standards.</dd>
-								<dd>Verifying that all the questions and possible answers are on the screen.</dd>
-								<dd>Testing of the various message screens (max submissions, one submission per user, thank-you/submitted, etc.)</dd>
-							</dl>
+			<div id="public-form">
+				<input type="hidden" name="ACTION" />
+				<input type="hidden" name="FORM_ID" value="{/data/form/id}" />
+				<input type="hidden" name="PREVIOUS_PAGE" value="{/data/form/currentPage}" />
+				<input type="hidden" name="CURRENT_PAGE" value="{/data/form/currentPage}" />
+				<input type="hidden" name="POST_FORM" value="false" />
+		    <link href="/css/main.css" rel="stylesheet"/>
+				<h1 class="form-group"><xsl:value-of select="/data/form/title" /></h1>
+				<xsl:choose>
+					<!-- if form not started -->
+					<xsl:when test="/data/form/started = 'false'">
+						<div class="form-message">
+							<xsl:value-of select="/data/form/messageNotStarted" disable-output-escaping="yes" />
 						</div>
-					</xsl:if>
-					<xsl:call-template name="public_form" />
-				</xsl:otherwise>
-			</xsl:choose>
-			<footer class="text-center">Provided by <em><a href="#">Interactive Marketing</a></em> at <em><a href="#">Baylor Scott &amp; White</a></em></footer>
+					</xsl:when>
+					<!-- if form ended -->
+					<xsl:when test="$status = 'ended' or /data/form/ended = 'true'">
+						<div class="form-message">
+							<xsl:value-of select="/data/form/messageEnded" disable-output-escaping="yes" />
+						</div>
+					</xsl:when>
+					<!-- if max submissions is set to greater than 0 and total submissions is equal to or greater than max submissions -->
+					<xsl:when test="$maxSubmissions &gt; 0 and $submissionCount &gt;= $maxSubmissions">
+						<div class="form-message">
+							<xsl:value-of select="/data/form/messageMaxSubmitted" disable-output-escaping="yes" />
+						</div>
+					</xsl:when>
+					<!-- if none of cases above are met, display the form -->
+					<xsl:otherwise>
+						<xsl:if test="/data/form/status = 'draft'">
+							<div class="alert alert-warning">
+								<p>This survey is in <strong>draft</strong> mode.  Until it is in <strong>live</strong> mode the submissions will not be saved.</p>
+								<dl>
+									<dt>Benefits of <strong>draft</strong> mode include:</dt>
+									<dd>Ensuring the look &amp; feel of the survey meet the administrators' standards.</dd>
+									<dd>Verifying that all the questions and possible answers are on the screen.</dd>
+									<dd>Testing of the various message screens (max submissions, one submission per user, thank-you/submitted, etc.)</dd>
+								</dl>
+							</div>
+						</xsl:if>
+						<xsl:call-template name="public_form" />
+					</xsl:otherwise>
+				</xsl:choose>
+				<footer class="text-center">Provided by <em><a href="#">Interactive Marketing</a></em> at <em><a href="#">Baylor Scott &amp; White</a></em></footer>
+			</div>
 		</form>
 	</xsl:template>
 

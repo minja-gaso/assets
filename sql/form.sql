@@ -26,6 +26,7 @@ CREATE TABLE IF NOT EXISTS form.forms
 	form_end_date date NOT NULL DEFAULT '2099-12-31',
 	is_form_deleted boolean NOT NULL DEFAULT false,
 	fk_user_id bigint NOT NULL,
+	fk_skin_id bigint,
 	PRIMARY KEY (form_id),
 	FOREIGN KEY (fk_user_id) REFERENCES users (user_id)
 );
@@ -39,6 +40,18 @@ $form_insert_pretty_url$ LANGUAGE plpgsql;
 
 CREATE TRIGGER trig_form_insert BEFORE INSERT ON form.forms
     FOR EACH ROW EXECUTE PROCEDURE form_insert_pretty_url();
+
+DROP TABLE IF EXISTS form.roles CASCADE;
+CREATE TABLE IF NOT EXISTS form.roles
+(
+	role_id bigint DEFAULT id_generator(),
+	role_type character varying NOT NULL,
+	role_email character varying NOT NULL,
+	fk_form_id bigint NOT NULL,
+	UNIQUE (role_type, role_email, fk_form_id),
+	PRIMARY KEY (role_id),
+	FOREIGN KEY (fk_form_id) REFERENCES form.forms (form_id)
+);
 
 DROP TABLE IF EXISTS form.questions CASCADE;
 CREATE TABLE IF NOT EXISTS form.questions

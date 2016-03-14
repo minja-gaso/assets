@@ -17,12 +17,12 @@
 			<input type="hidden" name="MOVE_QUESTION_NUMBER_UP" />
 			<!-- survey content -->
 			<div class="row">
-				<div class="col-lg-12">
-					<nav>
-							<xsl:call-template name="primary_navigation">
-								<xsl:with-param name="SCREEN" select="'ANSWERS'" />
-							</xsl:call-template>
-					</nav>
+				<nav>
+						<xsl:call-template name="primary_navigation">
+							<xsl:with-param name="SCREEN" select="'ANSWERS'" />
+						</xsl:call-template>
+				</nav>
+				<div class="col-lg-12 bordered-area">
 					<!--
 					<div class="form-row action-row action-top">
 						<div class="btn-group">
@@ -36,12 +36,12 @@
 					<xsl:call-template name="messages" />
 					<div class="form-group">
 						<div class="row">
-							<div class="col-lg-8">
+							<div class="col-lg-8 col-sm-8">
 								<label>Add Answer(s)</label>
 								<p class="help-block">Insert answers one on each line.  To add a value to the answer, separate by a comma.  Otherwise, a value of 0 will be associated with answer.</p>
 								<textarea class="form-control" name="ANSWER_ADD" id="ANSWER_ADD" rows="3"><xsl:text>&#x0A;</xsl:text></textarea>
 							</div>
-							<div class="col-lg-4">
+							<div class="col-lg-4 col-sm-4">
 								<fieldset>
 									<legend>Delimiter</legend>
 									<div class="radio first">
