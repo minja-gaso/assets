@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet version="2.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 	<xsl:output method="html" />
-	<xsl:variable name="apos">'</xsl:variable>
 
 	<xsl:import href="includes/calendar_global.xsl" />
 	<xsl:import href="includes/calendar_date_time.xsl" />
@@ -10,10 +9,7 @@
 		<form action="" method="get" name="portal_form" id="bswh-marketing">
 			<div id="bswh">
 				<input type="hidden" name="searchType" value="keyword" />
-				<xsl:if test="/data/calendar/fkSkinId > 0 and 1=1">
-					<link href="/css/resources/bootstrap/styles/bootstrap.min.css" rel="stylesheet"/>
-			    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"/>
-				</xsl:if>
+				<xsl:call-template name="external_files" />
 		    <link href="/css/public/calendar.css" rel="stylesheet"/>
 				<xsl:choose>
 					<!-- if form not started -->
@@ -51,7 +47,7 @@
       <li class="active"><xsl:value-of select="/data/calendar/event/title" /></li>
     </ol>
 		-->
-		<div class="row">
+		<div class="row" id="cal-main">
 			<!--
 			<div class="col-lg-3 col-md-3 col-sm-3">
 				<xsl:call-template name="sidebar" />
@@ -72,42 +68,11 @@
 	</xsl:template>
 
 	<xsl:template name="main">
+		<xsl:call-template name="top_nav" />
 		<xsl:for-each select="/data/calendar/event[position() = 1]">
 			<xsl:variable name="eventId" select="id" />
 			<xsl:variable name="fileName" select="fileName" />
 			<xsl:variable name="parentId" select="parentId" />
-			<ul class="list-inline">
-				<li>
-					<a class="btn btn-social-icon btn-twitter">
-						<span class="fa fa-twitter"></span>
-					</a>
-				</li>
-				<li>
-					<a class="btn btn-social-icon btn-facebook">
-						<span class="fa fa-facebook"></span>
-					</a>
-				</li>
-				<li>
-					<a class="btn btn-social-icon btn-linkedin">
-						<span class="fa fa-linkedin"></span>
-					</a>
-				</li>
-				<li>
-					<a class="btn btn-social-icon btn-google">
-						<span class="fa fa-google"></span>
-					</a>
-				</li>
-				<li>
-					<a class="btn btn-social-icon btn-pinterest">
-						<span class="fa fa-pinterest"></span>
-					</a>
-				</li>
-				<li>
-					<a class="btn btn-social-icon btn-flickr">
-						<span class="fa fa-envelope"></span>
-					</a>
-				</li>
-			</ul>
 			<ul class="list-group" id="event-item">
 				<li class="list-group-item event">
 					<div class="calendar-navigate">

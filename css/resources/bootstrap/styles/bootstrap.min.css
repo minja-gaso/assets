@@ -332,8 +332,8 @@
 #bswh html{font-size:10px;-webkit-tap-highlight-color:rgba(0, #bswh 0, #bswh 0, #bswh 0)}
 #bswh body{font-family:"Helvetica Neue", #bswh Helvetica, #bswh Arial, #bswh sans-serif;font-size:14px;line-height:1.42857143;color:#333;background-color:#fff}
 #bswh button, #bswh input, #bswh select, #bswh textarea{font-family:inherit;font-size:inherit;line-height:inherit}
-#bswh a{color:#337ab7;text-decoration:none}
-#bswh a:focus, #bswh a:hover{color:#23527c;text-decoration:underline}
+#bswh a{xxxcolor:#337ab7;text-decoration:none}
+#bswh a:focus, #bswh a:hover{xxxcolor:#23527c;text-decoration:underline}
 #bswh a:focus{outline:thin dotted;outline:5px auto -webkit-focus-ring-color;outline-offset:-2px}
 #bswh figure{margin:0}
 #bswh img{vertical-align:middle}

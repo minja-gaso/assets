@@ -1,20 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet version="2.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 	<xsl:output method="html" />
-	<xsl:variable name="apos">'</xsl:variable>
-
-	<!-- global variables for mini calendar -->
-	<xsl:variable name="start" select="/data/calendar/currentView/startDay"/>
-	<xsl:variable name="count" select="/data/calendar/currentView/totalDays"/>
-	<xsl:variable name="total" select="$start + $count - 1"/>
-	<xsl:variable name="overflow" select="$total mod 7"/>
-	<xsl:variable name="nelements">
-    <xsl:choose>
-        <xsl:when test="$overflow > 0"><xsl:value-of select="$total + 7 - $overflow"/></xsl:when>
-        <xsl:otherwise><xsl:value-of select="$total"/></xsl:otherwise>
-    </xsl:choose>
-	</xsl:variable>
-	<!-- global variables for mini calendar -->
 
 	<xsl:import href="includes/calendar_global.xsl" />
 	<xsl:import href="includes/calendar_date_time.xsl" />
@@ -32,10 +18,7 @@
 					}
 				</script>
 				<input type="hidden" name="searchType" value="keyword" />
-				<xsl:if test="/data/calendar/fkSkinId > 0 and 1=1">
-					<link href="/css/resources/bootstrap/styles/bootstrap.min.css" rel="stylesheet"/>
-			    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"/>
-				</xsl:if>
+				<xsl:call-template name="external_files" />
 		    <link href="/css/public/calendar.css" rel="stylesheet"/>
 				<xsl:choose>
 					<!-- if form not started -->
@@ -46,7 +29,7 @@
 					</xsl:when>
 					<!-- if none of cases above are met, display the form -->
 					<xsl:otherwise>
-						<div class="container" id="calendar2">
+						<div class="" id="cal-container">
 							<xsl:call-template name="public_calendar" />
 						</div>
 					</xsl:otherwise>
@@ -75,17 +58,16 @@
       <li class="active">Home</li>
     </ol>
 	-->
-		<div class="row">
+		<div class="row" id="cal-main">
 			<!--
 			<div class="three columns" id="sidebar">
 				<xsl:call-template name="sidebar" />
 			</div>
 		-->
-			<div class="twelve columns" id="main">
-				<h1 class="form-group"><xsl:value-of select="/data/calendar/title" /></h1>
-				<xsl:call-template name="main" />
-				<footer class="text-center">Provided by <em><a href="#">Interactive Marketing</a></em> at <em><a href="#">Baylor Scott &amp; White</a></em></footer>
-			</div>
+			<h1 class="form-group"><xsl:value-of select="/data/calendar/title" /></h1>
+			<xsl:call-template name="main" />
+			<footer class="text-center">Provided by <em><a href="#">Interactive Marketing</a></em> at <em><a href="#">Baylor Scott &amp; White</a></em></footer>
+
 		</div>
 		<xsl:if test="string-length(/data/form/messagePublicFormClosing) &gt; 0">
 			<div class="form-message form-closing">
@@ -98,7 +80,7 @@
 		<xsl:call-template name="top_nav" />
 		<xsl:choose>
 			<xsl:when test="count(/data/calendar/event) &gt; 0">
-				<ul class="list-group">
+				<ul class="list-group" id="events-list">
 					<xsl:key name="events-by-startDate" match="event" use="startDate" />
 					<xsl:for-each select="/data/calendar/event">
 						<xsl:if test="position() = 1 or startDate != preceding-sibling::*[1]/startDate">
@@ -128,7 +110,7 @@
 												<xsl:with-param name="endTime" select="endTime" />
 											</xsl:call-template>
 										</div>
-										<div class="col-xs-9 entry-basic">
+										<div class="col-xs-9 entry-info">
 											<a href="/calendar/detail/{/data/calendar/prettyUrl}?eventID={id}"><xsl:value-of select="title" /></a>
 											<xsl:if test="string-length(location) &gt; 0">
 												<div>

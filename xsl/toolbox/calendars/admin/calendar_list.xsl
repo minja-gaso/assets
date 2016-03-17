@@ -46,7 +46,7 @@
 								<tr>
 									<th class="text-center"><input type="checkbox" name="CALENDAR_ID_LIST" value="{id}" /></th>
 									<td><a href="javascript:editCalendar('{id}');submitForm();"><xsl:value-of select="title" /></a></td>
-									<td class="text-center"><a href="{$listUrl}" target="_blank"><span class="fa fa-search" /></a></td>
+									<td class="text-center"><a href="{concat($listBaseUrl, prettyUrl)}" target="_blank"><span class="fa fa-search" /></a></td>
 									<td class="text-center"><a href="javascript:editCalendar('{id}');submitForm();"><span class="fa fa-edit" /></a></td>
 									<td class="text-center">
 										<xsl:choose>

@@ -1,7 +1,21 @@
+/*
+ *  bootstrap overrides
+ */
+#bswh #cal-main a,
+#bswh #cal-main a:focus,
+#bswh #cal-main a:hover,
+#bswh #cal-main a:visited {
+  xxxcolor: inherit;
+}
+
+/*
+ *  calendar styles
+ */
 #cal-main {
-  border: 1px solid #000;
-  font-family: Arial;
-  font-size: 12px;
+  xxxborder: 1px solid #000;
+  xxxfont-family: Arial;
+  xxxfont-size: 12px;
+  margin: 0;
   width: auto;
 }
 #cal-main .offscreen {
@@ -9,10 +23,16 @@
   position: absolute;
   top: -4000px;
 }
+#cal-main ol.breadcrumb li {
+  margin: 0;
+}
 #cal-main #cal-toolbar,
 #cal-main #cal-toolbar li {
   display: inline;
   font-size: 22px;
+  margin-left: 0;
+}
+#cal-main #cal-toolbar li:first-child {
   margin-left: 0;
 }
 #cal-main #cal-toolbar li #search input {
@@ -28,4 +48,24 @@
   font-size: 13px;
   padding: 6px;
   vertical-align: middle;
+}
+#cal-main #events-list {
+  border: none;
+}
+#cal-main #events-list li,
+#cal-main #event-item li {
+  border: none;
+  margin-left: 0;
+  padding-left: 0;
+  padding-right: 0;
+}
+#cal-main #events-list li .entry-info a {
+  font-weight: bold;
+}
+#cal-main #event-item .calendar-navigate a {
+  font-size: 20px;
+}
+#cal-main #event-item #event-information,
+#cal-main #event-item #venue {
+  margin-top: 12px;
 }
