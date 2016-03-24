@@ -90,36 +90,30 @@
 									<th class="text-center">
 										<xsl:choose>
 											<xsl:when test="number(/data/form/submissionCount) &gt; 0">
-												<span class="fa fa-plus-circle fa-lg fa-disabled" />
+												<span class="fa fa-plus-square fa-lg fa-disabled" />
 											</xsl:when>
 											<xsl:otherwise>
-												<a href="javascript:insertQuestion('{id}');submitForm();"><span class="fa fa-plus-circle fa-lg" /></a>
+												<a href="javascript:insertQuestion('{id}');submitForm();"><span class="fa fa-plus-square fa-lg" /></a>
 											</xsl:otherwise>
 										</xsl:choose>
 									</th>
 									<td class="text-center">
 										<xsl:choose>
 											<xsl:when test="number(/data/form/submissionCount) &gt; 0">
-												<span class="fa fa-plus-circle fa-lg fa-disabled" />
+												<span class="fa fa-plus-square fa-lg fa-disabled" />
 											</xsl:when>
 											<xsl:when test="page != following-sibling::*[1]/page or position() = last()">
-												<span class="fa fa-plus-circle fa-lg fa-disabled" />
+												<span class="fa fa-plus-square fa-lg fa-disabled" />
 											</xsl:when>
 											<xsl:otherwise>
-												<a href="javascript:insertPageBreak({number});submitForm();"><span class="fa fa-plus-circle fa-lg" /></a>
+												<a href="javascript:insertPageBreak({number});submitForm();"><span class="fa fa-plus-square fa-lg" /></a>
 											</xsl:otherwise>
 										</xsl:choose>
 									</td>
 									<td class="text-center">
 										<xsl:text><xsl:value-of select="number" /></xsl:text>
 									</td>
-									<td>
-										<xsl:attribute name="class">
-											<xsl:choose>
-												<xsl:when test="string-length(label) = 0">text-left bg-danger</xsl:when>
-												<xsl:otherwise>text-left</xsl:otherwise>
-											</xsl:choose>
-										</xsl:attribute>
+									<td class="text-left">
 										<input type="hidden" name="QUESTION_ID_LIST" value="{id}" />
 										<input type="hidden" name="QUESTION_ORDER_LIST" value="{number}" />
 										<input type="text" class="form-control input-sm" name="QUESTION_ENTRY_{id}" id="{id}" value="{label}">

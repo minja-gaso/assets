@@ -1,0 +1,35 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <ul id="blog-feed">
+
+    </ul>
+    <script type="text/javascript" src="//www.google.com/jsapi"></script>
+    <script>
+      /*RSS Feed*/
+      google.load("feeds", "1");
+
+      function initialize() {
+        var feed = new google.feeds.Feed("http://feeds.feedburner.com/ScrubbingIn");
+        feed.setNumEntries(6);
+        feed.load(function(result) {
+          if (!result.error) {
+            var blogFeed = document.getElementById("blog-feed");
+            var html = "";
+            for (var i = 0; i < result.feed.entries.length; i++) {
+              var entry = result.feed.entries[i];
+      		    html = "<a href='" + entry.link + "' target='_blank'>" + entry.title + "</a>";
+              var listItem = document.createElement("li");
+              listItem.innerHTML = html;
+              blogFeed.appendChild(listItem);
+            }
+            document.write(html);
+          }
+        });
+      }
+      google.setOnLoadCallback(initialize);
+    </script>
+  </body>
+</html>

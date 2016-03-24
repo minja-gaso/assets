@@ -108,4 +108,10 @@
       <li role="presentation" class="active"><a href="#">Message</a></li>
     </ul>
   </xsl:template>
+  <xsl:template name="list_nav">
+    <ul class="nav nav-tabs">
+      <li role="presentation" class="active"><a href="#">My <xsl:value-of select="$formLabel" /></a></li>
+      <li role="presentation" class="name pull-right"><a href="#" class="disabled"><xsl:value-of select="concat(/data/user/firstName, ' ', /data/user/lastName)" /></a></li>
+    </ul>
+  </xsl:template>
 </xsl:stylesheet>

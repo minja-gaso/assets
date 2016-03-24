@@ -11,13 +11,14 @@
         <title>Image Upload for <xsl:value-of select="/data/calendar/title" /></title>
         <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
         <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet"/>
+				<link href="/css/toolbox.css" rel="stylesheet" />
 				<style type="text/css">
 					body {
 						margin: 24px;
 					}
 				</style>
       </head>
-      <body>
+      <body id="iframe">
         <form action="" method="post" enctype="multipart/form-data">
 					<fieldset>
 						<legend>Upload Event Image</legend>

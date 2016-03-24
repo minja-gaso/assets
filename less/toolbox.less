@@ -1,0 +1,221 @@
+// out: ../css/toolbox.css, sourcemap: false, compress: true
+
+@import "variables.less";
+@import "functions.less";
+@import "wizard.less";
+
+body {
+  background-color: @primaryGray;
+  color: @primaryBlack;
+  font-family: 'Source Sans Pro', sans-serif;
+}
+#container,
+#iframe {
+  background-color: @primaryWhite;
+}
+#container > header {}
+#container #sidebar .highlight {
+  background-color: @primaryBlue;
+  color: @primaryGray;
+}
+#container #main .bordered-area {
+  .border(1px, solid, @tertiaryGray);
+  border-top: none;
+  padding: 15px;
+}
+#container #main #top-actions {
+  position: relative;
+}
+#container #main #top-actions.sticky {
+  background-color: @primaryGray;
+  padding: 10px;
+  position: fixed;
+  top: 0;
+  z-index: 100;
+}
+#container #main .nav-tabs > li a {
+  background-color: @primaryGray;
+  border: 1px solid @tertiaryGray;
+  xxxborder-bottom: none;
+}
+#container #main .nav-tabs > li a:hover {
+  background-color: #E8E8E8;
+}
+#container #main .nav-tabs > li.active a {
+  background-color: @primaryWhite;
+  border-bottom-color: @primaryWhite;
+}
+#container #main .nav-tabs > li.help a {
+  margin-right: 0;
+}
+#container #main .nav-tabs > li.faq a {
+  color: @primaryRed;
+}
+#container #main .nav-tabs > li.name a {
+  pointer-events: none;
+  margin-right: 0;
+}
+#container #main h2 {
+  color: @secondaryBlue;
+  margin-top: 0;
+}
+#container #main label,
+#container #main .label {
+  color: @secondaryGray;
+  display: inline-block;
+  font-size: 100%;
+  font-weight: 700;
+  margin: 0;
+  margin-bottom: 5px;
+  max-width: 100%;
+  padding: 0;
+}
+#container #main label.inline {
+  font-weight: normal;
+  margin-right: 24px;
+}
+#container #main label.soft {
+  font-weight: normal;
+}
+#container #main label.inline > span {
+  font-weight: normal;
+  margin-left: 4px;
+}
+#container #main label .required {
+  color: @primaryRed;
+}
+#container #main .styled-select {
+  background-color: @primaryWhite;
+  background-image: url(../img/dropdown_arrow.jpg);
+  background-position: right center;
+  background-repeat: no-repeat;
+}
+#container #main .styled-select > select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-color: transparent;
+}
+#container #main .input-group > span,
+#container #main .input-group > input {
+  background-color: @primaryWhite;
+  border: 1px solid @tertiaryGray;
+  border-radius: 0;
+}
+#iframe .input-group > span {
+  background-color: @primaryWhite;
+}
+#container #main .input-group.url > span:first-child {
+  border-right: none;
+}
+#container #main .input-group.url > input {
+  border-left: none;
+  border-right: none;
+}
+#container #main .input-group.url > a {
+  background-color: @secondaryBlue;
+  border-radius: 0;
+  .border(1px, solid, @secondaryGray);
+  color: @primaryWhite;
+}
+#container #main input,
+#container #main select,
+#container #main textarea,
+#iframe input {
+  background-color: @primaryWhite;
+  .border(@inputWidth, solid, @tertiaryGray);
+  border-radius: 0;
+  color: @secondaryGray;
+}
+#container #main select::-ms-expand {
+  display: none;
+}
+#container #main table {}
+#container #main table thead th {}
+#container #main table tbody th {
+  font-weight: normal;
+}
+#container > footer {
+  margin-top: 36px;
+}
+
+/*
+ * Calendar event file upload popup
+ */
+.popup_content {
+  height: 400px;
+  width: 75%;
+}
+.popup_content iframe {
+  border: none;
+  height: 100%;
+  width: 100%;
+}
+
+/*
+ *  Bootstrap and other overrides
+ */
+#container #main .tagit .tagit-choice-editable {
+  background-color: #fcfcfc;
+  background-image: none;
+  .border(1px, solid, @secondaryBlue);
+  color: @secondaryBlue;
+}
+#container #main .tagit .tagit-choice-editable .tagit-close .ui-icon-close {
+  background-image: url(/img/ui-icons_222222_256x240.png);
+  backgorund-repeat: no-repeat;
+}
+#container #main .tagit {
+  background-color: @primaryGray;
+  background-image: none;
+  .border(@inputWidth, solid, @tertiaryGray);
+  border-radius: 0;
+}
+#container #main .tagit .tagit-new input {
+  background: transparent;
+  border: none;
+}
+#container #main trix-editor {
+  background-color: @primaryWhite;
+}
+a, a:hover, a:active {
+  color: @secondaryBlue;
+}
+.list-group-item {
+  padding: 4px 8px;
+}
+.list-group-item.disabled,
+.list-group-item.disabled:focus,
+.list-group-item.disabled:hover,
+.table-striped > tbody > tr:nth-of-type(2n+1) {
+  background-color: @primaryGray;
+}
+.btn-primary {
+  background-color: @secondaryBlue;
+}
+.alert {
+  .border(0, none, @primaryBlack);
+}
+.alert-success {
+  background-color: @primaryGreen;
+  color: @primaryWhite;
+}
+
+/*
+ *  App-specific styles
+ */
+#container .pagebreak-row th,
+#container .pagebreak-row td {
+  background-color: @primaryGray;
+  font-weight: bold;
+}
+#container .arrow {
+  padding: 0 2px;
+}
+#container .fa-plus-square {
+  color: @secondaryBlue;
+}
+#container .arrow-disabled span,
+#container .fa-disabled {
+  color: @primaryGray;
+}

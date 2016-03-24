@@ -27,7 +27,6 @@
       </xsl:choose>
       <!--
         CSS - Override styles
-      -->
       <xsl:choose>
         <xsl:when test="$SCREEN = 'CSS'">
           <li role="presentation" class="active"><a href="#">Override Styles</a></li>
@@ -36,6 +35,7 @@
           <li role="presentation"><a href="javascript:switchTab('CSS');submitForm();">Override Styles</a></li>
         </xsl:otherwise>
       </xsl:choose>
+    -->
       <!--
         Roles - set privileges
       -->
@@ -119,6 +119,12 @@
           </xsl:otherwise>
         </xsl:choose>
       </xsl:if>
+    </ul>
+  </xsl:template>
+  <xsl:template name="list_nav">
+    <ul class="nav nav-tabs">
+      <li role="presentation" class="active"><a href="#">My Calendars</a></li>
+      <li role="presentation" class="name pull-right"><a href="#" class="disabled"><xsl:value-of select="concat(/data/user/firstName, ' ', /data/user/lastName)" /></a></li>
     </ul>
   </xsl:template>
 </xsl:stylesheet>

@@ -1,6 +1,7 @@
 function createSkin()
 {
   document.portal_form.ACTION.value = 'CREATE_SKIN';
+  document.portal_form.SCREEN.value = 'GENERAL';
 }
 function saveSkin()
 {
