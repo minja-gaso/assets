@@ -16,6 +16,18 @@
       </xsl:choose>
 
       <!--
+        General - fill out basic form/survey information
+      -->
+      <xsl:choose>
+        <xsl:when test="$SCREEN = 'APPEARANCE'">
+          <li role="presentation" class="active"><a href="#">Appearance</a></li>
+        </xsl:when>
+        <xsl:otherwise>
+          <li role="presentation"><a href="javascript:switchTab('APPEARANCE');submitForm();">Appearance</a></li>
+        </xsl:otherwise>
+      </xsl:choose>
+
+      <!--
         Questions - for standard surveys, fill out questions in their own screen;  for self-assessment, everything is done on this screen.
       -->
       <xsl:choose>

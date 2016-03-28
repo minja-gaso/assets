@@ -34,5 +34,5 @@ CREATE TABLE users
 	CONSTRAINT users_pkey PRIMARY KEY (user_id)
 );
 
-INSERT INTO users(user_id, user_email, user_first_name, user_last_name) VALUES (1, 'gaso@illinois.edu', 'Minja', 'Gaso');
+INSERT INTO users(user_id, user_email, user_first_name, user_last_name) VALUES (1, 'minja.gaso@bswhealth.org', 'Minja', 'Gaso');
 INSERT INTO users(user_id, user_email, user_first_name, user_last_name) VALUES (2, 'zachary.beggs@bswhealth.org', 'Zachary', 'Beggs');

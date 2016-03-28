@@ -104,11 +104,11 @@
 							<xsl:variable name="day" select="substring(/data/form/endDate,9,2)" />
 							<xsl:value-of select="concat($month, '/', $day, '/', $year)" />
 						</xsl:variable>
-						<div class="form-group col-xs-2">
+						<div class="form-group col-xs-4 col-sm-3">
 							<label for="FORM_START_DATE">Start Date</label>
 							<input type="text" class="form-control datepicker" name="FORM_START_DATE" id="FORM_START_DATE" value="{$startDate}" />
 						</div>
-						<div class="form-group col-xs-2">
+						<div class="form-group col-xs-4 col-sm-3">
 							<label for="FORM_END_DATE">End Date</label>
 							<input type="text" class="form-control datepicker" name="FORM_END_DATE" id="FORM_END_DATE" value="{$endDate}" />
 						</div>

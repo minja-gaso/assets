@@ -31,5 +31,3 @@ CREATE TABLE IF NOT EXISTS skin.roles
 	PRIMARY KEY (role_id),
 	FOREIGN KEY (fk_skin_id) REFERENCES skin.skins (skin_id)
 );
-
-ALTER TABLE skin.skins ADD COLUMN skin_form_css character varying NOT NULL DEFAULT ''
