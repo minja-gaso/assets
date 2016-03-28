@@ -51,7 +51,7 @@
 		<hr />
 		<div class="row" id="skin-preview">
 			<div class="form-group col-xs-12">
-				<label for="CALENDAR_PREVIEW">Preview</label>
+				<label for="FORM_PREVIEW">Preview</label>
 				<div class="embed-responsive embed-responsive-16by9">
 				  <iframe class="embed-responsive-item" src="{$webformUrlToUse}">//</iframe>
 				</div>

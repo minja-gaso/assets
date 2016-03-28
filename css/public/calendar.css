@@ -35,6 +35,10 @@
 #cal-main #cal-toolbar li:first-child {
   margin-left: 0;
 }
+#cal-main #cal-toolbar a {
+  display: inline;
+  width: auto;
+}
 #cal-main #cal-toolbar li #search input {
   border: 1px solid #808080;
   border-top-left-radius: 4px;
@@ -49,8 +53,11 @@
   padding: 6px;
   vertical-align: middle;
 }
-#cal-main #events-list {
+#cal-main #events-list,
+#cal-main #event-item {
   border: none;
+  margin-left: 0;
+  margin-right: 0;
 }
 #cal-main #events-list li,
 #cal-main #event-item li {
@@ -69,3 +76,5 @@
 #cal-main #event-item #venue {
   margin-top: 12px;
 }
+#cal-main #event-item #event-information ul { margin-left: 0; margin-right: 0; }
+#cal-main #event-item #event-information ul li a { display: inline; }

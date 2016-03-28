@@ -64,10 +64,11 @@
 				<xsl:call-template name="sidebar" />
 			</div>
 		-->
-			<h1 class="form-group"><xsl:value-of select="/data/calendar/title" /></h1>
-			<xsl:call-template name="main" />
-			<footer class="text-center">Provided by <em><a href="#">Interactive Marketing</a></em> at <em><a href="#">Baylor Scott &amp; White</a></em></footer>
-
+			<div class="col-xs-12">
+				<h1 class="form-group"><xsl:value-of select="/data/calendar/title" /></h1>
+				<xsl:call-template name="main" />
+				<footer class="text-center">Provided by <em><a href="#">Interactive Marketing</a></em> at <em><a href="#">Baylor Scott &amp; White</a></em></footer>
+			</div>
 		</div>
 		<xsl:if test="string-length(/data/form/messagePublicFormClosing) &gt; 0">
 			<div class="form-message form-closing">

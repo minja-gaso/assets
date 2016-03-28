@@ -20,18 +20,16 @@
 			<input type="hidden" name="FORM_ID" value="{/data/form/id}" />
 			<input type="hidden" name="QUESTION_ID" value="{/data/form/question/id}" />
 			<!-- survey content -->
-			<div class="row">
-				<nav>
-					<xsl:call-template name="multiple_choice_nav" />
-				</nav>
-				<div class="col-lg-12 bordered-area">
-					<h2>Edit Question <small class="hidden"><xsl:value-of select="/data/form/question/type" /></small></h2>
-					<xsl:call-template name="messages" />
-					<xsl:call-template name="main" />
-					<div class="btn-toolbar">
-						<a class="btn btn-success" href="javascript:saveQuestion();submitForm();">Save</a>
-						<a class="btn btn-danger" href="javascript:switchTab('QUESTION_LIST');submitForm();">Back to Questions</a>
-					</div>
+			<nav>
+				<xsl:call-template name="multiple_choice_nav" />
+			</nav>
+			<div class="col-lg-12 bordered-area">
+				<h2>Edit Question <small class="hidden"><xsl:value-of select="/data/form/question/type" /></small></h2>
+				<xsl:call-template name="messages" />
+				<xsl:call-template name="main" />
+				<div class="btn-toolbar">
+					<a class="btn btn-success" href="javascript:saveQuestion();submitForm();">Save</a>
+					<a class="btn btn-danger" href="javascript:switchTab('QUESTION_LIST');submitForm();">Back to Questions</a>
 				</div>
 			</div>
 		</form>

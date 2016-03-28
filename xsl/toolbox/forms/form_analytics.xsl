@@ -17,28 +17,26 @@
 			<input type="hidden" name="SCREEN" value="ANALYTICS" />
 			<input type="hidden" name="FORM_ID" value="{/data/form/id}" />
 			<!-- survey content -->
-			<div class="row">
-				<nav>
-					<xsl:call-template name="primary_navigation">
-						<xsl:with-param name="SCREEN" select="'ANALYTICS'" />
-					</xsl:call-template>
-				</nav>
-				<div class="col-lg-12 bordered-area">
-					<div class="form-group hidden" id="top-actions">
-						<div class="btn-toolbar">
-							<a class="btn btn-default disabled" href="javascript:submitForm();">Save</a>
-							<a class="btn btn-default" href="javascript:formListScreen();submitForm();">Back to Forms</a>
-							<a class="btn btn-default" href="{$webformUrlToUse}" target="_blank">View Form</a>
-						</div>
-					</div>
-					<h2>Roles &amp; Privileges</h2>
-					<xsl:call-template name="messages" />
-					<xsl:call-template name="main" />
+			<nav>
+				<xsl:call-template name="primary_navigation">
+					<xsl:with-param name="SCREEN" select="'ANALYTICS'" />
+				</xsl:call-template>
+			</nav>
+			<div class="col-lg-12 bordered-area">
+				<div class="form-group hidden" id="top-actions">
 					<div class="btn-toolbar">
 						<a class="btn btn-default disabled" href="javascript:submitForm();">Save</a>
 						<a class="btn btn-default" href="javascript:formListScreen();submitForm();">Back to Forms</a>
 						<a class="btn btn-default" href="{$webformUrlToUse}" target="_blank">View Form</a>
 					</div>
+				</div>
+				<h2>Roles &amp; Privileges</h2>
+				<xsl:call-template name="messages" />
+				<xsl:call-template name="main" />
+				<div class="btn-toolbar">
+					<a class="btn btn-default disabled" href="javascript:submitForm();">Save</a>
+					<a class="btn btn-default" href="javascript:formListScreen();submitForm();">Back to Forms</a>
+					<a class="btn btn-default" href="{$webformUrlToUse}" target="_blank">View Form</a>
 				</div>
 			</div>
 		</form>

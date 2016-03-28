@@ -22,28 +22,26 @@
 			<input type="hidden" name="MOVE_QUESTION_NUMBER_DOWN" />
 			<input type="hidden" name="MOVE_QUESTION_NUMBER_UP" />
 			<!-- survey content -->
-			<div class="row">
-				<nav>
-					<xsl:call-template name="primary_navigation">
-						<xsl:with-param name="SCREEN" select="'QUESTION_LIST'" />
-					</xsl:call-template>
-				</nav>
-				<div class="col-lg-12 bordered-area">
-					<div class="form-group hidden" id="top-actions">
-						<div class="btn-toolbar">
-							<a class="btn btn-default disabled" href="javascript:submitForm();">Save</a>
-							<a class="btn btn-default" href="javascript:formListScreen();submitForm();">Back to Forms</a>
-							<a class="btn btn-default" href="{$webformUrlToUse}" target="_blank">View Form</a>
-						</div>
-					</div>
-					<h2>List of Questions</h2>
-					<xsl:call-template name="messages" />
-					<xsl:call-template name="main" />
+			<nav>
+				<xsl:call-template name="primary_navigation">
+					<xsl:with-param name="SCREEN" select="'QUESTION_LIST'" />
+				</xsl:call-template>
+			</nav>
+			<div class="col-lg-12 bordered-area">
+				<div class="form-group hidden" id="top-actions">
 					<div class="btn-toolbar">
 						<a class="btn btn-default disabled" href="javascript:submitForm();">Save</a>
 						<a class="btn btn-default" href="javascript:formListScreen();submitForm();">Back to Forms</a>
 						<a class="btn btn-default" href="{$webformUrlToUse}" target="_blank">View Form</a>
 					</div>
+				</div>
+				<h2>List of Questions</h2>
+				<xsl:call-template name="messages" />
+				<xsl:call-template name="main" />
+				<div class="btn-toolbar">
+					<a class="btn btn-default disabled" href="javascript:submitForm();">Save</a>
+					<a class="btn btn-default" href="javascript:formListScreen();submitForm();">Back to Forms</a>
+					<a class="btn btn-default" href="{$webformUrlToUse}" target="_blank">View Form</a>
 				</div>
 			</div>
 		</form>
@@ -122,7 +120,7 @@
 				</xsl:attribute>
 				<input type="hidden" name="QUESTION_ID_LIST" value="{id}" />
 				<input type="hidden" name="QUESTION_ORDER_LIST" value="{number}" />
-				<xsl:text><xsl:value-of select="label" /></xsl:text>
+				<xsl:value-of select="label" />
 			</td>
 			<td class="text-center"><a href="javascript:editQuestion('{id}', {concat($quote, $questionType, $quote)});submitForm();"><span class="fa fa-pencil fa-lg" /></a></td>
 			<td class="text-center"><a href="javascript:deleteQuestion('{id}');submitForm();"><span class="fa fa-trash fa-lg" /></a></td>
