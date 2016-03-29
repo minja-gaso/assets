@@ -7,29 +7,18 @@
 
     </ul>
     <script type="text/javascript" src="//www.google.com/jsapi"></script>
+    <script>console.log('hello')</script>
     <script>
-      /*RSS Feed*/
-      google.load("feeds", "1");
+    (function(){
+      var scripts = document.getElementsByTagName('script');
+      var length = scripts.length - 1;
 
-      function initialize() {
-        var feed = new google.feeds.Feed("http://feeds.feedburner.com/ScrubbingIn");
-        feed.setNumEntries(6);
-        feed.load(function(result) {
-          if (!result.error) {
-            var blogFeed = document.getElementById("blog-feed");
-            var html = "";
-            for (var i = 0; i < result.feed.entries.length; i++) {
-              var entry = result.feed.entries[i];
-      		    html = "<a href='" + entry.link + "' target='_blank'>" + entry.title + "</a>";
-              var listItem = document.createElement("li");
-              listItem.innerHTML = html;
-              blogFeed.appendChild(listItem);
-            }
-            document.write(html);
-          }
-        });
-      }
-      google.setOnLoadCallback(initialize);
+      var div = document.createElement('div');
+      div.innerHTML = 'hello world!';
+
+      var target = scripts[length];
+      target.parentNode.insertBefore(div, target.nextSibling);
+    })();
     </script>
   </body>
 </html>

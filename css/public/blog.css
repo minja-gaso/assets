@@ -1,0 +1,8 @@
+#bswh-marketing { margin: 0 auto; max-width: 600px; }
+#blog-main article { border-top: 1px solid #ccc; font-family: 'Open Sans Condensed', sans-serif; margin-top: 24px; padding-top: 24px; }
+#blog-main article.entry-1 { border-top: 0 none; }
+#blog-main article h1 { font-family: 'Source Serif Pro', serif; margin: 0; }
+#blog-main article date .topic-time { margin-left: 16px; }
+#blog-main footer #social-media { background-color: #f7f7f7; margin: 12px 0; padding: 16px; text-align: center; }
+#blog-main footer #social-media a { color: #484848; font-size: 24px; }
+#blog-main footer #social-media a:hover { opacity: 0.7; }
