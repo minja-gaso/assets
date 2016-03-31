@@ -22,28 +22,26 @@
 			<input type="hidden" name="MOVE_QUESTION_NUMBER_DOWN" />
 			<input type="hidden" name="MOVE_QUESTION_NUMBER_UP" />
 			<!-- survey content -->
-			<div class="row">
-				<nav>
-					<xsl:call-template name="primary_navigation">
-						<xsl:with-param name="SCREEN" select="'ANSWERS'" />
-					</xsl:call-template>
-				</nav>
-				<div class="col-lg-12 bordered-area">
-					<div class="form-group hidden" id="top-actions">
-						<div class="btn-toolbar">
-							<a class="btn btn-default disabled" href="javascript:submitForm();">Save</a>
-							<a class="btn btn-default" href="javascript:formListScreen();submitForm();">Back to Forms</a>
-							<a class="btn btn-default" href="{$webformUrlToUse}" target="_blank">View Form</a>
-						</div>
-					</div>
-					<h2>Self-Assessment Answers</h2>
-					<xsl:call-template name="messages" />
-					<xsl:call-template name="main" />
+			<nav>
+				<xsl:call-template name="primary_navigation">
+					<xsl:with-param name="SCREEN" select="'ANSWERS'" />
+				</xsl:call-template>
+			</nav>
+			<div class="col-lg-12 bordered-area">
+				<div class="form-group hidden" id="top-actions">
 					<div class="btn-toolbar">
 						<a class="btn btn-default disabled" href="javascript:submitForm();">Save</a>
 						<a class="btn btn-default" href="javascript:formListScreen();submitForm();">Back to Forms</a>
 						<a class="btn btn-default" href="{$webformUrlToUse}" target="_blank">View Form</a>
 					</div>
+				</div>
+				<h2>Self-Assessment Answers</h2>
+				<xsl:call-template name="messages" />
+				<xsl:call-template name="main" />
+				<div class="btn-toolbar">
+					<a class="btn btn-default disabled" href="javascript:submitForm();">Save</a>
+					<a class="btn btn-default" href="javascript:formListScreen();submitForm();">Back to Forms</a>
+					<a class="btn btn-default" href="{$webformUrlToUse}" target="_blank">View Form</a>
 				</div>
 			</div>
 		</form>

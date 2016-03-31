@@ -18,33 +18,31 @@
 			<input type="hidden" name="FORM_ID" value="{/data/form/id}" />
 			<input type="hidden" name="SCORE_ID" value="{/data/score/id}" />
 			<!-- survey content -->
-			<div class="row">
-				<nav>
-					<xsl:call-template name="score_nav" />
-				</nav>
-				<div class="col-lg-12 bordered-area">
-					<div class="form-group hidden" id="top-actions">
-						<div class="btn-toolbar">
-							<a class="btn btn-default disabled" href="javascript:submitForm();">Save</a>
-							<a class="btn btn-default" href="javascript:formListScreen();submitForm();">Back to Forms</a>
-							<a class="btn btn-default" href="{$webformUrlToUse}" target="_blank">View Form</a>
-						</div>
+			<nav>
+				<xsl:call-template name="score_nav" />
+			</nav>
+			<div class="col-lg-12 bordered-area">
+				<div class="form-group hidden" id="top-actions">
+					<div class="btn-toolbar">
+						<a class="btn btn-default disabled" href="javascript:submitForm();">Save</a>
+						<a class="btn btn-default" href="javascript:formListScreen();submitForm();">Back to Forms</a>
+						<a class="btn btn-default" href="{$webformUrlToUse}" target="_blank">View Form</a>
 					</div>
-					<div class="form-group" id="top-actions">
-						<div class="btn-toolbar">
-							<a class="btn btn-default" href="javascript:saveScore();submitForm();">Save</a>
-							<a class="btn btn-default" href="javascript:formScores();submitForm();">Back to Scores</a>
-							<a class="btn btn-default" href="{$webformUrlToUse}" target="_blank">View Form</a>
-						</div>
-					</div>
-					<h2>Self-Assessment Scores</h2>
-					<xsl:call-template name="messages" />
-					<xsl:call-template name="main" />
+				</div>
+				<div class="form-group" id="top-actions">
 					<div class="btn-toolbar">
 						<a class="btn btn-default" href="javascript:saveScore();submitForm();">Save</a>
 						<a class="btn btn-default" href="javascript:formScores();submitForm();">Back to Scores</a>
 						<a class="btn btn-default" href="{$webformUrlToUse}" target="_blank">View Form</a>
 					</div>
+				</div>
+				<h2>Self-Assessment Scores</h2>
+				<xsl:call-template name="messages" />
+				<xsl:call-template name="main" />
+				<div class="btn-toolbar">
+					<a class="btn btn-default" href="javascript:saveScore();submitForm();">Save</a>
+					<a class="btn btn-default" href="javascript:formScores();submitForm();">Back to Scores</a>
+					<a class="btn btn-default" href="{$webformUrlToUse}" target="_blank">View Form</a>
 				</div>
 			</div>
 		</form>

@@ -73,7 +73,7 @@
 			<div class="form-group col-xs-12">
 				<label for="BLOG_URL">Standard URL</label>
 				<p class="help-block">If you do not care about SEO, feel free to link to this URL.</p>
-				<input type="text" class="form-control" value="{$url}" disabled="disabled" readonly="readonly" />
+				<input type="text" class="form-control" value="{$listUrlById}" disabled="disabled" readonly="readonly" />
 			</div>
 		</div>
 		<div class="row" id="pretty-url">
@@ -81,9 +81,9 @@
 				<label for="BLOG_PRETTY_URL">Pretty URL</label>
 				<p class="help-block">SEO-friendly alternative to standard URLs that gives you control.  You may use alphanumeric characters, hyphens, underscores and periods.</p>
 				<div class="input-group input-group-url">
-					<span class="input-group-addon"><xsl:value-of select="$baseUrl" /></span>
+					<span class="input-group-addon"><xsl:value-of select="$listUrlById" /></span>
 					<input type="text" class="form-control" name="BLOG_PRETTY_URL" id="BLOG_PRETTY_URL" value="{/data/blog/prettyUrl}" />
-					<a href="{$prettyUrl}" class="input-group-addon" target="_blank"><span class="fa fa-external-link" /></a>
+					<a href="{$listUrl}" class="input-group-addon" target="_blank"><span class="fa fa-external-link" /></a>
 				</div>
 			</div>
 		</div>

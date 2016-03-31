@@ -28,7 +28,7 @@
 					<div class="btn-toolbar">
 						<a class="btn btn-default disabled" href="javascript:submitForm();">Save</a>
 						<a class="btn btn-default" href="javascript:blogs();submitForm();">Back to Blogs</a>
-						<a class="btn btn-default" href="{$viewUrl}" target="_blank">View Blog</a>
+						<a class="btn btn-default" href="{$listUrl}" target="_blank">View Blog</a>
 					</div>
 				</div>
 				<h2>Topics for <em><xsl:value-of select="/data/blog/title" /></em></h2>
@@ -38,7 +38,7 @@
 				<div class="btn-toolbar">
 					<a class="btn btn-default disabled" href="javascript:submitForm();">Save</a>
 					<a class="btn btn-default" href="javascript:blogs();submitForm();">Back to Blogs</a>
-					<a class="btn btn-default" href="{$viewUrl}" target="_blank">View Blog</a>
+					<a class="btn btn-default" href="{$listUrl}" target="_blank">View Blog</a>
 				</div>
 			</div>
 		</form>
@@ -133,7 +133,7 @@
 				</a>
 			</td>
 			<td class="text-center">
-				<a href="{concat($detailBaseUrl, '?eventID=', id)}" target="_blank">
+				<a href="{$topicUrl}" target="_blank">
 					<span class="fa fa-search fa-lg" />
 				</a>
 			</td>

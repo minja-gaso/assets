@@ -36,10 +36,10 @@ body {
 #container #main .nav-tabs > li a {
   background-color: @primaryGray;
   border: 1px solid @tertiaryGray;
-  xxxborder-bottom: none;
+  border-radius: 0;
 }
 #container #main .nav-tabs > li a:hover {
-  background-color: #E8E8E8;
+  background-color: #fbfbfb;
 }
 #container #main .nav-tabs > li.active a {
   background-color: @primaryWhite;
@@ -84,13 +84,15 @@ body {
 #container #main label .required {
   color: @primaryRed;
 }
-#container #main .styled-select {
+#container #main .styled-select,
+#iframe .styled-select {
   background-color: @primaryWhite;
   background-image: url(../img/dropdown_arrow.jpg);
   background-position: right center;
   background-repeat: no-repeat;
 }
-#container #main .styled-select > select {
+#container #main .styled-select > select,
+#iframe .styled-select > select {
   appearance: none;
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -121,7 +123,9 @@ body {
 #container #main input,
 #container #main select,
 #container #main textarea,
-#iframe input {
+#iframe input,
+#iframe select,
+#iframe textarea {
   background-color: @primaryWhite;
   .border(@inputWidth, solid, @tertiaryGray);
   border-radius: 0;

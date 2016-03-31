@@ -20,7 +20,7 @@
 			<!-- survey content -->
 			<nav>
 				<xsl:call-template name="event_content_navigation">
-					<xsl:with-param name="SCREEN" select="'EVENT'" />
+					<xsl:with-param name="SCREEN" select="'TOPIC'" />
 				</xsl:call-template>
 			</nav>
 			<div class="col-lg-12 bordered-area">
@@ -28,8 +28,8 @@
 					<div class="btn-toolbar">
 						<button class="btn btn-default" onclick="saveTopic();submitForm();">Save</button>
 						<button class="btn btn-default" onclick="topics();submitForm();">Back to Topics</button>
-						<a class="btn btn-default" href="{$viewUrl}" target="_blank">View Blog</a>
-						<a class="btn btn-default" href="{$detailViewUrl}" target="_blank">View Topic</a>
+						<a class="btn btn-default" href="{$listUrl}" target="_blank">View Blog</a>
+						<a class="btn btn-default" href="{$topicUrl}" target="_blank">View Topic</a>
 					</div>
 				</div>
 				<h2>Edit Topic</h2>
@@ -39,8 +39,8 @@
 					<div class="btn-toolbar">
 						<button class="btn btn-default" onclick="saveTopic();submitForm();">Save</button>
 						<button class="btn btn-default" onclick="topics();submitForm();">Back to Topics</button>
-						<a class="btn btn-default" href="{$viewUrl}" target="_blank">View Blog</a>
-						<a class="btn btn-default" href="{$detailViewUrl}" target="_blank">View Topic</a>
+						<a class="btn btn-default" href="{$listUrl}" target="_blank">View Blog</a>
+						<a class="btn btn-default" href="{$topicUrl}" target="_blank">View Topic</a>
 					</div>
 				</div>
 			</div>
@@ -114,10 +114,10 @@
 						</select>
 					</div>
 					<div class="form-group col-xs-12">
-						<label for="TOPIC_DESCRIPTION">Description <span class="required">*</span></label>
+						<label for="TOPIC_SUMMARY">Description <span class="required">*</span></label>
 						<p class="help-block">Provide a summary for the event.</p>
-						<input type="hidden" name="TOPIC_DESCRIPTION" id="TOPIC_DESCRIPTION" value="{description}" />
-						<trix-editor input="TOPIC_DESCRIPTION"></trix-editor>
+						<input type="hidden" name="TOPIC_SUMMARY" id="TOPIC_SUMMARY" value="{summary}" />
+						<trix-editor input="TOPIC_SUMMARY"></trix-editor>
 					</div>
 				</div>
 			</div>

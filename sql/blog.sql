@@ -3,7 +3,6 @@ CREATE TABLE IF NOT EXISTS blog.blogs
 (
 	blog_id bigint NOT NULL DEFAULT id_generator(),
 	blog_creation_timestamp timestamp with time zone NOT NULL DEFAULT now(),
-	blog_type character varying NOT NULL DEFAULT 'event',
 	blog_title character varying NOT NULL DEFAULT '',
 	blog_pretty_url character varying UNIQUE NOT NULL DEFAULT '',
 	blog_screen_public_intro character varying NOT NULL DEFAULT '',
@@ -55,7 +54,8 @@ CREATE TABLE IF NOT EXISTS blog.topics
 	topic_publish_date date NOT NULL DEFAULT current_date,
 	topic_publish_time time without time zone NOT NULL DEFAULT '08:00:00',
 	topic_title character varying NOT NULL DEFAULT '',
-	topic_description character varying NOT NULL DEFAULT '',
+	topic_summary character varying NOT NULL DEFAULT '',
+	topic_article character varying NOT NULL DEFAULT '',
 	fk_blog_id bigint NOT NULL,
 	PRIMARY KEY (topic_id),
 	FOREIGN KEY (fk_blog_id) REFERENCES blog.blogs (blog_id)
@@ -69,6 +69,8 @@ CREATE TABLE IF NOT EXISTS blog.tags
 	fk_topic_id bigint NOT NULL,
 	fk_blog_id bigint NOT NULL,
 	PRIMARY KEY (topic_tag_id),
-	FOREIGN KEY (fk_topic_id) REFERENCES blog.topics (topic_id),
+	FOREIGN KEY (fk_topic_id) REFERENCES blog.topics (topic_id)
+		ON DELETE CASCADE,
 	FOREIGN KEY (fk_blog_id) REFERENCES blog.blogs (blog_id)
+		ON DELETE CASCADE
 );

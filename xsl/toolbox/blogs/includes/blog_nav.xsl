@@ -88,22 +88,33 @@
         Event - the general event information view
       -->
       <xsl:choose>
-        <xsl:when test="$SCREEN = 'EVENT'">
-          <li role="presentation" class="active"><a href="#">Event</a></li>
+        <xsl:when test="$SCREEN = 'TOPIC'">
+          <li role="presentation" class="active"><a href="#">Topic</a></li>
         </xsl:when>
         <xsl:otherwise>
-          <li role="presentation"><a href="javascript:saveEvent();switchTab('EVENT');submitForm();">Event</a></li>
+          <li role="presentation"><a href="javascript:saveEvent();switchTab('TOPIC');submitForm();">Topic</a></li>
+        </xsl:otherwise>
+      </xsl:choose>
+        <!--
+          Article - the general event information view
+        -->
+      <xsl:choose>
+        <xsl:when test="$SCREEN = 'ARTICLE'">
+          <li role="presentation" class="active"><a href="#">Article</a></li>
+        </xsl:when>
+        <xsl:otherwise>
+          <li role="presentation"><a href="javascript:saveEvent();switchTab('ARTICLE');submitForm();">Article</a></li>
         </xsl:otherwise>
       </xsl:choose>
       <!--
         Image Upload - upload main event image
       -->
       <xsl:choose>
-        <xsl:when test="$SCREEN = 'EVENT_IMAGE_UPLOAD'">
-          <li role="presentation" class="active"><a href="#">Upload Image</a></li>
+        <xsl:when test="$SCREEN = 'FILE_UPLOAD'">
+          <li role="presentation" class="active"><a href="#">File Upload</a></li>
         </xsl:when>
         <xsl:otherwise>
-          <li role="presentation"><a href="javascript:saveEvent();switchTab('EVENT_IMAGE_UPLOAD');submitForm();">Upload Image</a></li>
+          <li role="presentation"><a href="javascript:saveEvent();switchTab('FILE_UPLOAD');submitForm();">File Upload</a></li>
         </xsl:otherwise>
       </xsl:choose>
       <!--
