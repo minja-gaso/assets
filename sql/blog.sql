@@ -61,6 +61,18 @@ CREATE TABLE IF NOT EXISTS blog.topics
 	FOREIGN KEY (fk_blog_id) REFERENCES blog.blogs (blog_id)
 );
 
+DROP TABLE IF EXISTS blog.topic_files CASCADE;
+CREATE TABLE IF NOT EXISTS blog.topic_files
+(
+	topic_file_id bigint DEFAULT id_generator(),
+	topic_file_type character varying NOT NULL DEFAULT '',
+	topic_file_name character varying NOT NULL DEFAULT '',
+	topic_file_description character varying NOT NULL DEFAULT '',
+	fk_topic_id bigint NOT NULL,
+	PRIMARY KEY (topic_file_id),
+	FOREIGN KEY (fk_topic_id) REFERENCES blog.topics (topic_id)
+);
+
 DROP TABLE IF EXISTS blog.tags CASCADE;
 CREATE TABLE IF NOT EXISTS blog.tags
 (
