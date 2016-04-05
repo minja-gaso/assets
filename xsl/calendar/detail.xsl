@@ -6,34 +6,28 @@
 	<xsl:import href="includes/calendar_date_time.xsl" />
 
 	<xsl:template match="/">
+		<xsl:apply-templates />
+	</xsl:template>
+	<xsl:template match="data">
+		<xsl:apply-templates select="calendar" />
+	</xsl:template>
+	<xsl:template match="calendar">
 		<form action="" method="get" name="portal_form" id="bswh-marketing">
 			<div id="bswh">
 				<input type="hidden" name="searchType" value="keyword" />
 				<xsl:call-template name="external_files" />
 		    <link href="/css/public/calendar.css" rel="stylesheet"/>
-				<xsl:choose>
-					<!-- if form not started -->
-					<xsl:when test="/data/form/started = 'false'">
-						<div class="form-message">
-							<xsl:value-of select="/data/form/messageNotStarted" disable-output-escaping="yes" />
-						</div>
-					</xsl:when>
-					<!-- if none of cases above are met, display the form -->
-					<xsl:otherwise>
-						<xsl:call-template name="public_calendar" />
-						<script>
-							$(document).ready(function(){
-								$(".list-recurring .recurring-title").click(function(){
-									$(this).parent().find(".recurring-agenda").toggle();
-								});
-							});
-						</script>
-					</xsl:otherwise>
-				</xsl:choose>
+				<xsl:call-template name="public_calendar" />
+				<script>
+					$(document).ready(function(){
+						$(".list-recurring .recurring-title").click(function(){
+							$(this).parent().find(".recurring-agenda").toggle();
+						});
+					});
+				</script>
 			</div>
 		</form>
 	</xsl:template>
-
 
 	<xsl:template name="public_calendar">
 		<xsl:if test="string-length(/data/form/messagePublicFormIntro) &gt; 0">
@@ -54,7 +48,8 @@
 			</div>
 			-->
 			<div class="col-lg-12 col-md-12 col-sm-12">
-				<h1 class="form-group"><xsl:value-of select="/data/calendar/title" /></h1>
+				<xsl:call-template name="breadcrumb"/>
+				<h1 class="form-group"><xsl:value-of select="title" /></h1>
 				<xsl:call-template name="main" />
 				<footer class="text-center">Provided by <em><a href="#">Interactive Marketing</a></em> at <em><a href="#">Baylor Scott &amp; White</a></em></footer>
 			</div>
@@ -69,17 +64,19 @@
 
 	<xsl:template name="main">
 		<xsl:call-template name="top_nav" />
-		<xsl:for-each select="/data/calendar/event[position() = 1]">
+		<xsl:for-each select="event[position() = 1]">
 			<xsl:variable name="eventId" select="id" />
 			<xsl:variable name="fileName" select="fileName" />
 			<xsl:variable name="parentId" select="parentId" />
 			<ul class="list-group" id="event-item">
 				<li class="list-group-item event">
+					<!--
 					<div class="calendar-navigate">
-						<a href="/calendar/list/{/data/calendar/id}">
+						<a href="/calendar/list/{../prettyUrl}">
 							<span class="fa fa-arrow-circle-o-left" /> All Events
 						</a>
 					</div>
+				-->
 					<h2><xsl:value-of select="title" /></h2>
 					<p>
 						<xsl:call-template name="format_date">
@@ -94,7 +91,7 @@
 					<xsl:if test="string-length(fileName) &gt; 0">
 						<xsl:variable name="fileDirectoryPath">
 							<xsl:choose>
-								<xsl:when test="parentId &gt; 0 and /data/calendar/event[id=$parentId]/fileName = $fileName">
+								<xsl:when test="parentId &gt; 0 and event[id=$parentId]/fileName = $fileName">
 									<xsl:value-of select="parentId" />
 								</xsl:when>
 								<xsl:otherwise>
@@ -102,7 +99,10 @@
 								</xsl:otherwise>
 							</xsl:choose>
 						</xsl:variable>
-						<img src="/uploads/calendar/{/data/calendar/id}/{$fileDirectoryPath}/{fileName}" class="img-responsive" alt="Responsive image" xxxonload="this.parentNode.style.width=this.offsetWidth + 'px'" />
+						<div class="thumbnail">
+							<img src="/uploads/calendar/{../id}/{$fileDirectoryPath}/{fileName}" class="img-responsive" alt="Responsive image" onload="this.parentNode.style.width=this.offsetWidth + 'px'" />
+							<caption><xsl:value-of select="fileDescription" /></caption>
+						</div>
 						<!--
 						<div class="thumbnail">
 							<img src="/uploads/calendar/{/data/calendar/id}/{$fileDirectoryPath}/{fileName}" class="img-responsive" alt="Responsive image" onload="this.parentNode.style.width=this.offsetWidth + 'px'" />
@@ -142,9 +142,9 @@
 									<li>
 										<strong>Event Category</strong>
 										<div>
-											<a href="/calendar/search/{/data/calendar/prettyUrl}?type=category&amp;id={categoryId}">
+											<a href="/calendar/search/{../prettyUrl}?type=category&amp;id={categoryId}">
 												<xsl:variable name="categoryId" select="categoryId" />
-												<xsl:value-of select="/data/calendar/category[id = $categoryId]/label" />
+												<xsl:value-of select="../category[id = $categoryId]/label" />
 											</a>
 										</div>
 									</li>
@@ -154,7 +154,7 @@
 										<strong>Event Tags</strong>
 										<div>
 											<xsl:for-each select="tag">
-												<a href="/calendar/search/{/data/calendar/prettyUrl}?searchType=tag&amp;tagId={id}">
+												<a href="/calendar/search/{../prettyUrl}?searchType=tag&amp;tagId={id}">
 													<xsl:value-of select="label" />
 												</a>
 												<xsl:if test="position() != last()">,&#160;</xsl:if>
@@ -259,7 +259,7 @@
 						</xsl:variable>
 						<style type="text/css">
 				      html, body { height: 100%; margin: 0; padding: 0; }
-				      #map { border: 12px solid #ffffff; height: 100%; max-height: 400px; max-width: 600px; min-height: 250px; padding-left: 0; xxxwidth: 100%; }
+				      #map { border: 12px solid #ffffff; height: 250px; max-width: 600px; min-height: 250px; padding-left: 0; }
 				    </style>
 						<div class="col-sm-4" id="location-info">
 							<h3>Venue</h3>
@@ -310,120 +310,11 @@
 
 					<xsl:if test="count(/data/calendar/event[parentId=$eventId]) &gt; 0 and parentId = 0">
 						<div class="row detail-item">
-							<div class="col-lg-2 col-md-3 col-sm-3">
-								<strong>Recurring on</strong>
-							</div>
-							<div class="col-lg-10 col-md-9 col-sm-9">
-								<ul class="list-unstyled list-recurring">
-									<li id="{id}">
-										<!--
-										<a href="/calendar/detail/{/data/calendar/prettyUrl}?eventID={/data/calendar/event/id}">
-											<xsl:choose>
-												<xsl:when test="string-length(titleRecurringLabel) = 0">
-													<xsl:call-template name="format_date">
-														<xsl:with-param name="paramDate" select="startDate" />
-													</xsl:call-template>
-												</xsl:when>
-												<xsl:otherwise>
-													<xsl:value-of select="titleRecurringLabel" />
-												</xsl:otherwise>
-											</xsl:choose>
-										</a>
-										-->
-										<xsl:variable name="recurringTitleElementName">
-											<xsl:choose>
-												<xsl:when test="string-length(agenda) &gt; 0">a</xsl:when>
-												<xsl:otherwise>div</xsl:otherwise>
-											</xsl:choose>
-										</xsl:variable>
-										<xsl:element name="{$recurringTitleElementName}">
-											<xsl:attribute name="class">recurring-row recurring-title</xsl:attribute>
-											<xsl:choose>
-												<xsl:when test="string-length(titleRecurringLabel) &gt; 0">
-													<xsl:value-of select="titleRecurringLabel" />
-												</xsl:when>
-												<xsl:otherwise>
-													<!--
-													<xsl:call-template name="format_date">
-														<xsl:with-param name="paramDate" select="startDate" />
-													</xsl:call-template>
-												-->
-													Day <xsl:value-of select="position()" />
-												</xsl:otherwise>
-											</xsl:choose>
-										</xsl:element>
-										<!--
-										<xsl:if test="string-length(titleRecurringLabel) &gt; 0">
-										-->
-											<p class="recurring-row recurring-date">
-												<xsl:call-template name="format_date">
-													<xsl:with-param name="paramDate" select="startDate" />
-												</xsl:call-template>
-											</p>
-										<!--
-										</xsl:if>
-										-->
-										<p class="recurring-row recurring-time">
-											<xsl:call-template name="format_time">
-												<xsl:with-param name="paramDate" select="/data/calendar/event/startTime" />
-											</xsl:call-template>
-										</p>
-										<xsl:if test="string-length(agenda) &gt; 0">
-											<div class="recurring-row recurring-agenda" id="recurring-agenda-{id}">
-												<strong>Agenda</strong>
-												<xsl:value-of select="agenda" disable-output-escaping="yes" />
-											</div>
-										</xsl:if>
-									</li>
-									<xsl:for-each select="/data/calendar/event[parentId=$eventId]">
-										<li id="{id}">
-											<xsl:variable name="recurringTitleElementName">
-												<xsl:choose>
-													<xsl:when test="string-length(agenda) &gt; 0">a</xsl:when>
-													<xsl:otherwise>div</xsl:otherwise>
-												</xsl:choose>
-											</xsl:variable>
-											<xsl:element name="{$recurringTitleElementName}">
-												<xsl:attribute name="class">recurring-row recurring-title</xsl:attribute>
-												<xsl:choose>
-													<xsl:when test="string-length(titleRecurringLabel) &gt; 0">
-														<xsl:value-of select="titleRecurringLabel" />
-													</xsl:when>
-													<xsl:otherwise>
-														<!--
-														<xsl:call-template name="format_date">
-															<xsl:with-param name="paramDate" select="startDate" />
-														</xsl:call-template>
-													-->
-														Instance <xsl:value-of select="position() + 1" />
-													</xsl:otherwise>
-												</xsl:choose>
-											</xsl:element>
-											<!--
-											<xsl:if test="string-length(titleRecurringLabel) &gt; 0">
-											-->
-												<p class="recurring-row recurring-date">
-													<xsl:call-template name="format_date">
-														<xsl:with-param name="paramDate" select="startDate" />
-													</xsl:call-template>
-												</p>
-											<!--
-											</xsl:if>
-											-->
-											<p class="recurring-row recurring-time">
-												<xsl:call-template name="format_time">
-													<xsl:with-param name="paramDate" select="/data/calendar/event/startTime" />
-												</xsl:call-template>
-											</p>
-											<xsl:if test="string-length(agenda) &gt; 0">
-												<div class="recurring-row recurring-agenda" id="recurring-agenda-{id}">
-													<strong>Agenda</strong>
-													<xsl:value-of select="agenda" disable-output-escaping="yes" />
-												</div>
-											</xsl:if>
-										</li>
-									</xsl:for-each>
-								</ul>
+							<div class="col-xs-12">
+								<h3>Repeating Event</h3>
+								<ol class="list-recurring">
+									<xsl:apply-templates select="." />
+								</ol>
 							</div>
 						</div>
 					</xsl:if>
@@ -444,5 +335,68 @@
 				</li>
 			</ul>
 		</xsl:for-each>
+	</xsl:template>
+	<xsl:template match="event">
+		<li id="{id}">
+			<!--
+			<a href="/calendar/detail/{/data/calendar/prettyUrl}?eventID={/data/calendar/event/id}">
+				<xsl:choose>
+					<xsl:when test="string-length(titleRecurringLabel) = 0">
+						<xsl:call-template name="format_date">
+							<xsl:with-param name="paramDate" select="startDate" />
+						</xsl:call-template>
+					</xsl:when>
+					<xsl:otherwise>
+						<xsl:value-of select="titleRecurringLabel" />
+					</xsl:otherwise>
+				</xsl:choose>
+			</a>
+			-->
+			<xsl:if test="string-length(titleRecurringLabel) &gt; 0">
+				<xsl:variable name="recurringTitleElementName">
+					<xsl:choose>
+						<xsl:when test="string-length(agenda) &gt; 0">a</xsl:when>
+						<xsl:otherwise>div</xsl:otherwise>
+					</xsl:choose>
+				</xsl:variable>
+				<xsl:element name="{$recurringTitleElementName}">
+					<xsl:attribute name="class">recurring-row recurring-title</xsl:attribute>
+					<xsl:choose>
+						<xsl:when test="string-length(titleRecurringLabel) &gt; 0">
+							<xsl:value-of select="titleRecurringLabel" />
+						</xsl:when>
+						<xsl:otherwise>
+							<!--
+							<xsl:call-template name="format_date">
+								<xsl:with-param name="paramDate" select="startDate" />
+							</xsl:call-template>
+						-->
+						</xsl:otherwise>
+					</xsl:choose>
+				</xsl:element>
+				<!--
+				<xsl:if test="string-length(titleRecurringLabel) &gt; 0">
+				-->
+					<div class="recurring-row recurring-date">
+						<xsl:call-template name="format_date">
+							<xsl:with-param name="paramDate" select="startDate" />
+						</xsl:call-template>
+					</div>
+				<!--
+				</xsl:if>
+				-->
+				<div class="recurring-row recurring-time">
+					<xsl:call-template name="format_time">
+						<xsl:with-param name="paramDate" select="/data/calendar/event/startTime" />
+					</xsl:call-template>
+				</div>
+				<xsl:if test="string-length(agenda) &gt; 0">
+					<div class="recurring-row recurring-agenda" id="recurring-agenda-{id}">
+						<strong>Agenda</strong>
+						<xsl:value-of select="agenda" disable-output-escaping="yes" />
+					</div>
+				</xsl:if>
+			</xsl:if>
+		</li>
 	</xsl:template>
 </xsl:stylesheet>

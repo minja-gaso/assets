@@ -36,6 +36,13 @@
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" />
   </xsl:template>
   <xsl:template name="top_nav">
+    <xsl:variable name="currentUrl">
+      <xsl:choose>
+        <xsl:when test="/data/environment/screenName = 'DETAIL'">
+          <xsl:value-of select="concat(/data/environment/serverName, 'calendar/detail/', /data/calendar/prettyUrl, '?eventID=', /data/calendar/event/id)" />
+        </xsl:when>
+      </xsl:choose>
+    </xsl:variable>
     <ul class="list-inline" id="cal-toolbar">
       <li>
         <a class="btn btn-social-icon btn-rss" href="/calendar/rss/{/data/calendar/prettyUrl}">
@@ -43,25 +50,26 @@
         </a>
       </li>
       <li>
-        <a class="btn btn-social-icon btn-twitter">
+        <a class="btn btn-social-icon btn-twitter" href="https://twitter.com/home?status={$currentUrl}">
           <span class="fa fa-twitter"></span>
         </a>
       </li>
       <li>
-        <a class="btn btn-social-icon btn-facebook">
+        <a class="btn btn-social-icon btn-facebook" href="https://www.facebook.com/sharer/sharer.php?u={$currentUrl}">
           <span class="fa fa-facebook"></span>
         </a>
       </li>
       <li>
-        <a class="btn btn-social-icon btn-linkedin">
+        <a class="btn btn-social-icon btn-linkedin" href="https://www.linkedin.com/shareArticle?mini=true&amp;url={$currentUrl}&amp;title={/data/calendar/event/title}&amp;summary={/data/calendar/event/description}">
           <span class="fa fa-linkedin"></span>
         </a>
       </li>
       <li>
-        <a class="btn btn-social-icon btn-google">
+        <a class="btn btn-social-icon btn-google" href="https://plus.google.com/share?url={$currentUrl}">
           <span class="fa fa-google"></span>
         </a>
       </li>
+      <!--
       <li>
         <a class="btn btn-social-icon btn-pinterest">
           <span class="fa fa-pinterest"></span>
@@ -72,9 +80,10 @@
           <span class="fa fa-envelope"></span>
         </a>
       </li>
+      -->
       <li class="pull-right">
         <div id="search">
-          <div class="col-xs-12 input-group">
+          <div class="input-group">
             <xsl:variable name="attributeName">
               <xsl:choose>
                 <xsl:when test="string-length(/data/calendar/search/query) &gt; 0">value</xsl:when>
@@ -91,7 +100,7 @@
                 </xsl:otherwise>
               </xsl:choose>
             </xsl:variable>
-            <input type="text" class="form-control" name="searchKeyword" id="searchKeyword" size="25">
+            <input type="text" name="searchKeyword" id="searchKeyword" size="25">
               <xsl:attribute name="{$attributeName}"><xsl:value-of select="$attributeValue" /></xsl:attribute>
             </input>
             <a class="input-group-addon" onclick="javascript:document.portal_form.searchType.value='keyword';document.portal_form.action='/calendar/search/{/data/calendar/prettyUrl}';document.portal_form.submit();">
@@ -149,6 +158,9 @@
   <xsl:template name="breadcrumb">
     <xsl:variable name="currentView">
       <xsl:choose>
+        <xsl:when test="/data/environment/screenName = 'DETAIL'">
+          <xsl:value-of select="/data/calendar/event/title" />
+        </xsl:when>
         <xsl:when test="/data/calendar/search/categoryId > 0">
           <xsl:text>Category: <xsl:value-of select="/data/calendar/category[id=$categoryId]/label" /></xsl:text>
         </xsl:when>

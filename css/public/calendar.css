@@ -28,9 +28,14 @@
 }
 #cal-main #cal-toolbar,
 #cal-main #cal-toolbar li {
-  display: inline;
   font-size: 22px;
   margin-left: 0;
+}
+#cal-main #cal-toolbar ul {
+  display: block;
+}
+#cal-main #cal-toolbar li {
+  display: inline;
 }
 #cal-main #cal-toolbar li:first-child {
   margin-left: 0;
@@ -40,15 +45,16 @@
   width: auto;
 }
 #cal-main #cal-toolbar li #search input {
-  border: 1px solid #808080;
-  border-top-left-radius: 4px;
-  border-bottom-left-radius: 4px;
+  border: 1px solid #dfdfdf;
+  border-radius: 0;
+  font-size: 14px;
+  height: 28px;
   padding: 4px;
 }
 #cal-main #cal-toolbar li #search a {
-  background-color: #808080;
-  border-top-right-radius: 4px;
-  border-bottom-right-radius: 4px;
+  background-color: #dfdfdf;
+  border: none;
+  border-radius: 0;
   font-size: 13px;
   padding: 6px;
   vertical-align: middle;
@@ -66,8 +72,17 @@
   padding-left: 0;
   padding-right: 0;
 }
+#cal-main #events-list li .day-label {
+  margin-bottom: 8px;
+}
+#cal-main #events-list li .entry {
+  margin-bottom: 12px;
+}
 #cal-main #events-list li .entry-info a {
   font-weight: bold;
+}
+#cal-main #events-list li .entry-info .location {
+  margin-bottom: 0;
 }
 #cal-main #event-item .calendar-navigate a {
   font-size: 20px;

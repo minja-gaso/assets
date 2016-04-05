@@ -51,7 +51,7 @@
 	</xsl:template>
 	<xsl:template match="topic">
 		<div class="form-group">
-			<label for="TOPIC_ARTICLE">Article - <xsl:value-of select="count(file[type='embedded'])" /></label>
+			<label for="TOPIC_ARTICLE">Article</label>
 			<p class="help-block">Enter the full article here.</p>
 			<input type="hidden" name="TOPIC_ARTICLE" id="TOPIC_ARTICLE" value="{article}" />
 			<textarea name="TOPIC_ARTICLE">abc</textarea>
