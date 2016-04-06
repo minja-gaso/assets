@@ -81,7 +81,7 @@
 				<label for="BLOG_PRETTY_URL">Pretty URL</label>
 				<p class="help-block">SEO-friendly alternative to standard URLs that gives you control.  You may use alphanumeric characters, hyphens, underscores and periods.</p>
 				<div class="input-group input-group-url">
-					<span class="input-group-addon"><xsl:value-of select="$listUrlById" /></span>
+					<span class="input-group-addon"><xsl:value-of select="concat(/data/environment/serverName, '/blog/list/')" /></span>
 					<input type="text" class="form-control" name="BLOG_PRETTY_URL" id="BLOG_PRETTY_URL" value="{/data/blog/prettyUrl}" />
 					<a href="{$listUrl}" class="input-group-addon" target="_blank"><span class="fa fa-external-link" /></a>
 				</div>

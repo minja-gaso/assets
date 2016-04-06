@@ -18,10 +18,6 @@
 				<xsl:call-template name="list_nav" />
 			</nav>
 			<div class="col-lg-12 bordered-area">
-				<div class="form-group btn-toolbar">
-					<a class="btn btn-default" href="javascript:createBlog();submitForm();"><span class="fa fa-plus"><span class="hide">Plus</span></span> Create New Blog</a>
-					<a class="btn btn-default"><span class="fa fa-trash"><span class="hide">Delete Blog(s)</span></span> Delete Blog(s)</a>
-				</div>
 				<h2>My Blogs</h2>
 				<xsl:call-template name="messages" />
 				<xsl:call-template name="main" />
@@ -48,7 +44,7 @@
 							<tr>
 								<th class="text-center"><input type="checkbox" name="BLOG_ID_LIST" value="{id}" /></th>
 								<td><a href="javascript:editBlog('{id}');submitForm();"><xsl:value-of select="title" /></a></td>
-								<td class="text-center"><a href="{concat('', prettyUrl)}" target="_blank"><span class="fa fa-search" /></a></td>
+								<td class="text-center"><a href="{concat(/data/environment/serverName, '/blog/list/', prettyUrl)}" target="_blank"><span class="fa fa-search" /></a></td>
 								<td class="text-center"><a href="javascript:editBlog('{id}');submitForm();"><span class="fa fa-edit" /></a></td>
 								<td class="text-center">
 									<xsl:choose>

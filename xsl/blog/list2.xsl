@@ -12,8 +12,6 @@
     <xsl:apply-templates select="blog" />
   </xsl:template>
   <xsl:template match="blog">
-		<xsl:apply-templates select="topic" />
-		<!--
     <form action="" method="get" name="portal_form" id="bswh-marketing">
 			<div id="bswh">
 				<script>
@@ -25,12 +23,13 @@
 					}
 				</script>
 				<input type="hidden" name="searchType" value="keyword" />
+				<xsl:call-template name="external_files" />
+		    <link href="/css/public/blog.css" rel="stylesheet"/>
 				<div class="" id="blog-container">
 					<xsl:call-template name="public_blog" />
 				</div>
 			</div>
 		</form>
-	-->
   </xsl:template>
 
 	<xsl:template name="public_blog">
@@ -66,18 +65,20 @@
         </a>
       </h1>
       <date>
-        <span class="topic-date">
-          <span class="fa fa-calendar" />&#160;
-          <xsl:call-template name="format_date">
-            <xsl:with-param name="paramDate" select="publishDate" />
-          </xsl:call-template>
-        </span>
-        <span class="topic-time">
-          <span class="fa fa-clock-o" />&#160;
-          <xsl:call-template name="format_time">
-            <xsl:with-param name="publishTime" select="publishTime" />
-          </xsl:call-template>
-        </span>
+        <strong>
+          <span class="topic-date">
+            <span class="fa fa-calendar" />&#160;
+            <xsl:call-template name="format_date">
+              <xsl:with-param name="paramDate" select="publishDate" />
+            </xsl:call-template>
+          </span>
+          <span class="topic-time">
+            <span class="fa fa-clock-o" />&#160;
+            <xsl:call-template name="format_time">
+              <xsl:with-param name="publishTime" select="publishTime" />
+            </xsl:call-template>
+          </span>
+        </strong>
       </date>
       <div class="topic-description"><xsl:value-of select="summary" disable-output-escaping="yes" /></div>
     </article>

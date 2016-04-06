@@ -53,8 +53,16 @@
 		<div class="form-group">
 			<label for="TOPIC_ARTICLE">Article</label>
 			<p class="help-block">Enter the full article here.</p>
-			<input type="hidden" name="TOPIC_ARTICLE" id="TOPIC_ARTICLE" value="{article}" />
-			<textarea name="TOPIC_ARTICLE">abc</textarea>
+			<textarea name="TOPIC_ARTICLE">
+				<xsl:choose>
+					<xsl:when test="string-length(article) &gt; 0">
+						<xsl:value-of select="article" />
+					</xsl:when>
+					<xsl:otherwise>
+						<xsl:text>&#x0A;</xsl:text>
+					</xsl:otherwise>
+				</xsl:choose>
+			</textarea>
 			<script>
 				tinymce.init({
   selector: 'textarea',

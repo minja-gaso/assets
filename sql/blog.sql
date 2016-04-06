@@ -16,7 +16,7 @@ CREATE TABLE IF NOT EXISTS blog.blogs
 
 CREATE OR REPLACE FUNCTION blog_insert_pretty_url() RETURNS trigger AS $blog_insert_pretty_url$
     BEGIN
-        NEW.blog_pretty_url := 'calendar-' || NEW.blog_id;
+        NEW.blog_pretty_url := 'blog-' || NEW.blog_id;
         RETURN NEW;
     END;
 $blog_insert_pretty_url$ LANGUAGE plpgsql;

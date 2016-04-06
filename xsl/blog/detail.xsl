@@ -16,7 +16,6 @@
 			<div id="bswh">
 				<input type="hidden" name="searchType" value="keyword" />
 				<xsl:call-template name="external_files" />
-		    <link href="/css/public/blog.css" rel="stylesheet"/>
 				<xsl:call-template name="public_blog" />
 			</div>
 		</form>
@@ -35,12 +34,10 @@
     </ol>
 		-->
 		<div class="row" id="blog-main">
-			<!--
-			<div class="col-lg-3 col-md-3 col-sm-3">
+			<div class="col-sm-3">
 				<xsl:call-template name="sidebar" />
 			</div>
-			-->
-			<div class="col-lg-12 col-md-12 col-sm-12">
+			<div class="col-sm-9">
 				<h1 class="form-group"><xsl:value-of select="/data/blog/title" /></h1>
 				<xsl:call-template name="main" />
 				<div class="provider">Provided by <em><a href="#">Interactive Marketing</a></em> at <em><a href="#">Baylor Scott &amp; White</a></em></div>
@@ -55,7 +52,7 @@
 	</xsl:template>
 
 	<xsl:template name="main">
-		<xsl:call-template name="top_nav" />
+		<xsl:call-template name="breadcrumb" />
 		<xsl:apply-templates select="topic" />
 		<footer>
 			<xsl:call-template name="social_media" />
@@ -64,9 +61,7 @@
   <xsl:template match="topic">
     <article id="topic-{id}" class="entry-{position()}">
       <h1 class="topic-title {prettyUrl}">
-        <a href="../detail/{../prettyUrl}?TOPIC_ID={id}">
-          <xsl:value-of select="title" />
-        </a>
+        <xsl:value-of select="title" />
       </h1>
       <date>
         <strong>
@@ -93,7 +88,7 @@
 					</li>
 				</xsl:for-each>
 			</ul>
-      <div class="topic-description"><xsl:value-of select="description" disable-output-escaping="yes" /></div>
+      <div class="topic-description"><xsl:value-of select="article" disable-output-escaping="yes" /></div>
     </article>
   </xsl:template>
 </xsl:stylesheet>
