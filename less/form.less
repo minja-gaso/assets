@@ -1,0 +1,73 @@
+label,
+.label {
+  color: @secondaryGray;
+  display: inline-block;
+  font-size: 100%;
+  font-weight: 700;
+  margin: 0;
+  margin-bottom: 5px;
+  max-width: 100%;
+  padding: 0;
+}
+label.inline {
+  font-weight: normal;
+  margin-right: 24px;
+}
+label.soft {
+  font-weight: normal;
+}
+label.inline > span {
+  font-weight: normal;
+  margin-left: 4px;
+}
+label .required {
+  color: @primaryRed;
+}
+.styled-select {
+  background-color: @primaryWhite;
+  background-image: url(../img/dropdown_arrow.jpg);
+  background-position: right center;
+  background-repeat: no-repeat;
+}
+.styled-select > select {
+  &:extend(#iframe);
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-color: transparent;
+}
+.input-group > span,
+.input-group > input {
+  background-color: @primaryWhite;
+  border: 1px solid @tertiaryGray;
+  border-radius: 0;
+}
+.input-group > span {
+  &:extend(#iframe);
+  background-color: @primaryWhite;
+}
+.input-group.url > span:first-child {
+  border-right: none;
+}
+.input-group.url > input {
+  border-left: none;
+  border-right: none;
+}
+.input-group.url > a {
+  background-color: @secondaryBlue;
+  border-radius: 0;
+  .border(1px, solid, @secondaryGray);
+  color: @primaryWhite;
+}
+input,
+select,
+textarea {
+  &:extend(#iframe);
+  background-color: @primaryWhite;
+  .border(@inputWidth, solid, @tertiaryGray);
+  border-radius: 0;
+  color: @secondaryGray;
+}
+select::-ms-expand {
+  display: none;
+}

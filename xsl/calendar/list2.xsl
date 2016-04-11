@@ -7,35 +7,57 @@
 	<xsl:import href="includes/calendar_mini.xsl" />
 
 	<xsl:template match="/">
-		<xsl:apply-templates />
-	</xsl:template>
-	<xsl:template match="data">
-		<xsl:apply-templates select="calendar" />
-	</xsl:template>
-	<xsl:template match="calendar">
-	<!--
-		<xsl:apply-templates select="topic" />
-	-->
-		<div id="bswh-marketing">
-			<form action="" method="get" name="portal_form" id="bswh-form">
-					<input type="hidden" name="searchType" value="keyword" />
-					<div class="" id="app-container">
-						<xsl:call-template name="external_files" />
-						<xsl:call-template name="intro_message" />
-						<xsl:call-template name="header" />
-						<div class="clearfix" id="app-content">
-							<xsl:call-template name="aside" />
-							<xsl:call-template name="main" />
+		<form action="" method="get" name="portal_form" id="bswh-marketing">
+			<div id="bswh">
+				<script>
+					var forms = document.getElementsByTagName('form');
+					if(forms.length == 1)
+					{
+						forms[0].name = 'portal_form';
+						forms[0].method = 'get';
+					}
+				</script>
+				<input type="hidden" name="searchType" value="keyword" />
+				<xsl:call-template name="external_files" />
+		    <link href="/css/public/calendar.css" rel="stylesheet"/>
+				<xsl:choose>
+					<!-- if form not started -->
+					<xsl:when test="/data/form/started = 'false'">
+						<div class="form-message">
+							<xsl:value-of select="/data/form/messageNotStarted" disable-output-escaping="yes" />
 						</div>
-						<xsl:call-template name="footer" />
-						<xsl:call-template name="closing_message" />
-					</div>
-			</form>
-		</div>
+					</xsl:when>
+					<!-- if none of cases above are met, display the form -->
+					<xsl:otherwise>
+						<div class="" id="cal-container">
+							<xsl:call-template name="public_calendar" />
+						</div>
+					</xsl:otherwise>
+				</xsl:choose>
+			</div>
+		</form>
 	</xsl:template>
 
 	<xsl:template name="public_calendar">
-
+		<xsl:if test="string-length(/data/form/messagePublicFormIntro) &gt; 0">
+			<div class="form-message form-intro">
+				<xsl:value-of select="/data/form/messagePublicFormIntro" disable-output-escaping="yes" />
+			</div>
+		</xsl:if>
+		<!--
+		<xsl:call-template name="display_mini_calendar" />
+		<div class="row">
+			<div class="col-lg-3 pull-right input-group">
+				<input type="text" class="form-control" name="keyword" />
+				<a class="input-group-addon">
+					<span class="fa fa-search" />
+				</a>
+			</div>
+		</div>
+    <ol class="breadcrumb">
+      <li class="active">Home</li>
+    </ol>
+	-->
 		<div class="row" id="cal-main">
 			<!--
 			<div class="three columns" id="sidebar">
@@ -55,7 +77,7 @@
 		</xsl:if>
 	</xsl:template>
 
-	<xsl:template name="main222">
+	<xsl:template name="main">
 		<xsl:call-template name="top_nav" />
 		<xsl:choose>
 			<xsl:when test="count(/data/calendar/event) &gt; 0">
@@ -117,51 +139,4 @@
 			</xsl:otherwise>
 		</xsl:choose>
 	</xsl:template>
-
-	<xsl:template name="main">
-		<main class="entry-list">
-			<xsl:key name="startDate" match="event" use="startDate" />
-			<xsl:apply-templates select="event[key('startDate', startDate)]" />
-		</main>
-	</xsl:template>
-
-  <xsl:template match="event">
-    <article id="entry-{id}">
-			<xsl:attribute name="class">
-				<xsl:choose>
-					<xsl:when test="position() = 1 or startDate != preceding-sibling::*[1]/startDate">entry-<xsl:value-of select="position()" /> entry-leader</xsl:when>
-					<xsl:otherwise>entry-<xsl:value-of select="position()" /> entry-standard</xsl:otherwise>
-				</xsl:choose>
-			</xsl:attribute>
-			<xsl:if test="position() = 1 or startDate != preceding-sibling::*[1]/startDate">
-				<date>
-					<xsl:call-template name="format_date">
-            <xsl:with-param name="paramDate" select="startDate" />
-          </xsl:call-template>
-				</date>
-			</xsl:if>
-			<h3>
-				<a href="/calendar/detail/{/data/calendar/prettyUrl}?eventID={id}">
-					<xsl:value-of select="title" />
-				</a>
-			</h3>
-      <time>
-        <xsl:call-template name="format_time">
-          <xsl:with-param name="publishTime" select="publishTime" />
-        </xsl:call-template>
-      </time>
-      <section class="entry-summary">
-				<xsl:if test="string-length(location) &gt; 0">
-					<div class="location">
-						<xsl:value-of select="location" disable-output-escaping="yes" />
-					</div>
-					<xsl:if test="string-length(locationAdditional) &gt; 0">
-						<div class="location-additional">
-							<xsl:value-of select="locationAdditional" disable-output-escaping="yes" />
-						</div>
-					</xsl:if>
-				</xsl:if>
-			</section>
-    </article>
-  </xsl:template>
 </xsl:stylesheet>

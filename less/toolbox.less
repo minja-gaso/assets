@@ -33,106 +33,13 @@ body {
   top: 0;
   z-index: 100;
 }
-#container #main .nav-tabs > li a {
-  background-color: @primaryGray;
-  border: 1px solid @tertiaryGray;
-  border-radius: 0;
-}
-#container #main .nav-tabs > li a:hover {
-  background-color: #fbfbfb;
-}
-#container #main .nav-tabs > li.active a {
-  background-color: @primaryWhite;
-  border-bottom-color: @primaryWhite;
-}
-#container #main .nav-tabs > li.help a {
-  margin-right: 0;
-}
-#container #main .nav-tabs > li.faq a {
-  color: @primaryRed;
-}
-#container #main .nav-tabs > li.name a {
-  pointer-events: none;
-  margin-right: 0;
+#container #main {
+  @import "nav.less";
+  @import "form.less";
 }
 #container #main h2 {
   color: @secondaryBlue;
   margin-top: 0;
-}
-#container #main label,
-#container #main .label {
-  color: @secondaryGray;
-  display: inline-block;
-  font-size: 100%;
-  font-weight: 700;
-  margin: 0;
-  margin-bottom: 5px;
-  max-width: 100%;
-  padding: 0;
-}
-#container #main label.inline {
-  font-weight: normal;
-  margin-right: 24px;
-}
-#container #main label.soft {
-  font-weight: normal;
-}
-#container #main label.inline > span {
-  font-weight: normal;
-  margin-left: 4px;
-}
-#container #main label .required {
-  color: @primaryRed;
-}
-#container #main .styled-select,
-#iframe .styled-select {
-  background-color: @primaryWhite;
-  background-image: url(../img/dropdown_arrow.jpg);
-  background-position: right center;
-  background-repeat: no-repeat;
-}
-#container #main .styled-select > select,
-#iframe .styled-select > select {
-  appearance: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  background-color: transparent;
-}
-#container #main .input-group > span,
-#container #main .input-group > input {
-  background-color: @primaryWhite;
-  border: 1px solid @tertiaryGray;
-  border-radius: 0;
-}
-#iframe .input-group > span {
-  background-color: @primaryWhite;
-}
-#container #main .input-group.url > span:first-child {
-  border-right: none;
-}
-#container #main .input-group.url > input {
-  border-left: none;
-  border-right: none;
-}
-#container #main .input-group.url > a {
-  background-color: @secondaryBlue;
-  border-radius: 0;
-  .border(1px, solid, @secondaryGray);
-  color: @primaryWhite;
-}
-#container #main input,
-#container #main select,
-#container #main textarea,
-#iframe input,
-#iframe select,
-#iframe textarea {
-  background-color: @primaryWhite;
-  .border(@inputWidth, solid, @tertiaryGray);
-  border-radius: 0;
-  color: @secondaryGray;
-}
-#container #main select::-ms-expand {
-  display: none;
 }
 #container #main table {}
 #container #main table thead th {}

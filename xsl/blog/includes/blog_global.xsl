@@ -17,86 +17,87 @@
     </xsl:choose>
   </xsl:variable>
   <!-- global variables for mini calendar -->
-  <xsl:template name="icon">
-    <xsl:param name="label" />
-    <a class="btn btn-social-icon btn-{$label}">
-      <span class="fa fa-{$label}"></span>
-    </a>
+
+  <xsl:template name="header">
+    <header>
+      <h1><xsl:value-of select="/data/blog/title" /></h1>
+      <div id="app-search">
+        <input type="text" />
+        <input type="button" value="Go" />
+      </div>
+    </header>
   </xsl:template>
-  <xsl:template name="sidebar">
-    <h3>Search</h3>
-    <xsl:call-template name="search"/>
-    <h3>Share With</h3>
-    <ul class="list-inline">
-      <li><xsl:call-template name="icon"><xsl:with-param name="label" select="'rss'" /></xsl:call-template></li>
-      <li><xsl:call-template name="icon"><xsl:with-param name="label" select="'twitter'" /></xsl:call-template></li>
-      <li><xsl:call-template name="icon"><xsl:with-param name="label" select="'facebook'" /></xsl:call-template></li>
-      <li><xsl:call-template name="icon"><xsl:with-param name="label" select="'linkedin'" /></xsl:call-template></li>
-      <li><xsl:call-template name="icon"><xsl:with-param name="label" select="'google-plus'" /></xsl:call-template></li>
-      <li><xsl:call-template name="icon"><xsl:with-param name="label" select="'pinterest'" /></xsl:call-template></li>
-      <li><xsl:call-template name="icon"><xsl:with-param name="label" select="'flickr'" /></xsl:call-template></li>
+
+  <xsl:template name="intro_message">
+		<xsl:if test="string-length(/data/form/messagePublicFormIntro) &gt; 0">
+			<div class="form-message form-intro">
+				<xsl:value-of select="/data/form/messagePublicFormIntro" disable-output-escaping="yes" />
+			</div>
+		</xsl:if>
+	</xsl:template>
+
+	<xsl:template name="footer">
+		<footer class="text-center">Provided by <em><a href="#">Interactive Marketing</a></em> at <em><a href="#">Baylor Scott &amp; White</a></em></footer>
+	</xsl:template>
+
+	<xsl:template name="closing_message">
+		<xsl:if test="string-length(/data/form/messagePublicFormClosing) &gt; 0">
+			<div class="form-message form-closing">
+				<xsl:value-of select="/data/form/messagePublicFormClosing" disable-output-escaping="yes" />
+			</div>
+		</xsl:if>
+	</xsl:template>
+
+  <xsl:template name="aside">
+    <aside class="col-sm-3">
       <!--
-      <li>
-        <a class="btn btn-social-icon btn-rss" href="/calendar/rss/{/data/calendar/prettyUrl}">
-          <span class="fa fa-rss"></span>
-        </a>
-      </li>
-      <li>
-        <a class="btn btn-social-icon btn-twitter">
-          <span class="fa fa-twitter"></span>
-        </a>
-      </li>
-      <li>
-        <a class="btn btn-social-icon btn-facebook">
-          <span class="fa fa-facebook"></span>
-        </a>
-      </li>
-      <li>
-        <a class="btn btn-social-icon btn-linkedin">
-          <span class="fa fa-linkedin"></span>
-        </a>
-      </li>
-      <li>
-        <a class="btn btn-social-icon btn-google-plus">
-          <span class="fa fa-google-plus"></span>
-        </a>
-      </li>
-      <li>
-        <a class="btn btn-social-icon btn-pinterest">
-          <span class="fa fa-pinterest"></span>
-        </a>
-      </li>
-      <li>
-        <a class="btn btn-social-icon btn-flickr">
-          <span class="fa fa-flickr"></span>
-        </a>
-      </li>
+      <h3>Search</h3>
+      <xsl:call-template name="search"/>
     -->
-    </ul>
-    <xsl:if test="count(/data/calendar/category) &gt; 0">
       <h3>Categories</h3>
-      <ul class="list-group">
-        <xsl:for-each select="/data/calendar/category">
-          <li class="list-group-item">
-            <a href="/calendar/search/{/data/calendar/prettyUrl}?searchType=category&amp;categoryId={id}">
-              <xsl:value-of select="label" />
-            </a>
-          </li>
-        </xsl:for-each>
+      <ul class="list-unstyled">
+        <li><a href="#">Lorem</a></li>
+        <li><a href="#">Ipsum</a></li>
+        <li><a href="#">Donor</a></li>
       </ul>
-    </xsl:if>
+      <!--
+      <h3>Share With</h3>
+      <ul class="list-unstyled">
+        <li><xsl:call-template name="icon"><xsl:with-param name="label" select="'rss'" /></xsl:call-template></li>
+        <li><xsl:call-template name="icon"><xsl:with-param name="label" select="'twitter'" /></xsl:call-template></li>
+        <li><xsl:call-template name="icon"><xsl:with-param name="label" select="'facebook'" /></xsl:call-template></li>
+        <li><xsl:call-template name="icon"><xsl:with-param name="label" select="'linkedin'" /></xsl:call-template></li>
+        <li><xsl:call-template name="icon"><xsl:with-param name="label" select="'google-plus'" /></xsl:call-template></li>
+        <li><xsl:call-template name="icon"><xsl:with-param name="label" select="'pinterest'" /></xsl:call-template></li>
+        <li><xsl:call-template name="icon"><xsl:with-param name="label" select="'flickr'" /></xsl:call-template></li>
+      </ul>
+    -->
+      <xsl:if test="count(/data/calendar/category) &gt; 0">
+        <h3>Categories</h3>
+        <ul class="list-group">
+          <xsl:for-each select="/data/calendar/category">
+            <li class="list-group-item">
+              <a href="/calendar/search/{/data/calendar/prettyUrl}?searchType=category&amp;categoryId={id}">
+                <xsl:value-of select="label" />
+              </a>
+            </li>
+          </xsl:for-each>
+        </ul>
+      </xsl:if>
+    </aside>
   </xsl:template>
   <xsl:template name="external_files">
-    <!-- Bootstrap -->
+    <!--
     <link href="/css/resources/bootstrap/styles/bootstrap.min.css" rel="stylesheet" />
-    <!-- Font Awesome -->
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" />
-    <!-- Google Fonts -->
     <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css' />
     <link href='https://fonts.googleapis.com/css?family=Source+Serif+Pro' rel='stylesheet' type='text/css' />
     <link href="/css/public/blog.css" rel="stylesheet"/>
     <link href="/css/public/share.css" rel="stylesheet"/>
     <link href="/css/public/breadcrumb.css" rel="stylesheet"/>
+  -->
+    <link href='https://fonts.googleapis.com/css?family=Libre+Baskerville' rel='stylesheet' type='text/css'/>
+    <link href="/css/public.css" rel="stylesheet"/>
   </xsl:template>
   <xsl:template name="search">
     <div id="search">
@@ -176,118 +177,7 @@
       </li>
     </ul>
   </xsl:template>
-  <xsl:template name="top_nav">
-    <ul class="list-inline" id="blog-toolbar">
-      <li>
-        <a class="btn btn-social-icon btn-rss" href="/calendar/rss/{/data/calendar/prettyUrl}">
-          <span class="fa fa-rss"></span>
-        </a>
-      </li>
-      <li>
-        <a class="btn btn-social-icon btn-twitter">
-          <span class="fa fa-twitter"></span>
-        </a>
-      </li>
-      <li>
-        <a class="btn btn-social-icon btn-facebook">
-          <span class="fa fa-facebook"></span>
-        </a>
-      </li>
-      <li>
-        <a class="btn btn-social-icon btn-linkedin">
-          <span class="fa fa-linkedin"></span>
-        </a>
-      </li>
-      <li>
-        <a class="btn btn-social-icon btn-google">
-          <span class="fa fa-google"></span>
-        </a>
-      </li>
-      <li>
-        <a class="btn btn-social-icon btn-pinterest">
-          <span class="fa fa-pinterest"></span>
-        </a>
-      </li>
-      <li>
-        <a class="btn btn-social-icon btn-flickr">
-          <span class="fa fa-envelope"></span>
-        </a>
-      </li>
-      <li class="col-xs-12">
-        <div id="search">
-          <label for="searchKeyword">Search</label>
-          <div class="col-xs-12 input-group">
-            <xsl:variable name="attributeName">
-              <xsl:choose>
-                <xsl:when test="string-length(/data/calendar/search/query) &gt; 0">value</xsl:when>
-                <xsl:otherwise>placeholder</xsl:otherwise>
-              </xsl:choose>
-            </xsl:variable>
-            <xsl:variable name="attributeValue">
-              <xsl:choose>
-                <xsl:when test="string-length(/data/calendar/search/query) &gt; 0">
-                  <xsl:value-of select="/data/calendar/search/query" />
-                </xsl:when>
-                <xsl:otherwise>
-                  <xsl:value-of select="'Search'" />
-                </xsl:otherwise>
-              </xsl:choose>
-            </xsl:variable>
-            <input type="text" class="form-control" name="searchKeyword" id="searchKeyword" size="25">
-              <xsl:attribute name="{$attributeName}"><xsl:value-of select="$attributeValue" /></xsl:attribute>
-            </input>
-            <a class="input-group-addon" onclick="javascript:document.portal_form.searchType.value='keyword';document.portal_form.action='/calendar/search/{/data/calendar/prettyUrl}';document.portal_form.submit();">
-              <span class="fa fa-search" />
-              <span class="offscreen hidden">Search</span>
-            </a>
-          </div>
-          <script type="text/javascript">
-            var keyword = document.getElementById('searchKeyword');
-            keyword.addEventListener('keyup', function(e){
-              var code = (e.keyCode ? e.keyCode : e.which);
-              if(code == 13) {
-                this.nextSibling.click();
-              }
-            });
-          </script>
-        </div>
-      </li>
-    </ul>
-  </xsl:template>
-  <xsl:template name="advanced_search">
-    <div class="row offscreen" id="advanced-search">
-			<fieldset id="advanced-search-container">
-				<legend>Advanced Search</legend>
-				<div class="form-group">
-					<label class="sr-only" for="ADVANCED_SEARCH_KEYWORD">Keyword(s)</label>
-					<input type="text" class="form-control" name="ADVANCED_SEARCH_KEYWORD" id="ADVANCED_SEARCH_KEYWORD" placeholder="Enter keyword(s)" />
-				</div>
-				<div class="row">
-					<div class="form-group col-sm-6">
-						<label class="sr-only" for="ADVANCED_SEARCH_START_DATE">From</label>
-						<input type="text" class="form-control" name="ADVANCED_SEARCH_START_DATE" id="ADVANCED_SEARCH_START_DATE" />
-					</div>
-					<div class="form-group col-sm-6">
-						<label class="sr-only" for="ADVANCED_SEARCH_END_DATE">To</label>
-						<input type="text" class="form-control" name="ADVANCED_SEARCH_END_DATE" id="ADVANCED_SEARCH_END_DATE" />
-					</div>
-				</div>
-				<xsl:if test="count(/data/calendar/category) &gt; 0">
-					<div class="form-group">
-						<label>Category</label>
-						<select class="form-control" name="ADVANCED_SEARCH_CATEGORY" id="ADVANCED_SEARCH_CATEGORY">
-							<xsl:for-each select="/data/calendar/category">
-								<option><xsl:value-of select="position()" /></option>
-							</xsl:for-each>
-						</select>
-					</div>
-				</xsl:if>
-				<div class="text-center">
-					<button class="btn btn-primary">Submit</button>
-				</div>
-			</fieldset>
-		</div>
-  </xsl:template>
+
   <xsl:template name="breadcrumb">
     <xsl:variable name="currentView">
       <xsl:choose>
@@ -306,7 +196,7 @@
       </xsl:choose>
     </xsl:variable>
     <div class="btn-group btn-breadcrumb">
-      <a href="/blog/list/{/data/blog/prettyUrl}" class="btn btn-default"><i class="fa fa-home"><xsl:text>&#x0A;</xsl:text></i>&#160;Home</a>
+      <a href="/blog/list/{/data/blog/prettyUrl}" class="btn btn-default">Home</a>
       <a class="btn btn-default"><xsl:value-of select="$currentView" /></a>
     </div>
   </xsl:template>

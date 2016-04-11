@@ -42,7 +42,7 @@
 				<label for="BLOG_SKIN_ID">Choose a Skin</label>
 				<div class="styled-select">
 					<select class="form-control" name="BLOG_SKIN_ID" id="BLOG_SKIN_ID" onchange="saveBlog();submitForm();">
-						<option />
+						<option value="0" />
 						<xsl:apply-templates select="skin" />
 					</select>
 				</div>

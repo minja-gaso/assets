@@ -42,7 +42,7 @@
 				<label for="CALENDAR_SKIN_ID">Choose a Skin</label>
 				<div class="styled-select">
 					<select class="form-control" name="CALENDAR_SKIN_ID" id="CALENDAR_SKIN_ID" onchange="saveCalendar();submitForm();">
-						<option />
+						<option value="0" />
 						<xsl:apply-templates select="skin" />
 					</select>
 				</div>
