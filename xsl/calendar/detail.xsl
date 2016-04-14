@@ -91,34 +91,52 @@
 				<xsl:value-of select="article" disable-output-escaping="yes" />
 			</section>
 			<section class="entry-other">
-				<div>
-					<h3>Agenda<h3>
-					<span><xsl:value-of select="agenda" disable-output-escaping="no" /></span>
-				</div>
-				<div>
-					<h3>Speaker<h3>
-					<span><xsl:value-of select="speaker" disable-output-escaping="no" /></span>
-				</div>
-				<div>
-					<h3>Registration<h3>
-					<span><a href="{registrationUrl}" target="_blank"><xsl:value-of select="registrationLabel" disable-output-escaping="no" /></a></span>
-				</div>
-				<div>
-					<h3>Contact Name<h3>
-					<span><xsl:value-of select="contactName" disable-output-escaping="no" /></span>
-				</div>
-				<div>
-					<h3>Contact Phone<h3>
-					<span><xsl:value-of select="contactPhone" disable-output-escaping="no" /></span>
-				</div>
-				<div>
-					<h3>Contact Email<h3>
-					<span><xsl:value-of select="contactEmail" disable-output-escaping="no" /></span>
-				</div>
-				<div>
-					<h3>Cost<h3>
-					<span><xsl:value-of select="cost" disable-output-escaping="no" /></span>
-				</div>
+				<xsl:if test="string-length(agenda) &gt; 0">
+					<div>
+						<h3>Agenda<h3>
+						<span><xsl:value-of select="agenda" disable-output-escaping="no" /></span>
+					</div>
+				</xsl:if>
+				<xsl:if test="string-length(agenda) &gt; 0">
+					<div>
+						<h3>Speaker<h3>
+						<span><xsl:value-of select="speaker" disable-output-escaping="no" /></span>
+					</div>
+				</xsl:if>
+				<xsl:if test="string-length(registrationUrl) &gt; 0">
+					<div>
+						<h3>Registration<h3>
+						<span><a href="{registrationUrl}" target="_blank">
+							<xsl:choose>
+
+							</xsl:choose>							
+						</a></span>
+					</div>
+				</xsl:if>
+				<xsl:if test="string-length(contactName) &gt; 0">
+					<div>
+						<h3>Contact Name<h3>
+						<span><xsl:value-of select="contactName" disable-output-escaping="no" /></span>
+					</div>
+				</xsl:if>
+				<xsl:if test="string-length(contactPhone) &gt; 0">
+					<div>
+						<h3>Contact Phone<h3>
+						<span><xsl:value-of select="contactPhone" disable-output-escaping="no" /></span>
+					</div>
+				</xsl:if>
+				<xsl:if test="string-length(contactEmail) &gt; 0">
+					<div>
+						<h3>Contact Email<h3>
+						<span><xsl:value-of select="contactEmail" disable-output-escaping="no" /></span>
+					</div>
+				</xsl:if>
+				<xsl:if test="string-length(cost) &gt; 0">
+					<div>
+						<h3>Cost<h3>
+						<span><xsl:value-of select="cost" disable-output-escaping="no" /></span>
+					</div>
+				</xsl:if>
 			</section>
     </article>
   </xsl:template>

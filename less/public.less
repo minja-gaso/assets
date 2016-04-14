@@ -29,6 +29,26 @@
   main .entry-standard { border-top: 1px solid #808880; margin-top: 20px; padding-top: 20px; }
   footer { background-color: #fbfbfb; font-family: Arial; font-size: 0.8rem; padding: 12px; text-align: center; }
 
+  #app-intro, #app-closing { background-color: #f6f6f6; border: 2px solid #808080; margin-bottom: 16px; padding: 16px; }
+  #app-form {
+    & { border: none; float: none; padding: 0; width: 100%; }
+    .question-group { margin-bottom: 12px; }
+    fieldset { border: none; margin: 0; padding: 0; }
+    label, legend { color: inherit; font-weight: normal; }
+    input[type="text"],textarea,select { display: block; padding: 6px 8px; width: 100%; }
+    #app-pager { margin-bottom: 12px; text-align: center; }
+    #app-pager ul, #app-pager li { display: inline; }
+    #app-pager li { margin-right: 12px; }
+    .input-group-addon { display: none; }
+  }
+
+  .asterisk { color: #ff0000; margin-left: 4px; }
+  .alert { border-width: 4px; border-style: solid; margin-bottom: 12px; padding: 16px; }
+  .alert-danger { background-color: #FFA5A5; border-color: #f00; color: #f00; }
+  .alert h2 { font-size: 1.2em; margin: 0; margin-bottom: 12px; }
+  .alert ul { margin: 0; padding-left: 16px; }
+  .alert li { margin: 0; padding: 0; }
+
   .list-inline { list-style: none; margin: 0; padding: 0; }
   .list-inline li { display: inline; }
   .list-unstyled { list-style: none; margin: 0; margin-bottom: 12px; padding: 0; }
