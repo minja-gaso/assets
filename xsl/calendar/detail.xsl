@@ -64,79 +64,93 @@
 
   <xsl:template match="event">
     <article id="entry-{id}" class="entry-{position()}">
+			<!--
 			<h2>
 				<xsl:value-of select="title" />
 			</h2>
-			<date>
-				<xsl:call-template name="format_date">
-					<xsl:with-param name="paramDate" select="startDate" />
-				</xsl:call-template>
-			</date>
-      <time>
-        <xsl:call-template name="format_time">
-          <xsl:with-param name="publishTime" select="publishTime" />
-        </xsl:call-template>
-      </time>
-			<xsl:if test="string-length(location) &gt; 0">
-				<div class="location">
-					<xsl:value-of select="location" disable-output-escaping="yes" />
-				</div>
-				<xsl:if test="string-length(locationAdditional) &gt; 0">
-					<div class="location-additional">
-						<xsl:value-of select="locationAdditional" disable-output-escaping="yes" />
-					</div>
-				</xsl:if>
-			</xsl:if>
-      <section class="entry-summary">
-				<xsl:value-of select="article" disable-output-escaping="yes" />
+			-->
+			<section class="entry-thumbnail">
+				<img src="/uploads/calendar/{../id}/{id}/{fileName}" alt="{fileDescription}" title="{fileDescription}" />
 			</section>
-			<section class="entry-other">
-				<xsl:if test="string-length(agenda) &gt; 0">
-					<div>
-						<h3>Agenda<h3>
-						<span><xsl:value-of select="agenda" disable-output-escaping="no" /></span>
-					</div>
-				</xsl:if>
-				<xsl:if test="string-length(agenda) &gt; 0">
-					<div>
-						<h3>Speaker<h3>
-						<span><xsl:value-of select="speaker" disable-output-escaping="no" /></span>
-					</div>
-				</xsl:if>
-				<xsl:if test="string-length(registrationUrl) &gt; 0">
-					<div>
-						<h3>Registration<h3>
-						<span><a href="{registrationUrl}" target="_blank">
-							<xsl:choose>
-
-							</xsl:choose>							
-						</a></span>
-					</div>
-				</xsl:if>
-				<xsl:if test="string-length(contactName) &gt; 0">
-					<div>
-						<h3>Contact Name<h3>
-						<span><xsl:value-of select="contactName" disable-output-escaping="no" /></span>
-					</div>
-				</xsl:if>
-				<xsl:if test="string-length(contactPhone) &gt; 0">
-					<div>
-						<h3>Contact Phone<h3>
-						<span><xsl:value-of select="contactPhone" disable-output-escaping="no" /></span>
-					</div>
-				</xsl:if>
-				<xsl:if test="string-length(contactEmail) &gt; 0">
-					<div>
-						<h3>Contact Email<h3>
-						<span><xsl:value-of select="contactEmail" disable-output-escaping="no" /></span>
-					</div>
-				</xsl:if>
-				<xsl:if test="string-length(cost) &gt; 0">
-					<div>
-						<h3>Cost<h3>
-						<span><xsl:value-of select="cost" disable-output-escaping="no" /></span>
-					</div>
-				</xsl:if>
+      <section class="entry-summary">
+				<h3>Summary</h3>
+				<xsl:value-of select="description" disable-output-escaping="yes" />
+			</section>
+			<section class="entry-date-and-location">
+				<h3>When &amp; Where</h3>
+				<dl>
+					<dt>Date</dt>
+					<dd>
+						<xsl:call-template name="format_date">
+							<xsl:with-param name="paramDate" select="startDate" />
+						</xsl:call-template>
+					</dd>
+					<dt>Time</dt>
+					<dd>
+		        <xsl:call-template name="format_time">
+		          <xsl:with-param name="publishTime" select="publishTime" />
+		        </xsl:call-template>
+					</dd>
+					<dt>Location</dt>
+					<dd>
+						<xsl:if test="string-length(location) &gt; 0">
+							<div class="entry-location">
+								<xsl:value-of select="location" disable-output-escaping="yes" />
+							</div>
+							<xsl:if test="string-length(locationAdditional) &gt; 0">
+								<div class="entry-location">
+									<xsl:value-of select="locationAdditional" disable-output-escaping="yes" />
+								</div>
+							</xsl:if>
+						</xsl:if>
+					</dd>
+				</dl>
+			</section>
+			<section class="entry-meta">
+				<h3>Details</h3>
+				<dl>
+					<xsl:if test="string-length(agenda) &gt; 0">
+						<dt>Agenda</dt>
+						<dd><xsl:value-of select="agenda" disable-output-escaping="no" /></dd>
+					</xsl:if>
+					<xsl:if test="string-length(agenda) &gt; 0">
+						<dt>Speaker</dt>
+						<dd><xsl:value-of select="speaker" disable-output-escaping="no" /></dd>
+					</xsl:if>
+					<xsl:if test="string-length(registrationUrl) &gt; 0">
+						<dt>Registration</dt>
+						<dd>
+							<a href="{registrationUrl}" target="_blank">
+								<xsl:choose>
+									<xsl:when test="string-length(registrationLabel) &gt; 0">
+										<xsl:text>
+											<xsl:value-of select="registrationLabel" />
+										</xsl:text>
+									</xsl:when>
+									<xsl:otherwise>
+										<xsl:text>Register</xsl:text>
+									</xsl:otherwise>
+								</xsl:choose>
+							</a>
+						</dd>
+					</xsl:if>
+					<xsl:if test="string-length(contactName) &gt; 0">
+						<dt>Contact Name</dt>
+						<dd><xsl:value-of select="contactName" disable-output-escaping="no" /></dd>
+					</xsl:if>
+					<xsl:if test="string-length(contactPhone) &gt; 0">
+						<dt>Contact Phone</dt>
+						<dd><xsl:value-of select="contactPhone" disable-output-escaping="no" /></dd>
+					</xsl:if>
+					<xsl:if test="string-length(contactEmail) &gt; 0">
+						<dt>Contact Email</dt>
+						<dd><a href="mailto:{contactEmail}"><xsl:value-of select="contactEmail" disable-output-escaping="no" /></a></dd>
+					</xsl:if>
+					<xsl:if test="string-length(cost) &gt; 0">
+						<dt>Cost</dt>
+						<dd><xsl:value-of select="cost" disable-output-escaping="no" /></dd>
+					</xsl:if>
+				</dl>
 			</section>
     </article>
   </xsl:template>

@@ -95,8 +95,8 @@
     <link href="/css/public/blog.css" rel="stylesheet"/>
     <link href="/css/public/share.css" rel="stylesheet"/>
     <link href="/css/public/breadcrumb.css" rel="stylesheet"/>
-  -->
     <link href='https://fonts.googleapis.com/css?family=Libre+Baskerville' rel='stylesheet' type='text/css'/>
+  -->
     <link href="/css/public.css" rel="stylesheet"/>
   </xsl:template>
   <xsl:template name="search">
@@ -195,9 +195,16 @@
         </xsl:otherwise>
       </xsl:choose>
     </xsl:variable>
-    <div class="btn-group btn-breadcrumb">
-      <a href="/blog/list/{/data/blog/prettyUrl}" class="btn btn-default">Home</a>
-      <a class="btn btn-default"><xsl:value-of select="$currentView" /></a>
+    <div id="app-breadcrumb">
+      <xsl:choose>
+        <xsl:when test="/data/environment/screenName = 'LIST'">
+          <span class="app-home">Home</span>
+        </xsl:when>
+        <xsl:otherwise>
+          <a href="/blog/list/{/data/blog/prettyUrl}" class="app-home">Home</a>
+          <a class="app-crumb"><xsl:value-of select="$currentView" /></a>
+        </xsl:otherwise>
+      </xsl:choose>
     </div>
   </xsl:template>
 </xsl:stylesheet>

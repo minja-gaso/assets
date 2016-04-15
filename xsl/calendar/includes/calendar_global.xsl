@@ -20,9 +20,18 @@
 
   <xsl:template name="header">
     <header>
-      <h1><xsl:value-of select="/data/blog/title" /></h1>
+      <h1>
+        <xsl:choose>
+          <xsl:when test="string-length(/data/calendar/event/title) &gt; 0">
+              <xsl:value-of select="/data/calendar/event/title" />
+          </xsl:when>
+          <xsl:otherwise>
+            <xsl:value-of select="/data/calendar/title" />
+          </xsl:otherwise>
+        </xsl:choose>
+      </h1>
       <div id="app-search">
-        <input type="text" />
+        <input type="text" placeholder="Search for events" />
         <input type="button" value="Go" />
       </div>
     </header>
@@ -37,7 +46,7 @@
 	</xsl:template>
 
 	<xsl:template name="footer">
-		<footer class="text-center">Provided by <em><a href="#">Interactive Marketing</a></em> at <em><a href="#">Baylor Scott &amp; White</a></em></footer>
+		<footer id="app-footer">Provided by <em><a href="#">Interactive Marketing</a></em> at <em><a href="#">Baylor Scott &amp; White</a></em></footer>
 	</xsl:template>
 
 	<xsl:template name="closing_message">
@@ -49,42 +58,22 @@
 	</xsl:template>
 
   <xsl:template name="aside">
-    <aside class="col-sm-3">
-      <!--
-      <h3>Search</h3>
-      <xsl:call-template name="search"/>
-    -->
-      <h3>Categories</h3>
-      <ul class="list-unstyled">
-        <li><a href="#">Lorem</a></li>
-        <li><a href="#">Ipsum</a></li>
-        <li><a href="#">Donor</a></li>
-      </ul>
-      <!--
-      <h3>Share With</h3>
-      <ul class="list-unstyled">
-        <li><xsl:call-template name="icon"><xsl:with-param name="label" select="'rss'" /></xsl:call-template></li>
-        <li><xsl:call-template name="icon"><xsl:with-param name="label" select="'twitter'" /></xsl:call-template></li>
-        <li><xsl:call-template name="icon"><xsl:with-param name="label" select="'facebook'" /></xsl:call-template></li>
-        <li><xsl:call-template name="icon"><xsl:with-param name="label" select="'linkedin'" /></xsl:call-template></li>
-        <li><xsl:call-template name="icon"><xsl:with-param name="label" select="'google-plus'" /></xsl:call-template></li>
-        <li><xsl:call-template name="icon"><xsl:with-param name="label" select="'pinterest'" /></xsl:call-template></li>
-        <li><xsl:call-template name="icon"><xsl:with-param name="label" select="'flickr'" /></xsl:call-template></li>
-      </ul>
-    -->
-      <xsl:if test="count(/data/calendar/category) &gt; 0">
-        <h3>Categories</h3>
-        <ul class="list-group">
-          <xsl:for-each select="/data/calendar/category">
-            <li class="list-group-item">
-              <a href="/calendar/search/{/data/calendar/prettyUrl}?searchType=category&amp;categoryId={id}">
-                <xsl:value-of select="label" />
-              </a>
-            </li>
-          </xsl:for-each>
-        </ul>
-      </xsl:if>
-    </aside>
+    <xsl:if test="count(/data/calendar/category) &gt; 0">
+      <aside>
+        <xsl:if test="count(/data/calendar/category) &gt; 0">
+          <h3>Categories</h3>
+          <ul class="list-group">
+            <xsl:for-each select="/data/calendar/category">
+              <li class="list-group-item">
+                <a href="/calendar/search/{/data/calendar/prettyUrl}?searchType=category&amp;categoryId={id}">
+                  <xsl:value-of select="label" />
+                </a>
+              </li>
+            </xsl:for-each>
+          </ul>
+        </xsl:if>
+      </aside>
+    </xsl:if>
   </xsl:template>
   <xsl:template name="external_files">
     <!--

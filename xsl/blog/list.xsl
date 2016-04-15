@@ -35,12 +35,20 @@
 
 	<xsl:template name="main">
 		<main class="col-sm-9">
-			<xsl:apply-templates select="topic" />
+			<xsl:call-template name="breadcrumb" />
+			<xsl:choose>
+				<xsl:when test="count(topic) &gt; 0">
+					<xsl:apply-templates select="topic" />
+				</xsl:when>
+				<xsl:otherwise>
+					<p>No topics currently exist.</p>
+				</xsl:otherwise>
+			</xsl:choose>
 		</main>
 	</xsl:template>
 
   <xsl:template match="topic">
-    <article id="entry-{id}" class="entry-{position()}">
+    <article id="entry-{id}" class="entry entry-{position()}">
       <h1 class="entry-title">
         <a href="../detail/{../prettyUrl}?TOPIC_ID={id}">
           <xsl:value-of select="title" />
