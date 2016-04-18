@@ -2,22 +2,6 @@
 <xsl:stylesheet version="2.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
   <xsl:variable name="apos">'</xsl:variable>
   <xsl:variable name="screenName" select="/data/environment/screenName" />
-  <xsl:variable name="categoryId" select="/data/calendar/search/categoryId" />
-  <xsl:variable name="tagId" select="/data/calendar/search/tagId" />
-
-  <!-- global variables for mini calendar -->
-  <xsl:variable name="start" select="/data/calendar/currentView/startDay"/>
-  <xsl:variable name="count" select="/data/calendar/currentView/totalDays"/>
-  <xsl:variable name="total" select="$start + $count - 1"/>
-  <xsl:variable name="overflow" select="$total mod 7"/>
-  <xsl:variable name="nelements">
-    <xsl:choose>
-        <xsl:when test="$overflow > 0"><xsl:value-of select="$total + 7 - $overflow"/></xsl:when>
-        <xsl:otherwise><xsl:value-of select="$total"/></xsl:otherwise>
-    </xsl:choose>
-  </xsl:variable>
-  <!-- global variables for mini calendar -->
-
   <xsl:template name="header">
     <header>
       <h1><xsl:value-of select="/data/form/title" /></h1>
@@ -70,7 +54,6 @@
     <link href="/css/public/share.css" rel="stylesheet"/>
     <link href="/css/public/breadcrumb.css" rel="stylesheet"/>
   -->
-    <link href='https://fonts.googleapis.com/css?family=Libre+Baskerville' rel='stylesheet' type='text/css'/>
     <link href="/css/public.css" rel="stylesheet"/>
   </xsl:template>
 </xsl:stylesheet>

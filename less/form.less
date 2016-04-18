@@ -29,6 +29,10 @@ label .required {
   background-image: url(../img/dropdown_arrow.jpg);
   background-position: right center;
   background-repeat: no-repeat;
+  border: none;
+  float: none;
+  height: auto;
+  margin: 0;
 }
 .styled-select > select {
   &:extend(#iframe);
@@ -36,6 +40,7 @@ label .required {
   -webkit-appearance: none;
   -moz-appearance: none;
   background-color: transparent;
+  margin: 0;
 }
 .input-group > span,
 .input-group > input {
@@ -68,6 +73,9 @@ textarea {
   .border(@inputWidth, solid, @tertiaryGray);
   border-radius: 0;
   color: @secondaryGray;
+}
+input[type="checkbox"] {
+  margin-right: 8px;
 }
 select::-ms-expand {
   display: none;

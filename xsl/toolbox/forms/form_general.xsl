@@ -93,22 +93,6 @@
 			</div>
 		</div>
 		<div class="row">
-			<div class="form-group col-xs-12">
-				<label for="FORM_SKIN_ID">Choose Skin</label>
-				<select class="form-control" id="FORM_SKIN_ID" name="FORM_SKIN_ID">
-					<option value="0" />
-					<xsl:for-each select="/data/skin">
-						<option value="{id}">
-							<xsl:if test="/data/form/fkSkinId = id">
-								<xsl:attribute name="selected">selected</xsl:attribute>
-							</xsl:if>
-							<xsl:text><xsl:value-of select="title" /></xsl:text>
-						</option>
-					</xsl:for-each>
-				</select>
-			</div>
-		</div>
-		<div class="row">
 			<xsl:variable name="startDate">
 				<xsl:variable name="year" select="substring(/data/form/startDate,1,4)" />
 				<xsl:variable name="month" select="substring(/data/form/startDate,6,2)" />
