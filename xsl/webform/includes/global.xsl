@@ -18,7 +18,7 @@
 
   <xsl:template name="app_message">
     <xsl:if test="count(/data/message[type='error']) &gt; 0">
-			<div class="alert alert-danger" role="alert">
+			<div class="app-alert app-alert-danger" role="alert">
 				<h2 class="error-heading">Please correct these errors before proceeding:</h2>
 				<ul>
 					<xsl:for-each select="/data/message[type='error']">

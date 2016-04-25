@@ -72,6 +72,33 @@
             </xsl:for-each>
           </ul>
         </xsl:if>
+        <h3>Archives</h3>
+        <ul>
+          <li>
+            <span>2016</span>
+            <ul>
+              <li><a href="#">Dec</a></li>
+              <li><a href="#">Nov</a></li>
+              <li><a href="#">Oct</a></li>
+            </ul>
+          </li>
+          <li>
+            <span>2015</span>
+            <ul>
+              <li><a href="#">Dec</a></li>
+              <li><a href="#">Nov</a></li>
+              <li><a href="#">Oct</a></li>
+            </ul>
+          </li>
+          <li>
+            <span>2014</span>
+            <ul>
+              <li><a href="#">Dec</a></li>
+              <li><a href="#">Nov</a></li>
+              <li><a href="#">Oct</a></li>
+            </ul>
+          </li>
+        </ul>
       </aside>
     </xsl:if>
   </xsl:template>

@@ -24,7 +24,6 @@
 						<xsl:call-template name="external_files" />
 						<xsl:call-template name="header" />
 						<xsl:call-template name="intro_message" />
-						<xsl:call-template name="app_message" />
 						<div class="clearfix" id="app-content">
 							<xsl:call-template name="main" />
 						</div>
@@ -38,6 +37,7 @@
 	<xsl:template name="main">
 		<main class="col-sm-9" id="app-form">
 			<xsl:call-template name="status" />
+			<xsl:call-template name="app_message" />
 			<xsl:apply-templates select="question" />
 			<xsl:call-template name="pagination" />
 		</main>
@@ -95,10 +95,10 @@
 					<li class="next-page">
 						<xsl:choose>
 							<xsl:when test="$currentPage != $lastPage">
-								<a class="app-btn" href="javascript:document.portal_form.POST_FORM.value='true';document.portal_form.ACTION.value='NEXT_PAGE';document.portal_form.submit();">Next Page</a>
+								<a class="app-btn" href="javascript:document.portal_form.POST_FORM.value='true';document.portal_form.ACTION.value='NEXT_PAGE';document.portal_form.submit();">Next Page &#187;</a>
 							</xsl:when>
 							<xsl:otherwise>
-								<a class="app-btn app-btn-submit" href="javascript:document.portal_form.POST_FORM.value='true';document.portal_form.ACTION.value='SUBMIT_FORM';document.portal_form.submit();">Submit Form</a>
+								<a class="app-btn app-btn-submit" href="javascript:document.portal_form.POST_FORM.value='true';document.portal_form.ACTION.value='SUBMIT_FORM';document.portal_form.submit();">Submit Form &#187;</a>
 							</xsl:otherwise>
 						</xsl:choose>
 					</li>

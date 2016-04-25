@@ -57,11 +57,12 @@
 		</form>
 	</xsl:template>
 	<xsl:template match="form">
+		<xsl:variable name="url" select="concat($baseUrl, prettyUrl)" />
 		<tr>
 			<th class="text-center"><input type="checkbox" name="FORM_ID_LIST" value="{id}" /></th>
 			<td><a href="javascript:editForm('{id}');submitForm();"><xsl:value-of select="title" /></a></td>
 			<td class="text-center"><xsl:value-of select="submissionCount" /></td>
-			<td class="text-center"><a href="{prettyUrl}" target="_blank"><span class="fa fa-search" /></a></td>
+			<td class="text-center"><a href="{$url}" target="_blank"><span class="fa fa-search" /></a></td>
 			<td class="text-center"><a href="javascript:editForm('{id}');submitForm();"><span class="fa fa-edit" /></a></td>
 			<td class="text-center"><a href="javascript:deleteForm('{id}');submitForm();"><span class="fa fa-trash" /></a></td>
 		</tr>
