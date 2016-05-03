@@ -1,0 +1,94 @@
+#inner { position: relative; }
+.show { display: block; }
+.read-more { background-color: #088EC8; color: #ffffff; display: inline-block; padding: 8px 16px; }
+h1.bar { background-color: #008FBC; color: #ffffff; padding: 24px; text-align: center; }
+h1.clean { background-color: #ffffff; color: #008FBC; }
+main .row h4 { margin-top: 40px; }
+h2 { color: #1e98bf; }
+
+/*
+ *  Header
+ */
+header { background-color: #cccccc; min-height: 180px; height: 500px; position: relative; }
+header.clean { background-color: #ffffff; background-image: url(/img/logo.png); background-position: center top; background-size: 360px auto; height: auto; }
+header.clean .story { display: none; }
+header.clean h3 { padding-top: 70px; }
+header .story { bottom: 0; left: 0; padding: 36px; padding-bottom: 60px; position: absolute; text-align: center; width: 100%; }
+header .story .entry { margin: 0 auto; max-width: 600px; }
+header .story h1 { color: #088EC8; margin-bottom: 40px; text-align: center; }
+header .story p { font-size: 24px; margin-bottom: 40px; }
+header ul { background-color: #0190BF; position: absolute; margin: 0; padding: 16px; top: 0; left: 0; }
+html.js-nav header ul { left: 310px; }
+header li { font-size: 14px; list-style: none; margin-top: 12px; }
+header li:first-child { margin-top: 0; }
+header button { background-color: transparent; border: none; color: white; text-decoration: none; }
+header button .fa { font-size: 30px; margin-right: 12px; }
+header button .text { vertical-align: super; }
+
+/*
+ *  Nav
+ */
+nav { background-color: #3E3D3D; display: none; left: 0; position: absolute; top: 0; padding: 12px; width: 0; }
+nav button.nav-close { background-color: transparent; border: none; }
+nav h3 { color: #ffffff; font-size: 14px; font-weight: bold; }
+nav, nav a { color: #A2A2A2; }
+nav .primary a { border-bottom: 1px solid #0A89B6; color: #ffffff; display: block; padding: 8px 0; }
+nav .tertiary,
+nav .tertiary a { font-size: 12px; }
+html.js-nav nav { z-index: 1; }
+
+/*
+ *  Main
+ */
+main .row { margin-bottom: 30px; }
+main .cta { border: 1px solid #1E98BF; color: #1E98BF; padding: 8px 20px; }
+main #tabbed { background-color: #EFEEED; }
+main #tabbed.white { background-color: #FFFFFF; }
+main #tabbed .nav-tabs li a { background-color: #D0D1CC; border-top: 3px solid #A5A5A2; border-radius: 0; color: #A5A5A2; font-weight: bold; }
+main #tabbed.white .nav-tabs li a { background-color: #ffffff; }
+main #tabbed .nav-tabs li a:hover {}
+main #tabbed .nav-tabs li.active a { background-color: #EFEEED; border-bottom-color: transparent; border-top: 3px solid #229CC1; color: #383838; }
+main #tabbed .tab-content { padding: 24px 40px; }
+main #tabbed .tab-content h2 { color: #229CC1; }
+main #tabbed.primary h2 { font-size: 44px; }
+main #tabbed.primary p { font-size: 20px; }
+
+main .selling-points > * { padding-left: 30px; padding-right: 30px; min-height: 300px; }
+main .selling-points.primary > * { background-color: #f3f3f3; border-right: 12px solid #fff; }
+main .selling-points h2 { font-size: 24px; }
+main .selling-points .read-more-wrap { bottom: 0; left: 0; padding-bottom: 20px; position: absolute; width: 100%; }
+
+main #overview { background-color: #088EC8; color: #fff; }
+main #overview h2 { color: #fff; margin-top: 50px; margin-bottom: 50px; }
+main #overview h3 { margin-bottom: 40px; }
+main #faculty {}
+main #faculty .member,
+main #how-to-apply { background-color: #EFEEED; margin-top: 20px; padding-top: 30px; padding-bottom: 30px; }
+main #how-to-apply { padding: 48px; }
+main #faculty .member:nth-child(odd) { border-right: 20px solid #ffffff; }
+main #faculty img { margin-right: 24px; width: 100px; }
+main #faculty p { margin-top: 24px; }
+main .more-medicine { background: #FFFFFF; margin: 0 auto; max-width: 80%; padding: 12px; text-align: center; }
+main .more-medicine a { color: #000000; }
+main .more-medicine a span { vertical-align: middle; }
+
+/*
+ *  Footer
+ */
+footer { background-color: #E5E5E5; }
+
+/*
+ *  Page-specific hero images
+ */
+header { background-repeat: no-repeat; background-size: 100% auto; }
+#page-index header { background-image: url(/img/hero/green-tea-cancer-stem-cells.jpg); background-size: 100%; }
+
+/*
+ *  Bootstrap-overrides
+ */
+.form-control { border-radius: 0; }
+.nav > li > a { background-color: #EFEEED; border-radius: 0; }
+.nav-pills > li.active > a, .nav-pills > li.active > a:focus, .nav-pills > li.active > a:hover { background-color: #088EC8; }
+
+xxxnav { display: block; position: fixed; left: 0; }
+xxx.container { margin-left: 285px; }

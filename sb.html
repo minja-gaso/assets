@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Interactive Marketing - Toolbox</title>
+    <!-- Bootstrap -->
+    <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/resources/font-awesome-4.5.0/css/font-awesome.min.css" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,200" rel="stylesheet">
+    <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css" rel="stylesheet">
+
+    <!-- TOOLBOX only -->
+    <link href="/css/resources/trix.min.css" rel="stylesheet">
+    <link href="/css/resources/jquery-tagit.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tinymce/4.3.8/tinymce.min.js">//</script>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="/js/resources/jquery.min.js"></script>
+		<script src="/js/resources/jquery-ui.js">//</script>
+
+    <!-- TOOLBOX only -->
+    <script src="/js/resources/trix.js">//</script>
+    <script src="/js/resources/tag-it.js">//</script>
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <link rel="stylesheet" type="text/css" href="/css/toolbox.css?v=1">
+  </head>
+  <body id="toolbox">
+    <noscript>
+      <style type="text/css">
+      #container { display: none; }
+      #noscript { text-align: center; font-size: 20px; }
+      </style>
+      <p id="noscript">Life's too short - enable JavaScript or go home!  <br/><br/><br/> But seriously, please turn it on to allow the <strong>Toolbox</strong> to work properly.</p>
+    </noscript>
+    <div id="container" class="container">
+      <header>
+        <img src="/img/bswh-central.png" alt="Baylor Scott &amp; White" class="img-responsive">
+      </header>
+      <div id="main">
+        <h1 class="sr-only">Interactive Marketing - Toolbox</h1>
+        <div class="row">
+          <div class="col-lg-3 col-md-3 col-sm-3" id="sidebar">
+            <form action="" method="post" name="component_form">
+              <input type="hidden" name="COMPONENT_ID" />
+              <ul class="list-group">
+                <li class="list-group-item disabled">SiteBuilder</li>
+              </ul>
+            </form>
+          </div>
+          <div class="col-lg-9 col-md-9 col-sm-9" id="content">
+            {CONTENT}
+          </div>
+        </div>
+      </div>
+      <footer>
+        <ul class="list-inline text-center">
+          <li><a href="/webform/public/contact-us">Contact Us</a></li>
+          <li><a href="http://www.baylorscottandwhite.com/">BaylorScottandWhite.com</a></li>
+        </ul>
+      </footer>
+    </div>
+    <script>
+    var pageForm = document.portal_form;
+    function createWebsite(){
+      pageForm.ACTION.value='CREATE_WEBSITE';
+      pageForm.submit();
+    }
+    function editWebsite(id){
+      pageForm.WEBSITE_ID.value=id;
+      pageForm.SCREEN.value='GENERAL';
+      pageForm.submit();
+    }
+    function saveWebsite(){
+      pageForm.ACTION.value='SAVE_WEBSITE';
+      pageForm.submit();
+    }
+    function switchTab(value){
+      pageForm.SCREEN.value=value;
+      pageForm.submit();
+    }
+    function editWebsiteTemplate(id){
+      pageForm.TEMPLATE_ID.value=id;
+      pageForm.SCREEN.value='TEMPLATE';
+      pageForm.submit();
+    }
+    function saveWebsiteTemplate(){
+      pageForm.ACTION.value='SAVE_TEMPLATE';
+      pageForm.submit();
+    }
+    function createWebsiteTemplate(){
+      pageForm.ACTION.value='CREATE_TEMPLATE';
+      pageForm.submit();
+    }
+    function editWebsitePage(id){
+      pageForm.PAGE_ID.value=id;
+      pageForm.SCREEN.value='PAGE';
+      pageForm.submit();
+    }
+    function saveWebsitePage(){
+      pageForm.ACTION.value='SAVE_PAGE';
+      pageForm.submit();
+    }
+    function createWebsitePage(){
+      pageForm.ACTION.value='CREATE_PAGE';
+      pageForm.submit();
+    }
+    </script>
+  </body>
+</html>

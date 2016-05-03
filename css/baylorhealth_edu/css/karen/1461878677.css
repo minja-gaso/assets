@@ -1,0 +1,89 @@
+header .story .entry h1 {
+font-size: 50px;
+color: #fff;
+font-weight: normal;
+}
+
+header .story .entry p {
+color: #008fbe;
+width: 65%;
+margin: 0 auto 40px;
+}
+
+.read-more {
+padding: 15px 30px;
+border: 1px solid #008fbe;
+background: #008fbe;
+}
+
+.read-more:hover {
+background: #fff;
+color: #008fbe;
+text-decoration: none;
+}
+
+main h1, main .selling-points {
+background: #3e3e3e;
+color: #fff;
+}
+
+main h1.text-center {
+margin: 0 auto;
+font-size: 45px;
+font-weight: normal;
+letter-spacing: 1px;
+padding: 40px 0 20px;
+}
+
+main .selling-points {
+margin: 0;
+}
+
+main .selling-points h2 {
+color: #fff;
+font-weight: normal;
+}
+
+main .selling-points .cta {
+background: #008fbe;
+color: #fff;
+padding: 15px 30px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

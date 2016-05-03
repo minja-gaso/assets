@@ -1,0 +1,166 @@
+header .story .entry h1 {
+font-size: 50px;
+color: #fff;
+font-weight: normal;
+}
+
+header .story .entry p {
+color: #008fbe;
+width: 65%;
+margin: 0 auto 40px;
+}
+
+.read-more, main .cta { 
+padding: 15px 30px;
+border: 1px solid #008fbe;
+background: #008fbe;
+color: #fff;
+}
+
+.read-more:hover, .cta:hover {
+background: #fff;
+color: #008fbe;
+text-decoration: none;
+}
+
+main h1, main .selling-points {
+background: #3e3e3e;
+color: #fff;
+}
+
+main h1.text-center {
+margin: 0 auto;
+font-size: 45px;
+font-weight: normal;
+letter-spacing: 1px;
+padding: 40px 0;
+}
+
+main .selling-points {
+margin: 0;
+}
+
+.selling-points .col-sm-4 {
+border-right: 1px solid #fff;
+margin-bottom: 40px;
+}
+
+main .selling-points h2 {
+color: #fff;
+font-weight: normal;
+}
+
+main .selling-points .read-more-wrap {
+bottom: 60px;
+}
+
+h1.clean {
+font-size: 45px;
+}
+
+h1.clean + div.selling-points {
+background: #fff;
+color: #525252;
+}
+
+h1.clean + div.selling-points h2 {
+color: #525252;
+line-height: 120%;
+min-height: 100px;
+}
+
+.tab-pane {
+line-height: 160%;
+}
+
+main #tabbed .nav-tabs li a {
+border-top: 4px solid #999;
+}
+main #tabbed .nav-tabs li.active a {
+border-top: 4px solid #008fbe;
+}
+
+main #tabbed .nav-tabs li a:hover {
+border-top: 4px solid #008fbe;
+color: #fff;
+}
+
+main #tabbed .nav-tabs li.active a:hover {
+color: #000;
+}
+
+main #tabbed .tab-content {
+border-left: 1px solid #ccc;
+border-right: 1px solid #ccc;
+}
+
+main .selling-points.primary > * {
+color: #525252;
+}
+
+main .selling-points.primary h2 {
+color: #525252;
+font-size: 20px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
