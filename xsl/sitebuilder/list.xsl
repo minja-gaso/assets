@@ -59,7 +59,7 @@
 			<td><a href="javascript:editWebsite('{id}');"><xsl:value-of select="title" /></a></td>
 			<td class="text-center"><a href="{$url}" target="_blank"><span class="fa fa-search" /></a></td>
 			<td class="text-center"><a href="javascript:editWebsite('{id}');"><span class="fa fa-edit" /></a></td>
-			<td class="text-center"><a href="javascript:deleteSkin('{id}');submitForm();"><span class="fa fa-trash" /></a></td>
+			<td class="text-center"><a href="javascript:deleteWebsite('{id}');submitForm();"><span class="fa fa-trash" /></a></td>
 		</tr>
 	</xsl:template>
 </xsl:stylesheet>

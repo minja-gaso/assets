@@ -10,6 +10,7 @@
 	<xsl:template match="data">
 		<xsl:apply-templates />
 	</xsl:template>
+	<xsl:template match="environment"></xsl:template>
 	<xsl:template match="website">
 		<xsl:variable name="url" select="concat(/data/environment/serverName, '/sitebuilder/preview/', template/id)" />
 

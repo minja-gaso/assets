@@ -7,7 +7,7 @@ CREATE TABLE IF NOT EXISTS sitebuilder.site
 	site_id bigint DEFAULT id_generator(),
 	site_creation_timestamp timestamp DEFAULT now(),
 	site_title character varying NOT NULL DEFAULT '',
-	is_site_editable boolean NOT NULL DEFAULT false,
+	is_site_deleted boolean NOT NULL DEFAULT false,
 	site_url character varying NOT NULL DEFAULT '',
 	site_css character varying NOT NULL DEFAULT '',
 	is_site_deleted boolean NOT NULL DEFAULT false,
@@ -33,6 +33,7 @@ CREATE TABLE IF NOT EXISTS sitebuilder.page
 	page_id bigint DEFAULT id_generator(),
 	page_creation_timestamp timestamp DEFAULT now(),
 	page_title character varying NOT NULL DEFAULT '',
+	page_subtitle character varying NOT NULL DEFAULT '',
 	page_html character varying NOT NULL DEFAULT '',
 	page_url character varying NOT NULL DEFAULT '',
 	is_page_deleted boolean NOT NULL DEFAULT false,
@@ -41,6 +42,3 @@ CREATE TABLE IF NOT EXISTS sitebuilder.page
 	FOREIGN KEY (fk_template_id) REFERENCES sitebuilder.template (template_id)
 );
 
-INSERT INTO sitebuilder.page DEFAULT VALUES;
-
-SELECT * FROM sitebuilder.page;

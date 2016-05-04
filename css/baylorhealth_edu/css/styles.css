@@ -28,7 +28,7 @@ header button .text { vertical-align: super; }
 /*
  *  Nav
  */
-nav { background-color: #3E3D3D; display: none; left: 0; position: absolute; top: 0; padding: 12px; width: 0; }
+nav { background-color: #3E3D3D; display: none; left: 0; position: absolute; top: 0; padding: 12px; width: 0; z-index: 1; }
 nav button.nav-close { background-color: transparent; border: none; }
 nav h3 { color: #ffffff; font-size: 14px; font-weight: bold; }
 nav, nav a { color: #A2A2A2; }
@@ -36,6 +36,7 @@ nav .primary a { border-bottom: 1px solid #0A89B6; color: #ffffff; display: bloc
 nav .tertiary,
 nav .tertiary a { font-size: 12px; }
 html.js-nav nav { z-index: 1; }
+ul.nav.sticky { position: absolute; right: 0; z-index: 1; }
 
 /*
  *  Main

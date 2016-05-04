@@ -30,7 +30,7 @@
 				<xsl:call-template name="main" />
 				<div class="btn-toolbar btn-actions">
 					<a class="btn btn-default" href="javascript:saveWebsite();">Save</a>
-					<a class="btn btn-default" href="javascript:skins();submitForm();">Back to Skins</a>
+					<a class="btn btn-default" href="javascript:websiteList();">Back to Skins</a>
 				</div>
 			</div>
 		</form>

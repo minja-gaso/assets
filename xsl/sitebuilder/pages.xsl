@@ -10,6 +10,7 @@
 	<xsl:template match="data">
 		<xsl:apply-templates />
 	</xsl:template>
+	<xsl:template match="environment"></xsl:template>
 	<xsl:template match="website">
 		<form action="" method="post" name="portal_form">
 			<input type="hidden" name="COMPONENT_ID" value="{/data/environment/componentId}" />
@@ -40,7 +41,7 @@
 					<th class="col-lg-1 col-md-1 text-center">
 						<input type="checkbox" onclick="toggleCheckboxes(this, 'SKIN_ID_LIST');" />
 					</th>
-					<th class="col-lg-7 col-md-7">Title</th>
+					<th class="col-lg-6 col-md-6">Title</th>
 					<th class="col-lg-1 col-md-1 text-center">View</th>
 					<th class="col-lg-1 col-md-1 text-center">Edit</th>
 					<th class="col-lg-1 col-md-1 text-center">Delete</th>
@@ -60,12 +61,35 @@
 	</xsl:template>
 	<xsl:template match="page">
 		<xsl:variable name="url" select="concat(/data/environment/serverName, '/sitebuilder/page/', id)" />
+		<xsl:variable name="templateID" select="fkTemplateId" />
 		<tr>
 			<th class="text-center"><input type="checkbox" name="SKIN_ID_LIST" value="{id}" /></th>
-			<td><a href="javascript:editWebsitePage('{id}');"><xsl:value-of select="title" /></a></td>
+			<td>
+				<a href="javascript:editWebsitePage('{id}');">
+					<xsl:choose>
+						<xsl:when test="string-length(title) &gt; 0">
+							<xsl:value-of select="title" />
+						</xsl:when>
+						<xsl:otherwise>
+							<span class="text-danger">Please add a title to this page</span>
+						</xsl:otherwise>
+					</xsl:choose>
+				</a>
+				<div class="help-block">
+					<strong>Template</strong><br/>
+					<xsl:choose>
+						<xsl:when test="string-length(/data/website/template[id = $templateID]/title) &gt; 0">
+							<xsl:value-of select="/data/website/template[id = $templateID]/title" />
+						</xsl:when>
+						<xsl:otherwise>
+							<em>None</em>
+						</xsl:otherwise>
+					</xsl:choose>
+				</div>
+			</td>
 			<td class="text-center"><a href="{$url}" target="_blank"><span class="fa fa-search" /></a></td>
 			<td class="text-center"><a href="javascript:editWebsitePage('{id}');"><span class="fa fa-edit" /></a></td>
-			<td class="text-center"><a href="javascript:deleteSkinPage('{id}');"><span class="fa fa-trash" /></a></td>
+			<td class="text-center"><a href="javascript:deleteWebsitePage('{id}');"><span class="fa fa-trash" /></a></td>
 		</tr>
 	</xsl:template>
 </xsl:stylesheet>

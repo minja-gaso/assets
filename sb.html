@@ -70,8 +70,18 @@
     </div>
     <script>
     var pageForm = document.portal_form;
+    function websiteList(){
+      pageForm.WEBSITE_ID.value=0;
+      pageForm.SCREEN.value='LIST';
+      pageForm.submit();
+    }
     function createWebsite(){
       pageForm.ACTION.value='CREATE_WEBSITE';
+      pageForm.submit();
+    }
+    function deleteWebsite(id){
+      pageForm.WEBSITE_ID.value=id;
+      pageForm.ACTION.value='DELETE_WEBSITE';
       pageForm.submit();
     }
     function editWebsite(id){
@@ -100,6 +110,11 @@
       pageForm.ACTION.value='CREATE_TEMPLATE';
       pageForm.submit();
     }
+    function deleteWebsiteTemplate(id){
+      pageForm.TEMPLATE_ID.value=id;
+      pageForm.ACTION.value='DELETE_TEMPLATE';
+      pageForm.submit();
+    }
     function editWebsitePage(id){
       pageForm.PAGE_ID.value=id;
       pageForm.SCREEN.value='PAGE';
@@ -111,6 +126,11 @@
     }
     function createWebsitePage(){
       pageForm.ACTION.value='CREATE_PAGE';
+      pageForm.submit();
+    }
+    function deleteWebsitePage(id){
+      pageForm.PAGE_ID.value=id;
+      pageForm.ACTION.value='DELETE_PAGE';
       pageForm.submit();
     }
     </script>

@@ -41,8 +41,12 @@
 		<xsl:variable name="vanityUrl" select="concat(/data/website/url, '/', page/url)" />
 		<div class="row" id="title">
 			<div class="form-group col-xs-12">
-				<label for="PAGE_TITLE">Name</label>
+				<label for="PAGE_TITLE">Title</label>
 				<input type="text" class="form-control" name="PAGE_TITLE" id="PAGE_TITLE" value="{page/title}" />
+			</div>
+			<div class="form-group col-xs-12">
+				<label for="PAGE_SUBTITLE">Subtitle</label>
+				<input type="text" class="form-control" name="PAGE_SUBTITLE" id="PAGE_SUBTITLE" value="{page/subtitle}" />
 			</div>
 			<div class="form-group col-xs-12">
 				<label for="PAGE_URL">Vanity URL</label>

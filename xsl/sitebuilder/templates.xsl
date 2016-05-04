@@ -10,6 +10,7 @@
 	<xsl:template match="data">
 		<xsl:apply-templates />
 	</xsl:template>
+	<xsl:template match="environment"></xsl:template>
 	<xsl:template match="website">
 		<form action="" method="post" name="portal_form">
 			<input type="hidden" name="COMPONENT_ID" value="{/data/environment/componentId}" />
@@ -62,10 +63,21 @@
 		<xsl:variable name="url" select="concat(/data/environment/serverName, '/sitebuilder/preview/', id)" />
 		<tr>
 			<th class="text-center"><input type="checkbox" name="SKIN_ID_LIST" value="{id}" /></th>
-			<td><a href="javascript:editWebsiteTemplate('{id}');"><xsl:value-of select="title" /></a></td>
+			<td>
+				<a href="javascript:editWebsiteTemplate('{id}');">
+					<xsl:choose>
+						<xsl:when test="string-length(title) &gt; 0">
+							<xsl:value-of select="title" />...
+						</xsl:when>
+						<xsl:otherwise>
+							<span class="text-danger">Please add a title to this page</span>
+						</xsl:otherwise>
+					</xsl:choose>
+				</a>
+			</td>
 			<td class="text-center"><a href="{$url}" target="_blank"><span class="fa fa-search" /></a></td>
 			<td class="text-center"><a href="javascript:editWebsiteTemplate('{id}');"><span class="fa fa-edit" /></a></td>
-			<td class="text-center"><a href="javascript:deleteSkinTemplate('{id}');"><span class="fa fa-trash" /></a></td>
+			<td class="text-center"><a href="javascript:deleteWebsiteTemplate('{id}');"><span class="fa fa-trash" /></a></td>
 		</tr>
 	</xsl:template>
 </xsl:stylesheet>

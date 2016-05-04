@@ -17,7 +17,7 @@ header .story { bottom: 0; left: 0; padding: 36px; padding-bottom: 60px; positio
 header .story .entry { margin: 0 auto; max-width: 600px; }
 header .story h1 { color: #088EC8; margin-bottom: 40px; text-align: center; }
 header .story p { font-size: 24px; margin-bottom: 40px; }
-header ul { background-color: #0190BF; position: absolute; margin: 0; padding: 16px; top: 0; left: 0; }
+header ul { background-color: #0190BF; position: absolute; margin: 0; padding: 16px; top: 0; left: 0; z-index: 1; }
 html.js-nav header ul { left: 310px; }
 header li { font-size: 14px; list-style: none; margin-top: 12px; }
 header li:first-child { margin-top: 0; }
@@ -28,7 +28,7 @@ header button .text { vertical-align: super; }
 /*
  *  Nav
  */
-nav { background-color: #3E3D3D; display: none; left: 0; position: absolute; top: 0; padding: 12px; width: 0; }
+nav { background-color: #3E3D3D; display: none; left: 0; position: absolute; top: 0; padding: 12px; width: 0; z-index: 1; }
 nav button.nav-close { background-color: transparent; border: none; }
 nav h3 { color: #ffffff; font-size: 14px; font-weight: bold; }
 nav, nav a { color: #A2A2A2; }
@@ -36,6 +36,7 @@ nav .primary a { border-bottom: 1px solid #0A89B6; color: #ffffff; display: bloc
 nav .tertiary,
 nav .tertiary a { font-size: 12px; }
 html.js-nav nav { z-index: 1; }
+ul.nav.sticky { position: relative; z-index: 1; }
 
 /*
  *  Main
