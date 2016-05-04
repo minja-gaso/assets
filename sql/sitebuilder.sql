@@ -14,6 +14,10 @@ CREATE TABLE IF NOT EXISTS sitebuilder.site
 	PRIMARY KEY (site_id)
 );
 
+ALTER TABLE sitebuilder.site RENAME COLUMN is_site_editable TO is_site_deleted;
+
+SELECT * FROM sitebuilder.site;
+
 DROP TABLE IF EXISTS sitebuilder.template;
 CREATE TABLE IF NOT EXISTS sitebuilder.template
 (
