@@ -56,4 +56,4 @@ CREATE TABLE IF NOT EXISTS sitebuilder.page_archive
 	FOREIGN KEY (fk_page_id) REFERENCES sitebuilder.page (page_id)
 );
 
-SELECT * FROM sitebuilder.page_archive WHERE fk_page_id = 1241377181607658878;
+SELECT * FROM sitebuilder.page;
