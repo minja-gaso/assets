@@ -9,14 +9,11 @@ CREATE TABLE IF NOT EXISTS sitebuilder.site
 	site_title character varying NOT NULL DEFAULT '',
 	is_site_deleted boolean NOT NULL DEFAULT false,
 	site_url character varying NOT NULL DEFAULT '',
+	site_footer character varying NOT NULL DEFAULT '',
 	site_css character varying NOT NULL DEFAULT '',
 	is_site_deleted boolean NOT NULL DEFAULT false,
 	PRIMARY KEY (site_id)
 );
-
-ALTER TABLE sitebuilder.site RENAME COLUMN is_site_editable TO is_site_deleted;
-
-SELECT * FROM sitebuilder.site;
 
 DROP TABLE IF EXISTS sitebuilder.template;
 CREATE TABLE IF NOT EXISTS sitebuilder.template
@@ -46,3 +43,17 @@ CREATE TABLE IF NOT EXISTS sitebuilder.page
 	FOREIGN KEY (fk_template_id) REFERENCES sitebuilder.template (template_id)
 );
 
+DROP TABLE IF EXISTS sitebuilder.page_archive;
+CREATE TABLE IF NOT EXISTS sitebuilder.page_archive
+(
+	page_archive_id bigint DEFAULT id_generator(),
+	page_archive_creation_timestamp timestamp DEFAULT now(),
+	page_archive_title character varying NOT NULL DEFAULT '',
+	page_archive_subtitle character varying NOT NULL DEFAULT '',
+	page_archive_html character varying NOT NULL DEFAULT '',
+	fk_page_id bigint,
+	PRIMARY KEY (page_archive_id),
+	FOREIGN KEY (fk_page_id) REFERENCES sitebuilder.page (page_id)
+);
+
+SELECT * FROM sitebuilder.page_archive WHERE fk_page_id = 1241377181607658878;

@@ -31,6 +31,9 @@
 				<h2>Templates</h2>
 				<xsl:call-template name="messages" />
 				<xsl:call-template name="main" />
+				<div class="btn-toolbar btn-actions">
+					<a class="btn btn-danger" href="javascript:websiteList();">Back to Websites</a>
+				</div>
 			</div>
 		</form>
 	</xsl:template>
@@ -67,7 +70,7 @@
 				<a href="javascript:editWebsiteTemplate('{id}');">
 					<xsl:choose>
 						<xsl:when test="string-length(title) &gt; 0">
-							<xsl:value-of select="title" />...
+							<xsl:value-of select="title" />
 						</xsl:when>
 						<xsl:otherwise>
 							<span class="text-danger">Please add a title to this page</span>

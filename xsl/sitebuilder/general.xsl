@@ -29,8 +29,8 @@
 				<xsl:call-template name="messages" />
 				<xsl:call-template name="main" />
 				<div class="btn-toolbar btn-actions">
-					<a class="btn btn-default" href="javascript:saveWebsite();">Save</a>
-					<a class="btn btn-default" href="javascript:websiteList();">Back to Skins</a>
+					<a class="btn btn-success" href="javascript:saveWebsite();">Save</a>
+					<a class="btn btn-danger" href="javascript:websiteList();">Back to Websites</a>
 				</div>
 			</div>
 		</form>

@@ -38,6 +38,17 @@
         </xsl:otherwise>
       </xsl:choose>
       <!--
+        Html - modify skin html
+      -->
+      <xsl:choose>
+        <xsl:when test="$SCREEN = 'FOOTER'">
+          <li role="presentation" class="active"><a href="#">Footer</a></li>
+        </xsl:when>
+        <xsl:otherwise>
+          <li role="presentation"><a href="javascript:switchTab('FOOTER');">Footer</a></li>
+        </xsl:otherwise>
+      </xsl:choose>
+      <!--
         CSS - Override styles
       -->
       <xsl:choose>

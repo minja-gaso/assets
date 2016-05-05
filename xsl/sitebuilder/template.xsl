@@ -29,9 +29,9 @@
 				<xsl:call-template name="messages" />
 				<xsl:call-template name="main" />
 				<div class="btn-toolbar btn-actions">
-					<a class="btn btn-default" href="javascript:saveWebsiteTemplate();">Save</a>
-					<a class="btn btn-default" href="javascript:switchTab('TEMPLATES');">Back to Templates</a>
-					<a class="btn btn-default" href="{$url}" target="_blank">View Skin</a>
+					<a class="btn btn-success" href="javascript:saveWebsiteTemplate();">Save</a>
+					<a class="btn btn-danger" href="javascript:switchTab('TEMPLATES');">Back to Templates</a>
+					<a class="btn btn-primary" href="{$url}" target="_blank">View Skin</a>
 				</div>
 			</div>
 		</form>

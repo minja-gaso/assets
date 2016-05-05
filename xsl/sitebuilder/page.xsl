@@ -28,9 +28,9 @@
 				<xsl:call-template name="messages" />
 				<xsl:call-template name="main" />
 				<div class="btn-toolbar btn-actions">
-					<a class="btn btn-default" href="javascript:saveWebsitePage();">Save</a>
-					<a class="btn btn-default" href="javascript:switchTab('PAGES');">Back to Skins</a>
-					<a class="btn btn-default" href="{$url}" target="_blank">View Skin</a>
+					<a class="btn btn-success" href="javascript:saveWebsitePage();">Save</a>
+					<a class="btn btn-danger" href="javascript:switchTab('PAGES');">Back to Pages</a>
+					<a class="btn btn-primary" href="{$url}" target="_blank">View Page</a>
 				</div>
 			</div>
 		</form>
@@ -78,6 +78,21 @@
 						<xsl:otherwise><xsl:text>&#x0A;</xsl:text></xsl:otherwise>
 					</xsl:choose>
 				</textarea>
+				<script src="https://cdnjs.cloudflare.com/ajax/libs/tinymce/4.3.10/tinymce.min.js">//</script>
+				<script>tinymce.init({
+  selector: 'textarea',
+  height: 500,
+  theme: 'modern',
+  plugins: [
+    'advlist autolink lists link image charmap print preview hr anchor pagebreak',
+    'searchreplace wordcount visualblocks visualchars code fullscreen',
+    'insertdatetime media nonbreaking save table contextmenu directionality',
+    'emoticons template paste textcolor colorpicker textpattern imagetools'
+  ],
+  toolbar1: 'insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image',
+  toolbar2: 'print preview media | forecolor backcolor emoticons',
+  image_advtab: true
+ });</script>
 			</div>
 		</div>
 	</xsl:template>

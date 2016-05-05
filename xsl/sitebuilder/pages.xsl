@@ -31,6 +31,9 @@
 				<h2>Pages</h2>
 				<xsl:call-template name="messages" />
 				<xsl:call-template name="main" />
+				<div class="btn-toolbar btn-actions">
+					<a class="btn btn-danger" href="javascript:websiteList();">Back to Websites</a>
+				</div>
 			</div>
 		</form>
 	</xsl:template>
@@ -44,7 +47,9 @@
 					<th class="col-lg-6 col-md-6">Title</th>
 					<th class="col-lg-1 col-md-1 text-center">View</th>
 					<th class="col-lg-1 col-md-1 text-center">Edit</th>
-					<th class="col-lg-1 col-md-1 text-center">Delete</th>
+					<!--
+						<th class="col-lg-1 col-md-1 text-center">Delete</th>
+					-->
 				</tr>
 			</thead>
 			<tbody>
@@ -89,7 +94,9 @@
 			</td>
 			<td class="text-center"><a href="{$url}" target="_blank"><span class="fa fa-search" /></a></td>
 			<td class="text-center"><a href="javascript:editWebsitePage('{id}');"><span class="fa fa-edit" /></a></td>
-			<td class="text-center"><a href="javascript:deleteWebsitePage('{id}');"><span class="fa fa-trash" /></a></td>
+			<!--
+				<td class="text-center"><a href="javascript:deleteWebsitePage('{id}');"><span class="fa fa-trash" /></a></td>
+			-->
 		</tr>
 	</xsl:template>
 </xsl:stylesheet>

@@ -16,12 +16,12 @@
 		<form action="" method="post" name="portal_form">
 			<input type="hidden" name="COMPONENT_ID" value="{/data/environment/componentId}" />
 			<input type="hidden" name="ACTION" />
-			<input type="hidden" name="SCREEN" value="CSS" />
+			<input type="hidden" name="SCREEN" value="FOOTER" />
 			<input type="hidden" name="WEBSITE_ID" value="{/data/website/id}" />
 			<!-- survey content -->
 			<nav>
 				<xsl:call-template name="primary_navigation">
-					<xsl:with-param name="SCREEN" select="'CSS'" />
+					<xsl:with-param name="SCREEN" select="'FOOTER'" />
 				</xsl:call-template>
 			</nav>
 			<div class="col-lg-12 bordered-area">
@@ -39,11 +39,11 @@
 	<xsl:template name="main">
 		<div class="row" id="title">
 			<div class="form-group col-xs-12">
-				<label for="WEBSITE_CSS">Styles</label>
-				<textarea class="form-control" name="WEBSITE_CSS" id="WEBSITE_CSS" rows="20">
+				<label for="WEBSITE_FOOTER">Styles</label>
+				<textarea class="form-control" name="WEBSITE_FOOTER" id="WEBSITE_FOOTER" rows="20">
 					<xsl:choose>
-						<xsl:when test="string-length(css) &gt; 0">
-							<xsl:value-of select="css" />
+						<xsl:when test="string-length(footer) &gt; 0">
+							<xsl:value-of select="footer" />
 						</xsl:when>
 						<xsl:otherwise><xsl:text>&#x0A;</xsl:text></xsl:otherwise>
 					</xsl:choose>
