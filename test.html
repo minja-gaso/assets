@@ -1,494 +1,785 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-<!--      <base href="http://10.92.203.3:8080/">-->
-      <meta charset="utf-8">
-      <title>Baylor Scott &amp; White Health for Medical Professionals</title>
-      <meta name="description" content="">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
-      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
-      <link rel="stylesheet" href="css/baylorhealth_edu/styles.css?v=1" />
-      <link rel="stylesheet" href="css/baylorhealth_edu/karen.css?v=1" />
-      <style type='text/css'>main #tabbed .nav-tabs li a {
-margin-left: 10px;
-}
-main #tabbed .nav-tabs li:first-child a {
-margin-left: 0;
-}
-main #tabbed ul#tabbed-tabs {
-background-color: #ffffff;
-}</style>
-  </head>
-  <body>
+
+<head>
+    <!--      <base href="http://10.92.203.3:8080/">-->
+    <meta charset="utf-8">
+    <title>Baylor Scott &amp; White Health for Medical Professionals</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/baylorhealth_edu/styles.css?v=1" />
+    <link rel="stylesheet" href="css/baylorhealth_edu/karen.css?v=1" />
+    <style type='text/css'>
+        main #tabbed .nav-tabs li a {
+            margin-left: 10px;
+        }
+
+        main #tabbed .nav-tabs li:first-child a {
+            margin-left: 0;
+        }
+
+        main #tabbed ul#tabbed-tabs {
+            background-color: #ffffff;
+        }
+    </style>
+</head>
+
+<body>
     <div class="container">
-      <div id="inner">
-        <header class="clean">
-          <h3 class="text-center">Internal Medicine Residency</h3>
-          <p class="text-center">Temple, Texas</p>
-          <ul id="toggle-menu">
-            <li>
-              <button title="Open Menu" id="open-menu"><span class="fa fa-bars"></span> <span class="text">Menu</span></button>
-            </li>
-            <li>
-              <button title="Search" id="open-search"><span class="fa fa-search"></span> <span class="text">Search</span></button>
-            </li>
-            <li>
-              <button title="Refer a patient" id="open-refer"><span class="fa fa-user"></span> <span class="text">Refer a patient</span></button>
-            </li>
-          </ul>
-        </header>
-        <nav role="navigation" id="menu">
-          <button class="nav-close"><span class="fa fa-close fa-2x"></span></button>
-          <ul class="list-unstyled primary">
-            <li class="is-active">
-              <a href="/baylorhealth/page/medical-education">Medical Education</a>
-            </li>
-            <li>
-              <a href="#">Research</a>
-            </li>
-            <li>
-              <a href="#">Departments</a>
-            </li>
-            <li>
-              <a href="#">Work at Baylor Scott &amp; White</a>
-            </li>
-            <li>
-              <a href="#">Achievements <span class="fa fa-plus fa-2x pull-right"></span></a>
-            </li>
-          </ul>
-          <div class="tertiary quick-links">
-            <ul class="list-unstyled">
-              <li>
-                <a href="#">About</a>
-              </li>
-              <li>
-                <a href="#">Mission &amp; Vision</a>
-              </li>
-              <li>
-                <a href="#">Community Outreach</a>
-              </li>
-              <li>
-                <a href="#">Diabetes Health and Wellness Institute</a>
-              </li>
-            </ul>
-          </div>
-          <div class="tertiary headquarters">
-            <address>
+        <div id="inner">
+            <header class="clean">
+                <h3 class="text-center">Internal Medicine Residency</h3>
+                <p class="text-center">Temple, Texas</p>
+                <ul id="toggle-menu">
+                    <li>
+                        <button title="Open Menu" id="open-menu"><span class="fa fa-bars"></span> <span class="text">Menu</span></button>
+                    </li>
+                    <li>
+                        <button title="Search" id="open-search"><span class="fa fa-search"></span> <span class="text">Search</span></button>
+                    </li>
+                    <li>
+                        <button title="Refer a patient" id="open-refer"><span class="fa fa-user"></span> <span class="text">Refer a patient</span></button>
+                    </li>
+                </ul>
+            </header>
+            <nav role="navigation" id="menu">
+                <button class="nav-close"><span class="fa fa-close fa-2x"></span></button>
+                <ul class="list-unstyled primary">
+                    <li class="is-active">
+                        <a href="/baylorhealth/page/medical-education">Medical Education</a>
+                    </li>
+                    <li>
+                        <a href="#">Research</a>
+                    </li>
+                    <li>
+                        <a href="#">Departments</a>
+                    </li>
+                    <li>
+                        <a href="#">Work at Baylor Scott &amp; White</a>
+                    </li>
+                    <li>
+                        <a href="#">Achievements <span class="fa fa-plus fa-2x pull-right"></span></a>
+                    </li>
+                </ul>
+                <div class="tertiary quick-links">
+                    <ul class="list-unstyled">
+                        <li>
+                            <a href="#">About</a>
+                        </li>
+                        <li>
+                            <a href="#">Mission &amp; Vision</a>
+                        </li>
+                        <li>
+                            <a href="#">Community Outreach</a>
+                        </li>
+                        <li>
+                            <a href="#">Diabetes Health and Wellness Institute</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="tertiary headquarters">
+                    <address>
               <strong>Baylor Scott &amp; White</strong><br />
               3500 Gaston Avenue<br />
               Dallas, TX 75246-2017<br /><br />
               1.800.9BAYLOR
             </address>
-          </div>
-        </nav>
-        <nav role="navigation" id="search">
-          <button class="nav-close"><span class="fa fa-close fa-2x"></span></button>
-          <form action="" method="get">
-            <input type="text" class="form-control" placeholder="Search" />
-          </form>
-          <ul class="list-unstyled primary">
-            <li class="is-active">
-              <a href="#">Popular searches</a>
-            </li>
-            <li>
-              <a href="#">Cardiologists</a>
-            </li>
-            <li>
-              <a href="#">Best Rated Endocrinologists</a>
-            </li>
-            <li>
-              <a href="#">Human Resources Department</a>
-            </li>
-            <li>
-              <a href="#">Pathology</a>
-            </li>
-          </ul>
-        </nav>
-        <nav role="navigation" id="refer">
-          <button class="nav-close"><span class="fa fa-close fa-2x"></span></button>
-          <form action="" method="get">
-            <label for="refer-input">Refer a Patient</label>
-            <input type="text" class="form-control" name="refer-input" id="refer-input" placeholder="Location, physician's name, department or clinical service" />
-          </form>
-          <h3>Frequently searched services</h3>
-          <ul class="list-unstyled primary">
-            <li>
-              <a href="#">Cardiologists</a>
-            </li>
-            <li>
-              <a href="#">Best Rated Endocrinologists</a>
-            </li>
-            <li>
-              <a href="#">Human Resources Department</a>
-            </li>
-            <li>
-              <a href="#">Pathology</a>
-            </li>
-          </ul>
-        </nav>
-        <main><ul class="nav nav-pills pull-right sticky-tabs">
-<li class="active"><a href="#overview">Overview</a></li>
-<li><a href="#curriculum">Curriculum</a></li>
-<li><a href="#faculty">Faculty</a></li>
-<li><a href="#facilities">Facilities</a></li>
-<li><a href="#how-to-apply">How to Apply</a></li>
-<li><a href="#contact-us">Contact Us</a></li>
-</ul>
-<div class="row">
-<div id="overview" class="col-sm-12">
-<h3 class="text-center">With more than 180 physicians on faculty in the Department of Medicine, our faculty to resident ratio is never larger than 1:4.</h3>
-<p>The Texas A&amp;M Health Science Center College of Medicine - Scott &amp; White three-year residency in Internal Medicine is fully accredited by the Accreditation Council for Graduate Medical Education (ACGME).</p>
-<p>Accrediting agencies have been impressed at the breadth of subspecialty education we offer. Our curriculum is designed to prepare well-trained internists who can go into primary care, additional subspecialty training or academic medicine.</p>
-<p>We accept 20 categorical internal medicine residents and six preliminary positions per year.</p>
-<div class="more-medicine"><a href="#">More Internal Medicine </a></div>
-</div>
-</div>
-<h2 class="text-center">Curriculum</h2>
-<div class="row">
-<div class="col-sm-12">
-<div id="tabbed">
-<ul id="tabbed-tabs" class="nav nav-tabs nav-justified">
-<li class="active"><a href="#overview2" data-toggle="tab">Overview</a></li>
-<li><a href="#pgy1" data-toggle="tab">PGY-1</a></li>
-<li><a href="#pgy2" data-toggle="tab">PGY-2</a></li>
-<li><a href="#pgy3" data-toggle="tab">PGY-3</a></li>
-<li><a href="#conferences" data-toggle="tab">Conferences</a></li>
-</ul>
-<div class="tab-content">
-<div id="overview2" class="tab-pane active">
-<p><strong>Clinical Rotations:</strong><br /> Our program is designed to provide residents well-rounded training that balances the many aspects of internal medicine:</p>
-<ul>
-<li>Inpatient versus outpatient care</li>
-<li>Primary care versus critical care</li>
-<li>General medicine versus subspecialty care</li>
-</ul>
-<p>More than one-third of the rotations focus on outpatient ambulatory care, which is a vital aspect of both primary care and subspecialty care and where a significant amount of time is spent treating chronic diseases.</p>
-<p>During ambulatory care training, residents develop a "panel" of patients they will follow throughout the residency to cultivate strong personal and professional relationships with patients. During this time, residents are also encouraged to learn important skills, such as billing and coding, time management and office procedures.</p>
-<p>We also offer extensive subspecialty rotations which enable residents to focus their study with an expert in that field. Some of our subspecialty rotations include:</p>
-<ul>
-<li>Neurology</li>
-<li>Geriatrics</li>
-<li>Gynecology</li>
-<li>Psychiatry</li>
-<li>Dermatology</li>
-<li>Ophthalmology</li>
-<li>Orthopedics</li>
-</ul>
-<p>Electives time is also available for residents to gain additional skills or perform research to further their education based on their personal long-term career goals.</p>
-<p><strong>Procedural Skills:</strong><br /> During rotations, each specialty area includes its own set of procedural instruction, including indications, complications and techniques. We have a formal central-line training program for all residents. Procedural training computer aids are also available for review.</p>
-<p>Residents also spend time at our Clinical Simulation Center, where residents have an opportunity to rehearse and master skills in controlled environments where patients are never at risk.</p>
-<p><strong>Call Schedule:</strong></p>
-<p>Our department is committed to following the ACGME duty hour regulations while maximizing the learning experience for residents on call. Residents are allowed to alternate weekend responsibilities so that they average at least one day out of seven outside of the hospital.</p>
-<p>Our ICU night float rotation is also designed to comply with the duty hour policy. We have many non-teaching inpatient medicine teams staffed only by hospitalists to comply with RRC-IM admission limits.</p>
-</div>
-<div id="pgy1" class="tab-pane">
-<p><strong>Clinical Rotations:</strong><br />During the first year, residents rotate on a 4-week block schedule. Rotations include:</p>
-<ul>
-<li>Scott &amp; White wards (four blocks)</li>
-<li>VA wards</li>
-<li>Cardiology</li>
-<li>Nephrology</li>
-<li>VA urgent care</li>
-<li>ER</li>
-<li>MICU</li>
-<li>CVICU</li>
-<li>Elective</li>
-<li>Night float</li>
-</ul>
-<p><strong>Call Schedule:</strong><br />Residents will have two 2-week blocks of night float, which includes taking house offer calls (no admissions) on patients admitted to the teaching teams. Residents will also have three blocks of night medicine, which entails arriving at 8 p.m., admitting up to five patients and rounding in the early morning with the team.</p>
-</div>
-<div id="pgy2" class="tab-pane">
-<p><strong>Clinical Rotations:</strong><br />Upper levels also rotate on a 4-week block schedule and alternate will the PGY-1 every two weeks. Rotations include:</p>
-<ul>
-<li>Scott &amp; White wards</li>
-<li>VA wards</li>
-<li>Night float</li>
-<li>Medicine consult</li>
-<li>Gastroenterology</li>
-<li>Oncology</li>
-<li>Geriatrics</li>
-<li>Infectious disease</li>
-<li>Ambulatory care</li>
-<li>VA MICU</li>
-<li>Elective</li>
-<li>Inpatient selective</li>
-<li>Outpatient selective</li>
-</ul>
-<p><strong>Call Schedule:</strong><br />Call includes three blocks of every fourth night (q4) and one block of ICU night float split into two half-month blocks.</p>
-</div>
-<div id="pgy3" class="tab-pane">
-<p><strong>Clinical Rotations:</strong><br />Upper levels also rotate on a 4-week block schedule and alternate will the PGY-1 every two weeks. Rotations include:</p>
-<ul>
-<li>Scott &amp; White wards (two blocks)</li>
-<li>MICU</li>
-<li>Endocrinology</li>
-<li>Rheumatology</li>
-<li>Pulmonary</li>
-<li>Neurology</li>
-<li>Hematology</li>
-<li>Electives (two blocks)</li>
-<li>Outpatient selectives (two blocks)</li>
-<li>Ambulatory care</li>
-</ul>
-<p><strong>Call Schedule:</strong><br /> During the third year, residents have no overnight call responsibilities to allow time for board preparation.</p>
-<p>Third year residents will take call during weekday rotations: two early-call days, one mid-call day and one late-call day. Residents will also work one day each weekend.</p>
-</div>
-<div id="conferences" class="tab-pane">{CONFERENCES TEXT GOES HERE}</div>
-</div>
-</div>
-</div>
-</div>
-<h2 class="text-center">Our Faculty</h2>
-<div id="faculty" class="row">
-<div class="col-sm-6 member"><img class="img-responsive img-circle pull-left" src="http://i846.photobucket.com/albums/ab30/vitaminbluegreen/beckham_zps5soho2rk.jpg" />
-<p><strong>Curtis Mirkes, DO, FACP</strong><br /> Program Director</p>
-</div>
-<div class="col-sm-6 member"><img class="img-responsive img-circle pull-left" src="http://i846.photobucket.com/albums/ab30/vitaminbluegreen/JonesK_zps4t3dead8.jpg" />
-<p><strong>Megan Greene Newman, MD</strong><br />Associate Program Director</p>
-</div>
-<div class="col-sm-6 member"><img class="img-responsive img-circle pull-left" src="http://i846.photobucket.com/albums/ab30/vitaminbluegreen/yar_zpser9gqj7i.jpg" />
-<p><strong>Maybelline Lezama, MD</strong><br />Associate Program Director</p>
-</div>
-<div class="col-sm-6 member"><img class="img-responsive img-circle pull-left" src="http://i846.photobucket.com/albums/ab30/vitaminbluegreen/aromer_zpsy4g7vaw9.jpg" />
-<p><strong>Austin Metting, MD</strong><br />Associate Program Director</p>
-</div>
-</div>
-<h2 class="text-center">Facilities</h2>
-<div id="facilities" class="row">
-<div class="facility">
-<h3>Scott &amp; White Memorial Hospital and Temple Clinic (Temple, TX)</h3>
-<ul>
-<li>Level 1 Trauma Center</li>
-<li>Tertiary care referral center</li>
-<li>573 hospital beds</li>
-<li>47 ED beds, including 6 resuscitation rooms</li>
-</ul>
-<h3>Scott &amp; White Center of Diagnostic Medicine (Temple, TX)</h3>
-<ul>
-<li>Level 1 Trauma Center</li>
-<li>Tertiary care referral center</li>
-<li>573 hospital beds</li>
-<li>47 ED beds, including 6 resuscitation rooms</li>
-</ul>
-</div>
-<div class="facility">
-<h3>Central Texas Veterans Health Care System (Temple, TX)</h3>
-<p>The Central Texas Veterans Health Care System (CTVHCS) is one of the largest VA medical consortiums in the Unites States. It comprises one of the newest VA medical/surgical hospitals in the country (Olin E. Teague Veterans' Center in Temple), a large / inpatient and outpatient psychiatric facility in Waco, several VA nursing home facilities, and outpatient clinics throughout Central Texas.</p>
-<p>The Teague Center has been a principal teaching campus for the College of Medicine since the college's inception.</p>
-</div>
-</div>
-<h2 class="text-center">How to Apply</h2>
-<div id="how-to-apply" class="row">
-<p>We use the Electronic Residency Application Service (ERAS) to electronically accept residency applications, letters of recommendations, dean&rsquo;s letters, transcripts and other credentials directly from your medical school.</p>
-<p>Deadline for applications is November 15.</p>
-<p><a class="read-more" href="https://students-residents.aamc.org/attending-medical-school/how-apply-residency-positions/applying-residencies-eras/" target="_blank">Apply Now</a></p>
-</div>
-<h2 class="text-center">Contact Us</h2>
-<div id="contact" class="row">
-<div class="col-md-4 col-sm-6"><address><strong>Baylor Scott &amp; White Health</strong><br />Internal Medicine Residency<br /> 2401 S. 31st St.<br /> Temple, TX 76508<br /><br /></address></div>
-<div class="col-md-4 col-sm-6">Barbara Edwards<br />Program&nbsp;Administrator<br /> Phone: 254-724-2364<br /><a href="mailto:Barbara.Edwards@BSWHealth.org">Barbara.Edwards@BSWHealth.org</a><br /><br /></div>
-</div>
-<h2>More&nbsp;Internal Medicine</h2>
-<h3>Benefits</h3>
-<h3>Life in Temple</h3>
-<h3>Why Baylor Scott &amp; White Health</h3>
-<h3>Clinical Simulation Center</h3>
-<h3>Fellowships</h3>
-<h3>Additional Internal Medicine Residency Programs</h3></main>
-      </div>
-    </div>
-        <footer>
-      <div class="container">
-        <div class="row">
-          <div class="col-sm-12">
-            <img src="img/baylorhealth_edu/footer-logo.png" class="pull-right" />
-          </div>
-          <div class="col-sm-3">
-            <p>
-              <strong>Other BSWH Sites</strong>
-            </p>
-            <ul class="list-unstyled">
-              <li>
-                <a href="#">Patients in North Texas</a>
-              </li>
-              <li>
-                <a href="#">Patients in Central Texas</a>
-              </li>
-            </ul>
-          </div>
-          <div class="col-sm-3">
-            <p>
-              <strong>Our Partners</strong>
-            </p>
-            <ul class="list-unstyled">
-              <li>
-                <a href="#">TheQualityAlliance.com</a>
-              </li>
-              <li>
-                <a href="#">HealthTexas.com</a>
-              </li>
-              <li>
-                <a href="#">Scott &amp; White Health Plan</a>
-              </li>
-            </ul>
-          </div>
-          <div class="col-sm-3">
-            <ul class="list-unstyled">
-              <li>
-                <a href="#">Site Map</a>
-              </li>
-              <li>
-                <a href="#">Privacy Terms &amp; Patient Rights</a>
-              </li>
-              <li>
-                <a href="#">Terms of Use</a>
-              </li>
-              <li>
-                <a href="#">Media</a>
-              </li>
-              <li>
-                <a href="#">Careers</a>
-              </li>
-            </ul>
-          </div>
-          <p class="col-sm-12">
-            Copyright &copy; 2016 Baylor Scott &amp; White Health.  All Rights Reserved.
-          </p>
+                </div>
+            </nav>
+            <nav role="navigation" id="search">
+                <button class="nav-close"><span class="fa fa-close fa-2x"></span></button>
+                <form action="" method="get">
+                    <input type="text" class="form-control" placeholder="Search" />
+                </form>
+                <ul class="list-unstyled primary">
+                    <li class="is-active">
+                        <a href="#">Popular searches</a>
+                    </li>
+                    <li>
+                        <a href="#">Cardiologists</a>
+                    </li>
+                    <li>
+                        <a href="#">Best Rated Endocrinologists</a>
+                    </li>
+                    <li>
+                        <a href="#">Human Resources Department</a>
+                    </li>
+                    <li>
+                        <a href="#">Pathology</a>
+                    </li>
+                </ul>
+            </nav>
+            <nav role="navigation" id="refer">
+                <button class="nav-close"><span class="fa fa-close fa-2x"></span></button>
+                <form action="" method="get">
+                    <label for="refer-input">Refer a Patient</label>
+                    <input type="text" class="form-control" name="refer-input" id="refer-input" placeholder="Location, physician's name, department or clinical service" />
+                </form>
+                <h3>Frequently searched services</h3>
+                <ul class="list-unstyled primary">
+                    <li>
+                        <a href="#">Cardiologists</a>
+                    </li>
+                    <li>
+                        <a href="#">Best Rated Endocrinologists</a>
+                    </li>
+                    <li>
+                        <a href="#">Human Resources Department</a>
+                    </li>
+                    <li>
+                        <a href="#">Pathology</a>
+                    </li>
+                </ul>
+            </nav>
+            <main>
+
+
+
+
+
+                <ul class="nav nav-pills pull-right sticky-tabs">
+                    <li class="active"><a href="#overview">Overview</a></li>
+                    <li><a href="#curriculum">Curriculum</a></li>
+                    <li><a href="#faculty">Faculty</a></li>
+                    <li><a href="#facilities">Facilities</a></li>
+                    <li><a href="#our-residents">Residents</a></li>
+                    <li><a href="#how-to-apply">How to Apply</a></li>
+                    <li><a href="#contact-us">Contact Us</a></li>
+                </ul>
+                <div class="row">
+                    <div id="overview" class="col-sm-12">
+                        <h3 class="text-center">With more than 180 physicians on faculty in the Department of Medicine, our faculty to resident ratio is never larger than 1:4.</h3>
+                        <p>The Texas A&amp;M Health Science Center College of Medicine - Scott &amp; White three-year residency in Internal Medicine is fully accredited by the Accreditation Council for Graduate Medical Education (ACGME).</p>
+                        <p>Accrediting agencies have been impressed at the breadth of subspecialty education we offer. Our curriculum is designed to prepare well-trained internists who can go into primary care, additional subspecialty training or academic medicine.</p>
+                        <p>We accept 20 categorical internal medicine residents and six preliminary positions per year.</p>
+                        <div class="more-medicine"><a href="#">More Internal Medicine </a></div>
+                    </div>
+                </div>
+                <h2 class="text-center">Curriculum</h2>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div id="tabbed">
+                            <ul id="tabbed-tabs" class="nav nav-tabs nav-justified" data-persist="true">
+                                <li class="active"><a href="#overview2" data-toggle="tab">Overview</a></li>
+                                <li><a href="#pgy1" data-toggle="tab">PGY-1</a></li>
+                                <li><a href="#pgy2" data-toggle="tab">PGY-2</a></li>
+                                <li><a href="#pgy3" data-toggle="tab">PGY-3</a></li>
+                                <li><a href="#conferences" data-toggle="tab">Conferences</a></li>
+                            </ul>
+                            <div class="tab-content">
+                                <div id="overview2" class="tab-pane active">
+                                    <p><strong>Clinical Rotations:</strong><br /> Our program is designed to provide residents well-rounded training that balances the many aspects of internal medicine:</p>
+                                    <ul>
+                                        <li>Inpatient versus outpatient care</li>
+                                        <li>Primary care versus critical care</li>
+                                        <li>General medicine versus subspecialty care</li>
+                                    </ul>
+                                    <p>More than one-third of the rotations focus on outpatient ambulatory care, which is a vital aspect of both primary care and subspecialty care and where a significant amount of time is spent treating chronic diseases.</p>
+                                    <p>During ambulatory care training, residents develop a "panel" of patients they will follow throughout the residency to cultivate strong personal and professional relationships with patients. During this time, residents are also encouraged to learn important skills, such as billing and coding, time management and office procedures.</p>
+                                    <p>We also offer extensive subspecialty rotations which enable residents to focus their study with an expert in that field. Some of our subspecialty rotations include:</p>
+                                    <ul>
+                                        <li>Neurology</li>
+                                        <li>Geriatrics</li>
+                                        <li>Gynecology</li>
+                                        <li>Psychiatry</li>
+                                        <li>Dermatology</li>
+                                        <li>Ophthalmology</li>
+                                        <li>Orthopedics</li>
+                                    </ul>
+                                    <p>Electives time is also available for residents to gain additional skills or perform research to further their education based on their personal long-term career goals.</p>
+                                    <p><strong>Procedural Skills:</strong><br /> During rotations, each specialty area includes its own set of procedural instruction, including indications, complications and techniques. We have a formal central-line training program for all residents. Procedural training computer aids are also available for review.</p>
+                                    <p>Residents also spend time at our Clinical Simulation Center, where residents have an opportunity to rehearse and master skills in controlled environments where patients are never at risk.</p>
+                                    <p><strong>Call Schedule:</strong></p>
+                                    <p>Our department is committed to following the ACGME duty hour regulations while maximizing the learning experience for residents on call. Residents are allowed to alternate weekend responsibilities so that they average at least one day out of seven outside of the hospital.</p>
+                                    <p>Our ICU night float rotation is also designed to comply with the duty hour policy. We have many non-teaching inpatient medicine teams staffed only by hospitalists to comply with RRC-IM admission limits.</p>
+                                </div>
+                                <div id="pgy1" class="tab-pane">
+                                    <p><strong>Clinical Rotations:</strong><br />During the first year, residents rotate on a 4-week block schedule. Rotations include:</p>
+                                    <ul>
+                                        <li>Scott &amp; White wards (four blocks)</li>
+                                        <li>VA wards</li>
+                                        <li>Cardiology</li>
+                                        <li>Nephrology</li>
+                                        <li>VA urgent care</li>
+                                        <li>ER</li>
+                                        <li>MICU</li>
+                                        <li>CVICU</li>
+                                        <li>Elective</li>
+                                        <li>Night float</li>
+                                    </ul>
+                                    <p><strong>Call Schedule:</strong><br />Residents will have two 2-week blocks of night float, which includes taking house offer calls (no admissions) on patients admitted to the teaching teams. Residents will also have three blocks of night medicine, which entails arriving at 8 p.m., admitting up to five patients and rounding in the early morning with the team.</p>
+                                </div>
+                                <div id="pgy2" class="tab-pane">
+                                    <p><strong>Clinical Rotations:</strong><br />Upper levels also rotate on a 4-week block schedule and alternate will the PGY-1 every two weeks. Rotations include:</p>
+                                    <ul>
+                                        <li>Scott &amp; White wards</li>
+                                        <li>VA wards</li>
+                                        <li>Night float</li>
+                                        <li>Medicine consult</li>
+                                        <li>Gastroenterology</li>
+                                        <li>Oncology</li>
+                                        <li>Geriatrics</li>
+                                        <li>Infectious disease</li>
+                                        <li>Ambulatory care</li>
+                                        <li>VA MICU</li>
+                                        <li>Elective</li>
+                                        <li>Inpatient selective</li>
+                                        <li>Outpatient selective</li>
+                                    </ul>
+                                    <p><strong>Call Schedule:</strong><br />Call includes three blocks of every fourth night (q4) and one block of ICU night float split into two half-month blocks.</p>
+                                </div>
+                                <div id="pgy3" class="tab-pane">
+                                    <p><strong>Clinical Rotations:</strong><br />Upper levels also rotate on a 4-week block schedule and alternate will the PGY-1 every two weeks. Rotations include:</p>
+                                    <ul>
+                                        <li>Scott &amp; White wards (two blocks)</li>
+                                        <li>MICU</li>
+                                        <li>Endocrinology</li>
+                                        <li>Rheumatology</li>
+                                        <li>Pulmonary</li>
+                                        <li>Neurology</li>
+                                        <li>Hematology</li>
+                                        <li>Electives (two blocks)</li>
+                                        <li>Outpatient selectives (two blocks)</li>
+                                        <li>Ambulatory care</li>
+                                    </ul>
+                                    <p><strong>Call Schedule:</strong><br /> During the third year, residents have no overnight call responsibilities to allow time for board preparation.</p>
+                                    <p>Third year residents will take call during weekday rotations: two early-call days, one mid-call day and one late-call day. Residents will also work one day each weekend.</p>
+                                </div>
+                                <div id="conferences" class="tab-pane">
+                                    <p><strong>Morning Report:</strong><br />These 30-minute sessions are held each weekday at 7:30 a.m. and provide an opportunity to review cases with senior staff members. Once a week, either residents do a case report or an upper-level resident presents a case that illustrates an adverse outcome.</p>
+                                    <p>The topics and attending physicians vary by day to provide a range of perspectives:</p>
+                                    <ul>
+                                        <li>Monday &ndash; a hospitalist brings a broad differential diagnosis</li>
+                                        <li>Tuesday &ndash; a chief resident or program director brings high-yield questions and tips</li>
+                                        <li>Wednesday &ndash;&nbsp;a resident reports a case report or M&amp;M</li>
+                                        <li>Thursday &ndash;&nbsp;run by one of the many subspecialty staff, and interns have a separate report at the beginning of the year with a different emphasis and focus</li>
+                                        <li>Friday &ndash; instruction by a subspecialty staff member</li>
+                                    </ul>
+                                    <p><strong>Noon Conferences: </strong><br /> The daily noon conferences encompass a diversity of topics and presentations. Resident lunches are provided. Additionally, the subspecialty divisions host a variety of teaching conferences that are open to residents throughout the week.</p>
+                                    <p><strong>Integrated Curriculum: </strong><br /> This first Monday noon conference of each month is devoted to integrated curriculum organized by the director of GME. Topics cover selected curricula in: ethics, legal medicine, infection control, evidence-based medicine, education topics and managed care.</p>
+                                    <p><strong>Resident Lead Board Reviews:</strong><br />Each resident on their selective month will present a board review of their rotating sub-specialty. Most of these are consistent with MKSAP questions or other high-yield reviews.</p>
+                                    <p><strong>Ambulatory and Core Curriculum: </strong><br /> These noon conferences discuss topics are difficult to cover in bedside or clinical teaching venues. Topics span a spectrum of subjects necessary for completing a comprehensive three-year curriculum, including: OB/Gyn, ENT, orthopedics, psychiatry and adolescent medicine.</p>
+                                    <p><strong>CPC Conference:</strong><br />During their selective months, residents present board reviews of their rotating subspecialty. Most of these are consistent with MKSAP questions or other high-yield reviews.</p>
+                                    <p><strong>Grand Rounds: </strong><br /> Each Friday, visiting professors and local senior staff present topics that span many state-of-the-art advances in basic and clinical knowledge of various fields in internal medicine.</p>
+                                    <p><strong>Medical Jeopardy: </strong><br /> Chief residents lead medical jeopardies, which cover a wide range of facts from high-yield information to interesting medical facts, to assist residents in board preparation.</p>
+                                    <p><strong>Journal Club: </strong><br /> Residents and staff meet monthly to review resident-chosen articles to develop critical appraisal of literature.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <h2 class="text-center">Our Faculty</h2>
+                <div id="faculty" class="row">
+                    <div class="col-sm-6 member"><img class="img-responsive img-circle pull-left" src="http://scottandwhite.photobooks.com/images/physicians/PHY000623.jpg" />
+                        <p><strong>Curtis Mirkes, DO, FACP</strong><br /> Program Director</p>
+                    </div>
+                    <div class="col-sm-6 member"><img class="img-responsive img-circle pull-left" src="http://scottandwhite.photobooks.com/images/physicians/PHY002774.jpg" />
+                        <p><strong>Megan Greene Newman, MD</strong><br />Associate Program Director</p>
+                    </div>
+                    <div class="col-sm-6 member"><img class="img-responsive img-circle pull-left" src="http://scottandwhite.photobooks.com/images/physicians/PHY000641.jpg" />
+                        <p><strong>Maybelline Lezama, MD</strong><br />Associate Program Director</p>
+                    </div>
+                    <div class="col-sm-6 member"><img class="img-responsive img-circle pull-left" src="http://scottandwhite.photobooks.com/images/physicians/PHY002389.jpg" />
+                        <p><strong>Austin Metting, MD</strong><br />Associate Program Director</p>
+                    </div>
+                </div>
+                <h2 class="text-center">Facilities</h2>
+                <div id="facilities" class="row">
+                    <div class="facility">
+                        <h3>Scott &amp; White Memorial Hospital and Temple Clinic (Temple, TX)</h3>
+                        <ul>
+                            <li>Level 1 Trauma Center</li>
+                            <li>Tertiary care referral center</li>
+                            <li>573 hospital beds</li>
+                            <li>47 ED beds, including 6 resuscitation rooms</li>
+                        </ul>
+                        <h3>Scott &amp; White Center of Diagnostic Medicine (Temple, TX)</h3>
+                        <ul>
+                            <li>Level 1 Trauma Center</li>
+                            <li>Tertiary care referral center</li>
+                            <li>573 hospital beds</li>
+                            <li>47 ED beds, including 6 resuscitation rooms</li>
+                        </ul>
+                    </div>
+                    <div class="facility">
+                        <h3>Central Texas Veterans Health Care System (Temple, TX)</h3>
+                        <p>The Central Texas Veterans Health Care System (CTVHCS) is one of the largest VA medical consortiums in the Unites States. It comprises one of the newest VA medical/surgical hospitals in the country (Olin E. Teague Veterans' Center in Temple), a large / inpatient and outpatient psychiatric facility in Waco, several VA nursing home facilities, and outpatient clinics throughout Central Texas.</p>
+                        <p>The Teague Center has been a principal teaching campus for the College of Medicine since the college's inception.</p>
+                    </div>
+                </div>
+                <h2 class="text-center">Our Residents</h2>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div id="tabbed2">
+                            <ul id="resident-tabs" class="nav nav-tabs nav-justified" data-persist="true">
+                                <li class="active"><a href="#resy1" data-toggle="tab">First Year</a></li>
+                                <li><a href="#resy2" data-toggle="tab">Second Year</a></li>
+                                <li><a href="#resy3" data-toggle="tab">Third Year</a></li>
+                            </ul>
+                            <div class="tab-content">
+                                <div id="resy1" class="tab-pane active">
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                            <img class="img-responsive img-circle" src="http://scottandwhite.photobooks.com/images/physicians/PHY000623.jpg">
+                                            <p>
+                                                <strong>Joshua Clayton</strong><br> University of Texas Southern
+                                            </p>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <img class="img-responsive img-circle" src="http://scottandwhite.photobooks.com/images/physicians/PHY000623.jpg">
+                                            <p>
+                                                <strong>Joshua Clayton</strong><br> University of Texas Southern
+                                            </p>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <img class="img-responsive img-circle" src="http://scottandwhite.photobooks.com/images/physicians/PHY000623.jpg">
+                                            <p>
+                                                <strong>Joshua Clayton</strong><br> University of Texas Southern
+                                            </p>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <img class="img-responsive img-circle" src="http://scottandwhite.photobooks.com/images/physicians/PHY000623.jpg">
+                                            <p>
+                                                <strong>Joshua Clayton</strong><br> University of Texas Southern
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                            <img class="img-responsive img-circle" src="http://scottandwhite.photobooks.com/images/physicians/PHY000623.jpg">
+                                            <p>
+                                                <strong>Joshua Clayton</strong><br> University of Texas Southern
+                                            </p>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <img class="img-responsive img-circle" src="http://scottandwhite.photobooks.com/images/physicians/PHY000623.jpg">
+                                            <p>
+                                                <strong>Joshua Clayton</strong><br> University of Texas Southern
+                                            </p>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <img class="img-responsive img-circle" src="http://scottandwhite.photobooks.com/images/physicians/PHY000623.jpg">
+                                            <p>
+                                                <strong>Joshua Clayton</strong><br> University of Texas Southern
+                                            </p>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <img class="img-responsive img-circle" src="http://scottandwhite.photobooks.com/images/physicians/PHY000623.jpg">
+                                            <p>
+                                                <strong>Joshua Clayton</strong><br> University of Texas Southern
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                            <img class="img-responsive img-circle" src="http://scottandwhite.photobooks.com/images/physicians/PHY000623.jpg">
+                                            <p>
+                                                <strong>Joshua Clayton</strong><br> University of Texas Southern
+                                            </p>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <img class="img-responsive img-circle" src="http://scottandwhite.photobooks.com/images/physicians/PHY000623.jpg">
+                                            <p>
+                                                <strong>Joshua Clayton</strong><br> University of Texas Southern
+                                            </p>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <img class="img-responsive img-circle" src="http://scottandwhite.photobooks.com/images/physicians/PHY000623.jpg">
+                                            <p>
+                                                <strong>Joshua Clayton</strong><br> University of Texas Southern
+                                            </p>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <img class="img-responsive img-circle" src="http://scottandwhite.photobooks.com/images/physicians/PHY000623.jpg">
+                                            <p>
+                                                <strong>Joshua Clayton</strong><br> University of Texas Southern
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                            <img class="img-responsive img-circle" src="http://scottandwhite.photobooks.com/images/physicians/PHY000623.jpg">
+                                            <p>
+                                                <strong>Joshua Clayton</strong><br> University of Texas Southern
+                                            </p>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <img class="img-responsive img-circle" src="http://scottandwhite.photobooks.com/images/physicians/PHY000623.jpg">
+                                            <p>
+                                                <strong>Joshua Clayton</strong><br> University of Texas Southern
+                                            </p>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <img class="img-responsive img-circle" src="http://scottandwhite.photobooks.com/images/physicians/PHY000623.jpg">
+                                            <p>
+                                                <strong>Joshua Clayton</strong><br> University of Texas Southern
+                                            </p>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <img class="img-responsive img-circle" src="http://scottandwhite.photobooks.com/images/physicians/PHY000623.jpg">
+                                            <p>
+                                                <strong>Joshua Clayton</strong><br> University of Texas Southern
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="resy2" class="tab-pane">
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                            <img class="img-responsive img-circle" src="http://scottandwhite.photobooks.com/images/physicians/PHY002774.jpg">
+                                            <p>
+                                                <strong>Antoinette Day</strong><br> Texas A&amp;M
+                                            </p>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <img class="img-responsive img-circle" src="http://scottandwhite.photobooks.com/images/physicians/PHY002774.jpg">
+                                            <p>
+                                                <strong>Antoinette Day</strong><br> Texas A&amp;M
+                                            </p>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <img class="img-responsive img-circle" src="http://scottandwhite.photobooks.com/images/physicians/PHY002774.jpg">
+                                            <p>
+                                                <strong>Antoinette Day</strong><br> Texas A&amp;M
+                                            </p>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <img class="img-responsive img-circle" src="http://scottandwhite.photobooks.com/images/physicians/PHY002774.jpg">
+                                            <p>
+                                                <strong>Antoinette Day</strong><br> Texas A&amp;M
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                            <img class="img-responsive img-circle" src="http://scottandwhite.photobooks.com/images/physicians/PHY002774.jpg">
+                                            <p>
+                                                <strong>Antoinette Day</strong><br> Texas A&amp;M
+                                            </p>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <img class="img-responsive img-circle" src="http://scottandwhite.photobooks.com/images/physicians/PHY002774.jpg">
+                                            <p>
+                                                <strong>Antoinette Day</strong><br> Texas A&amp;M
+                                            </p>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <img class="img-responsive img-circle" src="http://scottandwhite.photobooks.com/images/physicians/PHY002774.jpg">
+                                            <p>
+                                                <strong>Antoinette Day</strong><br> Texas A&amp;M
+                                            </p>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <img class="img-responsive img-circle" src="http://scottandwhite.photobooks.com/images/physicians/PHY002774.jpg">
+                                            <p>
+                                                <strong>Antoinette Day</strong><br> Texas A&amp;M
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                            <img class="img-responsive img-circle" src="http://scottandwhite.photobooks.com/images/physicians/PHY002774.jpg">
+                                            <p>
+                                                <strong>Antoinette Day</strong><br> Texas A&amp;M
+                                            </p>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <img class="img-responsive img-circle" src="http://scottandwhite.photobooks.com/images/physicians/PHY002774.jpg">
+                                            <p>
+                                                <strong>Antoinette Day</strong><br> Texas A&amp;M
+                                            </p>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <img class="img-responsive img-circle" src="http://scottandwhite.photobooks.com/images/physicians/PHY002774.jpg">
+                                            <p>
+                                                <strong>Antoinette Day</strong><br> Texas A&amp;M
+                                            </p>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <img class="img-responsive img-circle" src="http://scottandwhite.photobooks.com/images/physicians/PHY002774.jpg">
+                                            <p>
+                                                <strong>Antoinette Day</strong><br> Texas A&amp;M
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                            <img class="img-responsive img-circle" src="http://scottandwhite.photobooks.com/images/physicians/PHY002774.jpg">
+                                            <p>
+                                                <strong>Antoinette Day</strong><br> Texas A&amp;M
+                                            </p>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <img class="img-responsive img-circle" src="http://scottandwhite.photobooks.com/images/physicians/PHY002774.jpg">
+                                            <p>
+                                                <strong>Antoinette Day</strong><br> Texas A&amp;M
+                                            </p>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <img class="img-responsive img-circle" src="http://scottandwhite.photobooks.com/images/physicians/PHY002774.jpg">
+                                            <p>
+                                                <strong>Antoinette Day</strong><br> Texas A&amp;M
+                                            </p>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <img class="img-responsive img-circle" src="http://scottandwhite.photobooks.com/images/physicians/PHY002774.jpg">
+                                            <p>
+                                                <strong>Antoinette Day</strong><br> Texas A&amp;M
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="resy3" class="tab-pane">
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                            <img class="img-responsive img-circle" src="http://scottandwhite.photobooks.com/images/physicians/PHY000641.jpg">
+                                            <p>
+                                                <strong>Tiana Endicott</strong><br> Texas A&amp;M
+                                            </p>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <img class="img-responsive img-circle" src="http://scottandwhite.photobooks.com/images/physicians/PHY000641.jpg">
+                                            <p>
+                                                <strong>Tiana Endicott</strong><br> Texas A&amp;M
+                                            </p>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <img class="img-responsive img-circle" src="http://scottandwhite.photobooks.com/images/physicians/PHY000641.jpg">
+                                            <p>
+                                                <strong>Tiana Endicott</strong><br> Texas A&amp;M
+                                            </p>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <img class="img-responsive img-circle" src="http://scottandwhite.photobooks.com/images/physicians/PHY000641.jpg">
+                                            <p>
+                                                <strong>Tiana Endicott</strong><br> Texas A&amp;M
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <h2 class="text-center">How to Apply</h2>
+                <div id="how-to-apply" class="row">
+                    <p>We use the Electronic Residency Application Service (ERAS) to electronically accept residency applications, letters of recommendations, dean&rsquo;s letters, transcripts and other credentials directly from your medical school.</p>
+                    <p>Deadline for applications is November 15.</p>
+                    <p><a class="read-more" href="https://students-residents.aamc.org/attending-medical-school/how-apply-residency-positions/applying-residencies-eras/" target="_blank">Apply Now</a></p>
+                </div>
+                <h2 class="text-center">Contact Us</h2>
+                <div id="contact" class="row">
+                    <div class="col-md-4 col-sm-6"><address><strong>Baylor Scott &amp; White Health</strong><br />Internal Medicine Residency<br /> 2401 S. 31st St.<br /> Temple, TX 76508<br /><br /></address></div>
+                    <div class="col-md-4 col-sm-6">Barbara Edwards<br />Program&nbsp;Administrator<br /> Phone: 254-724-2364<br /><a href="mailto:Barbara.Edwards@BSWHealth.org">Barbara.Edwards@BSWHealth.org</a><br /><br /></div>
+                </div>
+                <h2>More&nbsp;Internal Medicine</h2>
+                <h3>Benefits</h3>
+                <h3>Life in Temple</h3>
+                <h3>Why Baylor Scott &amp; White Health</h3>
+                <h3>Clinical Simulation Center</h3>
+                <h3>Fellowships</h3>
+                <h3>Additional Internal Medicine Residency Programs</h3>
+
+
+
+
+
+            </main>
         </div>
-      </div>
+    </div>
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <img src="img/baylorhealth_edu/footer-logo.png" class="pull-right" />
+                </div>
+                <div class="col-sm-3">
+                    <p>
+                        <strong>Other BSWH Sites</strong>
+                    </p>
+                    <ul class="list-unstyled">
+                        <li>
+                            <a href="#">Patients in North Texas</a>
+                        </li>
+                        <li>
+                            <a href="#">Patients in Central Texas</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-sm-3">
+                    <p>
+                        <strong>Our Partners</strong>
+                    </p>
+                    <ul class="list-unstyled">
+                        <li>
+                            <a href="#">TheQualityAlliance.com</a>
+                        </li>
+                        <li>
+                            <a href="#">HealthTexas.com</a>
+                        </li>
+                        <li>
+                            <a href="#">Scott &amp; White Health Plan</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-sm-3">
+                    <ul class="list-unstyled">
+                        <li>
+                            <a href="#">Site Map</a>
+                        </li>
+                        <li>
+                            <a href="#">Privacy Terms &amp; Patient Rights</a>
+                        </li>
+                        <li>
+                            <a href="#">Terms of Use</a>
+                        </li>
+                        <li>
+                            <a href="#">Media</a>
+                        </li>
+                        <li>
+                            <a href="#">Careers</a>
+                        </li>
+                    </ul>
+                </div>
+                <p class="col-sm-12">
+                    Copyright &copy; 2016 Baylor Scott &amp; White Health. All Rights Reserved.
+                </p>
+            </div>
+        </div>
     </footer>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <script>
-    var toggleSpeed = 450;
-    $(document).ready(function(){
-      $("#tabbed-tabs").tab();
-      $("header button").click(function(){
-        var id = $(this).attr("id").split('open-')[1];
-        $('#' + id).show().animate({ 'width': '300px' }, toggleSpeed);
-        if (id=='menu') {
-          $("#search,#refer").hide();
-        } else if (id=='search') {
-          $("#menu,#refer").hide();
-        } else {
-          $("#search,#menu").hide();
-        }
-        $("#toggle-menu").animate({"left": "310px"}, toggleSpeed);
-      });
-      $(".nav-close").click(function(){
-        $('#menu, #search, #refer').animate({ 'width': '0' }, toggleSpeed, function(){
-          $(this).hide();
+        var toggleSpeed = 450;
+        $(document).ready(function() {
+            //$("#tabbed-tabs").tab();
+            //$("#resident-tabs").tab();
+            $("header button").click(function() {
+                var id = $(this).attr("id").split('open-')[1];
+                $('#' + id).show().animate({
+                    'width': '300px'
+                }, toggleSpeed);
+                if (id == 'menu') {
+                    $("#search,#refer").hide();
+                } else if (id == 'search') {
+                    $("#menu,#refer").hide();
+                } else {
+                    $("#search,#menu").hide();
+                }
+                $("#toggle-menu").animate({
+                    "left": "310px"
+                }, toggleSpeed);
+            });
+            $(".nav-close").click(function() {
+                $('#menu, #search, #refer').animate({
+                    'width': '0'
+                }, toggleSpeed, function() {
+                    $(this).hide();
+                });
+                $("#toggle-menu").animate({
+                    "left": "0"
+                }, toggleSpeed);
+            })
         });
-        $("#toggle-menu").animate({"left": "0"}, toggleSpeed);
-      })
-    });
 
-    function closeMenu(){
-      $('#menu, #search, #refer').animate({ 'width': '0' }, toggleSpeed, function(){
-        $(this).hide();
-      });
-    }
+        function closeMenu() {
+            $('#menu, #search, #refer').animate({
+                'width': '0'
+            }, toggleSpeed, function() {
+                $(this).hide();
+            });
+        }
     </script>
     <script>
-      var stickyNav = $("#toggle-menu");
-      var pos = stickyNav.position();
-      var headerHeight = $('header').height();
-      $(window).scroll(function()
-      {
-        var windowPosition = $(window).scrollTop();
-        if (windowPosition >= pos.top)
-        {
-            stickyNav.addClass("stick");
-            stickyNav.css("top", windowPosition + "px");
-            $("#menu,#search,#refer").css("top", windowPosition + "px");
-        }
-        else
-        {
-          stickyNav.css("top", 0);
-          $("ul.nav").removeClass("sticky");
-          $("#menu,#search,#refer").css("top", 0);
-        }
+        var stickyNav = $("#toggle-menu");
+        var pos = stickyNav.position();
+        var headerHeight = $('header').height();
+        $(window).scroll(function() {
+            var windowPosition = $(window).scrollTop();
+            if (windowPosition >= pos.top) {
+                stickyNav.addClass("stick");
+                stickyNav.css("top", windowPosition + "px");
+                $("#menu,#search,#refer").css("top", windowPosition + "px");
+            } else {
+                stickyNav.css("top", 0);
+                $("ul.nav").removeClass("sticky");
+                $("#menu,#search,#refer").css("top", 0);
+            }
 
-        if(windowPosition > headerHeight)
-        {
-          $("ul.sticky-tabs").addClass('sticky');
-          $("ul.sticky-tabs").css("top", (windowPosition -  $('header').height()) + "px");
-        }
-        else
-        {
-          $("ul.sticky-tabs").removeClass('sticky');
-        }
-    });
-
-    var listItems = $(".bbbsticky-tabs li a");
-    listItems.each(function(index, li){
-      var item = $(li);
-      var text = item.text().replace(/\s+/g, '-').toLowerCase() + '-tab';
-      $(this).attr('class', text);
-    });
-
-    var sectionHeadings = $("h2");
-    sectionHeadings.each(function(index, h2){
-      var item = $(h2);
-      var text = item.text().replace(/\s+/g, '-').toLowerCase();
-      $(this).attr('id', text);
-    });
-
-
-
-    var lastId,
-        topMenu = $(".sticky-tabs"),
-        topMenuHeight = topMenu.outerHeight()+15,
-        // All list items
-        menuItems = topMenu.find("a"),
-        // Anchors corresponding to menu items
-        scrollItems = menuItems.map(function(){
-          var item = $($(this).attr("href"));
-          if (item.length) { return item; }
+            if (windowPosition > headerHeight) {
+                $("ul.sticky-tabs").addClass('sticky');
+                $("ul.sticky-tabs").css("top", (windowPosition - $('header').height()) + "px");
+            } else {
+                $("ul.sticky-tabs").removeClass('sticky');
+            }
         });
 
-    // Bind click handler to menu items
-    // so we can get a fancy scroll animation
-    menuItems.click(function(e){
-      var href = $(this).attr("href"),
-          offsetTop = href === "#" ? 0 : $(href).offset().top-topMenuHeight+1;
-      $('html, body').stop().animate({
-          scrollTop: offsetTop
-      }, 300);
-      e.preventDefault();
-    });
+        var listItems = $(".bbbsticky-tabs li a");
+        listItems.each(function(index, li) {
+            var item = $(li);
+            var text = item.text().replace(/\s+/g, '-').toLowerCase() + '-tab';
+            $(this).attr('class', text);
+        });
 
-    // Bind to scroll
-    $(window).scroll(function(){
-       // Get container scroll position
-       var fromTop = $(this).scrollTop()+topMenuHeight;
-
-       // Get id of current scroll item
-       var cur = scrollItems.map(function(){
-         if ($(this).offset().top < fromTop)
-           return this;
-       });
-       // Get the id of the current element
-       cur = cur[cur.length-1];
-       var id = cur && cur.length ? cur[0].id : "";
-
-       if (lastId !== id) {
-           lastId = id;
-           // Set/remove active class
-           menuItems
-             .parent().removeClass("active")
-             .end().filter("[href='#"+id+"']").parent().addClass("active");
-       }
-    });
+        var sectionHeadings = $("h2");
+        sectionHeadings.each(function(index, h2) {
+            var item = $(h2);
+            var text = item.text().replace(/\s+/g, '-').toLowerCase();
+            $(this).attr('id', text);
+        });
 
 
 
+        var lastId,
+            topMenu = $(".sticky-tabs"),
+            topMenuHeight = topMenu.outerHeight() + 15,
+            // All list items
+            menuItems = topMenu.find("a"),
+            // Anchors corresponding to menu items
+            scrollItems = menuItems.map(function() {
+                var item = $($(this).attr("href"));
+                if (item.length) {
+                    return item;
+                }
+            });
 
+        // Bind click handler to menu items
+        // so we can get a fancy scroll animation
+        menuItems.click(function(e) {
+            var href = $(this).attr("href"),
+                offsetTop = href === "#" ? 0 : $(href).offset().top - topMenuHeight + 1;
+            $('html, body').stop().animate({
+                scrollTop: offsetTop
+            }, 300);
+            e.preventDefault();
+        });
 
+        // Bind to scroll
+        $(window).scroll(function() {
+            // Get container scroll position
+            var fromTop = $(this).scrollTop() + topMenuHeight;
 
+            // Get id of current scroll item
+            var cur = scrollItems.map(function() {
+                if ($(this).offset().top < fromTop)
+                    return this;
+            });
+            // Get the id of the current element
+            cur = cur[cur.length - 1];
+            var id = cur && cur.length ? cur[0].id : "";
 
-      </script>
-  </body>
+            if (lastId !== id) {
+                lastId = id;
+                // Set/remove active class
+                menuItems
+                    .parent().removeClass("active")
+                    .end().filter("[href='#" + id + "']").parent().addClass("active");
+            }
+        });
+    </script>
+</body>
+
 </html>

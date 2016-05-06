@@ -65,7 +65,7 @@
 		</table>
 	</xsl:template>
 	<xsl:template match="page">
-		<xsl:variable name="url" select="concat(/data/environment/serverName, '/sitebuilder/page/', id)" />
+		<xsl:variable name="url" select="concat(/data/environment/serverName, '/sitebuilder/page/', id, '?WEBSITE_ID=', ../id)" />
 		<xsl:variable name="templateID" select="fkTemplateId" />
 		<tr>
 			<th class="text-center"><input type="checkbox" name="SKIN_ID_LIST" value="{id}" /></th>

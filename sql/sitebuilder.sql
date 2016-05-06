@@ -39,8 +39,9 @@ CREATE TABLE IF NOT EXISTS sitebuilder.page
 	page_url character varying NOT NULL DEFAULT '',
 	is_page_deleted boolean NOT NULL DEFAULT false,
 	fk_template_id bigint,
-	PRIMARY KEY (page_id),
-	FOREIGN KEY (fk_template_id) REFERENCES sitebuilder.template (template_id)
+	fk_site_id bigint NOT NULL,
+	PRIMARY KEY (page_id)
+	FOREIGN KEY (fk_site_id) REFERENCES sitebuilder.site (site_id)
 );
 
 DROP TABLE IF EXISTS sitebuilder.page_archive;
@@ -56,4 +57,4 @@ CREATE TABLE IF NOT EXISTS sitebuilder.page_archive
 	FOREIGN KEY (fk_page_id) REFERENCES sitebuilder.page (page_id)
 );
 
-SELECT * FROM sitebuilder.page;
+SELECT * FROM sitebuilder.page INNER JOIN sitebuilder.site ON site_id = 1242978901286716810;

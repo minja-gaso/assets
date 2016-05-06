@@ -95,8 +95,25 @@
     </ul>
   </xsl:template>
   <xsl:template name="page_edit">
+    <xsl:param name="SCREEN" />
     <ul class="nav nav-tabs">
-      <li role="presentation" class="active"><a href="#">Edit Page</a></li>
+      <xsl:choose>
+        <xsl:when test="$SCREEN = 'PAGE'">
+          <li role="presentation" class="active"><a href="#">Edit Page</a></li>
+        </xsl:when>
+        <xsl:otherwise>
+          <li role="presentation"><a href="javascript:switchTab('PAGE');">Edit Page</a></li>
+        </xsl:otherwise>
+      </xsl:choose>
+      <xsl:choose>
+        <xsl:when test="$SCREEN = 'PAGE_ARCHIVE'">
+          <li role="presentation" class="active"><a href="#">Page Archive</a></li>
+        </xsl:when>
+        <xsl:otherwise>
+          <li role="presentation"><a href="javascript:switchTab('PAGE_ARCHIVE');">Page Archive</a></li>
+        </xsl:otherwise>
+      </xsl:choose>
+
     </ul>
   </xsl:template>
 </xsl:stylesheet>
