@@ -1,7 +1,7 @@
 ﻿DROP SCHEMA IF EXISTS sitebuilder CASCADE;
 CREATE SCHEMA IF NOT EXISTS sitebuilder;
 
-DROP TABLE IF EXISTS sitebuilder.site;
+DROP TABLE IF EXISTS sitebuilder.site CASCADE;
 CREATE TABLE IF NOT EXISTS sitebuilder.site
 (
 	site_id bigint DEFAULT id_generator(),
@@ -15,7 +15,7 @@ CREATE TABLE IF NOT EXISTS sitebuilder.site
 	PRIMARY KEY (site_id)
 );
 
-DROP TABLE IF EXISTS sitebuilder.template;
+DROP TABLE IF EXISTS sitebuilder.template CASCADE;
 CREATE TABLE IF NOT EXISTS sitebuilder.template
 (
 	template_id bigint DEFAULT id_generator(),
@@ -28,7 +28,7 @@ CREATE TABLE IF NOT EXISTS sitebuilder.template
 	FOREIGN KEY (fk_site_id) REFERENCES sitebuilder.site (site_id)
 );
 
-DROP TABLE IF EXISTS sitebuilder.page;
+DROP TABLE IF EXISTS sitebuilder.page CASCADE;
 CREATE TABLE IF NOT EXISTS sitebuilder.page
 (
 	page_id bigint DEFAULT id_generator(),
@@ -44,7 +44,7 @@ CREATE TABLE IF NOT EXISTS sitebuilder.page
 	FOREIGN KEY (fk_site_id) REFERENCES sitebuilder.site (site_id)
 );
 
-DROP TABLE IF EXISTS sitebuilder.page_archive;
+DROP TABLE IF EXISTS sitebuilder.page_archive CASCADE;
 CREATE TABLE IF NOT EXISTS sitebuilder.page_archive
 (
 	page_archive_id bigint DEFAULT id_generator(),
@@ -57,4 +57,29 @@ CREATE TABLE IF NOT EXISTS sitebuilder.page_archive
 	FOREIGN KEY (fk_page_id) REFERENCES sitebuilder.page (page_id)
 );
 
-SELECT * FROM sitebuilder.page INNER JOIN sitebuilder.site ON site_id = 1242978901286716810;
+DROP TABLE IF EXISTS sitebuilder.component CASCADE;
+CREATE TABLE IF NOT EXISTS sitebuilder.component
+(
+	component_id bigint DEFAULT id_generator(),
+	component_order_number int NOT NULL DEFAULT 1,
+	component_type character varying NOT NULL DEFAULT '',
+	component_title character varying NOT NULL DEFAULT '',
+	fk_page_id bigint,
+	PRIMARY KEY (component_id),
+	FOREIGN KEY (fk_page_id) REFERENCES sitebuilder.page (page_id)
+);
+
+DROP TABLE IF EXISTS sitebuilder.component_item CASCADE;
+CREATE TABLE IF NOT EXISTS sitebuilder.component_item
+(
+	component_item_id bigint DEFAULT id_generator(),
+	component_item_title character varying NOT NULL DEFAULT '',
+	component_item_html character varying NOT NULL DEFAULT '',
+	component_item_order_number int NOT NULL DEFAULT 1,
+	fk_component_id bigint,
+	PRIMARY KEY (component_item_id),
+	FOREIGN KEY (fk_component_id) REFERENCES sitebuilder.component (component_id)
+);
+
+--ALTER TABLE sitebuilder.component_item ADD COLUMN component_item_order_number int NOT NULL DEFAULT 1
+--DELETE FROM sitebuilder.component;

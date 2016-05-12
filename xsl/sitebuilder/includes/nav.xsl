@@ -113,7 +113,16 @@
           <li role="presentation"><a href="javascript:switchTab('PAGE_ARCHIVE');">Page Archive</a></li>
         </xsl:otherwise>
       </xsl:choose>
-
+    </ul>
+  </xsl:template>
+  <xsl:template name="component_edit">
+    <ul class="nav nav-tabs">
+      <li role="presentation" class="active"><a href="#">Edit Component</a></li>
+    </ul>
+  </xsl:template>
+  <xsl:template name="component_item_edit">
+    <ul class="nav nav-tabs">
+      <li role="presentation" class="active"><a href="#">Edit Component Item</a></li>
     </ul>
   </xsl:template>
 </xsl:stylesheet>

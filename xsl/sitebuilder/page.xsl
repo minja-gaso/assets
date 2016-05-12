@@ -10,15 +10,18 @@
 	<xsl:template match="data">
 		<xsl:apply-templates select="website" />
 	</xsl:template>
+	<xsl:template match="admin"></xsl:template>
 	<xsl:template match="website">
 		<xsl:variable name="url" select="concat(/data/environment/serverName, '/sitebuilder/page/', page/id)" />
 
 		<form action="" method="post" name="portal_form">
-			<input type="hidden" name="COMPONENT_ID" value="{/data/environment/componentId}" />
 			<input type="hidden" name="ACTION" />
 			<input type="hidden" name="SCREEN" value="PAGE" />
 			<input type="hidden" name="WEBSITE_ID" value="{/data/website/id}" />
 			<input type="hidden" name="PAGE_ID" value="{/data/website/page/id}" />
+			<input type="hidden" name="COMPONENT_ID" />
+			<input type="hidden" name="COMPONENT_TYPE" />
+			<input type="hidden" name="COMPONENT_ORDER_NUMBER" />
 			<!-- survey content -->
 			<nav>
 				<xsl:call-template name="page_edit">
@@ -28,7 +31,14 @@
 			<div class="col-lg-12 bordered-area">
 				<h2>Modify Page</h2>
 				<xsl:call-template name="messages" />
-				<xsl:call-template name="main" />
+				<xsl:choose>
+					<xsl:when test="/data/admin = 'true'">
+						<xsl:call-template name="main_alt" />
+					</xsl:when>
+					<xsl:otherwise>
+						<xsl:call-template name="main" />
+					</xsl:otherwise>
+				</xsl:choose>
 				<div class="btn-toolbar btn-actions">
 					<a class="btn btn-success" href="javascript:saveWebsitePage();">Save</a>
 					<a class="btn btn-danger" href="javascript:switchTab('PAGES');">Back to Pages</a>
@@ -36,6 +46,98 @@
 				</div>
 			</div>
 		</form>
+	</xsl:template>
+
+	<xsl:template name="main_alt">
+		<xsl:variable name="selectedTemplateId" select="page/fkTemplateId" />
+		<div class="row">
+			<div class="form-group col-xs-12">
+				<label for="PAGE_TITLE">Title</label>
+				<input type="text" class="form-control" name="PAGE_TITLE" id="PAGE_TITLE" value="{page/title}" />
+			</div>
+			<div class="form-group col-xs-12">
+				<label for="PAGE_TEMPLATE">Template</label>
+				<select class="form-control" name="PAGE_TEMPLATE" id="PAGE_TEMPLATE" onchange="saveWebsitePage();">
+					<option value="0" />
+					<xsl:for-each select="template">
+						<option value="{id}">
+							<xsl:if test="id = $selectedTemplateId">
+								<xsl:attribute name="selected">selected</xsl:attribute>
+							</xsl:if>
+							<xsl:value-of select="title" />
+						</option>
+					</xsl:for-each>
+				</select>
+			</div>
+		</div>
+		<!--
+		<a class="btn btn-primary" href="javascript:createComponent('CREATE_COMPONENT', 'tab');">Insert Tabbed Content</a>
+	-->
+		<div class="form-group">
+			<label for="NEW_COMPONENT">New Component Type</label>
+			<select class="form-control" name="NEW_COMPONENT" onchange="createComponent('CREATE_COMPONENT', this.value);">
+				<option selected="selected" disabled="disabled" value="" />
+				<option value="standard">Standard</option>
+				<option value="anchor">Anchor</option>
+				<option value="tab">Tabbed</option>
+			</select>
+		</div>
+		<xsl:if test="count(page/component) &gt; 0">
+			<table class="table table-bordered">
+				<caption class="text-center">Components Within Page</caption>
+				<thead>
+					<tr>
+						<!--
+							<th>ID</th>
+						-->
+						<th class="col-sm-1 text-center">Order</th>
+						<th class="col-sm-1 text-center">Type</th>
+						<th>Title</th>
+						<th class="col-sm-1 text-center">Delete</th>
+						<th class="col-sm-1 text-center">Order</th>
+					</tr>
+				</thead>
+				<tbody>
+					<xsl:for-each select="page/component">
+						<tr>
+							<!--
+								<th><a href="javascript:editComponent('{id}');"><xsl:value-of select="id" /></a></th>
+							-->
+							<td class="text-center"><xsl:value-of select="orderNumber" /></td>
+							<td class="text-center"><xsl:value-of select="type" /></td>
+							<td>
+								<a href="javascript:editComponent('{id}');">
+									<xsl:choose>
+										<xsl:when test="string-length(title) &gt; 0">
+											<xsl:value-of select="title" />
+										</xsl:when>
+										<xsl:otherwise>
+											<xsl:attribute name="class">text-danger</xsl:attribute>
+											<xsl:text>Please provide a title to this component</xsl:text>
+										</xsl:otherwise>
+									</xsl:choose>
+								</a>
+							</td>
+							<td class="text-center"><a href="javascript:deleteComponent('{id}');"><span class="fa fa-trash"></span></a></td>
+							<td>
+								<div class="reorder">
+									<xsl:if test="position() > 1">
+										<span class="" style="float:left;">
+											<a href="javascript:moveComponent('{orderNumber - 1}', '{id}');"><span class="fa fa-arrow-up"></span></a>
+										</span>
+									</xsl:if>
+									<xsl:if test="position() != last()">
+										<span class="" style="float:right;">
+											<a href="javascript:moveComponent('{orderNumber + 1}', '{id}');"><span class="fa fa-arrow-down"></span></a>
+										</span>
+									</xsl:if>
+								</div>
+							</td>
+						</tr>
+					</xsl:for-each>
+				</tbody>
+			</table>
+		</xsl:if>
 	</xsl:template>
 
 	<xsl:template name="main">

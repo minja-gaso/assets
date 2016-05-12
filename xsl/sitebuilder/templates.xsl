@@ -11,6 +11,7 @@
 		<xsl:apply-templates />
 	</xsl:template>
 	<xsl:template match="environment"></xsl:template>
+	<xsl:template match="admin"></xsl:template>
 	<xsl:template match="website">
 		<form action="" method="post" name="portal_form">
 			<input type="hidden" name="COMPONENT_ID" value="{/data/environment/componentId}" />

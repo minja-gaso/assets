@@ -11,6 +11,7 @@
 		<xsl:apply-templates />
 	</xsl:template>
 	<xsl:template match="environment"></xsl:template>
+	<xsl:template match="admin"></xsl:template>
 	<xsl:template match="website">
 		<form action="" method="post" name="portal_form">
 			<input type="hidden" name="COMPONENT_ID" value="{/data/environment/componentId}" />
@@ -94,9 +95,9 @@
 			</td>
 			<td class="text-center"><a href="{$url}" target="_blank"><span class="fa fa-search" /></a></td>
 			<td class="text-center"><a href="javascript:editWebsitePage('{id}');"><span class="fa fa-edit" /></a></td>
-			<!--
+
 				<td class="text-center"><a href="javascript:deleteWebsitePage('{id}');"><span class="fa fa-trash" /></a></td>
-			-->
+			
 		</tr>
 	</xsl:template>
 </xsl:stylesheet>

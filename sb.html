@@ -136,6 +136,57 @@
       pageForm.ACTION.value='APPLY_ARCHIVE';
       pageForm.submit();
     }
+    function createComponent(value, type)
+    {
+      pageForm.ACTION.value=value;
+      pageForm.COMPONENT_TYPE.value=type;
+      pageForm.submit();
+    }
+    function editComponent(id){
+      pageForm.COMPONENT_ID.value=id;
+      pageForm.SCREEN.value='COMPONENT';
+      pageForm.submit();
+    }
+    function createComponentItem()
+    {
+      pageForm.ACTION.value='CREATE_COMPONENT_ITEM';
+      pageForm.submit();
+    }
+    function saveComponent(){
+      pageForm.ACTION.value='SAVE_COMPONENT';
+      pageForm.submit();
+    }
+    function deleteComponent(id){
+      pageForm.COMPONENT_ID.value=id;
+      pageForm.ACTION.value='DELETE_COMPONENT';
+      pageForm.submit();
+    }
+    function moveComponent(orderNumber, id){
+      pageForm.COMPONENT_ORDER_NUMBER.value=orderNumber;
+      pageForm.COMPONENT_ID.value=id;
+      pageForm.ACTION.value='MOVE_COMPONENT';
+      pageForm.submit();
+    }
+    function editComponentItem(id){
+      pageForm.COMPONENT_ITEM_ID.value=id;
+      pageForm.SCREEN.value='COMPONENT_ITEM';
+      pageForm.submit();
+    }
+    function saveComponentItem(){
+      pageForm.ACTION.value='SAVE_COMPONENT_ITEM';
+      pageForm.submit();
+    }
+    function deleteComponentItem(id){
+      pageForm.COMPONENT_ITEM_ID.value=id;
+      pageForm.ACTION.value='DELETE_COMPONENT_ITEM';
+      pageForm.submit();
+    }
+    function moveComponentItem(orderNumber, id){
+      pageForm.COMPONENT_ITEM_ORDER_NUMBER.value=orderNumber;
+      pageForm.COMPONENT_ITEM_ID.value=id;
+      pageForm.ACTION.value='MOVE_COMPONENT_ITEM';
+      pageForm.submit();
+    }
     </script>
   </body>
 </html>
