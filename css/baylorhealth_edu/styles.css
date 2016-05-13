@@ -58,19 +58,32 @@ ul.nav.sticky { position: relative; z-index: 1; }
  */
 main .row { margin-bottom: 30px; }
 main .cta { border: 1px solid #1E98BF; color: #1E98BF; padding: 8px 20px; }
-main #tabbed { background-color: #EFEEED; }
-main #tabbed.white { background-color: #FFFFFF; }
-main #tabbed ul#tabbed-tabs { background-color: #fff; }
-main #tabbed .nav-tabs li a { background-color: #D0D1CC; border-top: 3px solid #A5A5A2; border-radius: 0; color: #A5A5A2; font-weight: bold; margin-left: 4px; }
-main #tabbed .nav-tabs li a { background: #ccc; color: #999; }
-main #tabbed .nav-tabs li:first-child a { margin-left: 0; }
-main #tabbed.white .nav-tabs li a { background-color: #ffffff; }
-main #tabbed .nav-tabs li a:hover {}
-main #tabbed .nav-tabs li.active a { background-color: #EFEEED; border-bottom-color: transparent; border-top: 3px solid #229CC1; color: #383838; }
-main #tabbed .tab-content { padding: 24px 40px; }
-main #tabbed .tab-content h2 { color: #229CC1; }
-main #tabbed.primary h2 { font-size: 44px; }
-main #tabbed.primary p { font-size: 20px; }
+main #tabbed,
+main .tabbed { background-color: #EFEEED; }
+main #tabbed.white,
+main .tabbed.white { background-color: #FFFFFF; }
+main #tabbed ul#tabbed-tabs,
+main .tabbed ul { background-color: #fff; }
+main #tabbed .nav-tabs li a,
+main .tabbed .nav-tabs li a { background-color: #D0D1CC; border-top: 3px solid #A5A5A2; border-radius: 0; color: #A5A5A2; font-weight: bold; margin-left: 4px; }
+main #tabbed .nav-tabs li a,
+main .tabbed .nav-tabs li a { background: #ccc; color: #999; }
+main #tabbed .nav-tabs li:first-child a,
+main .tabbed .nav-tabs li:first-child a { margin-left: 0; }
+main #tabbed.white .nav-tabs li a,
+main .tabbed.white .nav-tabs li a { background-color: #ffffff; }
+main #tabbed .nav-tabs li a:hover,
+main .tabbed .nav-tabs li a:hover {}
+main #tabbed .nav-tabs li.active a,
+main .tabbed .nav-tabs li.active a { background-color: #EFEEED; border-bottom-color: transparent; border-top: 3px solid #229CC1; color: #383838; }
+main #tabbed .tab-content,
+main .tabbed .tab-content { padding: 24px 40px; }
+main #tabbed .tab-content h2,
+main .tabbed .tab-content h2 { color: #229CC1; }
+main #tabbed.primary h2,
+main .tabbed.primary h2 { font-size: 44px; }
+main #tabbed.primary p,
+main .tabbed.primary p { font-size: 20px; }
 
 main .selling-points > * { padding-left: 30px; padding-right: 30px; min-height: 300px; }
 main .selling-points.primary > * { background-color: #f3f3f3; border-right: 12px solid #fff; }

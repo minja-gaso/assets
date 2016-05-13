@@ -3,7 +3,7 @@
 	<xsl:output type="html" />
 	<xsl:template match="/">
 		<style type="text/css">
-			#elements { margin: 0 auto; max-width: 800px; border: 1px solid #ccc; padding: 24px; }
+			ccccccc#elements { margin: 0 auto; max-width: 800px; border: 1px solid #ccc; padding: 24px; }
 		</style>
 		<div class="row">
 			<ul class="nav nav-pills pull-right sticky-tabs">
@@ -48,8 +48,9 @@
 		</div>
 	</xsl:template>
 	<xsl:template name="tab">
-		<div id="element-{id}" class="tabbed-content">
-			<ul class="nav nav-tabs" role="tablist">
+		<div id="element-{id}" class="tabbed">
+			<h2><xsl:value-of select="title" /></h2>
+			<ul class="nav nav-tabs nav-justified" role="tablist">
 				<xsl:for-each select="item">
 					<li role="presentation">
 						<xsl:if test="position() = 1">
