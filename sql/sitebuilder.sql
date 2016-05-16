@@ -83,3 +83,7 @@ CREATE TABLE IF NOT EXISTS sitebuilder.component_item
 
 --ALTER TABLE sitebuilder.component_item ADD COLUMN component_item_order_number int NOT NULL DEFAULT 1
 --DELETE FROM sitebuilder.component;
+
+SELECT * FROM sitebuilder.component_item WHERE fk_component_id = 1248039117879510505;
+
+DELETE FROM sitebuilder.component_item;

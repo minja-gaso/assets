@@ -40,16 +40,16 @@
 		</div>
 	</xsl:template>
 	<xsl:template name="standard">
-		<div id="element-{id}">
 			<xsl:for-each select="item">
 				<h2><xsl:value-of select="title" /></h2>
-				<xsl:value-of select="html" disable-output-escaping="yes" />
+				<div id="element-{id}">
+					<xsl:value-of select="html" disable-output-escaping="yes" />
+				</div>
 			</xsl:for-each>
-		</div>
 	</xsl:template>
 	<xsl:template name="tab">
+		<h2><xsl:value-of select="title" /></h2>
 		<div id="element-{id}" class="tabbed">
-			<h2><xsl:value-of select="title" /></h2>
 			<ul class="nav nav-tabs nav-justified" role="tablist">
 				<xsl:for-each select="item">
 					<li role="presentation">
