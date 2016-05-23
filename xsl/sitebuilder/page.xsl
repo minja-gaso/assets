@@ -31,14 +31,17 @@
 			<div class="col-lg-12 bordered-area">
 				<h2>Modify Page</h2>
 				<xsl:call-template name="messages" />
-				<xsl:choose>
-					<xsl:when test="/data/admin = 'true'">
-						<xsl:call-template name="main_alt" />
-					</xsl:when>
-					<xsl:otherwise>
-						<xsl:call-template name="main" />
-					</xsl:otherwise>
-				</xsl:choose>
+				<!--
+					<xsl:choose>
+						<xsl:when test="/data/admin = 'true'">
+							<xsl:call-template name="main_alt" />
+						</xsl:when>
+						<xsl:otherwise>
+							<xsl:call-template name="main" />
+						</xsl:otherwise>
+					</xsl:choose>
+				-->
+				<xsl:call-template name="main_alt" />
 				<div class="btn-toolbar btn-actions">
 					<a class="btn btn-success" href="javascript:saveWebsitePage();">Save</a>
 					<a class="btn btn-danger" href="javascript:switchTab('PAGES');">Back to Pages</a>
@@ -77,8 +80,12 @@
 			<label for="NEW_COMPONENT">New Component Type</label>
 			<select class="form-control" name="NEW_COMPONENT" onchange="createComponent('CREATE_COMPONENT', this.value);">
 				<option selected="selected" disabled="disabled" value="" />
-				<option value="standard">Standard</option>
-				<option value="anchor">Anchor</option>
+				<option value="heading">Heading</option>
+				<option value="text">Text</option>
+				<option value="column">Multi-Column</option>
+				<!--
+					<option value="anchor">Anchor</option>
+				-->
 				<option value="tab">Tabbed</option>
 			</select>
 		</div>
@@ -104,7 +111,16 @@
 								<th><a href="javascript:editComponent('{id}');"><xsl:value-of select="id" /></a></th>
 							-->
 							<td class="text-center"><xsl:value-of select="orderNumber" /></td>
-							<td class="text-center"><xsl:value-of select="type" /></td>
+							<td class="text-center">
+								<xsl:choose>
+									<xsl:when test="type != 'heading'">
+										<xsl:value-of select="type" />
+									</xsl:when>
+									<xsl:otherwise>
+										<xsl:value-of select="typeValue" />
+									</xsl:otherwise>
+								</xsl:choose>
+							</td>
 							<td>
 								<a href="javascript:editComponent('{id}');">
 									<xsl:choose>

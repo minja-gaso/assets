@@ -25,7 +25,7 @@
 				<xsl:call-template name="component_item_edit" />
 			</nav>
 			<div class="col-lg-12 bordered-area">
-				<h2>Modify Page</h2>
+				<h2>Modify Component</h2>
 				<xsl:call-template name="messages" />
 				<xsl:call-template name="main" />
 				<div class="btn-toolbar btn-actions">
@@ -62,15 +62,26 @@
 					  selector: 'textarea',
 					  height: 500,
 					  theme: 'modern',
+			      force_br_newlines : false,
+			      force_p_newlines : false,
+			      forced_root_block : '',
 					  plugins: [
 					    'advlist autolink lists link image charmap print preview hr anchor pagebreak',
 					    'searchreplace wordcount visualblocks visualchars code fullscreen',
 					    'insertdatetime media nonbreaking save table contextmenu directionality',
-					    'emoticons template paste textcolor colorpicker textpattern imagetools'
+					    'emoticons template paste textcolor colorpicker textpattern imagetools template'
 					  ],
 					  toolbar1: 'insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image',
-					  toolbar2: 'print preview media | forecolor backcolor emoticons',
-					  image_advtab: true
+					  toolbar2: 'print preview media | forecolor backcolor emoticons template',
+					  image_advtab: true,
+						templates: [
+							{
+								'title': 'Provider Card',
+								'description': 'Jane Doe',
+								'url': 'http://localhost:8080/tinymce/template/provider-card.html?v=1'
+							}
+						],
+						content_css: 'http://localhost:8080/css/toolbox.css?v=1'
 				  });
 					</script>
 			</div>
