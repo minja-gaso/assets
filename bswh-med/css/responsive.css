@@ -1,0 +1,22 @@
+@media only screen and (max-width: 1250px) {
+  xxx.jumbotron.primary { background-color: red !important; }
+  body.pushed header li { display: block; float: left; margin: 0; padding: 0; width: 33%; }
+  body.pushed header li.pull-right { float: none !important; margin-bottom: 24px; position: relative; }
+  body.pushed .jumbotron .row > * { float: none; width: 100%; }
+}
+
+@media only screen and (max-width: 1010px) {
+  .jumbotron.primary { background-color: pink !important; }
+  header li { display: block; float: left; margin: 0; padding: 0; width: 33%; }
+  header li.pull-right { float: none !important; margin-bottom: 24px; position: relative; width: 100%; }
+  body.pushed footer { height: auto; }
+  body.pushed footer .links { width: 100%; }
+}
+
+@media only screen and (max-width: 900px) {
+  .jumbotron.primary { background-color: green !important; }
+  header { position: relative; }
+  div#main { padding-top: 0; }
+  footer { height: auto; }
+  body.pushed footer .row > * { float: none; width: 100%; }
+}

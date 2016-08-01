@@ -1,0 +1,239 @@
+.container {
+  max-width: 100%;
+}
+header {
+  background-color: #EFF4F0;
+  opacity: 0.8;
+  padding: 20px 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1;
+}
+body.secondary header {
+  opacity: 1;
+}
+body.pushed header {
+  position: relative;
+}
+header li {
+  margin-right: 30px;
+  text-align: center;
+}
+header li.pull-right {
+  margin-right: 0;
+}
+body.pushed header .pull-right {
+  position: absolute;
+  right: 0;
+}
+body.secondary header.scrolled li.menu-item .text {
+  display: none;
+}
+header button {
+  background-color: transparent;
+  border: none;
+  color: #a4a4a4;
+  font-size: 20px;
+}
+header button .fa {
+  display: block;
+}
+header #title-bar {
+  border-top: 2px solid #b2b2b2;
+  color: #000000;
+  font-size: 24px;
+  font-weight: bold;
+  letter-spacing: 0.1em;
+  padding-top: 20px;
+  text-align: center;
+  text-transform: uppercase;
+}
+div#main {
+  background-size: 100%;
+  padding-top: 118px;
+}
+body.pushed div#main {
+  padding-top: 0;
+}
+aside {
+  display: none;
+  left: 0;
+  padding: 36px;
+  position: fixed;
+  top: 0;
+  max-width: 500px;
+  width: 0;
+  z-index: -1;
+}
+aside button {
+  background-color: transparent;
+  color: #35bbd9;
+}
+aside #menu-nav,
+aside #search-nav,
+aside #refer-nav {
+  display: none;
+}
+aside label {
+  color: #005391;
+  font-size: 22px;
+  font-weight: normal;
+}
+aside h3 {
+  font-size: inherit;
+  font-weight: bold;
+}
+aside ul.primary {
+  margin-bottom: 48px;
+}
+aside nav#menu-nav ul.primary li {
+  border-bottom: 1px solid #D7D7D5;
+}
+aside ul.primary li {
+  margin: 4px 0 16px 0;
+  padding: 4px 0 16px 0;
+}
+aside ul.popular li {
+  margin-bottom: 24px;
+}
+aside ul li a {
+  color: #242424;
+}
+aside ul ul.list-unstyled {
+  display: none;
+  margin-left: 30px;
+}
+aside nav#menu-nav ul.primary ul.list-unstyled li {
+  border-bottom: none;
+  border-top: 1px solid #d7d7d5;
+  margin-bottom: 0;
+  margin-top: 16px;
+  padding-top: 16px;
+  padding-left: 30px;
+  padding-bottom: 0;
+}
+aside #search-nav input,
+aside #refer-nav input {
+  background-color: #F1F1F1;
+  border: none;
+  border-radius: 0;
+  font-size: 16px;
+  height: 44px;
+  padding: 12px;
+}
+aside form {
+  margin-bottom: 20px;
+}
+main {
+  xxxbackground: red;
+}
+main .jumbotron {
+  margin: 0;
+  padding-top: 88px;
+  padding-bottom: 116px;
+}
+main .jumbotron.primary {
+  background-color: transparent;
+}
+main .jumbotron.secondary,
+main .jumbotron.tertiary {
+  padding: 64px 0;
+}
+main .jumbotron .row {
+  text-align: center;
+}
+main .jumbotron img.thumbnail {
+  margin: auto;
+  max-width: 192px;
+  width: 100%;
+}
+main .jumbotron h2 {
+  font-size: 2.4em;
+  margin-bottom: 36px;
+}
+main .jumbotron h3 {
+  font-size: 2em;
+  margin-bottom: 30px;
+}
+main .jumbotron h4 {
+  font-size: 1.2em;
+  font-weight: normal;
+  letter-spacing: 0.1em;
+}
+main .jumbotron h2,
+main .jumbotron h3,
+main .jumbotron h4 {
+  line-height: 1.6em;
+  text-align: center;
+}
+main .jumbotron p {
+  margin-bottom: 42px;
+}
+main .jumbotron .button {
+  color: #ffffff;
+  display: inline-block;
+  height: 48px;
+  padding-top: 14px;
+  text-align: center;
+  width: 136px;
+}
+main .jumbotron.primary .button {
+  background-color: #7C2352;
+}
+main .jumbotron.secondary {
+  background-color: #3E3E3E;
+  color: #ffffff;
+}
+main .jumbotron.secondary .button {
+  background-color: #008EBD;
+}
+main .jumbotron.tertiary {
+  background-color: #00539C;
+  color: #ffffff;
+}
+main .jumbotron.tertiary .button {
+  color: #DBB650;
+}
+main .tabs .tab-content {
+  color: #ffffff;
+  padding: 60px;
+}
+footer {
+  background-color: #E5E5E5;
+  height: 300px;
+  padding-top: 40px;
+}
+footer .links {
+  padding-bottom: 20px;
+}
+footer h3 {
+  font-size: inherit;
+  font-weight: bold;
+  margin-top: 0;
+}
+
+
+/* loading pdfs */
+main #sidebar, main #page-container {
+  background-color: transparent;
+  background-image: none;
+  position: relative;
+}
+
+/* overriding bootstrap */
+body .nav.nav-tabs li.active a,
+body .nav.nav-tabs a:hover,
+.nav-tabs.nav-justified > .active > a,
+.nav-tabs.nav-justified > .active > a:focus,
+.nav-tabs.nav-justified > .active > a:hover {
+  background-color: transparent;
+  border: none;
+  color: #ffffff;
+}
+main .nav.nav-tabs li a,
+main .nav.nav-tabs li a:hover {
+  background-color: #000000;
+  border: none;
+  color: #ffffff;
+}
